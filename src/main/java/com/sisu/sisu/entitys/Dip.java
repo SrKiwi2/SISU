@@ -15,6 +15,18 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="dip")
 public class Dip implements Serializable {
+
+	//attributes
+	/* 
+	 * idDip
+	 * dip
+	 * descripcion
+	 * estado
+	 * 
+	 * 
+	 * registro
+	 * modificacion
+	*/
 	
 	private static final long serialVersionUID = 1L;
     @Id
@@ -40,10 +52,14 @@ public class Dip implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
+	// CONSTRUCTOR vACIO
+
 	public Dip() {
 	
 		// TODO Auto-generated constructor stub
 	}
+
+	//CONTRUCTOR 
 
 	public Dip(Integer idDip, String dip, String descripcion, String estado, Date registro, Date modificacion) {
 		super();
@@ -54,6 +70,9 @@ public class Dip implements Serializable {
 		this.registro = registro;
 		this.modificacion = modificacion;
 	}
+
+
+	// METODOS SETTETS y GETTERS 
 
 	public Integer getIdDip() {
 		return idDip;
@@ -102,9 +121,6 @@ public class Dip implements Serializable {
 	public void setModificacion(Date modificacion) {
 		this.modificacion = modificacion;
 	}
-    
-    
-    
-    
+     
 
 }
