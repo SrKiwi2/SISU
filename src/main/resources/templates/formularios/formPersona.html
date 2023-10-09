@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Registro Persona | SISU</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="../../images/favicon.ico">
+
+        <!-- Bootstrap Css -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="../../css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="../../css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body data-topbar="colored">
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            <div th:insert="~{layout/topbar :: topbar}"></div>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div th:insert="~{layout/sidebar :: sidebar}"></div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- Page-Title -->
+                    <div class="page-title-box">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="page-title mb-1">FORMULARIO DE REGISTRO PERSONA</h4>
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                    <li class="breadcrumb-item active">Form Validation</li>
+                                    </ol>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="float-right d-none d-md-block">
+                                        <div class="dropdown">
+                                            <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+                    <div class="page-content-wrapper">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form class="needs-validation" action="/guardarPersona" method="post" novalidate>
+                                                <input type="hidden" th:field="${persona.id_persona}">
+                                                <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+                                                <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom01">Nombre</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${persona.nombre}" placeholder="Introduce tu nombre" required >
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom02">Apellido Paterno</label>
+                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${persona.ap_paterno}" placeholder="Introduce tu apellido paterno" required>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom03">Apellido Materno</label>
+                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${persona.ap_materno}" placeholder="Introduce tu apellido Materno" required>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom04">C.I.</label>
+                                                        <input type="number" class="form-control" id="validationCustom04" th:field="${persona.ci}" placeholder="Introduce tu C.I." required>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label>Género</label>
+                                                        <select class="custom-select" th:field="${persona.sexo}" required>
+                                                            <option value="">Selecciona tu genero</option>
+                                                            <option value="Hombre">Hombre</option>
+                                                            <option value="Mujer">Mujer</option>
+                                                            <option value="otro">otro...</option>
+                                                            <option value="Rarito">Rarito...</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label>Estado Civil</label>
+                                                        <select class="custom-select" th:field="${persona.sexo}" required>
+                                                            <option value="">Selecciona tu genero</option>
+                                                            <option value="Hombre">Casado</option>
+                                                            <option value="Mujer">soltero</option>
+                                                            <option value="otro">otro...</option>
+                                                            <option value="Rarito">Rarito...</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom05">Fecha de Nacimiento</label>
+                                                        <input type="date" class="form-control" id="validationCustom05" th:field="${persona.fecha_nac}" placeholder="Introduce tu C.I." required>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 mb-3">
+                                                        <label for="validationCustom06">Nº Celular</label>
+                                                        <input type="number" class="form-control" id="validationCustom06" th:field="${persona.celular}" placeholder="Introduce el numero de celular" required>
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid city.
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom07">Domicilio</label>
+                                                        <input type="text" class="form-control" id="validationCustom07" th:field="${persona.direccion}" placeholder="Av/B/" required>
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid city.
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom03">grado academico</label>
+                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${persona.ap_materno}" placeholder="Introduce tu apellido Materno" required>
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                <button class="btn btn-primary" type="submit">Registrar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end container-fluid -->
+                    </div> 
+                    <!-- end page-content-wrapper -->
+                </div>
+                <!-- End Page-content -->
+
+                <div th:insert="~{layout/footer :: footer}"></div>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="../../libs/jquery/jquery.min.js"></script>
+        <script src="../../libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../libs/metismenu/metisMenu.min.js"></script>
+        <script src="../../libs/simplebar/simplebar.min.js"></script>
+        <script src="../../libs/node-waves/waves.min.js"></script>
+
+        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+        <!-- parsleyjs -->
+        <script src="../../libs/parsleyjs/parsley.min.js"></script>
+        <!-- validation init -->
+        <script src="../../js/pages/form-validation.init.js"></script>
+
+        <script src="../../js/app.js"></script>
+
+    </body>
+</html>
