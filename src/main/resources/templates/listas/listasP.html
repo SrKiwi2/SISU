@@ -8,24 +8,24 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="../../images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- DataTables -->
-        <link href="../../libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Responsive datatable examples -->
-        <link href="../../libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />   
+        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />   
         
-        <link href="../../libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap Css -->
-        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="../../css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="../../css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -106,31 +106,31 @@
                                                         <th>Apellido Materno</th>
                                                         <th>CI</th>
                                                         <th>Genero</th>
-                                                        <th>Celular</th>
                                                         <th>Dirección</th>
-                                                        <th>Fecha de Nacimiento</th>
+                                                        <th>Celular</th>
+                                                        <th>Estado Civil</th>
+                                                        <th>Grado Academico</th>
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
                                                     <tr th:each ="p : ${personas}" th:if="${p.estado_persona !='X'}">
                                                         <td th:text="${p.nombre}"></td>
-                                                        <td th:text="${p.ap_paterno}"></td>
-                                                        <td th:text="${p.ap_materno}"></td>
+                                                        <td th:text="${p.apPaterno}"></td>
+                                                        <td th:text="${p.apMaterno}"></td>
                                                         <td th:text="${p.ci}"></td>
-                                                        <td th:text="${p.genero}"></td>
-                                                        <td th:text="${p.celular}"></td>
+                                                        <td th:text="${p.sexo}"></td>
                                                         <td th:text="${p.direccion}"></td>
-                                                        <td th:text="${p.fecha_nac}"></td>
+                                                        <td th:text="${p.celular}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="col-md-3">
-                                                                    <a th:href="${'../../../../editarPersona/' + p.id_persona}" style="padding: 0px; display: inline-block; margin: -5px;">
+                                                                    <a th:href="${'assets/assets/editarPersona/' + p.id_persona}" style="padding: 0px; display: inline-block; margin: -5px;">
                                                                         <button type="button" class="btn btn-outline-primary alertEdit" style="font-size: 10px; padding: 6px 8px;"><i class="dripicons-document-edit"></i></button>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <a th:href="${'../../../../eliminarPersona/' + p.id_persona}" style="padding: 0px; display: inline-block; margin: -5px;">
+                                                                    <a th:href="${'assets/assets/eliminarPersona/' + p.id_persona}" style="padding: 0px; display: inline-block; margin: -5px;">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin" style="font-size: 10px; padding: 6px 8px;"><i class="dripicons-trash"></i></button>
                                                                     </a>
                                                                 </div>
@@ -167,39 +167,39 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="../../libs/jquery/jquery.min.js"></script>
-        <script src="../../libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../../libs/metismenu/metisMenu.min.js"></script>
-        <script src="../../libs/simplebar/simplebar.min.js"></script>
-        <script src="../../libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
 
         <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
         
         <!-- Required datatable js -->
-        <script src="../../libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../../libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
         
         <!-- Buttons examples -->
-        <script src="../../libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="../../libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-        <script src="../../libs/jszip/jszip.min.js"></script>
-        <script src="../../libs/pdfmake/build/pdfmake.min.js"></script>
-        <script src="../../libs/pdfmake/build/vfs_fonts.js"></script>
-        <script src="../../libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-        <script src="../../libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-        <script src="../../libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <script src="assets/libs/jszip/jszip.min.js"></script>
+        <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+        <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
         <!-- Responsive examples -->
-        <script src="../../libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="../../libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
         <!-- Datatable init js -->
-        <script src="../../js/pages/datatables.init.js"></script>
+        <script src="assets/js/pages/datatables.init.js"></script>
 
         <!-- alert -->
-        <script src="../../libs/alertifyjs/build/alertify.min.js"></script>
-        <script src="../../js/pages/alertifyjs.init.js"></script>
+        <script src="assets/libs/alertifyjs/build/alertify.min.js"></script>
+        <script src="assets/js/pages/alertifyjs.init.js"></script>
 
-        <script src="../../js/app.js"></script>
+        <script src="assets/js/app.js"></script>
 
     </body>
 </html>

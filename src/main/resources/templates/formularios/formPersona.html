@@ -8,14 +8,14 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="../../images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- Bootstrap Css -->
-        <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="../../css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="../../css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -77,27 +77,27 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <form class="needs-validation" action="/guardarPersona" method="post" novalidate>
-                                                <input type="hidden" th:field="${persona.id_persona}">
+                                                <input type="hidden" th:field="${persona.idPersona}">
                                                 <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOSs</h4>
                                                 <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom01">Nombre</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${persona.nombre}" placeholder="Introduce tu nombre" required >
+                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${persona.nombres}" placeholder="Introduce tu nombre" required >
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom02">Apellido Paterno</label>
-                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${persona.ap_paterno}" placeholder="Introduce tu apellido paterno" required>
+                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${persona.apPaterno}" placeholder="Introduce tu apellido paterno" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom03">Apellido Materno</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${persona.ap_materno}" placeholder="Introduce tu apellido Materno" required>
+                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${persona.apMaterno}" placeholder="Introduce tu apellido Materno" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
@@ -122,7 +122,7 @@
                                                     </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label>Estado Civil</label>
-                                                        <select class="custom-select" th:field="${persona.sexo}" required>
+                                                        <select class="custom-select" required>
                                                             <option value="">Selecciona tu genero</option>
                                                             <option value="Hombre">Casado</option>
                                                             <option value="Mujer">soltero</option>
@@ -130,13 +130,6 @@
                                                             <option value="Rarito">Rarito...</option>
                                                         </select>
                                                         <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom05">Fecha de Nacimiento</label>
-                                                        <input type="date" class="form-control" id="validationCustom05" th:field="${persona.fecha_nac}" placeholder="Introduce tu C.I." required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -154,13 +147,20 @@
                                                             Please provide a valid city.
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 mb-3">
+                                                    <!-- <div class="col-md-4 mb-3">
                                                         <label for="validationCustom03">grado academico</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${persona.ap_materno}" placeholder="Introduce tu apellido Materno" required>
+                                                        <select class="custom-select" th:field="${persona.idGradoAcademico}" required>
+                                                            <option value="">Selecciona tu grado académico</option>
+                                                            <option value="1">Estudiante</option>
+                                                            <option value="2">Licenciatura</option>
+                                                            <option value="3">Maestría</option>
+                                                            <option value="4">Doctorado</option>
+                                                            
+                                                        </select>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     
                                                 </div>
 
@@ -192,20 +192,20 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="../../libs/jquery/jquery.min.js"></script>
-        <script src="../../libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../../libs/metismenu/metisMenu.min.js"></script>
-        <script src="../../libs/simplebar/simplebar.min.js"></script>
-        <script src="../../libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
 
         <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
         <!-- parsleyjs -->
-        <script src="../../libs/parsleyjs/parsley.min.js"></script>
+        <script src="assets/libs/parsleyjs/parsley.min.js"></script>
         <!-- validation init -->
-        <script src="../../js/pages/form-validation.init.js"></script>
+        <script src="assets/js/pages/form-validation.init.js"></script>
 
-        <script src="../../js/app.js"></script>
+        <script src="assets/js/app.js"></script>
 
     </body>
 </html>
