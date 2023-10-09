@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.Service.UsuarioService;
+import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.Usuarios;
 
 @Controller
@@ -17,11 +19,17 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private IPersonaService personaService;
+
     @GetMapping(value="/formUs")
     public String vistaUs(Model model) {
 
         model.addAttribute("usuario", new Usuarios());
         model.addAttribute("usuarios", usuarioService.findAll());
+
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", personaService.findAll());
 
         return "usuarios";
     }
@@ -45,6 +53,7 @@ public class UsuarioController {
     public String listaUs(Model model) {
 
         model.addAttribute("usuarios", usuarioService.findAll());
+        model.addAttribute("personas", personaService.findAll());
 
         return "usuarios";
     
@@ -61,6 +70,10 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuarios());
         model.addAttribute("usuarios", usuarioService.findAll());
+
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", personaService.findAll());
+
 
         return "usuarios";
     }
