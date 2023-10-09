@@ -49,7 +49,7 @@ public class DipController {
         Dip dip = iDipService.findOne(id_dip);
         dip.setEstado("X");
         iDipService.save(dip);
-        return "redirect:/ListaPersona";
+        return "redirect:/ListaDip";
         
     }
 
