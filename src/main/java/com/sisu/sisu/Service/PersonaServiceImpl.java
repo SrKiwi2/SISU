@@ -25,12 +25,12 @@ public class PersonaServiceImpl implements IPersonaService{
     }
 
     @Override
-    public Persona findOne(Long id) {
+    public Persona findOne(Integer id) {
         return personaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         personaDao.deleteById(id);
     }
 }

@@ -8,14 +8,21 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="../../../../assets/images/favicon.ico">
+
+        <!-- DataTables -->
+        <link href="../../../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />     
 
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -122,7 +129,7 @@
                                                     </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label>Estado Civil</label>
-                                                        <select class="custom-select" required>
+                                                        <select class="custom-select" th:field="${persona.idTipoEstadoCivil}" required>
                                                             <option value="">Selecciona tu genero</option>
                                                             <option value="Hombre">Casado</option>
                                                             <option value="Mujer">soltero</option>
@@ -147,20 +154,27 @@
                                                             Please provide a valid city.
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom03">grado academico</label>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom03">Grado Académico</label>
                                                         <select class="custom-select" th:field="${persona.idGradoAcademico}" required>
                                                             <option value="">Selecciona tu grado académico</option>
                                                             <option value="1">Estudiante</option>
                                                             <option value="2">Licenciatura</option>
                                                             <option value="3">Maestría</option>
                                                             <option value="4">Doctorado</option>
-                                                            
                                                         </select>
                                                         <div class="valid-feedback">
-                                                            Looks good!
+                                                            ¡Se ve bien!
                                                         </div>
-                                                    </div> -->
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom07">Dip</label>
+                                                        <input type="text" class="form-control" id="validationCustom07" th:field="${persona.idDip}" placeholder="Av/B/" required>
+                                                        <div class="invalid-feedback">
+                                                            Por favor, proporciona un valor válido.
+                                                        </div>
+                                                    </div>
                                                     
                                                 </div>
 
@@ -192,20 +206,34 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
+        <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
 
         <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+        
+        <!-- Required datatable js -->
+        <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <script src="../../../../assets/libs/jszip/jszip.min.js"></script>
+        <script src="../../../../assets/libs/pdfmake/build/pdfmake.min.js"></script>
+        <script src="../../../../assets/libs/pdfmake/build/vfs_fonts.js"></script>
+        <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-        <!-- parsleyjs -->
-        <script src="assets/libs/parsleyjs/parsley.min.js"></script>
-        <!-- validation init -->
-        <script src="assets/js/pages/form-validation.init.js"></script>
+        <!-- Datatable init js -->
+        <script src="../../../../assets/js/pages/datatables.init.js"></script>
 
-        <script src="assets/js/app.js"></script>
+        <script src="../../../../assets/js/app.js"></script>
 
     </body>
 </html>
