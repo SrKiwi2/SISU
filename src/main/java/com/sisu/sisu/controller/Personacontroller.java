@@ -53,7 +53,7 @@ public class Personacontroller {
         return "formularios/formPersona";
     }
 
-    /* Lista */
+    /* Lista  */
     
     @GetMapping(value = "/ListaPersona")
     public String listarPersona (Model model){
