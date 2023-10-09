@@ -27,6 +27,8 @@ public class UsuarioController {
     }
 
 
+    //-------------------------GUARDAR---------------------------------------
+    
     @PostMapping(value="/saveUs")
     public String saveUsiario(@Validated Usuarios usuarios) {
 
@@ -37,6 +39,8 @@ public class UsuarioController {
         return "";
     }
 
+    //-------------------------LISTAR---------------------------------------
+
     @GetMapping(value="/listaUs")
     public String listaUs(Model model) {
 
@@ -45,6 +49,23 @@ public class UsuarioController {
         return "usuarios";
     
     }
+
+    //-------------------------EDITAR---------------------------------------
+
+    @GetMapping(value="/editarUs/{idUsuario}")
+    public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
+
+        Usuarios usuario = usuarioService.findOne(idUsuario);
+
+        usuario.setEstado("A");
+
+        model.addAttribute("usuario", new Usuarios());
+        model.addAttribute("usuarios", usuarioService.findAll());
+
+        return "usuarios";
+    }
+
+    //-------------------------ELIMINAR---------------------------------------
 
     @GetMapping(value="/eliminarUs/{idUsuario}")
     public String deleteUs(@PathVariable("idUsuario") Integer idUsuario) {
