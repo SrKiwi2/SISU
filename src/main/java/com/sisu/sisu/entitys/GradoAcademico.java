@@ -15,38 +15,37 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "grado_academico")
 public class GradoAcademico implements Serializable {
-	
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = " id_grado_academico")
-    private Integer idGradoAcademico;
-    
-    @Column(name = "grado_academico")
-    private String gradoAcademico;
-    
-    @Column(name = "estado")
-    private String estado;
-    
-    @Column(name = "simbolo")
-    private String simbolo;
-    
-    @Column(name = "descripcion")
-    private String descripcion;
-    
-    @Column(name = "registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
-    
-    @Column(name = "modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-    
-    @Column(name = "observacion")
-    private String observacion;
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = " id_grado_academico")
+	private Integer idGradoAcademico;
+
+	@Column(name = "grado_academico")
+	private String gradoAcademico;
+
+	@Column(name = "estado")
+	private String estado;
+
+	@Column(name = "simbolo")
+	private String simbolo;
+
+	@Column(name = "descripcion")
+	private String descripcion;
+
+	@Column(name = "registro")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date registro;
+
+	@Column(name = "modificacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modificacion;
+
+	@Column(name = "observacion")
+	private String observacion;
 
 	public GradoAcademico() {
-
 
 		// TODO Auto-generated constructor stub
 	}
@@ -127,12 +126,5 @@ public class GradoAcademico implements Serializable {
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
-    
-    
-    
-    
-    
-    
-   
 
 }
