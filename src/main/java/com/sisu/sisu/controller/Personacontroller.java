@@ -17,7 +17,7 @@ public class Personacontroller {
     @Autowired
     private IPersonaService personaService;
     
-    @GetMapping(value = "/")
+    @GetMapping(value = "/p")
     public String registroPersona(@Validated Persona persona, Model model){
         
         model.addAttribute("persona", new Persona());
