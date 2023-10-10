@@ -89,7 +89,7 @@ public class UsuarioController {
 
         usuarioService.save(usuario);
 
-        return "";
+        return "redirect:/listaUs";
 
     }
 
