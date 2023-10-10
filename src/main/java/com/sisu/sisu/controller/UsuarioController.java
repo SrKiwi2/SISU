@@ -55,7 +55,7 @@ public class UsuarioController {
         model.addAttribute("usuarios", usuarioService.findAll());
         model.addAttribute("personas", personaService.findAll());
 
-        return "usuarios";
+        return "listas/listaUs";
     
     }
 
