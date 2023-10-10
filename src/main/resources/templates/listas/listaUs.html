@@ -8,24 +8,24 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assetsimages/favicon.ico">
+        <link rel="shortcut icon" href="../../../../assets/images/favicon.ico">
 
         <!-- DataTables -->
-        <link href="assetslibs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="assetslibs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Responsive datatable examples -->
-        <link href="assetslibs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />   
+        <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />   
         
-        <link href="assetslibs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
-        <link href="assetslibs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
 
         <!-- Bootstrap Css -->
-        <link href="assetscss/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assetscss/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assetscss/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -99,36 +99,20 @@
                                                         <th>Nombre</th>
                                                         <th>Apellido Paterno</th>
                                                         <th>Apellido Materno</th>
-                                                        <th>CI</th>
-                                                        <th>Genero</th>
                                                         <th>Usuario</th>
-                                                        <th></th>
+                                                        <th>Clave</th>
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
                                                     <tr th:each ="us : ${usuarios}" th:if="${us.estado !='X'}">
-                                                        <td th:text="${us.persona.nombres}"></td>
-                                                        <td th:text="${us.person.apPaterno}"></td>
-                                                        <td th:text="${us.persona.apMaterno}"></td>
-                                                        <td th:text="${us.persona.ci}"></td>
-                                                        <td th:text="${us.persona.sexo}"></td>
+                                                        <td th:text="${us.idPersona.nombres}"></td>
+                                                        <td th:text="${us.idPersona.apPaterno}"></td>
+                                                        <td th:text="${us.idPersona.apMaterno}"></td>
                                                         <td th:text="${us.apodo}"></td>
-
                                                         <td>
-                                                            <div class="row justify-content-center">
-                                                                <div class="col-md-3">
-                                                                    <a th:href="${'assetsassetseditarPersona/' + p.id_persona}" style="padding: 0px; display: inline-block; margin: -5px;">
-                                                                        <button type="button" class="btn btn-outline-primary alertEdit" style="font-size: 10px; padding: 6px 8px;"><i class="dripicons-document-edit"></i></button>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <a th:href="${'assetsassetseliminarPersona/' + p.id_persona}" style="padding: 0px; display: inline-block; margin: -5px;">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin" style="font-size: 10px; padding: 6px 8px;"><i class="dripicons-trash"></i></button>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>                                                        
+                                                            <span type="password" value="${us.clave}" disabled="disabled">*******</span>
+                                                        </td>                                                                                                            
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -159,35 +143,41 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
+         <!-- JAVASCRIPT -->
+         <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
+         <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
+         <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
+         <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
+ 
+         <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+         
+         <!-- Required datatable js -->
+         <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+         <script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+         
+         <!-- Buttons examples -->
+         <script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+         <script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+         <script src="../../../../assets/libs/jszip/jszip.min.js"></script>
+         <script src="../../../../assets/libs/pdfmake/build/pdfmake.min.js"></script>
+         <script src="../../../../assets/libs/pdfmake/build/vfs_fonts.js"></script>
+         <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+         <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+         <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+         <!-- Responsive examples -->
+         <script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+         <script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+ 
+         <!-- Datatable init js -->
+         <script src="../../../../assets/js/pages/datatables.init.js"></script>
+ 
+         <!-- alert -->
+         <script src="../../../../assets/libs/alertifyjs/build/alertify.min.js"></script>
+         <script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
 
-        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
-        
-        <!-- Required datatable js -->
-        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <!-- Buttons examples -->
-        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-        <script src="assets/libs/jszip/jszip.min.js"></script>
-        <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
-        <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-        <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-        <!-- Responsive examples -->
-        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
-        <!-- Datatable init js -->
-        <script src="assets/js/pages/datatables.init.js"></script>
-
-        <script src="assets/js/app.js"></script>
-
+         <script src="../../../../assets/js/pages/vistaPass.js"></script>
+ 
+         <script src="../../../../assets/js/app.js"></script>
     </body>
 </html>

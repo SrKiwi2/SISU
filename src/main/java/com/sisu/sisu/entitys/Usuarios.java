@@ -13,7 +13,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "usuarios")
 public class Usuarios {
 	
@@ -45,84 +50,84 @@ public class Usuarios {
   @ManyToOne(optional = false)
   private Persona idPersona;
 
-public Usuarios() {
-	super();
-	// TODO Auto-generated constructor stub
-}
+// public Usuarios() {
+// 	super();
+// 	// TODO Auto-generated constructor stub
+// }
 
-public Usuarios(Integer idUsuario, String apodo, String clave, String estado, Date registro, Date modificacion,
-		Persona idPersona) {
-	super();
-	this.idUsuario = idUsuario;
-	this.apodo = apodo;
-	this.clave = clave;
-	this.estado = estado;
-	this.registro = registro;
-	this.modificacion = modificacion;
-	this.idPersona = idPersona;
-}
+// public Usuarios(Integer idUsuario, String apodo, String clave, String estado, Date registro, Date modificacion,
+// 		Persona idPersona) {
+// 	super();
+// 	this.idUsuario = idUsuario;
+// 	this.apodo = apodo;
+// 	this.clave = clave;
+// 	this.estado = estado;
+// 	this.registro = registro;
+// 	this.modificacion = modificacion;
+// 	this.idPersona = idPersona;
+// }
 
-public Integer getIdUsuario() {
-	return idUsuario;
-}
+// public Integer getIdUsuario() {
+// 	return idUsuario;
+// }
 
-public void setIdUsuario(Integer idUsuario) {
-	this.idUsuario = idUsuario;
-}
+// public void setIdUsuario(Integer idUsuario) {
+// 	this.idUsuario = idUsuario;
+// }
 
-public String getApodo() {
-	return apodo;
-}
+// public String getApodo() {
+// 	return apodo;
+// }
 
-public void setApodo(String apodo) {
-	this.apodo = apodo;
-}
+// public void setApodo(String apodo) {
+// 	this.apodo = apodo;
+// }
 
-public String getClave() {
-	return clave;
-}
+// public String getClave() {
+// 	return clave;
+// }
 
-public void setClave(String clave) {
-	this.clave = clave;
-}
+// public void setClave(String clave) {
+// 	this.clave = clave;
+// }
 
-public String getEstado() {
-	return estado;
-}
+// public String getEstado() {
+// 	return estado;
+// }
 
-public void setEstado(String estado) {
-	this.estado = estado;
-}
+// public void setEstado(String estado) {
+// 	this.estado = estado;
+// }
 
-public Date getRegistro() {
-	return registro;
-}
+// public Date getRegistro() {
+// 	return registro;
+// }
 
-public void setRegistro(Date registro) {
-	this.registro = registro;
-}
+// public void setRegistro(Date registro) {
+// 	this.registro = registro;
+// }
 
-public Date getModificacion() {
-	return modificacion;
-}
+// public Date getModificacion() {
+// 	return modificacion;
+// }
 
-public void setModificacion(Date modificacion) {
-	this.modificacion = modificacion;
-}
+// public void setModificacion(Date modificacion) {
+// 	this.modificacion = modificacion;
+// }
 
-public Persona getIdPersona() {
-	return idPersona;
-}
+// public Persona getIdPersona() {
+// 	return idPersona;
+// }
 
-public void setIdPersona(Persona idPersona) {
-	this.idPersona = idPersona;
-}
+// public void setIdPersona(Persona idPersona) {
+// 	this.idPersona = idPersona;
+// }
 
-@Override
-public String toString() {
-	return "Usuarios [idUsuario=" + idUsuario + ", apodo=" + apodo + ", clave=" + clave + ", estado=" + estado
-			+ ", registro=" + registro + ", modificacion=" + modificacion + ", idPersona=" + idPersona + "]";
-}
+// @Override
+// public String toString() {
+// 	return "Usuarios [idUsuario=" + idUsuario + ", apodo=" + apodo + ", clave=" + clave + ", estado=" + estado
+// 			+ ", registro=" + registro + ", modificacion=" + modificacion + ", idPersona=" + idPersona + "]";
+// }
  
   
   
