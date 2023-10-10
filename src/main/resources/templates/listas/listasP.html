@@ -56,10 +56,10 @@
                         <div class="container-fluid">
                             <div class="row align-items-center">
                                 <div class="col-md-8">
-                                    <h4 class="page-title mb-1">Data Tables</h4>
+                                    <h4 class="page-title mb-1">Datos de Personas</h4>
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Tables</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tabla</a></li>
+                                    <li class="breadcrumb-item active">Datos de Personas</li>
                                     </ol>
                                 </div>
                                 <div class="col-md-4">
@@ -122,17 +122,18 @@
                                                         <td th:text="${p.celular}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
-                                                                <div class="col-md-3">
-                                                                    <a th:href="${'../../../../editarPersona/' + p.idPersona}" style="padding: 0px; display: inline-block; margin: -5px;">
-                                                                        <button type="button" class="btn btn-outline-primary alertEdit" style="font-size: 10px; padding: 6px 8px;"><i class="dripicons-document-edit"></i></button>
+                                                                <div class="col-md-3 col-3"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
+                                                                    <a th:href="${'../../../../editarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
+                                                                        <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
                                                                     </a>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <a th:href="${'../../../../eliminarPersona/' + p.idPersona}" style="padding: 0px; display: inline-block; margin: -5px;">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin" style="font-size: 10px; padding: 6px 8px;"><i class="dripicons-trash"></i></button>
+                                                                <div class="col-md-3 col-4"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
+                                                                    <a th:href="${'../../../../eliminarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
+                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
                                                                     </a>
                                                                 </div>
                                                             </div>
+                                                            
                                                         </td>                                                        
                                                     </tr>
                                                 </tbody>
