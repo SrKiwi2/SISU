@@ -129,7 +129,7 @@
                                                     </div>
                                                     <div class="col-md-3 mb-3">
                                                         <label>Estado Civil</label>
-                                                        <select class="custom-select" th:field="${persona.idTipoEstadoCivil}" required>
+                                                        <select class="custom-select" required>
                                                             <option value="">Selecciona tu genero</option>
                                                             <option value="Hombre">Casado</option>
                                                             <option value="Mujer">soltero</option>
@@ -156,7 +156,7 @@
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom03">Grado Académico</label>
-                                                        <select class="custom-select" th:field="${persona.idGradoAcademico}" required>
+                                                        <select class="custom-select" required>
                                                             <option value="">Selecciona tu grado académico</option>
                                                             <option value="1">Estudiante</option>
                                                             <option value="2">Licenciatura</option>
@@ -170,7 +170,7 @@
                                                     
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom07">Dip</label>
-                                                        <input type="text" class="form-control" id="validationCustom07" th:field="${persona.idDip}" placeholder="Av/B/" required>
+                                                        <input type="text" class="form-control" id="validationCustom07" placeholder="Av/B/" required>
                                                         <div class="invalid-feedback">
                                                             Por favor, proporciona un valor válido.
                                                         </div>
