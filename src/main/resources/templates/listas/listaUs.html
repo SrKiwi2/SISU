@@ -27,6 +27,10 @@
         <!-- App Css-->
         <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
+        <link href="../../../../assets/css/style.css" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
     </head>
 
     <body data-topbar="colored">
@@ -91,7 +95,7 @@
                                     <div class="card">
                                         <div class="card-body">
             
-                                            <h4 class="header-title">Lista Usuarios</h4>
+                                            <h4 class="header-title"></i>Lista Usuarios</h4>
             
                                             <table class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
@@ -110,9 +114,11 @@
                                                         <td th:text="${us.idPersona.apPaterno}"></td>
                                                         <td th:text="${us.idPersona.apMaterno}"></td>
                                                         <td th:text="${us.apodo}"></td>
-                                                        <td>
-                                                            <span type="password" value="${us.clave}" disabled="disabled">*******</span>
-                                                        </td>                                                                                                            
+                                                        angry
+                                                        <td class="col-2">
+                                                            <input class="col-4" type="password" id="passwordInput" th:value="${us.clave}" disabled="disabled" />
+                                                            <button class="btn-rounde" onclick="togglePasswordVisibility()"><i class="ti-eye"></i></button>
+                                                        </td>                                                                                                          
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -149,8 +155,9 @@
          <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
          <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
          <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
- 
+
          <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
          
          <!-- Required datatable js -->
          <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -177,6 +184,7 @@
          <script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
 
          <script src="../../../../assets/js/pages/vistaPass.js"></script>
+
  
          <script src="../../../../assets/js/app.js"></script>
     </body>

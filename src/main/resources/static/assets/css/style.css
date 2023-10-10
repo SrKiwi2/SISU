@@ -1,0 +1,26 @@
+/* Estilo para pantallas de escritorio */
+#passwordInput {
+    width: 200px;
+}
+
+/* Estilo para pantallas más pequeñas, como tablets y móviles */
+@media (max-width: 768px) {
+    #passwordInput {
+        width: 100%;
+    }
+}
+
+.btn-rounde {
+    border: none; /* Elimina el borde */
+    background-color: #3498db; /* Color de fondo predeterminado */
+    color: #fff; /* Color de texto predeterminado */
+    padding: 5px 10px; /* Ajusta el espaciado interior según tus preferencias */
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+}
+
+.btn-rounde:hover {
+    background-color: #e74c3c; /* Cambia el color de fondo al pasar el cursor sobre el botón */
+}
+
+
