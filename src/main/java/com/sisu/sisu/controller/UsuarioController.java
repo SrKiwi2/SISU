@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.sisu.sisu.Dao.UsuarioDao;
 import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.Service.UsuarioService;
 import com.sisu.sisu.entitys.Persona;
@@ -23,7 +24,7 @@ public class UsuarioController {
     private IPersonaService personaService;
 
     @GetMapping(value="/formUs")
-    public String vistaUs(Model model) {
+    public String vistaUs(Model model, @Validated Usuarios usuarios) {
 
         model.addAttribute("usuario", new Usuarios());
         model.addAttribute("usuarios", usuarioService.findAll());
@@ -50,9 +51,12 @@ public class UsuarioController {
     //-------------------------LISTAR---------------------------------------
 
     @GetMapping(value="/listaUs")
-    public String listaUs(Model model) {
+    public String listaUs(Model model, @Validated Usuarios usuarios) {
 
+        model.addAttribute("usuario", new Usuarios());
         model.addAttribute("usuarios", usuarioService.findAll());
+        
+        model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
 
         return "listas/listaUs";
