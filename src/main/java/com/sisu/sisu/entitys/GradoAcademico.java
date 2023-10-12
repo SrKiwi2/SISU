@@ -28,11 +28,18 @@ public class GradoAcademico implements Serializable {
 	@Column(name = "estado")
 	private String estado;
 
+	@Column(name = "nivel_grado")
+	private String nivel_grado;
+
 	@Column(name = "simbolo")
 	private String simbolo;
 
 	@Column(name = "descripcion")
 	private String descripcion;
+
+	@Column(name = "status")
+	private String status;
+
 
 	@Column(name = "registro")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -50,14 +57,16 @@ public class GradoAcademico implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public GradoAcademico(Integer idGradoAcademico, String gradoAcademico, String estado, String simbolo,
+	public GradoAcademico(Integer idGradoAcademico, String gradoAcademico, String estado, String simbolo, String nivel, String status,
 			String descripcion, Date registro, Date modificacion, String observacion) {
 		super();
 		this.idGradoAcademico = idGradoAcademico;
 		this.gradoAcademico = gradoAcademico;
 		this.estado = estado;
 		this.simbolo = simbolo;
+		this.nivel_grado = nivel;
 		this.descripcion = descripcion;
+		this.status = status;
 		this.registro = registro;
 		this.modificacion = modificacion;
 		this.observacion = observacion;
@@ -87,6 +96,13 @@ public class GradoAcademico implements Serializable {
 		this.estado = estado;
 	}
 
+	public String getNivel() {
+		return nivel_grado;
+	}
+
+	public void setNivel(String nivel) {
+		this.nivel_grado = nivel;
+	}
 	public String getSimbolo() {
 		return simbolo;
 	}
@@ -101,6 +117,13 @@ public class GradoAcademico implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Date getRegistro() {
