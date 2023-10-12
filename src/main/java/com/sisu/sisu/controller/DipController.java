@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IDipService;
 import com.sisu.sisu.entitys.Dip;
-import com.sisu.sisu.entitys.Persona;
 
 @Controller
 public class DipController {
-    
+
     @Autowired
     private IDipService iDipService;
 
     //----------- Formulario para registrar --------
 
         @GetMapping(value = "/formRegistroDip")
-    public String registroPersona(@Validated Dip dip, Model model){
+    public String registroDip(@Validated Dip dip, Model model){
         
-        model.addAttribute("dip", new Persona());
+        model.addAttribute("dip", new Dip());
         model.addAttribute("dips", iDipService.findAll());
 
         return "formularios/formDip";
@@ -33,7 +32,7 @@ public class DipController {
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarDip")
-    public String RegistrarPersona(@Validated Dip dip){
+    public String RegistrarDip(@Validated Dip dip){
         dip.setEstado("A");
         iDipService.save(dip);
         return "redirect:/formRegistroDip";
@@ -45,7 +44,7 @@ public class DipController {
    /*--------------- eliminar -----------*/
     
     @RequestMapping(value = "/eliminarDip/{id_dip}")
-    public String eliminarPersona(@PathVariable("id_dip")Long id_dip){
+    public String eliminarDip(@PathVariable("id_dip")Long id_dip){
         Dip dip = iDipService.findOne(id_dip);
         dip.setEstado("X");
         iDipService.save(dip);
@@ -59,7 +58,7 @@ public class DipController {
     /* -------------------Editar -------------------*/
 
     @RequestMapping(value = "/editarDip/{id_dip}")
-    public String editarPersona(@PathVariable("id_dip")Long id_dip, Model model){
+    public String editarDip(@PathVariable("id_dip")Long id_dip, Model model){
         Dip dip = iDipService.findOne(id_dip);
         model.addAttribute("dip", dip);
         return "formularios/formDip";
@@ -71,7 +70,7 @@ public class DipController {
     /* ------------ Lista ----------------- */
     
     @GetMapping(value = "/ListaDip")
-    public String listarPersona (Model model){
+    public String listarDip (Model model){
         model.addAttribute("dips", iDipService.findAll());
         return "listas/listasDip";
     }
