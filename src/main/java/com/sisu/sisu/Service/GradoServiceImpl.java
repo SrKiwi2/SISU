@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.Dao.IGradoDao;
 import com.sisu.sisu.entitys.GradoAcademico;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
 public class GradoServiceImpl implements IGradoService {
 

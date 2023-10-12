@@ -27,13 +27,13 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Usuario findOne(Integer id) {
+    public Usuario findOne(Long id) {
         
         return usuarioDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         
         usuarioDao.deleteById(id);
     }

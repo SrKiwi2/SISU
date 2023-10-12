@@ -48,3 +48,15 @@
     margin: 0 auto;
 }
 
+/* Aumenta el z-index del calendario para que aparezca por encima del modal */
+.datepicker {
+    z-index: 1060; /* Aumenta el z-index del calendario */
+}
+
+.datepicker.datepicker-open {
+    position: absolute !important;
+}
+
+
+
+

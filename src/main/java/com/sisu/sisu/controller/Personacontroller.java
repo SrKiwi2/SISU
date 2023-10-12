@@ -38,7 +38,7 @@ public class Personacontroller {
     /* eliminar */
     
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
-    public String eliminarPersona(@PathVariable("idPersona")Integer idPersona){
+    public String eliminarPersona(@PathVariable("idPersona")Long idPersona){
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
         personaService.save(persona);
@@ -49,7 +49,7 @@ public class Personacontroller {
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
-    public String editarPersona(@PathVariable("idPersona")Integer idPersona, Model model){
+    public String editarPersona(@PathVariable("idPersona")Long idPersona, Model model){
         Persona persona = personaService.findOne(idPersona);
         model.addAttribute("persona", persona);
         return "formularios/formPersona";

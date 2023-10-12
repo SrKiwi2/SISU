@@ -65,7 +65,7 @@ public class UsuarioController {
     //-------------------------EDITAR---------------------------------------
 
     @GetMapping(value="/editarUs/{idUsuario}")
-    public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
+    public String editarUs(Model model, @PathVariable("idUsuario") Long idUsuario) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 
@@ -84,7 +84,7 @@ public class UsuarioController {
     //-------------------------ELIMINAR---------------------------------------
 
     @GetMapping(value="/eliminarUs/{idUsuario}")
-    public String deleteUs(@PathVariable("idUsuario") Integer idUsuario) {
+    public String deleteUs(@PathVariable("idUsuario") Long idUsuario) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 
