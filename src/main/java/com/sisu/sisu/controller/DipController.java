@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sisu.sisu.Service.IDipService;
 import com.sisu.sisu.entitys.Dip;
 
+
 @Controller
 public class DipController {
 
@@ -48,7 +49,7 @@ public class DipController {
         Dip dip = iDipService.findOne(id_dip);
         dip.setEstado("X");
         iDipService.save(dip);
-        return "redirect:/ListaDip";
+        return "redirect:/ListasDip";
         
     }
 
@@ -69,10 +70,14 @@ public class DipController {
 
     /* ------------ Lista ----------------- */
     
-    @GetMapping(value = "/ListaDip")
+    @GetMapping(value = "/ListasDip")
     public String listarDip (Model model){
+
+        model.addAttribute("dip", new Dip());
         model.addAttribute("dips", iDipService.findAll());
-        return "listas/listasDip";
+        
+
+        return "listas/listaDip";
     }
 
      //--------------------------------------------

@@ -84,13 +84,13 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <form class="needs-validation" action="/guardarGrado" method="post" novalidate>
-                                                <input type="hidden" th:field="${grado.idGradoAcademico}">
+                                                <input type="hidden" th:field="${grado.idGrado}">
                                                 <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                                 <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom01">Nombre del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${grado.gradoAcademico}" placeholder="Ej: Licenciado en Ciencias" required >
+                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${grado.grado_academico}" placeholder="Ej: Licenciado en Ciencias" required >
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
@@ -118,7 +118,7 @@
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom04">Status del Grado Académico</label>
-                                                        <input type="number" class="form-control" id="validationCustom05" th:field="${grado.status}" placeholder="Ej: En curso/Completado" required>
+                                                        <input type="number" class="form-control" id="validationCustom04" th:field="${grado.status}" placeholder="Ej: En curso/Completado" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
