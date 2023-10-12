@@ -20,7 +20,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "usuarios")
-public class Usuarios {
+public class Usuario {
 	
   private static final long serialVersionUID = 1L;
   @Id

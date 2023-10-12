@@ -43,7 +43,7 @@ public class UsrRoles implements Serializable {
 
    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
    @ManyToOne(optional = false)
-   private Usuarios idUsuario;
+   private Usuario idUsuario;
 
 public UsrRoles() {
 	super();
@@ -51,7 +51,7 @@ public UsrRoles() {
 }
 
 public UsrRoles(Integer idUsrRol, Date registro, Date modificacion, String estado, String descripcion, Roles idRol,
-		Usuarios idUsuario) {
+		Usuario idUsuario) {
 	super();
 	this.idUsrRol = idUsrRol;
 	this.registro = registro;
@@ -110,11 +110,11 @@ public void setIdRol(Roles idRol) {
 	this.idRol = idRol;
 }
 
-public Usuarios getIdUsuario() {
+public Usuario getIdUsuario() {
 	return idUsuario;
 }
 
-public void setIdUsuario(Usuarios idUsuario) {
+public void setIdUsuario(Usuario idUsuario) {
 	this.idUsuario = idUsuario;
 }
 

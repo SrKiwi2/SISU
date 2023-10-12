@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.Dao.UsuarioDao;
-import com.sisu.sisu.entitys.Usuarios;
+import com.sisu.sisu.entitys.Usuario;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
@@ -15,19 +15,19 @@ public class UsuarioServiceImpl implements UsuarioService{
     private UsuarioDao usuarioDao;
 
     @Override
-    public List<Usuarios> findAll() {
+    public List<Usuario> findAll() {
        
-        return (List<Usuarios>) usuarioDao.findAll();
+        return (List<Usuario>) usuarioDao.findAll();
     }
 
     @Override
-    public void save(Usuarios usuario) {
+    public void save(Usuario usuario) {
         
         usuarioDao.save(usuario);
     }
 
     @Override
-    public Usuarios findOne(Integer id) {
+    public Usuario findOne(Integer id) {
         
         return usuarioDao.findById(id).orElse(null);
     }

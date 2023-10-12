@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.Service.UsuarioService;
 import com.sisu.sisu.entitys.Persona;
-import com.sisu.sisu.entitys.Usuarios;
+import com.sisu.sisu.entitys.Usuario;
 
 @Controller
 public class UsuarioController {
@@ -23,9 +23,9 @@ public class UsuarioController {
     private IPersonaService personaService;
 
     @GetMapping(value="/formUs")
-    public String vistaUs(Model model, @Validated Usuarios usuarios) {
+    public String vistaUs(Model model, @Validated Usuario usuarios) {
 
-        model.addAttribute("usuario", new Usuarios());
+        model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
 
         model.addAttribute("persona", new Persona());
@@ -38,7 +38,7 @@ public class UsuarioController {
     //-------------------------GUARDAR---------------------------------------
     
     @PostMapping(value="/saveUs")
-    public String saveUsiario(@Validated Usuarios usuarios) {
+    public String saveUsiario(@Validated Usuario usuarios) {
 
         usuarios.setEstado("A");
 
@@ -50,9 +50,9 @@ public class UsuarioController {
     //-------------------------LISTAR---------------------------------------
 
     @GetMapping(value="/listaUs")
-    public String listaUs(Model model, @Validated Usuarios usuarios) {
+    public String listaUs(Model model, @Validated Usuario usuarios) {
 
-        model.addAttribute("usuario", new Usuarios());
+        model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
         
         model.addAttribute("persona", new Persona());
@@ -67,11 +67,11 @@ public class UsuarioController {
     @GetMapping(value="/editarUs/{idUsuario}")
     public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
 
-        Usuarios usuario = usuarioService.findOne(idUsuario);
+        Usuario usuario = usuarioService.findOne(idUsuario);
 
         usuario.setEstado("A");
 
-        model.addAttribute("usuario", new Usuarios());
+        model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
 
         model.addAttribute("persona", new Persona());
@@ -86,7 +86,7 @@ public class UsuarioController {
     @GetMapping(value="/eliminarUs/{idUsuario}")
     public String deleteUs(@PathVariable("idUsuario") Integer idUsuario) {
 
-        Usuarios usuario = usuarioService.findOne(idUsuario);
+        Usuario usuario = usuarioService.findOne(idUsuario);
 
         usuario.setEstado("X");
 
