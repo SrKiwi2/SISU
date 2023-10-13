@@ -46,10 +46,18 @@ public class Usuario {
   @Column(name = "modificacion")
   @Temporal(TemporalType.TIMESTAMP)
   private Date modificacion;
+
+  
+    public String getApodo() {
+        return apodo;
+    }
+
+
   
 //--------------------------RELACION--------------------------------------
   
   @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
   private Persona persona;
+
 }

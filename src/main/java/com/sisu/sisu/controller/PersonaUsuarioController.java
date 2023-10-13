@@ -76,7 +76,7 @@ public class PersonaUsuarioController {
     @RequestParam(name="clave",required = false)String clave,
     @RequestParam(name="grado",required = false)Long idGradoAcademico,
     @RequestParam(name="dip",required = false)Long idDip,
-     @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
+    @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
     ) { 
 
         persona1.setEstado("A");
