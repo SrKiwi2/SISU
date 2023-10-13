@@ -112,7 +112,7 @@
                                                             <td>Scrollable modal</td>
                                                             <td>
                                                                 <!-- Small modal -->
-                                                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" data-target="#exampleModalScrollable">Modal demo</button>
+                                                                <button type="button" style="margin-right: 5%;" class="btn btn-danger btn-sm waves-effect waves-light" data-toggle="modal" data-target="#exampleModalScrollable"><i class="mdi mdi-plus-thick"></i>Add</button>
                                                                 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
@@ -202,12 +202,12 @@
                                                                                     <div class="row">
                                                                                         <div class="col-sm-6">
                                                                                             <div class="form-group form-group-custom mb-4">
-                                                                                                <input type="text" th:field="${usuario.apodo}" name="Usuario" class="form-control" placeholder="username" required>
+                                                                                                <input type="text" th:field="${usuario.apodo}" name="Usuario" class="form-control" placeholder="username">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-sm-6">
                                                                                             <div class="form-group form-group-custom mb-4">
-                                                                                                <input type="password" th:field="${usuario.clave}" name="persona1" class="form-control" placeholder="password">
+                                                                                                <input type="text" th:field="${usuario.clave}" name="usuario" class="form-control" placeholder="password">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -241,19 +241,19 @@
                                                         <th>Direccion</th>
                                                         <th>Usuario</th>
                                                         <th>Clave</th>
-                                                        <th></th>
+                                                        <th> op</th>
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
                                                     <tr th:each="p : ${personas1}" th:if="${p.estado != 'X'}">
                                                         <td th:text="${p.nombres}"></td>
-                                                        <td th:text="${p.apPaterno + ' ' + p.apMaterno}"></td>
+                                                        <td th:text="${p.apPaterno + '  ' + p.apMaterno}"></td>
                                                         <td th:text="${p.ci}"></td>
                                                         <td th:text="${p.dip.codDip}"></td>
                                                         <td th:text="${p.sexo}"></td>
-                                                        <td th:text="${p.tipos_estado_civil.estadoCivil}"></td>
-                                                        <td th:text="${p.grado_academico.gradoAcademico}"></td>
+                                                        <td th:if="${p.tipos_estado_civil != null}" th:text="${p.tipos_estado_civil.estadoCivil}"></td>
+                                                        <td th:if="${p.grado_academico != null}" th:text="${p.grado_academico.gradoAcademico}"></td>
                                                         <td th:text="${p.celular}"></td>
                                                         <td th:text="${p.direccion}"></td>
                                                         <td>
@@ -265,14 +265,12 @@
                                                             <span th:each="us : ${p.usuarios}">
                                                                 <span th:text="${us.clave}"></span>
                                                             </span>
-                                                        </td>
+                                                        </td> 
                                                         <td>
-                                                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light edit-button"
-                                                                data-toggle="modal" data-target="#exampleModalScrollable" data-persona-id="${p.idPersona}">
-                                                                Editar
-                                                            </button>
-                                                        </td>                                                        
-                                                        
+                                                            <a th:href="${'../../../../editarPer/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
+                                                                <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
+                                                            </a>
+                                                        </td>                                                      
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -371,49 +369,6 @@
          <script src="../../../../assets/js/app.js"></script>
 
 
-         <script>
-            $(document).ready(function () {
-                $('.edit-button').on('click', function () {
-                    var personaId = $(this).data('persona-id');
-            
-                    // Hacer una solicitud al servidor para obtener los datos de la persona
-                    $.ajax({
-                        type: 'GET',
-                        url: '/getPersona/' + personaId, // Reemplaza esto con la URL correcta
-                        success: function (data) {
-                            // Llenar el formulario en el modal con los datos de la persona
-                            $('#useremailA').val(data.nombres);
-                            $('#userpasswordB').val(data.apPaterno);
-                            $('#userpasswordC').val(data.apMaterno);
-                            $('#username2').val(data.ci);
-                            // Continúa llenando los campos de acuerdo a tus necesidades
-                        },
-                        error: function () {
-                            // Manejo de errores si la solicitud falla
-                            alert('No se pudieron cargar los datos de la persona.');
-                        }
-                    });
-                });
-            });
-            </script>
-            
-
-         <script>
-            $(document).ready(function () {
-                $('.edit-button').click(function () {
-                    // Obtén el ID de la persona desde el atributo de datos
-                    var personaId = $(this).data('persona-id');
-        
-                    // Llena los campos del formulario con los datos de la persona
-                    // Aquí debes usar JavaScript para cargar los datos de la persona en los campos del formulario
-        
-                    // Abre el modal de edición
-                    $('#editModal').modal('show');
-                });
-            });
-        </script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 </body>

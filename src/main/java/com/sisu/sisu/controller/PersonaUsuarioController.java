@@ -128,7 +128,7 @@ public class PersonaUsuarioController {
 
     @GetMapping(value="/editarPer/{idPersona}")
    public String editarUs(Model model, @PathVariable("idPersona") Long idPersona) {
-
+    
     // Obtener la persona y el usuario correspondientes al ID proporcionado
     Persona persona = personaService.findOne(idPersona);
     Usuario usuario = usuarioService.findOne(idPersona);
@@ -159,7 +159,7 @@ public class PersonaUsuarioController {
         // Puedes redirigir o mostrar un mensaje de error
         return "redirect:/paginaDeError"; // Reemplaza "paginaDeError" por tu página de manejo de errores
     }
-}
+  }
 
 
     //-------------------------ELIMINAR---------------------------------------
