@@ -1,6 +1,7 @@
 package com.sisu.sisu.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class Persona implements Serializable {
 
 	@Column(name = "fecha_nacimiento")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date fecha_nac;
+	private LocalDate fecha_nac;
     
     @Column(name = "sexo")
     private String sexo;
