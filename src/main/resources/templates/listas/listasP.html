@@ -38,6 +38,7 @@
                 <div th:insert="~{layout/sidebar :: sidebar}"></div>
             </div>
             <div class="main-content">
+                <button type="button" class="btn btn-primary">Guardar</button>
 
                 <div class="page-content">
 
@@ -49,7 +50,7 @@
                                     <h4 class="page-title mb-1">Datos de Personas</h4>
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Tabla</a></li>
-                                    <li class="breadcrumb-item active">Datos de Personas</li>
+                                        <li class="breadcrumb-item active">Datos de Personas</li>
                                     </ol>
                                 </div>
                                 <div class="col-md-4">
@@ -81,6 +82,9 @@
                                         <div class="card-body">
                                             <h4 class="header-title">Buttons example</h4>
                                             <p class="card-title-desc">The Buttons extension for DataTables</p>
+                                            <div class="text-right mb-3">
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Registrar</button>
+                                            </div>
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
