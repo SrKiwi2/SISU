@@ -52,5 +52,6 @@ public class TiposEstadoCivil implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tipos_estado_civil", fetch = FetchType.LAZY)
 	private List<Persona> persona;
 
+
 	
 }

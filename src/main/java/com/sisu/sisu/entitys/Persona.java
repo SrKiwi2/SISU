@@ -82,7 +82,7 @@ public class Persona implements Serializable {
 
     
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
-	private List<Usuario> usuario;
+	private List<Usuario> usuarios;
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idGradoAcademico")
@@ -91,6 +91,10 @@ public class Persona implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idTipoEstadoCivil")
     private TiposEstadoCivil tipos_estado_civil;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idDip")
+    private Dip dip;
 
     
     

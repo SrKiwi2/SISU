@@ -148,18 +148,11 @@
                                                                                             <input type="number" name="persona1" th:field="${persona1.ci}" placeholder="ci.." class="form-control" id="username2" required>
                                                                                         </div>
                                                                                         <div class="form-group form-group-custom mb-4 col-sm-4" >
-                                                                                            <select class="selectize" multiple>
-                                                                                                <option value="">Expedido en.....</option>
-                                                                                                <option value="Tarija">TJ</option>
-                                                                                                <option value="Beni">BN</option>
-                                                                                                <option value="Pando">PD</option>
-                                                                                                <option value="Cochabamba">CB</option>
-                                                                                                <option value="La Paz">LP</option>
-                                                                                                <option value="Chuquisaca">CH</option>
-                                                                                                <option value="Santa Cruz">SC</option>
-                                                                                                <option value="Oruro">OR</option>
-                                                                                                <option value="Potosi">PT</option>
-                                                                                                
+                                                                                            <select class="selectize" name="dip" multiple>
+                                                                                                <option value="">Expedido en.....</option>  
+                                                                                                <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
+                                                                                                    <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
+                                                                                                </th:block>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group form-group-custom mb-4 col-sm-4">
@@ -177,13 +170,11 @@
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                            <select class="selectize"  multiple required>
+                                                                                            <select class="selectize" name="estadoCivil"  multiple required>
                                                                                                 <option value="">Estado civil..</option>
-                                                                                                <option value="Soltero">Soltero</option>
-                                                                                                <option value="Casado">Casado</option>
-                                                                                                <option value="Divorsiado">Divorsiado</option>
-                                                                                                <option value="Union">Union Libre</option>
-                                                                                                <option value="Viudo">Viudo</option>
+                                                                                                <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
+                                                                                                    <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                                                                                                </th:block>
                                                                                             </select>
                                                                                         </div>
                                                                                         <div class="form-group form-group-custom mb-4 col-sm-4">
@@ -240,8 +231,14 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Nombre</th>
-                                                        <th>Apellido Paterno</th>
-                                                        <th>Apellido Materno</th>
+                                                        <th>Apellidos</th>
+                                                        <th>CI</th>
+                                                        <th>Expedido</th>
+                                                        <th>Genero</th>
+                                                        <th>Estado Civil</th>
+                                                        <th>Grado Academico</th>
+                                                        <th>N° Telefono</th>
+                                                        <th>Direccion</th>
                                                         <th>Usuario</th>
                                                         <th>Clave</th>
                                                         <th></th>
@@ -249,36 +246,33 @@
                                                 </thead>
             
                                                 <tbody>
-                                                    <tr th:each ="us : ${usuarios1}" th:if="${us.estado !='X'}">
-                                                        <td th:text="${us.idPersona.nombres}"></td>
-                                                        <td th:text="${us.idPersona.apPaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
-                                                        <td th:text="${us.apodo}"></td>
-                                                        angry
-                                                        <td class="col-2">
-                                                            <input class="col-4" type="password" id="passwordInput" th:value="${us.clave}" disabled="disabled" />
-                                                            <button class="btn-rounde" onclick="togglePasswordVisibility()"><i class="ti-eye"></i></button>
+                                                    <tr th:each="p : ${personas1}" th:if="${p.estado != 'X'}">
+                                                        <td th:text="${p.nombres}"></td>
+                                                        <td th:text="${p.apPaterno + ' ' + p.apMaterno}"></td>
+                                                        <td th:text="${p.ci}"></td>
+                                                        <td th:text="${p.dip.codDip}"></td>
+                                                        <td th:text="${p.sexo}"></td>
+                                                        <td th:text="${p.tipos_estado_civil.estadoCivil}"></td>
+                                                        <td th:text="${p.grado_academico.gradoAcademico}"></td>
+                                                        <td th:text="${p.celular}"></td>
+                                                        <td th:text="${p.direccion}"></td>
+                                                        <td>
+                                                            <span th:each="us : ${p.usuarios}">
+                                                                <span th:text="${us.apodo}"></span>
+                                                            </span>
                                                         </td>
-                                                        <!-- <td>
-                                                            <div class="row justify-content-center">
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible --
-                                                                    <a th:href="${'../../../../editarUs/' + us.idUsuario}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible --
-                                                                    <a th:href="${'../../../../eliminarUs/' + us.idUsuario}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </td>-->
+                                                        <td>
+                                                            <span th:each="us : ${p.usuarios}">
+                                                                <span th:text="${us.clave}"></span>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light edit-button"
+                                                                data-toggle="modal" data-target="#exampleModalScrollable" data-persona-id="${p.idPersona}">
+                                                                Editar
+                                                            </button>
+                                                        </td>                                                        
+                                                        
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -372,8 +366,55 @@
 
         <!-- Form Advanced init -->
         <script src="../../../../assets/js/pages/form-advanced.init.js"></script>
- 
+
+      
          <script src="../../../../assets/js/app.js"></script>
+
+
+         <script>
+            $(document).ready(function () {
+                $('.edit-button').on('click', function () {
+                    var personaId = $(this).data('persona-id');
+            
+                    // Hacer una solicitud al servidor para obtener los datos de la persona
+                    $.ajax({
+                        type: 'GET',
+                        url: '/getPersona/' + personaId, // Reemplaza esto con la URL correcta
+                        success: function (data) {
+                            // Llenar el formulario en el modal con los datos de la persona
+                            $('#useremailA').val(data.nombres);
+                            $('#userpasswordB').val(data.apPaterno);
+                            $('#userpasswordC').val(data.apMaterno);
+                            $('#username2').val(data.ci);
+                            // Continúa llenando los campos de acuerdo a tus necesidades
+                        },
+                        error: function () {
+                            // Manejo de errores si la solicitud falla
+                            alert('No se pudieron cargar los datos de la persona.');
+                        }
+                    });
+                });
+            });
+            </script>
+            
+
+         <script>
+            $(document).ready(function () {
+                $('.edit-button').click(function () {
+                    // Obtén el ID de la persona desde el atributo de datos
+                    var personaId = $(this).data('persona-id');
+        
+                    // Llena los campos del formulario con los datos de la persona
+                    // Aquí debes usar JavaScript para cargar los datos de la persona en los campos del formulario
+        
+                    // Abre el modal de edición
+                    $('#editModal').modal('show');
+                });
+            });
+        </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 </body>
 </html>

@@ -2,8 +2,10 @@ package com.sisu.sisu.Service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import com.sisu.sisu.entitys.Dip;
 
+@Service
 public interface IDipService {
 
     public List<Dip> findAll(); //Muestra todos los registros
