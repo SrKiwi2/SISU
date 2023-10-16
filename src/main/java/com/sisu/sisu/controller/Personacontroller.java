@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sisu.sisu.Service.EstadoCivilService;
@@ -59,6 +60,7 @@ public class Personacontroller {
 
     @PostMapping(value = "/guardarPersona")
     public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash,HttpServletRequest request,
+
     @RequestParam(name="grado",required = false)Long idGradoAcademico,
     @RequestParam(name="dip",required = false)Long idDip,
     @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
@@ -91,11 +93,21 @@ public class Personacontroller {
         return "formularios/formPersona";
     }
 
+    // @RequestMapping(value = "/editarPersona/{idPersona}", produces = "application/json")
+    // @ResponseBody
+    // public Persona editarPersona(@PathVariable("idPersona") Long idPersona) {
+    //     // Obtén la persona con el idPersona y devuelve sus datos
+    //     return personaService.findOne(idPersona);
+    // }
+
+
     /* Lista  */
     
     @GetMapping(value = "/ListaPersona")
     public String listarPersona (Model model){
+        model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
+
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", dipService.findAll());
 

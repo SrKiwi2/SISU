@@ -1,9 +1,10 @@
 $(document).ready(function() {
     console.log("Document is ready!");
     // Cuando se hace clic en el botón de edición
-    $('.btn-primary[data-target=".bs-example-modal-center"]').on('click', function() {
+    $('.btn-primary[data-target="#bs-example-modal-center"]').on('click', function() {
         // Obtener el valor de data-idpersona
         var idPersona = $(this).data('idpersona');
+        alert(idPersona);
         
         // Establecer el valor en el campo oculto
         $('#modal-idPersona').val(idPersona);
