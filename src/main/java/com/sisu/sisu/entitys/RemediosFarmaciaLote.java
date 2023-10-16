@@ -49,6 +49,8 @@ public class RemediosFarmaciaLote implements Serializable{
     @Column(name = "estado")
 	private String estado;
 
+    
+
     //---------------------------RELACIONES-------------------------------------
 
     @ManyToOne(fetch = FetchType.LAZY)

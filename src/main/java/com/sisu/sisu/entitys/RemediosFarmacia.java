@@ -1,6 +1,7 @@
 package com.sisu.sisu.entitys;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,6 +35,14 @@ public class RemediosFarmacia implements Serializable{
 
     @Column(name = "ubicacion")
     private String ubicacion;
+
+    @Column(name = "registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date registro;
+    
+    @Column(name = "modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modificacion;
 
     //-------------------REALCIONES---------------------------------------------
 
