@@ -39,8 +39,8 @@ public class Receta implements Serializable {
     //-------------------RELACIONES---------------------------------------------
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receta", fetch = FetchType.LAZY)
-	private List<Receta> receta;
-
+	private List<RecetaRemedios> receta_remedios;
+    
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idTipoReceta")
     private TipoReceta tipo_receta;
@@ -48,4 +48,5 @@ public class Receta implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idEstadoReceta")
     private EstadoReceta estado_receta;
+
 }

@@ -60,7 +60,7 @@ public class Dip implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modificacion;
 
-
+    //-----------------------RELACIONES-----------------------------------------
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "dip", fetch = FetchType.LAZY)
 	private List<Persona> persona;
