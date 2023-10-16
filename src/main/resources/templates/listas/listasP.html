@@ -92,8 +92,11 @@
                                                         <th>Apellido Paterno</th>
                                                         <th>Apellido Materno</th>
                                                         <th>CI</th>
+                                                        <th>DIP</th>
                                                         <th>Fecha Nacimiento</th>
                                                         <th>Genero</th>
+                                                        <th>Estado Civil</th>
+                                                        <th>Grado Academico</th>
                                                         <th>Dirección</th>
                                                         <th>Celular</th>
                                                         <th>Opciones</th>
@@ -105,17 +108,15 @@
                                                         <td th:text="${p.apPaterno}"></td>
                                                         <td th:text="${p.apMaterno}"></td>
                                                         <td th:text="${p.ci}"></td>
+                                                        <td th:text="${p.dip.codDip}"></td>
                                                         <td th:text="${p.fecha_nac}"></td>
                                                         <td th:text="${p.sexo}"></td>
+                                                        <td th:text="${p.tipos_estado_civil.estadoCivil}"></td>
+                                                        <td th:text="${p.grado_academico.gradoAcademico}"></td>
                                                         <td th:text="${p.direccion}"></td>
                                                         <td th:text="${p.celular}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a th:href="${'../../../../editarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
-                                                                    </a>
-                                                                </div>
                                                                 <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
                                                                     <a th:href="${'../../../../eliminarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
@@ -123,7 +124,7 @@
                                                                 </div>
                                                                 <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
                                                                     <a style="padding: 2px; display: inline-block; margin: 0px;" data-idpersona="~{p.idPersona}">
-                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" id="editButton"><i class="dripicons-document-edit"></i></button>
+                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light alertEdit" data-toggle="modal" data-target=".bs-example-modal-center" data-idpersona="${p.idPersona}"><i class="dripicons-document-edit"></i></button>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -147,75 +148,121 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/guardarPersona" method="post" novalidate>
-                                        <input type="hidden" id="modal-idPersona" name="idPersona">
+                                    <form class="needs-validation" action="/guardarPersona" method="post" novalidate>
+                                        <input type="hidden" th:field="${persona.idPersona}">
+                                        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+                                        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                         <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label for="nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required title="Por favor, complete este campo">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom01">Nombre</label>
+                                                <input type="text" class="form-control" name="persona" th:field="${persona.nombres}" placeholder="Introduce tu nombre" required >
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="apellidoPaterno">Apellido Paterno</label>
-                                                <input type="text" class="form-control" id="apellidoPaterno" placeholder="Ingrese su apellido paterno" required title="Por favor, complete este campo">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom02">Apellido Paterno</label>
+                                                <input type="text" class="form-control" name="persona" th:field="${persona.apPaterno}" placeholder="Introduce tu apellido paterno" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="apellidoMaterno">Apellido Materno</label>
-                                                <input type="text" class="form-control" id="apellidoMaterno" placeholder="Ingrese su apellido materno" required title="Por favor, complete este campo">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom03">Apellido Materno</label>
+                                                <input type="text" class="form-control" name="persona" th:field="${persona.apMaterno}" placeholder="Introduce tu apellido Materno" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="ci">Carnet de Identidad (CI)</label>
-                                                <input type="text" class="form-control" id="ci" placeholder="Ingrese su CI" required title="Por favor, complete este campo">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom04">C.I.</label>
+                                                <input type="number" class="form-control" name="persona" th:field="${persona.ci}" placeholder="Introduce tu C.I." required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="fecha_nac">Fecha Nacimiento</label>
-                                                <input type="date" class="form-control" id="fecha_nac" placeholder="Ingrese su CI" required title="Por favor, complete este campo">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom04">Fecha Nacimiento</label>
+                                                <input type="date" name="persona" th:field="${persona.fecha_nac}" class="form-control datepicker-here" data-language="en">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label>Género</label>
+                                                <select class="custom-select" name="persona" th:field="${persona.sexo}" required>
+                                                    <option value="">Selecciona tu genero</option>
+                                                    <option value="Hombre">Hombre</option>
+                                                    <option value="Mujer">Mujer</option>
+                                                    <option value="otro">otro...</option>
+                                                    <option value="Rarito">Rarito...</option>
+                                                </select>
+                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label>Estado Civil</label>
+                                                <select class="custom-select" name="estadoCivil"  required>
+                                                    <option value="">Seleccione estado civil</option>
+                                                    <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
+                                                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                                                    </th:block>
+                                                </select>
+                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-md-4">
-                                                <label for="genero">Género</label>
-                                                <select class="form-control" id="genero" required title="Por favor, complete este campo">
-                                                    <option value="masculino">Masculino</option>
-                                                    <option value="femenino">Femenino</option>
-                                                    <option value="otro">Otro</option>
+                                            <div class="col-md-2 mb-3">
+                                                <label for="validationCustom06">Nº Celular</label>
+                                                <input type="number" class="form-control" th:field="${persona.celular}" placeholder="Introduce el numero de celular" required>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid city.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom07">Domicilio</label>
+                                                <input type="text" class="form-control"  th:field="${persona.direccion}" placeholder="Av/B/" required>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid city.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom03">Grado Académico</label>
+                                                <select class="custom-select" name="grado" required>
+                                                    <option value="">Selecciona tu grado académico</option>
+                                                    <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
+                                                        <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
+                                                    </th:block>
                                                 </select>
+                                                <div class="valid-feedback">
+                                                    ¡Se ve bien!
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-8">
-                                                <label for="direccion">Dirección</label>
-                                                <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección" required title="Por favor, complete este campo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="celular">Celular</label>
-                                                <input type="text" class="form-control" id="celular" placeholder="Ingrese su número de celular" required title="Por favor, complete este campo">
-                                            </div>
-                                            <!-- <div class="form-group col-md-4">
-                                                <label for="estadoCivil">Estado Civil</label>
-                                                <select class="form-control" id="estadoCivil" required title="Por favor, complete este campo">
-                                                    <option value="soltero">Soltero</option>
-                                                    <option value="casado">Casado</option>
-                                                    <option value="divorciado">Divorciado</option>
-                                                    <option value="viudo">Viudo</option>
+                                            
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationCustom07">Dip</label>
+                                                <select class="custom-select" name="dip" required>
+                                                    <option value="">Selecciona tu grado académico</option>
+                                                    <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
+                                                        <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
+                                                    </th:block>
                                                 </select>
-                                            </div> -->
-                                            <!-- <div class="form-group col-md-4">
-                                                <label for="gradoAcademico">Grado Académico</label>
-                                                <input type="text" class="form-control" id="gradoAcademico" placeholder="Ingrese su grado académico" required title="Por favor, complete este campo">
+                                                <div class="valid-feedback">
+                                                    ¡Se ve bien!
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="dip">DIP</label>
-                                                <input type="text" class="form-control" id="dip" placeholder="Ingrese su DIP" required title="Por favor, complete este campo">
-                                            </div> -->
+                                            
                                         </div>
+
+                                        <button class="btn btn-primary" type="submit">Registrar</button>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     <button type="button" class="btn btn-primary">Guardar</button>
                                 </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-   
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div th:insert ="~{layout/footer :: footer}"></div>    
             </div>
@@ -224,7 +271,8 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
+        <!-- <script src="../../../../assets/libs/jquery/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
