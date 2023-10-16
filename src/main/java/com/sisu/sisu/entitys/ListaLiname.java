@@ -2,12 +2,18 @@ package com.sisu.sisu.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +30,7 @@ public class ListaLiname implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_lista_liname")
-    private Long idListaLiname;
+    private Long idLiname;
 
     @Column(name = "codigo_liname")
     private String codigoLiname;
@@ -48,5 +54,22 @@ public class ListaLiname implements Serializable{
     @Column(name = "modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
+
+
+    //--------------------REMEDIOS--------------------------------------------
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lista_liname", fetch = FetchType.LAZY)
+	private List<RemediosFarmacia> remedios_farmacia;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lista_liname", fetch = FetchType.LAZY)
+	private List<HistorialLiname> historial_liname;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idFormaFarmaceutica")
+    private FormaFarmaceutica forma_farmaceutica;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idTipoUso")
+    private TipoUso tipo_uso;
 
 }
