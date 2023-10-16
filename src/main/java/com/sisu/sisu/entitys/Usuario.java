@@ -1,5 +1,6 @@
 package com.sisu.sisu.entitys;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
 	
   private static final long serialVersionUID = 1L;
   @Id
