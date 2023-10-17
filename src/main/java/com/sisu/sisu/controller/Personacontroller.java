@@ -92,6 +92,9 @@ public class Personacontroller {
 	public String getContent1(@PathVariable(value = "idPersona")Long idPersona, Model model, HttpServletRequest request){
 	
 		model.addAttribute("persona", personaService.findOne(idPersona));
+        model.addAttribute("dips", dipService.findAll());
+        model.addAttribute("grados", gradoService.findAll());
+        model.addAttribute("estadosCiviles", estadoCivilService.findAll());
        
 		return "content :: content1";
 	}
