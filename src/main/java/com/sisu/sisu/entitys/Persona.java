@@ -30,15 +30,12 @@ import lombok.Setter;
 @Table(name = "persona")
 public class Persona implements Serializable {
 	
-	
-	
 	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_persona")
     private Long idPersona;
 	
-
     @Column(name = "nombres")
     private String nombres;
     
@@ -58,7 +55,6 @@ public class Persona implements Serializable {
     @Column(name = "sexo")
     private String sexo;
     
-    
     @Column(name = "direccion")
     private String direccion;
     
@@ -68,7 +64,6 @@ public class Persona implements Serializable {
     @Column(name = "estado")
     private String estado;
     
-
     @Column(name = "registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
@@ -77,11 +72,8 @@ public class Persona implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
     
-
-
     //--------------------------RELACION--------------------------------------
 
-    
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
 	private List<Usuario> usuarios;
 
@@ -96,8 +88,4 @@ public class Persona implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idDip")
     private Dip dip;
-
-    
-    
-    
 }

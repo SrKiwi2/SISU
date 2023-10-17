@@ -3,6 +3,7 @@ package com.sisu.sisu.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -84,6 +86,22 @@ public class Personacontroller {
         
     }
 
+    /* Obtener */
+    @GetMapping(value = "/obtenerPersona/{idPersona}")
+    public Persona obtenerPersona(@PathVariable(name = "idPersona",required = false) Long idPersona) {
+        Persona persona = personaService.findOne(idPersona);
+        System.out.println(persona.getNombres());
+        return persona; // Spring Boot automáticamente convertirá esto en JSON
+    }
+
+    @GetMapping(value = "/obtenerPersona")
+    public Persona obtenerPersona_v1(@RequestParam(name = "idPersona") Long idPersona) {
+        Persona persona = personaService.findOne(idPersona);
+        System.out.println(persona.getNombres());
+        return persona;
+    }
+
+
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
@@ -92,14 +110,6 @@ public class Personacontroller {
         model.addAttribute("persona", persona);
         return "formularios/formPersona";
     }
-
-    // @RequestMapping(value = "/editarPersona/{idPersona}", produces = "application/json")
-    // @ResponseBody
-    // public Persona editarPersona(@PathVariable("idPersona") Long idPersona) {
-    //     // Obtén la persona con el idPersona y devuelve sus datos
-    //     return personaService.findOne(idPersona);
-    // }
-
 
     /* Lista  */
     

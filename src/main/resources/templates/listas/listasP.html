@@ -115,14 +115,14 @@
                                                         <td th:text="${p.celular}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
+                                                                <div class="col-md-3 col-6 mb-2"> 
                                                                     <a th:href="${'../../../../eliminarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
                                                                     </a>
                                                                 </div>
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a style="padding: 2px; display: inline-block; margin: 0px;" data-idpersona="~{p.idPersona}">
-                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" data-target="#bs-example-modal-center" th:data-idpersona="${p.idPersona}"><i class="dripicons-document-edit"></i></button>
+                                                                <div class="col-md-3 col-6 mb-2"> 
+                                                                    <a style="padding: 2px; display: inline-block; margin: 0px;" data-idpersona="${p.idPersona}">
+                                                                        <button type="button" id="editarButton" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idpersona="${p.idPersona}"><i class="dripicons-document-edit"></i></button>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                     </div>  
-                    <div class="modal fade" th:id="bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal fade" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -147,7 +147,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form class="needs-validation" action="/editarPersona" method="post" novalidate>
-                                        <input type="hidden" name="idPersona" th:field="${persona.idPersona}">
+                                        <input type="hidden" name="persona" th:field="${persona.idPersona}" value="">
                                         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                         <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                         <div class="row">
