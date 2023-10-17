@@ -94,9 +94,48 @@ public class PersonaUsuarioController {
         usuarioService.save(usuario);
 		personaService.save(persona1);
 
-
 		return "redirect:/listaPerUsuario";
 	}
+
+        @PostMapping(value = "/SavePerUsuario") // Enviar datos de Registro a Lista
+        public String guardarPersona_2(RedirectAttributes flash,HttpServletRequest request,
+        @RequestParam(name = "idPersona") Long id_persona,
+        @RequestParam(name = "idUsuario") Long idUsuario,
+        @RequestParam(name = "nombres") String nombres,
+        @RequestParam(name = "apPaterno") String apPaterno,
+        @RequestParam(name = "apMaterno") String apMaterno,
+        @RequestParam(name = "ci") String ci,
+        @RequestParam(name = "celular") Integer celular,
+        @RequestParam(name = "Direccion") String Direccion,
+        @RequestParam(name = "apodo") String apodo,
+        @RequestParam(name = "clave") String clave,
+        @RequestParam(name="grado",required = false)Long idGradoAcademico,
+        @RequestParam(name="dip",required = false)Long idDip,
+        @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
+        ) { 
+
+            Persona persona = personaService.findOne(id_persona);
+
+            persona.setNombres(nombres);
+            persona.setApPaterno(apPaterno);
+            persona.setApMaterno(apMaterno);
+            persona.setCi(ci);
+            persona.setEstado("A");
+            persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
+            persona.setDip(dipService.findOne(idDip));
+            persona.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
+            personaService.save(persona); // guardas todos los datos de la persona (1)
+
+            Usuario usuario = usuarioService.findOne(idUsuario); // creas un nuevo registro de usuario 
+            
+            usuario.setPersona(persona);
+            usuario.setApodo(apodo);
+            usuario.setClave(clave);
+            usuarioService.save(usuario);
+
+            return "redirect:/listaPerUsuario";
+        }
+
 
 
     
@@ -126,12 +165,13 @@ public class PersonaUsuarioController {
 
     //-------------------------EDITAR---------------------------------------
 
-    @GetMapping(value="/editarPer/{idPersona}")
-   public String editarUs(Model model, @PathVariable("idPersona") Long idPersona) {
+    @GetMapping(value="/editarPer/{idUsuario}")
+   public String editarUs(Model model, @PathVariable("idUsuario") Long idUsuario) {
     
     // Obtener la persona y el usuario correspondientes al ID proporcionado
-    Persona persona = personaService.findOne(idPersona);
-    Usuario usuario = usuarioService.findOne(idPersona);
+    
+    Usuario usuario = usuarioService.findOne(idUsuario);
+    Persona persona = personaService.findOne(usuario.getPersona().getIdPersona());
 
     // Asegurarse de que la persona y el usuario existen
     if (persona != null && usuario != null) {
