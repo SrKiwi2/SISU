@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head> </head>
+
+<body>
+    <div th:fragment="content1">
+        <input type="hidden" name="persona" th:field="${persona.idPersona}" value="">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Nombre</label>
+                <input type="text" class="form-control" name="persona" th:field="${persona.nombres}"
+                    placeholder="Introduce tu nombre" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Apellido Paterno</label>
+                <input type="text" class="form-control" name="persona" th:field="${persona.apPaterno}"
+                    placeholder="Introduce tu apellido paterno" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Apellido Materno</label>
+                <input type="text" class="form-control" name="persona" th:field="${persona.apMaterno}"
+                    placeholder="Introduce tu apellido Materno" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">C.I.</label>
+                <input type="number" class="form-control" name="persona" th:field="${persona.ci}"
+                    placeholder="Introduce tu C.I." required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">Fecha Nacimiento</label>
+                <input type="date" name="persona" th:field="${persona.fecha_nac}" class="form-control datepicker-here"
+                    data-language="en">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Género</label>
+                <select class="custom-select" name="persona" th:field="${persona.sexo}" required>
+                    <option value="">Selecciona tu genero</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="otro">otro...</option>
+                    <option value="Rarito">Rarito...</option>
+                </select>
+                <div class="invalid-feedback">Example invalid custom select feedback</div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label>Estado Civil</label>
+                <select class="custom-select" name="estadoCivil" required>
+                    <option value="">Seleccione estado civil</option>
+                    <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
+                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                    </th:block>
+                </select>
+                <div class="invalid-feedback">Example invalid custom select feedback</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <label for="validationCustom06">Nº Celular</label>
+                <input type="number" class="form-control" th:field="${persona.celular}"
+                    placeholder="Introduce el numero de celular" required>
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom07">Domicilio</label>
+                <input type="text" class="form-control" th:field="${persona.direccion}" placeholder="Av/B/" required>
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Grado Académico</label>
+                <select class="custom-select" name="grado" required>
+                    <option value="">Selecciona tu grado académico</option>
+                    <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
+                        <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
+                    </th:block>
+                </select>
+                <div class="valid-feedback">
+                    ¡Se ve bien!
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom07">Dip</label>
+                <select class="custom-select" name="dip" required>
+                    <option value="">Selecciona tu grado académico</option>
+                    <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
+                        <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
+                    </th:block>
+                </select>
+                <div class="valid-feedback">
+                    ¡Se ve bien!
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

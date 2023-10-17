@@ -121,8 +121,10 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-md-3 col-6 mb-2"> 
-                                                                    <a style="padding: 2px; display: inline-block; margin: 0px;" data-idpersona="${p.idPersona}">
-                                                                        <button type="button" id="editarButton" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idpersona="${p.idPersona}"><i class="dripicons-document-edit"></i></button>
+                                                                    <a style="padding: 2px; display: inline-block; margin: 0px;">
+                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idpersona="${p.idPersona}" onclick="buscar(this)">
+                                                                            <i class="dripicons-document-edit"></i>
+                                                                        </button>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -136,7 +138,7 @@
                             </div>
                         </div>
                     </div>  
-                    <div class="modal fade" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -147,108 +149,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <form class="needs-validation" action="/editarPersona" method="post" novalidate>
-                                        <input type="hidden" name="persona" th:field="${persona.idPersona}" value="">
-                                        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-                                        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom01">Nombre</label>
-                                                <input type="text" class="form-control" name="persona" th:field="${persona.nombres}" placeholder="Introduce tu nombre" required >
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom02">Apellido Paterno</label>
-                                                <input type="text" class="form-control" name="persona" th:field="${persona.apPaterno}" placeholder="Introduce tu apellido paterno" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom03">Apellido Materno</label>
-                                                <input type="text" class="form-control" name="persona" th:field="${persona.apMaterno}" placeholder="Introduce tu apellido Materno" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom04">C.I.</label>
-                                                <input type="number" class="form-control" name="persona" th:field="${persona.ci}" placeholder="Introduce tu C.I." required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom04">Fecha Nacimiento</label>
-                                                <input type="date" name="persona" th:field="${persona.fecha_nac}" class="form-control datepicker-here" data-language="en">
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label>Género</label>
-                                                <select class="custom-select" name="persona" th:field="${persona.sexo}" required>
-                                                    <option value="">Selecciona tu genero</option>
-                                                    <option value="Hombre">Hombre</option>
-                                                    <option value="Mujer">Mujer</option>
-                                                    <option value="otro">otro...</option>
-                                                    <option value="Rarito">Rarito...</option>
-                                                </select>
-                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label>Estado Civil</label>
-                                                <select class="custom-select" name="estadoCivil"  required>
-                                                    <option value="">Seleccione estado civil</option>
-                                                    <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
-                                                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
-                                                    </th:block>
-                                                </select>
-                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-2 mb-3">
-                                                <label for="validationCustom06">Nº Celular</label>
-                                                <input type="number" class="form-control" th:field="${persona.celular}" placeholder="Introduce el numero de celular" required>
-                                                <div class="invalid-feedback">
-                                                    Please provide a valid city.
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom07">Domicilio</label>
-                                                <input type="text" class="form-control"  th:field="${persona.direccion}" placeholder="Av/B/" required>
-                                                <div class="invalid-feedback">
-                                                    Please provide a valid city.
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom03">Grado Académico</label>
-                                                <select class="custom-select" name="grado" required>
-                                                    <option value="">Selecciona tu grado académico</option>
-                                                    <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
-                                                        <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
-                                                    </th:block>
-                                                </select>
-                                                <div class="valid-feedback">
-                                                    ¡Se ve bien!
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-4 mb-3">
-                                                <label for="validationCustom07">Dip</label>
-                                                <select class="custom-select" name="dip" required>
-                                                    <option value="">Selecciona tu grado académico</option>
-                                                    <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
-                                                        <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
-                                                    </th:block>
-                                                </select>
-                                                <div class="valid-feedback">
-                                                    ¡Se ve bien!
-                                                </div>
-                                            </div>
-                                            
+                                        <div id="replace_div">
+                                        
                                         </div>
                                     </form>
                                 </div>
@@ -268,6 +170,20 @@
 
         <!-- JAVASCRIPT -->
         <!-- <script src="../../../../assets/libs/jquery/jquery.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            function buscar(button) {
+                // Capture the value of th:data-idpersona from the clicked button
+                var idPersona = $(button).data('idpersona');
+        
+                // Create the URL to request the fragment using the captured idPersona
+                var url = "../../../../persona/" + idPersona;
+        
+                // Load the fragment and replace content in #replace_div
+                $('#replace_div').load(url);
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
@@ -299,9 +215,7 @@
         <script src="../../../../assets/libs/alertifyjs/build/alertify.min.js"></script>
         <script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
 
-        <!-- modal -->
-        <script src="../../../../assets/js/pages/modal.js"></script>
-
+        
         <script src="../../../../assets/js/app.js"></script>
     </body>
 </html>

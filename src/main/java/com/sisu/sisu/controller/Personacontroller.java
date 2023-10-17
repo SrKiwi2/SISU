@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.sisu.sisu.Service.EstadoCivilService;
 import com.sisu.sisu.Service.IDipService;
 import com.sisu.sisu.Service.IGradoService;
@@ -86,22 +87,16 @@ public class Personacontroller {
         
     }
 
-    /* Obtener */
-    @GetMapping(value = "/obtenerPersona/{idPersona}")
-    public Persona obtenerPersona(@PathVariable(name = "idPersona",required = false) Long idPersona) {
-        Persona persona = personaService.findOne(idPersona);
-        System.out.println(persona.getNombres());
-        return persona; // Spring Boot automáticamente convertirá esto en JSON
-    }
+   
+    @RequestMapping(value = "/persona/{idPersona}")
+	public String getContent1(@PathVariable(value = "idPersona")Long idPersona, Model model, HttpServletRequest request){
+	
+		model.addAttribute("persona", personaService.findOne(idPersona));
+       
+		return "content :: content1";
+	}
 
-    @GetMapping(value = "/obtenerPersona")
-    public Persona obtenerPersona_v1(@RequestParam(name = "idPersona") Long idPersona) {
-        Persona persona = personaService.findOne(idPersona);
-        System.out.println(persona.getNombres());
-        return persona;
-    }
-
-
+  
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
@@ -115,6 +110,7 @@ public class Personacontroller {
     
     @GetMapping(value = "/ListaPersona")
     public String listarPersona (Model model){
+        
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
 
