@@ -240,7 +240,7 @@
                                                         <th>N° Telefono</th>
                                                         <th>Direccion</th>
                                                         <th>Usuario</th>
-                                                        <th>Clave</th>
+                                                        <!-- <th>Clave</th> -->
                                                         <th> op</th>
                                                     </tr>
                                                 </thead>
@@ -261,11 +261,11 @@
                                                                 <span th:text="${us.apodo}"></span>
                                                             </span>
                                                         </td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <span th:each="us : ${p.usuarios}">
                                                                 <span th:text="${us.clave}"></span>
                                                             </span>
-                                                        </td> 
+                                                        </td>  -->
                                                         <td>
                                                             <a th:href="${'../../../../editarPer/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
                                                                 <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
@@ -364,6 +364,8 @@
 
         <!-- Form Advanced init -->
         <script src="../../../../assets/js/pages/form-advanced.init.js"></script>
+
+      
 
       
          <script src="../../../../assets/js/app.js"></script>

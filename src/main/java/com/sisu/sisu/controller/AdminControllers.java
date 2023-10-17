@@ -1,0 +1,17 @@
+package com.sisu.sisu.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AdminControllers {
+
+
+    @GetMapping("/admin")
+    public String vista(Model model) {
+
+        return "index/inicio";
+    }
+    
+}

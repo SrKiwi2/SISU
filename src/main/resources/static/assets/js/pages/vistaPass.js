@@ -1,10 +1,9 @@
-function togglePasswordVisibility() {
-    var passwordInput = document.getElementById("passwordInput");
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-}
+$(document).ready(function() {
+    $(".toggle-password-visibility").click(function() {
+        var passwordInput = $(this).siblings(".password-input");
+        passwordInput.prop("type", passwordInput.prop("type") === "password" ? "text" : "password");
+    });
+});
+
 
 
