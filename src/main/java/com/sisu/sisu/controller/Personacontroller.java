@@ -57,7 +57,13 @@ public class Personacontroller {
     /* GUARDAR */
 
     @PostMapping(value = "/guardarPersona")
-    public String RegistrarPersona(@Validated Persona persona) {
+    public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash, HttpServletRequest request,
+    
+    @RequestParam(name = "grado",required = false)Long idGradoAcademico,
+    @RequestParam(name = "dip",required = false) Long idDip,
+    @RequestParam(name = "estadoCivil",required = false) Long idTipoEstadoCivil
+    
+    ) {
         persona.setEstado("A");
         persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
         persona.setDip(dipService.findOne(idDip));
@@ -69,7 +75,7 @@ public class Personacontroller {
     /* eliminar */
 
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
-    public String eliminarPersona(@PathVariable("idPersona") Integer idPersona) {
+    public String eliminarPersona(@PathVariable("idPersona") Long idPersona) {
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
         personaService.save(persona);
@@ -92,7 +98,7 @@ public class Personacontroller {
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
-    public String editarPersona(@PathVariable("idPersona") Integer idPersona, Model model) {
+    public String editarPersona(@PathVariable("idPersona") Long idPersona, Model model) {
         Persona persona = personaService.findOne(idPersona);
         model.addAttribute("persona", persona);
         return "formularios/formPersona";
