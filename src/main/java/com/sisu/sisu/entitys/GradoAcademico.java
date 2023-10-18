@@ -43,8 +43,8 @@ public class GradoAcademico implements Serializable {
 	@Column(name = "simbolo")
 	private String simbolo;
 
-	@Column(name = "descripcion")
-	private String descripcion;
+	@Column(name = "nombre_institucion")
+	private String nombre_institucion;
 
 	@Column(name = "status")
 	private String status;

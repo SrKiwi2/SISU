@@ -18,11 +18,11 @@ public class GradoController {
     @Autowired
     private IGradoService gradoService;
 
-    @GetMapping(value = "/formGrado")
+    @GetMapping(value = "/formRegistro")
     public String registroGrado(@Validated GradoAcademico gradoAcademico, Model model) {
 
         model.addAttribute("grado", new GradoAcademico());
-        model.addAttribute("grado", gradoService.findAll());
+        model.addAttribute("grados", gradoService.findAll());
 
         return "formularios/formGrado";
     }
@@ -33,7 +33,7 @@ public class GradoController {
     public String RegistrarGrado(@Validated GradoAcademico gradoAcademico) {
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
-        return "redirect:/formGrado";
+        return "redirect:/formRegistro";
     }
 
     /* eliminar */

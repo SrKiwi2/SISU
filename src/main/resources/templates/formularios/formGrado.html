@@ -90,55 +90,47 @@
                                                 <div class="row">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom01">Nombre del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${grado.grado_academico}" placeholder="Ej: Licenciado en Ciencias" required >
+                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${grado_academico.gradoAcademico}" placeholder="Ej: Licenciado en Ciencias" required >
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom02">Sigla del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${grado.simbolo}" placeholder="Ej: Ing./Lic." required>
+                                                        <label for="validationCustom02">Símbolo del Grado Académico</label>
+                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${grado_academico.simbolo}" placeholder="Ej: Ing./Lic." required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom03">Nivel del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${grado.nivel}" placeholder="Ej: Doctor/Licenciado" required>
+                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${grado_academico.nivel}" placeholder="Ej: Doctor/Licenciado" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">Descripción del Grado Académico</label>
-                                                        <input type="number" class="form-control" id="validationCustom04" th:field="${grado.descripcion}" placeholder="Descripción del grado." required>
+                                                        <label for="validationCustom04">Nombre de la Institución</label>
+                                                        <input type="text" class="form-control" id="validationCustom04" th:field="${grado_academico.nombre_institucion}" placeholder="Ej: Universidad Amazónica de Pando" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom04">Status del Grado Académico</label>
-                                                        <input type="number" class="form-control" id="validationCustom04" th:field="${grado.status}" placeholder="Ej: En curso/Completado" required>
+                                                        <input type="text" class="form-control" id="validationCustom04" th:field="${grado_academico.status}" placeholder="Ej: Vigente/En progreso" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>                                                
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-2 mb-3">
-                                                        <label for="validationCustom06">Número del Registro</label>
-                                                        <input type="number" class="form-control" id="validationCustom06" th:field="${grado.registro}" placeholder="Introduce el numero de registro único" required>
-                                                        <div class="invalid-feedback">
-                                                            Please provide a valid city.
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="validationCustom03">Grado Académico</label>
                                                         <select class="custom-select" required>
                                                             <option value="">Selecciona tu grado académico</option>
-                                                            <option value="1">Estudiante</option>
+                                                            <option value="1">Bachiller</option>
                                                             <option value="2">Licenciatura</option>
+                                                            <option value="2">Ingeniero/A</option>
                                                             <option value="3">Maestría</option>
                                                             <option value="4">Doctorado</option>
                                                         </select>
