@@ -107,27 +107,29 @@
                                                     <td th:text="${g.status}"></td>
                                                     <td>
                                                         <div class="row justify-content-center">
-                                                            <div class="col-md-3 col-6 mb-2">
-                                                                <a th:href="${'../../../../eliminarGrado/' + g.idGradoAcademico}"
-                                                                    style="padding: 2px; display: inline-block; margin: 0px;">
+                                                            <div class="mb-2">
+                                                                <a
+                                                                    th:href="${'../../../../eliminarGrado/' + g.idGradoAcademico}">
                                                                     <button type="button"
-                                                                        class="btn btn-outline-danger alertElimin btn-sm"><i
-                                                                            class="dripicons-trash"></i></button>
+                                                                        class="btn btn-outline-danger alertElimin btn-sm"
+                                                                        style="margin: 5px; padding: 8px;">
+                                                                        <i class="dripicons-trash"></i>
+                                                                    </button>
                                                                 </a>
                                                             </div>
-                                                            <!-- <div class="col-md-3 col-6 mb-2">
-                                                                <a
-                                                                    style="padding: 2px; display: inline-block; margin: 0px;">
+                                                            <div class="mb-2">
+                                                                <a>
                                                                     <button type="button"
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-idpersona="${g.idGradoAcademico}"
-                                                                        onclick="buscar(this)">
+                                                                        th:data-idgradoacademico="${g.idGradoAcademico}"
+                                                                        onclick="buscar(this)"
+                                                                        style="margin: 5px; padding: 8px;">
                                                                         <i class="dripicons-document-edit"></i>
                                                                     </button>
                                                                 </a>
-                                                            </div> -->
+                                                            </div>
                                                         </div>
                                                     </td>
                                                 </tr>
