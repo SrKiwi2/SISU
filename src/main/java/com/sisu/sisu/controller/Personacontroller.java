@@ -87,7 +87,7 @@ public class Personacontroller {
         
     }
 
-   
+    
     @RequestMapping(value = "/persona/{idPersona}")
 	public String getContent1(@PathVariable(value = "idPersona")Long idPersona, Model model, HttpServletRequest request){
 	
@@ -128,4 +128,18 @@ public class Personacontroller {
 
         return "listas/listasP";
     }
+
+
+    /* 
+    @ResponseBody
+    @RequestMapping(value = "/VerificarRegistroPersona", method = RequestMethod.GET)
+    public ResponseEntity<String> VerificarRegistroPersona(@Validated Persona persona){
+        
+        if (personaService.findByCi(persona.getCi())) {
+            
+        }
+
+        
+        return  ResponseEntity<String>("");
+    }*/
 }

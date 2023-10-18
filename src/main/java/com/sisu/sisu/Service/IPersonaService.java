@@ -13,4 +13,5 @@ public interface IPersonaService {
     public void save(Persona persona); //Guarda registro
     public Persona findOne(Long id); //Muestra un registro
     public void delete(Long id); //Elimina registro
+    public Persona findByCi(String ci);
 }

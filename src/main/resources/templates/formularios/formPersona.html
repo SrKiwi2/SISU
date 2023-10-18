@@ -83,7 +83,7 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form class="needs-validation" action="/guardarPersona" method="post" novalidate>
+                                            <form class="needs-validation" action="/guardarPersona" method="post" id="form1" novalidate>
                                                 <input type="hidden" th:field="${persona.idPersona}">
                                                 <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                                 <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
@@ -135,14 +135,15 @@
                                                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                     </div>
                                                     <div class="col-md-3 mb-3">
-                                                        <label>Estado Civil</label>
-                                                        <select class="custom-select" name="estadoCivil"  required>
+                                                        <label for="validationCustom07">Estado Civil</label>
+                                                        <select class="custom-select" name="estadoCivil" required>
                                                             <option value="">Seleccione estado civil</option>
-                                                            <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
-                                                                <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                                                            <th:block th:each="es : ${estadosCiviles}" th:if="${es.estado != 'X'}">
+                                                                <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"
+                                                                        th:selected="${es.idTipoEstadoCivil == persona.tipos_estado_civil.idTipoEstadoCivil}"></option>
                                                             </th:block>
                                                         </select>
-                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                        <div class="valid-feedback">¡Se ve bien!</div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -165,7 +166,8 @@
                                                         <select class="custom-select" name="grado" required>
                                                             <option value="">Selecciona tu grado académico</option>
                                                             <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
-                                                                <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
+                                                                <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"
+                                                                th:selected="${g.idGradoAcademico == persona.grado_academico.idGradoAcademico}"></option>
                                                             </th:block>
                                                         </select>
                                                         <div class="valid-feedback">
@@ -178,7 +180,8 @@
                                                         <select class="custom-select" name="dip" required>
                                                             <option value="">Selecciona tu grado académico</option>
                                                             <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
-                                                                <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
+                                                                <option th:value="${ex.idDip}" th:text="${ex.codDip}"
+                                                                th:selected="${ex.idDip == persona.dip.idDip}"></option>
                                                             </th:block>
                                                         </select>
                                                         <div class="valid-feedback">
@@ -244,6 +247,24 @@
         <script src="../../../../assets/js/pages/datatables.init.js"></script>
 
         <script src="../../../../assets/js/app.js"></script>
+
+        <!-- <script>
+            $(document).ready(function() {
+                $('#form1').on("submit", function(event){
+                    event.preventDefault();
+
+                    $ajax({
+                        url: '/persona/save',
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function(data){
+
+                        }
+                    });
+
+                })
+            } );
+        </script> -->
 
     </body>
 </html>
