@@ -84,47 +84,40 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <form class="needs-validation" action="/guardarGrado" method="post" novalidate>
-                                                <input type="hidden" th:field="${grado.idGrado}">
+                                                <input type="hidden" th:field="${grado.idGradoAcademico}">
                                                 <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                                 <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom01">Nombre del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${grado_academico.gradoAcademico}" placeholder="Ej: Licenciado en Ciencias" required >
+                                                        <label for="validationCustom03">Grado Academico</label>
+                                                        <input type="text" class="form-control" name="grado" id="validationCustom03" th:field="${grado.nombre_gradoAcademico}" placeholder="Ej: Universidad Amazónica de Pando" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom02">Símbolo del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${grado_academico.simbolo}" placeholder="Ej: Ing./Lic." required>
+                                                        <label for="validationCustom02">Sigla</label>
+                                                        <input type="text" class="form-control" name="grado" id="validationCustom02" th:field="${grado.simbolo}" placeholder="Ej: Ing./Lic." required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom03">Nivel del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${grado_academico.nivel}" placeholder="Ej: Doctor/Licenciado" required>
+                                                        <label for="validationCustom03">Institucion</label>
+                                                        <input type="text" class="form-control" name="grado" id="validationCustom03" th:field="${grado.nombre_institucion}" placeholder="Ej: Universidad Amazónica de Pando" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">Nombre de la Institución</label>
-                                                        <input type="text" class="form-control" id="validationCustom04" th:field="${grado_academico.nombre_institucion}" placeholder="Ej: Universidad Amazónica de Pando" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">Status del Grado Académico</label>
-                                                        <input type="text" class="form-control" id="validationCustom04" th:field="${grado_academico.status}" placeholder="Ej: Vigente/En progreso" required>
+                                                        <label for="validationCustom04">Estado del Grado Académico</label>
+                                                        <input type="text" class="form-control" name="grado" id="validationCustom04" th:field="${grado.status}" placeholder="Ej: Vigente/En progreso" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>                                                
                                                 </div>
-                                                    <div class="col-md-4 mb-3">
+                                                    <!-- <div class="col-md-4 mb-3">
                                                         <label for="validationCustom03">Grado Académico</label>
                                                         <select class="custom-select" required>
                                                             <option value="">Selecciona tu grado académico</option>
@@ -137,15 +130,9 @@
                                                         <div class="valid-feedback">
                                                             ¡Se ve bien!
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom07">Dip</label>
-                                                        <input type="text" class="form-control" id="validationCustom07" placeholder="Av/B/" required>
-                                                        <div class="invalid-feedback">
-                                                            Por favor, proporciona un valor válido.
-                                                        </div>
-                                                    </div>
+                                            
                                                     
                                                 </div>
 

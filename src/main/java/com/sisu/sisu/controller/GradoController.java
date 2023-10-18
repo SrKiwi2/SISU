@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IGradoService;
 import com.sisu.sisu.entitys.GradoAcademico;
+import com.sisu.sisu.entitys.Persona;
 
 @Controller
 public class GradoController {
@@ -31,9 +32,10 @@ public class GradoController {
 
     @PostMapping(value = "/guardarGrado")
     public String RegistrarGrado(@Validated GradoAcademico gradoAcademico) {
+        
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
-        return "redirect:/formRegistro";
+        return "redirect:/formGrado";
     }
 
     /* eliminar */
@@ -56,12 +58,13 @@ public class GradoController {
         return "formularios/formGrado";
     }
 
-    /* Lista */
 
     @GetMapping(value = "/ListaGrado")
     public String listarGrado(Model model) {
-        model.addAttribute("grado", gradoService.findAll());
-        return "listas/listasG";
+
+        model.addAttribute("grados", gradoService.findAll());
+
+        return "listas/listaGrado";
     }
 
 }

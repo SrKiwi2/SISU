@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @Entity
 @Table(name = "grado_academico")
 public class GradoAcademico implements Serializable {
@@ -31,14 +31,11 @@ public class GradoAcademico implements Serializable {
 	@Column(name = " id_grado_academico")
 	private Long idGradoAcademico;
 
-	@Column(name = "grado_academico")
-	private String gradoAcademico;
+	@Column(name = "nombre_grado")
+	private String nombre_gradoAcademico;
 
 	@Column(name = "estado")
 	private String estado;
-
-	@Column(name = "nivel_grado")
-	private String nivel_grado;
 
 	@Column(name = "simbolo")
 	private String simbolo;
