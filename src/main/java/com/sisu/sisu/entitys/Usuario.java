@@ -23,42 +23,38 @@ import lombok.Setter;
 @Setter
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
-	
+
   private static final long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_usuario")
   private Long idUsuario;
- 
 
   @Column(name = "apodo")
   private String apodo;
-  
+
   @Column(name = "clave")
   private String clave;
 
   @Column(name = "estado")
   private String estado;
-  
+
   @Column(name = "registro")
   @Temporal(TemporalType.TIMESTAMP)
   private Date registro;
-  
+
   @Column(name = "modificacion")
   @Temporal(TemporalType.TIMESTAMP)
   private Date modificacion;
 
-  
-    public String getApodo() {
-        return apodo;
-    }
+  public String getApodo() {
+    return apodo;
+  }
 
+  // --------------------------RELACION--------------------------------------
 
-  
-//--------------------------RELACION--------------------------------------
-  
   @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idPersona")
+  @JoinColumn(name = "idPersona")
   private Persona persona;
 
 }

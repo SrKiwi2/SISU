@@ -39,11 +39,10 @@ public class Personacontroller {
 
     @Autowired
     private EstadoCivilService estadoCivilService;
-  
-    
+
     @GetMapping(value = "/formRegistro")
-    public String registroPersona(@Validated Persona persona, Model model){
-        
+    public String registroPersona(@Validated Persona persona, Model model) {
+
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
 
@@ -52,7 +51,7 @@ public class Personacontroller {
 
         model.addAttribute("grado", new GradoAcademico());
         model.addAttribute("grados", gradoService.findAll());
-		
+
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());
 
@@ -62,12 +61,7 @@ public class Personacontroller {
     /* GUARDAR */
 
     @PostMapping(value = "/guardarPersona")
-    public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash,HttpServletRequest request,
-
-    @RequestParam(name="grado",required = false)Long idGradoAcademico,
-    @RequestParam(name="dip",required = false)Long idDip,
-    @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
-    ){
+    public String RegistrarPersona(@Validated Persona persona) {
         persona.setEstado("A");
         persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
         persona.setDip(dipService.findOne(idDip));
@@ -77,44 +71,41 @@ public class Personacontroller {
     }
 
     /* eliminar */
-    
+
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
-    public String eliminarPersona(@PathVariable("idPersona")Long idPersona){
+    public String eliminarPersona(@PathVariable("idPersona") Integer idPersona) {
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
         personaService.save(persona);
         return "redirect:/ListaPersona";
-        
+
     }
 
-    
     @RequestMapping(value = "/persona/{idPersona}")
-	public String getContent1(@PathVariable(value = "idPersona")Long idPersona, Model model, HttpServletRequest request){
-	
-		model.addAttribute("persona", personaService.findOne(idPersona));
+    public String getContent1(@PathVariable(value = "idPersona") Long idPersona, Model model,
+            HttpServletRequest request) {
+
+        model.addAttribute("persona", personaService.findOne(idPersona));
         model.addAttribute("dips", dipService.findAll());
         model.addAttribute("grados", gradoService.findAll());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());
-       
-		return "content :: content1";
-	}
 
-  
+        return "content :: content1";
+    }
+
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
-    public String editarPersona(@PathVariable("idPersona")Long idPersona, Model model){
+    public String editarPersona(@PathVariable("idPersona") Integer idPersona, Model model) {
         Persona persona = personaService.findOne(idPersona);
         model.addAttribute("persona", persona);
         return "formularios/formPersona";
     }
 
-    /* Lista  */
-    
+    /* Lista */
+
     @GetMapping(value = "/ListaPersona")
-    public String listarPersona (Model model){
-        
-        model.addAttribute("persona", new Persona());
+    public String listarPersona(Model model) {
         model.addAttribute("personas", personaService.findAll());
 
         model.addAttribute("dip", new Dip());
@@ -129,17 +120,20 @@ public class Personacontroller {
         return "listas/listasP";
     }
 
-
-    /* 
-    @ResponseBody
-    @RequestMapping(value = "/VerificarRegistroPersona", method = RequestMethod.GET)
-    public ResponseEntity<String> VerificarRegistroPersona(@Validated Persona persona){
-        
-        if (personaService.findByCi(persona.getCi())) {
-            
-        }
-
-        
-        return  ResponseEntity<String>("");
-    }*/
+    /*
+     * @ResponseBody
+     * 
+     * @RequestMapping(value = "/VerificarRegistroPersona", method =
+     * RequestMethod.GET)
+     * public ResponseEntity<String> VerificarRegistroPersona(@Validated Persona
+     * persona){
+     * 
+     * if (personaService.findByCi(persona.getCi())) {
+     * 
+     * }
+     * 
+     * 
+     * return ResponseEntity<String>("");
+     * }
+     */
 }
