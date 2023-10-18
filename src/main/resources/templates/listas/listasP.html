@@ -115,19 +115,16 @@
                                                         <td th:text="${p.celular}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
-                                                                <div class="col-md-3 col-6 mb-2"> 
-                                                                    <a th:href="${'../../../../eliminarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
+                                                                <div class="mb-2">
+                                                                    <a th:href="${'../../../../eliminarPersona/' + p.idPersona}">
+                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm" style="margin: 5px; padding: 8px;">
+                                                                            <i class="dripicons-trash"></i>
+                                                                        </button>
                                                                     </a>
                                                                 </div>
-                                                                <!-- <div class="col-md-3 col-6 mb-2"> 
-                                                                    <a th:href="${'../../../../editarPersona/' + p.idPersona}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-success alertElimin btn-sm"><i class="dripicons-document-edit"></i></button>
-                                                                    </a>
-                                                                </div> -->
-                                                                <div class="col-md-3 col-6 mb-2"> 
-                                                                    <a style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idpersona="${p.idPersona}" onclick="buscar(this)">
+                                                                <div class="mb-2">
+                                                                    <a>
+                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idpersona="${p.idPersona}" onclick="buscar(this)" style="margin: 5px; padding: 8px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>
@@ -147,22 +144,23 @@
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title mt-0">Center modal</h5>
+                                    <h5 class="modal-title mt-0">Modificando registro de persona</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" action="/editarPersona" method="post" novalidate>
+                                    <form class="needs-validation" th:action="@{/guardarCambiosPersona}" method="post" novalidate>
                                         <div id="replace_div">
                                         
                                         </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Guardar</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -186,7 +184,10 @@
                 var url = "../../../../persona/" + idPersona;
         
                 // Load the fragment and replace content in #replace_div
-                $('#replace_div').load(url);
+                $('#replace_div').load(url, function (){
+                    $('#modal-form').attr('action', '/guardarCambiosPersona');
+                    $('#bs-example-modal-center').modal('show');
+                });
             }
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -3,14 +3,18 @@ package com.sisu.sisu.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sisu.sisu.Service.EstadoCivilService;
@@ -64,12 +68,18 @@ public class Personacontroller {
     @RequestParam(name = "estadoCivil",required = false) Long idTipoEstadoCivil
     
     ) {
-        persona.setEstado("A");
-        persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
-        persona.setDip(dipService.findOne(idDip));
-        persona.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
-        personaService.save(persona);
-        return "redirect:/formRegistro";
+        Persona existingPersona = personaService.findByCi(persona.getCi());
+        if(existingPersona != null){
+            flash.addFlashAttribute("error", "Ya existe una persona con ese CI:" + persona.getCi());
+            return "redirect:/formRegistro";
+        } else {
+            persona.setEstado("A");
+            persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
+            persona.setDip(dipService.findOne(idDip));
+            persona.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
+            personaService.save(persona);
+            return "redirect:/formRegistro";
+        }
     }
 
     /* eliminar */
@@ -80,7 +90,6 @@ public class Personacontroller {
         persona.setEstado("X");
         personaService.save(persona);
         return "redirect:/ListaPersona";
-
     }
 
     @RequestMapping(value = "/persona/{idPersona}")
@@ -122,20 +131,13 @@ public class Personacontroller {
         return "listas/listasP";
     }
 
-    /*
-     * @ResponseBody
-     * 
-     * @RequestMapping(value = "/VerificarRegistroPersona", method =
-     * RequestMethod.GET)
-     * public ResponseEntity<String> VerificarRegistroPersona(@Validated Persona
-     * persona){
-     * 
-     * if (personaService.findByCi(persona.getCi())) {
-     * 
-     * }
-     * 
-     * 
-     * return ResponseEntity<String>("");
-     * }
-     */
+    /* Guardar Cambios */
+    @PostMapping(value = "/guardarCambiosPersona")
+    public String guardarCambiosPersona(@ModelAttribute Persona persona) {
+        persona.setEstado("A");
+        personaService.save(persona);
+        return "redirect:/ListaPersona";
+    }
+
+
 }

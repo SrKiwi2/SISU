@@ -60,16 +60,15 @@
                 <div class="invalid-feedback">Example invalid custom select feedback</div>
             </div>
             <div class="col-md-3 mb-3">
-                <label>Estado Civil</label>
-                <select class="custom-select" name="estadoCivil" required>
+                <select class="custom-select" th:field="${persona.tipos_estado_civil}" required>
                     <option value="">Seleccione estado civil</option>
-                    <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
+                    <th:block th:each="es : ${estadosCiviles}" th:if="${es.estado != 'X'}">
                         <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
                     </th:block>
                 </select>
-                <div class="invalid-feedback">Example invalid custom select feedback</div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-md-2 mb-3">
                 <label for="validationCustom06">Nº Celular</label>
@@ -88,12 +87,13 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Grado Académico</label>
-                <select class="custom-select" name="grado" required>
+                <select class="custom-select" th:field="${persona.grado_academico}" required>
                     <option value="">Selecciona tu grado académico</option>
                     <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
                         <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
                     </th:block>
                 </select>
+                
                 <div class="valid-feedback">
                     ¡Se ve bien!
                 </div>
@@ -101,12 +101,13 @@
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom07">Dip</label>
-                <select class="custom-select" name="dip" required>
-                    <option value="">Selecciona tu grado académico</option>
+                <select class="custom-select" th:field="${persona.dip}" required>
+                    <option value="">Selecciona tu Dip</option>
                     <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
                         <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
                     </th:block>
                 </select>
+                
                 <div class="valid-feedback">
                     ¡Se ve bien!
                 </div>
