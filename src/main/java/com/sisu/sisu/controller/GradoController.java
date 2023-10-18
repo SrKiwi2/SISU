@@ -18,7 +18,7 @@ public class GradoController {
     @Autowired
     private IGradoService gradoService;
 
-    @GetMapping(value = "/formRegistro")
+    @GetMapping(value = "/formGrado")
     public String registroGrado(@Validated GradoAcademico gradoAcademico, Model model) {
 
         model.addAttribute("grado", new GradoAcademico());
