@@ -90,7 +90,7 @@
                 <select class="custom-select" th:field="${persona.grado_academico}" required>
                     <option value="">Selecciona tu grado académico</option>
                     <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
-                        <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
+                        <option th:value="${g.idGradoAcademico}" th:text="${g.nombre_gradoAcademico}"></option>
                     </th:block>
                 </select>
                 
