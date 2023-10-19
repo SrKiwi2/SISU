@@ -62,17 +62,26 @@ public class Personacontroller {
 
     @PostMapping(value = "/guardarPersona")
     public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash, HttpServletRequest request,
-    
-    @RequestParam(name = "grado",required = false)Long idGradoAcademico,
-    @RequestParam(name = "dip",required = false) Long idDip,
-    @RequestParam(name = "estadoCivil",required = false) Long idTipoEstadoCivil
-    
-    ) {
+            @RequestParam(name = "grado", required = false) Long idGradoAcademico,
+            @RequestParam(name = "dip", required = false) Long idDip,
+            @RequestParam(name = "estadoCivil", required = false) Long idTipoEstadoCivil) {
         Persona existingPersona = personaService.findByCi(persona.getCi());
-        if(existingPersona != null){
-            flash.addFlashAttribute("error", "Ya existe una persona con ese CI:" + persona.getCi());
-            return "redirect:/formRegistro";
+
+        if (existingPersona != null) {
+            if ("A".equals(existingPersona.getEstado())) {
+                flash.addFlashAttribute("error", "Ya existe una persona con ese CI en estado 'A': " + persona.getCi());
+                return "redirect:/formRegistro";
+            } else {
+                // Actualiza el registro existente con estado 'X' a 'A'
+                persona.setEstado("A");
+                persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
+                persona.setDip(dipService.findOne(idDip));
+                persona.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
+                personaService.save(persona);
+                return "redirect:/formRegistro";
+            }
         } else {
+            // No existe una persona con el mismo CI, crea un nuevo registro
             persona.setEstado("A");
             persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
             persona.setDip(dipService.findOne(idDip));
@@ -81,6 +90,7 @@ public class Personacontroller {
             return "redirect:/formRegistro";
         }
     }
+
 
     /* eliminar */
 
