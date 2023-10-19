@@ -142,7 +142,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" th:action="@{/guardarCambiosGradoA}" method="post" novalidate>
+                                <form class="needs-validation" th:action="@{/guardarCambiosGrado}" method="post" novalidate>
                                     <div id="replace_div_ga">
                                     </div>
                                     <div class="modal-footer">
@@ -175,7 +175,7 @@
     
             // Load the fragment and replace content in #replace_div
             $('#replace_div_ga').load(url, function (){
-                $('#modal-form').attr('action', '/guardarCambiosGradoA');
+                $('#modal-form').attr('action', '/guardarCambiosGrado');
                 $('#bs-example-modal-center').modal('show');
             });
         }

@@ -38,7 +38,7 @@ public class GradoController {
         
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
-        return "redirect:/formGrado";
+        return "redirect:/ListaGrado";
     }
 
     /* eliminar */
@@ -58,7 +58,7 @@ public class GradoController {
     public String editarGrado(@PathVariable("id_grado") Long id_grado, Model model) {
         GradoAcademico gradoAcademico = gradoService.findOne(id_grado);
         model.addAttribute("grado", gradoAcademico);
-        return "formularios/formGrado";
+        return "formularios/ListaGrado";
     }
 
 
@@ -75,7 +75,7 @@ public class GradoController {
     public String guardarCambiosGrado(@ModelAttribute GradoAcademico gradoAcademico) {
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
-        return "redirect:/listaGrado";
+        return "redirect:/ListaGrado";
     }
 
 

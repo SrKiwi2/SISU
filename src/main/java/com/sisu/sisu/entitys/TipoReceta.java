@@ -30,6 +30,9 @@ public class TipoReceta implements Serializable{
     @Column(name = "descripcion_receta")
     private String descripcionReceta;
 
+     @Column(name = "vigencia_receta")
+    private String vigencia_receta;
+
     @Column(name = "estado")
     private String estado;
     
