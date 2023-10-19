@@ -1,16 +1,20 @@
 package com.sisu.sisu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IGradoService;
 import com.sisu.sisu.entitys.GradoAcademico;
+import com.sisu.sisu.entitys.Persona;
 
 @Controller
 public class GradoController {
@@ -64,6 +68,25 @@ public class GradoController {
         model.addAttribute("grados", gradoService.findAll());
 
         return "listas/listaGrado";
+    }
+
+    /* Guardar Cambios */
+    @PostMapping(value = "/guardarCambiosGrado")
+    public String guardarCambiosGrado(@ModelAttribute GradoAcademico gradoAcademico) {
+        gradoAcademico.setEstado("A");
+        gradoService.save(gradoAcademico);
+        return "redirect:/listaGrado";
+    }
+
+
+    /* Modificación Modal */
+    @RequestMapping(value = "/grado/{idGradoAcademico}")
+    public String getContentGA(@PathVariable(value = "idGradoAcademico") Long idGradoAcademico, Model model, 
+    HttpServletRequest request) {
+
+        model.addAttribute("grados", gradoService.findOne(idGradoAcademico));
+
+        return "contentGA :: contentGA";
     }
 
 }
