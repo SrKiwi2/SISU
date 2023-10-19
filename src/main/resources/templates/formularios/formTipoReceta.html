@@ -76,53 +76,35 @@
                         </div>
                     </div>
                     <!-- end page title end breadcrumb -->
-
+<!-- FALTA AQUI, ATT ESTEFANE  -->
                     <div class="page-content-wrapper">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form class="needs-validation" action="/guardarPersona" method="post" id="form1" novalidate>
-                                                <input type="hidden" th:field="${persona.idPersona}">
+                                            <form class="needs-validation" action="/guardarReceta" method="post" id="form1" novalidate>
+                                                <input type="hidden" th:field="${tipo_receta.idTipoReceta}">
                                                 <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                                 <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom01">Nombre</label>
-                                                        <input type="text" class="form-control" name="persona" id="validationCustom01" th:field="${persona.nombres}" placeholder="Introduce tu nombre" required >
+                                                        <label for="validationCustom03">Descripción de Receta</label>
+                                                        <input type="text" class="form-control" name="grados"
+                                                            th:field="${recetas.descripcion_receta}" placeholder="Ej: De una descripcion de la receta" required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom02">Apellido Paterno</label>
-                                                        <input type="text" class="form-control" name="persona" id="validationCustom02" th:field="${persona.apPaterno}" placeholder="Introduce tu apellido paterno" required>
+                                                        <label for="validationCustom02">Vigencia Receta</label>
+                                                        <input type="text" class="form-control" name="grados" id="validationCustom02" th:field="${recetas.vigencia_receta}"
+                                                            placeholder="Ej: Receta valida hasta la fecha ...." required>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom03">Apellido Materno</label>
-                                                        <input type="text" class="form-control" name="persona" id="validationCustom03" th:field="${persona.apMaterno}" placeholder="Introduce tu apellido Materno" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">C.I.</label>
-                                                        <input type="number" class="form-control" name="persona" id="validationCustom04" th:field="${persona.ci}" placeholder="Introduce tu C.I." required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">Fecha Nacimiento</label>
-                                                        <input type="date" name="persona" th:field="${persona.fecha_nac}" id="customDateInput" class="form-control datepicker-here" data-language="en">
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
+                                                
                                                     <div class="col-md-3 mb-3">
                                                         <label>Género</label>
                                                         <select class="custom-select" name="persona" th:field="${persona.sexo}" required>
