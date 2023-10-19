@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class DipController {
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", iDipService.findAll());
 
-        return "formularios/formDip";
+        return "listas/listaDip";
     }
 
     /* ------------- GUARDAR ------------ */
@@ -81,6 +82,15 @@ public class DipController {
     }
 
      //--------------------------------------------
+
+
+      /* Guardar Cambios */
+    @PostMapping(value = "/guardarCambiosDip")
+    public String guardarCambiosDip(@ModelAttribute Dip dip) {
+        dip.setEstado("A");
+        iDipService.save(dip);
+        return "redirect:/ListaPersona";
+    }
 
 
 }

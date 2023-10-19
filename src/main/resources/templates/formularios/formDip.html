@@ -75,6 +75,9 @@
             </div>
             <!-- end page title end breadcrumb -->
 
+    
+        
+
             <div class="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -84,14 +87,12 @@
 
                                     <form class="needs-validation" action="/guardarDip" method="post" novalidate>
                                         <input type="hidden" th:field="${dip.idDip}">
-                                        <div class="col-md-2 mb-3">
-                                            </div>
+                                        <div class="col-md-2 mb-3"></div>
                                         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                         <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
                                         <div class="row">
                                           
-<!-- 
-                                            <div class="col-md-4 mb-3">
+                                        <!-- <div class="col-md-4 mb-3">
                                                 <label for="validationCustom02">Estado</label>
                                                 <input type="text" class="form-control" id="validationCustom02" th:field="${dip.estado}" placeholder="Ej: Ing./Lic." required>
                                                 <div class="valid-feedback">
