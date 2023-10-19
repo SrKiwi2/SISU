@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -201,6 +202,32 @@ public class PersonaUsuarioController {
   }
 
 
+   @RequestMapping(value = "/usuario/{idUsuario}")
+    public String getContent1(@PathVariable(value = "idUsuario") Long idUsuario, Model model,
+            HttpServletRequest request) {
+
+        Usuario usuario = usuarioService.findOne(idUsuario);
+                
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("persona1", personaService.findOne(usuario.getPersona().getIdPersona()));
+        model.addAttribute("dips", dipService.findAll());
+        model.addAttribute("grados", gradoService.findAll());
+        model.addAttribute("estadosCiviles", estadoCivilService.findAll());
+
+        return "content :: content2";
+    }
+
+
     //-------------------------ELIMINAR---------------------------------------
     
+    @RequestMapping(value = "/eliminarUsuario/{idUsuario}")
+    public String eliminarPersona(@PathVariable("idUsuario")Long idUsuario){
+        Usuario usuario = usuarioService.findOne(idUsuario);
+        Persona persona = personaService.findOne(usuario.getIdUsuario());
+        persona.setEstado("X");
+        usuario.setEstado("X");
+        personaService.save(persona);
+        usuarioService.save(usuario);
+        return "redirect:/listaPerUsuario";
+    }
 }
