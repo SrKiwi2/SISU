@@ -59,17 +59,26 @@ public class Personacontroller {
 
     @PostMapping(value = "/guardarPersona")
     public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash, HttpServletRequest request,
-    
-    @RequestParam(name = "grado",required = false)Long idGradoAcademico,
-    @RequestParam(name = "dip",required = false) Long idDip,
-    @RequestParam(name = "estadoCivil",required = false) Long idTipoEstadoCivil
-    
-    ) {
+            @RequestParam(name = "grado", required = false) Long idGradoAcademico,
+            @RequestParam(name = "dip", required = false) Long idDip,
+            @RequestParam(name = "estadoCivil", required = false) Long idTipoEstadoCivil) {
         Persona existingPersona = personaService.findByCi(persona.getCi());
-        if(existingPersona != null){
-            flash.addFlashAttribute("error", "Ya existe una persona con ese CI:" + persona.getCi());
-            return "redirect:/formRegistro";
+
+        if (existingPersona != null) {
+            if ("A".equals(existingPersona.getEstado())) {
+                flash.addFlashAttribute("error", "Ya existe una persona con ese CI en estado 'A': " + persona.getCi());
+                return "redirect:/formRegistro";
+            } else {
+                // Actualiza el registro existente con estado 'X' a 'A'
+                persona.setEstado("A");
+                persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
+                persona.setDip(dipService.findOne(idDip));
+                persona.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
+                personaService.save(persona);
+                return "redirect:/formRegistro";
+            }
         } else {
+            // No existe una persona con el mismo CI, crea un nuevo registro
             persona.setEstado("A");
             persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
             persona.setDip(dipService.findOne(idDip));
@@ -82,12 +91,14 @@ public class Personacontroller {
     /* eliminar */
 
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
-    public String eliminarPersona(@PathVariable("idPersona") Long idPersona) {
+    public String eliminarPersona(@PathVariable("idPersona")Long idPersona){
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
         personaService.save(persona);
         return "redirect:/ListaPersona";
     }
+
+    /* modificar un registro con el modal */
 
     @RequestMapping(value = "/persona/{idPersona}")
     public String getContent1(@PathVariable(value = "idPersona") Long idPersona, Model model,
@@ -101,10 +112,31 @@ public class Personacontroller {
         return "content :: content1";
     }
 
+    /* Registrar persona model */
+    @RequestMapping(value = "/registrarPersona")
+    public String getRegistroPersona(Model model) {
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", personaService.findAll());
+
+        model.addAttribute("dip", new Dip());
+        model.addAttribute("dips", dipService.findAll());
+
+        model.addAttribute("grado", new GradoAcademico());
+        model.addAttribute("grados", gradoService.findAll());
+
+        model.addAttribute("estadoCivil", new TiposEstadoCivil());
+        model.addAttribute("estadosCiviles", estadoCivilService.findAll());
+        
+        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
+        return "content :: content1";
+    }
+
+
+
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
-    public String editarPersona(@PathVariable("idPersona") Long idPersona, Model model) {
+    public String editarPersona(@PathVariable("idPersona")Long idPersona, Model model){
         Persona persona = personaService.findOne(idPersona);
         model.addAttribute("persona", persona);
         return "formularios/formPersona";
@@ -135,6 +167,4 @@ public class Personacontroller {
         personaService.save(persona);
         return "redirect:/ListaPersona";
     }
-
-
 }

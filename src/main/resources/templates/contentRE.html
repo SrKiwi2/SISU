@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+    <div th:fragment="contentRE">
+        <input type="hidden" name="recetas" th:field="${recetas.idTipoReceta}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
+            <code>novalidate</code>
+            boolean attribute to your <code>&lt;form&gt;</code>.</p>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Descripción de Receta</label>
+                <input type="text" class="form-control" name="grados"
+                    th:field="${recetas.descripcion_receta}" placeholder="Ej: De una descripcion de la receta" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Vigencia Receta</label>
+                <input type="text" class="form-control" name="grados" id="validationCustom02" th:field="${recetas.vigencia_receta}"
+                    placeholder="Ej: Receta valida hasta la fecha ...." required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

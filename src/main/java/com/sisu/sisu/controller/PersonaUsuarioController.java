@@ -196,7 +196,6 @@ public class PersonaUsuarioController {
         return "listas/listaPerUsuario";
     } else {
         // Manejo de errores si la persona o el usuario no existen
-        // Puedes redirigir o mostrar un mensaje de error
         return "redirect:/paginaDeError"; // Reemplaza "paginaDeError" por tu página de manejo de errores
     }
   }
