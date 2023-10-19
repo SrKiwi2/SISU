@@ -91,7 +91,6 @@ public class Personacontroller {
         }
     }
 
-
     /* eliminar */
 
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
@@ -101,6 +100,8 @@ public class Personacontroller {
         personaService.save(persona);
         return "redirect:/ListaPersona";
     }
+
+    /* modificar un registro con el modal */
 
     @RequestMapping(value = "/persona/{idPersona}")
     public String getContent1(@PathVariable(value = "idPersona") Long idPersona, Model model,
@@ -113,6 +114,27 @@ public class Personacontroller {
 
         return "content :: content1";
     }
+
+    /* Registrar persona model */
+    @RequestMapping(value = "/registrarPersona")
+    public String getRegistroPersona(Model model) {
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", personaService.findAll());
+
+        model.addAttribute("dip", new Dip());
+        model.addAttribute("dips", dipService.findAll());
+
+        model.addAttribute("grado", new GradoAcademico());
+        model.addAttribute("grados", gradoService.findAll());
+
+        model.addAttribute("estadoCivil", new TiposEstadoCivil());
+        model.addAttribute("estadosCiviles", estadoCivilService.findAll());
+        
+        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
+        return "content :: content1";
+    }
+
+
 
     /* Editar */
 
@@ -148,6 +170,4 @@ public class Personacontroller {
         personaService.save(persona);
         return "redirect:/ListaPersona";
     }
-
-
 }
