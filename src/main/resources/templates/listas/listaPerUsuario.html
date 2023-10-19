@@ -183,7 +183,7 @@
                                                                                             <select class="selectize" name="grado" multiple>
                                                                                                 <option value="">Grado Academico..</option>
                                                                                                 <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
-                                                                                                    <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
+                                                                                                    <option th:value="${g.idGradoAcademico}" th:text="${g.nombre_gradoAcademico}"></option>
                                                                                                 </th:block>
                                                                                             </select>
                                                                                         </div>
@@ -281,7 +281,7 @@
                                                                                             <select class="selectize" name="grado" multiple>
                                                                                                 <option value="">Grado Academico..</option>
                                                                                                 <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
-                                                                                                    <option th:value="${g.idGradoAcademico}" th:text="${g.gradoAcademico}"></option>
+                                                                                                    <option th:value="${g.idGradoAcademico}" th:text="${g.nombre_gradoAcademico}"></option>
                                                                                                 </th:block>
                                                                                             </select>
                                                                                         </div>
@@ -354,7 +354,7 @@
                                                         <td th:text="${p.persona.dip.codDip}"></td>
                                                         <td th:text="${p.persona.sexo}"></td>
                                                         <td th:if="${p.persona.tipos_estado_civil != null}" th:text="${p.persona.tipos_estado_civil.estadoCivil}"></td>
-                                                        <td th:if="${p.persona.grado_academico != null}" th:text="${p.persona.grado_academico.gradoAcademico}"></td>
+                                                        <td th:if="${p.persona.grado_academico != null}" th:text="${p.persona.grado_academico.nombre_gradoAcademico}"></td>
                                                         <td th:text="${p.persona.celular}"></td>
                                                         <td th:text="${p.persona.direccion}"></td>
                                                         <td th:text="${p.apodo}">
