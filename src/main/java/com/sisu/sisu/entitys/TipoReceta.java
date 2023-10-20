@@ -24,8 +24,8 @@ public class TipoReceta implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo_receta")
-    private Long idTipoReceta;
+    @Column(name = "id_t_receta")
+    private Long idTipoRe;
 
     @Column(name = "descripcion_receta")
     private String descripcionReceta;

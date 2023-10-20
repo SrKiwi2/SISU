@@ -54,7 +54,7 @@ public class Receta implements Serializable {
 	private List<RecetaRemedios> receta_remedios;
     
     @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idTipoReceta")
+	@JoinColumn(name = "idTipoRe")
     private TipoReceta tipo_receta;
     
     @ManyToOne(fetch = FetchType.LAZY)

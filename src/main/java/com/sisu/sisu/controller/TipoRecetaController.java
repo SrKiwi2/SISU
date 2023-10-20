@@ -1,16 +1,15 @@
 package com.sisu.sisu.controller;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sisu.sisu.Service.IGradoService;
 import com.sisu.sisu.Service.ITipoRecetaService;
 import com.sisu.sisu.entitys.TipoReceta;
 
@@ -21,12 +20,13 @@ public class TipoRecetaController {
     private ITipoRecetaService tipoRecetaService;
 
     @GetMapping(value = "/formReceta")
-    public String registroReceta(@Validated TipoReceta tipoReceta, Model model) {
+    public String registroReceta(Model model) {
 
-        model.addAttribute("receta", new TipoRecetaController());
-        model.addAttribute("recetas", tipoRecetaService.findAll());
+       model.addAttribute("tipoReceta", new TipoReceta());
+       model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
+    
 
-        return "formularios/formReceta";
+        return "";
     }
 
     /* GUARDAR */
@@ -36,55 +36,56 @@ public class TipoRecetaController {
         
         tipoReceta.setEstado("A");
         tipoRecetaService.save(tipoReceta);
+
         return "redirect:/ListaReceta";
     }
 
     /* eliminar */
 
-    @RequestMapping(value = "/eliminarReceta/{idTipoReceta}")
-    public String eliminarReceta(@PathVariable("idTipoReceta") Long idTipoReceta) {
-        TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoReceta);
-        tipoReceta.setEstado("X");
-        tipoRecetaService.save(tipoReceta);
-        return "redirect:/ListaReceta";
+    // @RequestMapping(value = "/eliminarReceta/{id_receta}")
+    // public String eliminarReceta(@PathVariable("id_receta") Long id_receta) {
+    //     TipoReceta tipoReceta = tipoRecetaService.findOne(id_receta);
+    //     tipoReceta.setEstado("X");
+    //     tipoRecetaService.save(tipoReceta);
+    //     return "redirect:/ListaReceta";
 
-    }
+    // }
 
 //     /* Editar */
 
-    @RequestMapping(value = "/editarReceta/{idTipoReceta}")
-    public String editarReceta(@PathVariable("idTipoReceta") Long idTipoReceta, Model model) {
-        TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoReceta);
-        model.addAttribute("receta", tipoReceta);
-        return "formularios/ListaReceta";
-    }
+    // @RequestMapping(value = "/editarReceta/{id_receta}")
+    // public String editarReceta(@PathVariable("id_receta") Long id_receta, Model model) {
+    //     TipoReceta tipoReceta = tipoRecetaService.findOne(id_receta);
+    //     model.addAttribute("receta", tipoReceta);
+    //     return "formularios/ListaReceta";
+    // }
 
 
     @GetMapping(value = "/ListaReceta")
-    public String listarReceta(Model model) {
+    public String listarReceta(@Validated TipoReceta tipoReceta, Model model) {
 
         model.addAttribute("recetas", tipoRecetaService.findAll());
 
-        return "listas/listaReceta";
+        return "listas/listaTipoReceta";
     }
 
     /* Guardar Cambios */
-    @PostMapping(value = "/guardarCambiosReceta")
-    public String guardarCambiosReceta(@ModelAttribute TipoReceta tipoReceta) {
-        tipoReceta.setEstado("A");
-        tipoRecetaService.save(tipoReceta);
-        return "redirect:/listaReceta";
-    }
+    // @PostMapping(value = "/guardarCambiosReceta")
+    // public String guardarCambiosReceta(@ModelAttribute TipoReceta tipoReceta) {
+    //     tipoReceta.setEstado("A");
+    //     tipoRecetaService.save(tipoReceta);
+    //     return "redirect:/ListaReceta";
+    // }
 
 
     /* Modificación Modal */
-    @RequestMapping(value = "/receta/{idTipoReceta}")
-    public String getContentRE(@PathVariable(value = "idTipoReceta") Long idTipoReceta, Model model, 
-    HttpServletRequest request) {
+    // @RequestMapping(value = "/receta/{idTipoReceta}")
+    // public String getContentRE(@PathVariable(value = "idTipoReceta") Long idTipoReceta, Model model, 
+    // HttpServletRequest request) {
 
-        model.addAttribute("recetas", tipoRecetaService.findOne(idTipoReceta));
+    //     model.addAttribute("recetas", tipoRecetaService.findOne(idTipoReceta));
 
-        return "contentRE :: contentRE";
-    }
+    //     return "contentRE :: contentRE";
+    // }
 
 }
