@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+    <div th:fragment="contentDip">
+        <input type="hidden" name="manydip" th:field="${manydip.idDip}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+        <div class="row">
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">DIP</label>
+                <input type="text" class="form-control" name="manydip" th:field="${manydip.codDip}"
+                    placeholder="Ej: Universidad Amazónica de Pando" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom02">Descripcion</label>
+                <input type="text" class="form-control" name="manydip" id="validationCustom02"
+                    th:field="${manydip.descripcion}" placeholder="Ej" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

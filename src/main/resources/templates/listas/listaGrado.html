@@ -108,15 +108,24 @@
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
-                                                                <a th:href="${'../../../../eliminarGrado/' + g.idGradoAcademico}">
-                                                                    <button type="button" class="btn btn-outline-danger alertElimin btn-sm" style="margin: 5px; padding: 8px;">
+                                                                <a
+                                                                    th:href="${'../../../../eliminarGrado/' + g.idGradoAcademico}">
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-danger alertElimin btn-sm"
+                                                                        style="margin: 5px; padding: 8px;">
                                                                         <i class="dripicons-trash"></i>
                                                                     </button>
                                                                 </a>
                                                             </div>
                                                             <div class="mb-2">
                                                                 <a>
-                                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idgradoacademico="${g.idGradoAcademico}" onclick="buscar(this)" style="margin: 5px; padding: 8px;">
+                                                                    <button type="button"
+                                                                        class="btn btn-primary btn-sm waves-effect waves-light editarButton"
+                                                                        data-toggle="modal"
+                                                                        th:data-target="${'#bs-example-modal-center'}"
+                                                                        th:data-idgradoacademico="${g.idGradoAcademico}"
+                                                                        onclick="buscar(this)"
+                                                                        style="margin: 5px; padding: 8px;">
                                                                         <i class="dripicons-document-edit"></i>
                                                                     </button>
                                                                 </a>
@@ -132,7 +141,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -141,17 +151,20 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
-                                <form class="needs-validation" th:action="@{/guardarCambiosGrado}" method="post" novalidate>
+                                <form class="needs-validation" th:action="@{/guardarCambiosGrado}" method="post"
+                                    novalidate>
                                     <div id="replace_div_ga">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cerrar</button>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -164,7 +177,7 @@
 
     <!-- JAVASCRIPT -->
     <!-- <script src="../../../../assets/libs/jquery/jquery.min.js"></script> -->
-    
+
 
     <script>
         function buscar(button) {
@@ -172,9 +185,9 @@
             var idGradoAcademico = $(button).data('idgradoacademico');
             // Create the URL to request the fragment using the captured idPersona
             var url = "../../../../grado/" + idGradoAcademico;
-    
+
             // Load the fragment and replace content in #replace_div
-            $('#replace_div_ga').load(url, function (){
+            $('#replace_div_ga').load(url, function () {
                 $('#modal-form').attr('action', '/guardarCambiosGrado');
                 $('#bs-example-modal-center').modal('show');
             });

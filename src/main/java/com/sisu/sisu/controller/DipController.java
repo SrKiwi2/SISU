@@ -1,5 +1,7 @@
 package com.sisu.sisu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ public class DipController {
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", iDipService.findAll());
 
-        return "listas/listaDip";
+        return "formularios/formDip";
     }
 
     /* ------------- GUARDAR ------------ */
@@ -63,7 +65,7 @@ public class DipController {
     public String editarDip(@PathVariable("id_dip")Long id_dip, Model model){
         Dip dip = iDipService.findOne(id_dip);
         model.addAttribute("dip", dip);
-        return "formularios/formDip";
+        return "formularios/listaDip";
     }
 
      //--------------------------------------------
@@ -89,7 +91,19 @@ public class DipController {
     public String guardarCambiosDip(@ModelAttribute Dip dip) {
         dip.setEstado("A");
         iDipService.save(dip);
-        return "redirect:/ListaPersona";
+        return "redirect:/ListasDip";
+    }
+
+
+
+        /* Modificación Modal */
+    @RequestMapping(value = "/dip/{idDip}")
+    public String getContentDip(@PathVariable(value = "idDip") Long idDip, Model model, 
+    HttpServletRequest request) {
+
+        model.addAttribute("manydip", iDipService.findOne(idDip));
+
+        return "contentDip :: contentDip";
     }
 
 

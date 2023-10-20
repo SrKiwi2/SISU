@@ -76,10 +76,18 @@
                                     <div class="dropdown">
                                         <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                            <i class="mdi mdi-settings-outline mr-1"></i> OPCIONES
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a>
+                                                <button type="buttonForm"
+                                                    class="btn btn-primary btn-sm waves-effect waves-light editarButton"
+                                                    data-toggle="modal" th:data-target="${'#bs-example-modal-center'}"
+                                                    th:data-iddip="${dip.idDip}" onclick="registrar(this)"
+                                                    style="margin: 5px; padding: 8px;">
+                                                    Editar
+                                                </button>
+                                            </a>
                                             <a class="dropdown-item" href="#">Another action</a>
                                             <a class="dropdown-item" href="#">Something else here</a>
                                             <div class="dropdown-divider"></div>
@@ -107,9 +115,9 @@
 
                                         <h4 class="header-title"></i>Lista Dip</h4>
 
-                                         <!-- ------------- -->
+                                        <!-- ------------- -->
 
-                       
+
                                         <!-- ------------- -->
 
                                         <table id="datatable-buttons"
@@ -132,14 +140,15 @@
                                                     <td th:text="${dip.descripcion}"></td>
                                                     <!-- <td th:text="${us.idPersona.apMaterno}"></td>
                                                     <td th:text="${us.apodo}"></td> -->
-                                                  
+
                                                     <td>
                                                         <div class="row justify-content-center">
-                                                            <div class="col-md-3 col-6 mb-2">
+                                                            <div class="mb-2">
                                                                 <a style="padding: 2px; display: inline-block; margin: 0px;"
                                                                     th:href="${'../../../../eliminarDip/' + dip.idDip}">
                                                                     <button type="button"
-                                                                        class="btn btn-outline-danger alertElimin btn-sm">
+                                                                        class="btn btn-outline-danger alertElimin btn-sm"
+                                                                        style="margin: 5px; padding: 8px;">
                                                                         <i class="dripicons-trash"></i>
                                                                     </button>
                                                                 </a>
@@ -147,16 +156,17 @@
 
                                                             </div>
 
-                                                            <div class="col-md-3 col-6 mb-2">
-                                                                <a
-                                                                    style="padding: 2px; display: inline-block; margin: 0px;"
-                                                                    data-idRol="~{dip.idDip}">
+                                                            <div class="mb-2">
+                                                                <a>
                                                                     <button type="button"
-                                                                        class="btn btn-primary btn-sm waves-effect waves-light"
+                                                                        class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
-                                                                        data-target=".bs-example-modal-center"
-                                                                        id="editButton"><i
-                                                                            class="dripicons-document-edit"></i></button>
+                                                                        th:data-target="${'#bs-example-modal-center'}"
+                                                                        th:data-iddip="${dip.idDip}"
+                                                                        onclick="buscar(this)"
+                                                                        style="margin: 5px; padding: 8px;">
+                                                                        <i class="dripicons-document-edit"></i>
+                                                                    </button>
                                                                 </a>
                                                             </div>
 
@@ -176,72 +186,41 @@
                     </div>
                     <!-- end container-fluid -->
                 </div>
-                <!-- ------------------------------------------------------------------- -->
-
-                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog"
-                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-
-
-                            <div class="modal-header">
-
-                                <h5 class="modal-title mt-0">Center modal</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="/guardarDip" method="post" novalidate>
-                                    <input type="hidden" id="modal-idDiv" name="idDiv">
-                                    <div class="row">
-                                        <div class="col-md-4 mb-3">
-                                            <label for="validationCustom03">Codigo del DIP</label>
-                                            <input type="text" class="form-control" id="validationCustom03"
-                                                th:field="${dip.codDip}" placeholder="Ej: Introduce el dip" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4 mb-3">
-                                            <label for="validationCustom01">Descripción</label>
-                                            <input type="text" class="form-control" id="validationCustom01"
-                                                th:field="${dip.descripcion}" placeholder="Descripción " required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Guardar</button>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-
-                <!-- ---------------------------- -->
                 <!-- end page-content-wrapper -->
             </div>
             <!-- End Page-content -->
 
-            <div th:insert="~{layout/footer :: footer}"></div>
+            <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog"
+                aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title mt-0">Modificando registro de DIP</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
+                        <div class="modal-body">
+                            <form class="needs-validation" th:action="@{/guardarCambiosDip}" method="post" novalidate>
+
+                                <div id="replace_dip"></div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- end main content-->
 
+        <div th:insert="~{layout/footer :: footer}"></div>
     </div>
-    <!-- END layout-wrapper -->
-
-    <!-- Right Sidebar -->
+    </div>
     <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
     <!-- /Right-bar -->
 
@@ -259,8 +238,24 @@
             var url = "../../../../dip/" + idDip;
 
             // Load the fragment and replace content in #replace_div
-            $('#replace_div').load(url, function () {
-                $('#modal-form').attr('action', '/formRegistroDip');
+            $('#replace_dip').load(url, function () {
+                $('#modal-form').attr('action', '/guardarCambiosDip');
+                $('#bs-example-modal-center').modal('show');
+            });
+        }
+    </script>
+
+    <script>
+        function registrar(buttonForm) {
+            // Capture the value of th:data-idpersona from the clicked button
+            var idDip = $(buttonForm).data('iddip');
+
+            // Create the URL to request the fragment using the captured idPersona
+            var url = "../../../../formRegistroDip";
+
+            // Load the fragment and replace content in #replace_div
+            $('#replace_dip').load(url, function () {
+                $('#modal-form').attr('action', '/guardarCambiosDip');
                 $('#bs-example-modal-center').modal('show');
             });
         }
