@@ -29,23 +29,26 @@ public class EstadoReceta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado_receta")
     private Long idEstadoReceta;
-    
-    @Column(name = "estado")
-    private String estado;
+
+    @Column(name = "nombre_estado")
+    private String nombreEstado;
 
     @Column(name = "descripcion")
     private String descripcion;
 
+    @Column(name = "estado")
+    private String estado;
+
     @Column(name = "registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
-    
+
     @Column(name = "modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
-    //-----------------RELACIONES-----------------------------------------------
+    // -----------------RELACIONES-----------------------------------------------
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado_receta", fetch = FetchType.LAZY)
-	private List<Receta> receta;
+    private List<Receta> receta;
 }

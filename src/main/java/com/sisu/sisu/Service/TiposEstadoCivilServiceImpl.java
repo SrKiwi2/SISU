@@ -27,12 +27,12 @@ public class TiposEstadoCivilServiceImpl implements ITiposEstadoCivilService {
     }
 
     @Override
-    public TiposEstadoCivil findOne(Integer id) {
+    public TiposEstadoCivil findOne(Long id) {
         return TiposEstadoCivilDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         TiposEstadoCivilDao.deleteById(id);
     }
 }
