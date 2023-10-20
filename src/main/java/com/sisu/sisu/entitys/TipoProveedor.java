@@ -36,6 +36,9 @@ public class TipoProveedor implements Serializable{
     @Column(name = "descripcion")
     private String descripcion;
 
+    @Column(name = "estado_proveedor")
+    private String estado;
+
     @Column(name = "registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;

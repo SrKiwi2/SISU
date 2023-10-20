@@ -1,6 +1,7 @@
 package com.sisu.sisu.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -36,13 +39,17 @@ public class RemedioLote implements Serializable {
     private String precioLote;
 
     @Column(name = "fecha_vencimiento")
-    private Date fechaVencimiento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaVencimiento;
 
     @Column(name = "cantidad")
     private String cantidad;
 
     @Column(name = "numero_lote")
     private String numeroLote;
+
+    @Column(name = "estado_remedioL")
+    private String estado;
 
     @Column(name = "registro")
     @Temporal(TemporalType.TIMESTAMP)

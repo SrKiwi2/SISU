@@ -35,7 +35,7 @@ public class Proveedor implements Serializable{
     @Column(name = "nombre_proveedor")
     private String nombreProveedor;
 
-    @Column(name = "descrpcion")
+    @Column(name = "descripcion")
     private String descripcion;
 
     @Column(name = "nit")
@@ -43,6 +43,9 @@ public class Proveedor implements Serializable{
 
     @Column(name = "direccion")
     private String direccion;
+
+    @Column(name = "estado_proveedor")
+    private String estado;
 
     @Column(name = "registro")
     @Temporal(TemporalType.TIMESTAMP)
