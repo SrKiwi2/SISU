@@ -16,9 +16,8 @@ import com.sisu.sisu.Service.LinameService;
 import com.sisu.sisu.Service.TipoUsoService;
 import com.sisu.sisu.entitys.FormaFarmaceutica;
 import com.sisu.sisu.entitys.ListaLiname;
-import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.TipoUso;
-import com.sisu.sisu.entitys.Usuario;
+
 
 @Controller
 public class LinameController {
