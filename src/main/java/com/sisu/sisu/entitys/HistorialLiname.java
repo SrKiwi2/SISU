@@ -53,5 +53,5 @@ public class HistorialLiname implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idLiname")
-    private RemediosFarmacia lista_liname;
+    private ListaLiname lista_liname;
 }

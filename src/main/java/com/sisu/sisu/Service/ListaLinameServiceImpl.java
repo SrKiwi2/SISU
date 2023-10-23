@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sisu.sisu.Dao.LinameDao;
+import com.sisu.sisu.Dao.ListaLinameDao;
 import com.sisu.sisu.entitys.ListaLiname;
 
 @Service
-public class LinameServiceImpl implements LinameService{
+public class ListaLinameServiceImpl implements ListaLinameService{
 
 
     @Autowired
-    private LinameDao linameDao;
+    private ListaLinameDao linameDao;
 
     @Override
     public List<ListaLiname> findAll() {
@@ -22,9 +22,9 @@ public class LinameServiceImpl implements LinameService{
     }
 
     @Override
-    public void save(ListaLiname liname) {
+    public void save(ListaLiname listaLiname) {
         
-        linameDao.save(liname);
+        linameDao.save(listaLiname);
     }
 
     @Override

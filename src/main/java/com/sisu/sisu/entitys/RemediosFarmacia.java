@@ -52,7 +52,7 @@ public class RemediosFarmacia implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idLiname")
-    private RemediosFarmacia lista_liname;
+    private ListaLiname lista_liname;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "remedios_farmacia", fetch = FetchType.LAZY)
 	private List<RecetaRemedios> receta_remedios;

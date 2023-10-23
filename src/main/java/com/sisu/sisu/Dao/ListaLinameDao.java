@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.sisu.sisu.entitys.ListaLiname;
 
-public interface LinameDao extends CrudRepository<ListaLiname, Long> {
+public interface ListaLinameDao extends CrudRepository<ListaLiname, Long> {
     
 }

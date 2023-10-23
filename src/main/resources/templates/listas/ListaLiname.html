@@ -129,103 +129,60 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../savaLIname" method="post">
-                                                                                    <input type="hidden" th:field="${liname.idLiname}">
+                                                                                <form class="needs-validation" action="../../../../saveLiname" method="post">
+                                                                                    <input type="hidden" th:field="${listLiname.idLiname}">
                                                                                     <div>
                                                                                         <div class="row">
-                                                                                            <div class="col-sm-4">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="text" name="persona1" th:field="${persona1.nombres}" placeholder="name"
-                                                                                                        class="form-control" id="useremailA" required>
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                    <input type="text" name="liname" th:field="${listLiname.codigoLiname}" placeholder="name"
+                                                                                                        class="form-control" id="listLiname" required>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-sm-4">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="text" name="persona1" th:field="${persona1.apPaterno}" placeholder="last name"
-                                                                                                        class="form-control" id="userpasswordB" required>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-4">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="text" name="persona1" th:field="${persona1.apMaterno}" placeholder="last name"
-                                                                                                        class="form-control" id="userpasswordC" required>
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                    <input type="text" name="listLiname" th:field="${listLiname.codigoATQ}" placeholder="ci.."
+                                                                                                        class="form-control" id="liname1" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                                <input type="number" name="persona1" th:field="${persona1.ci}" placeholder="ci.."
-                                                                                                    class="form-control" id="username2" required>
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                    <input type="date" name="listLiname" th:field="${listLiname.fechaIncluido}" placeholder="last name"
+                                                                                                        class="form-control" id="liname2" required>
+                                                                                                </div>
                                                                                             </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                                <select class="selectize" name="dip">
-                                                                                                    <option value="">Expedido en.....</option>
-                                                                                                    <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
-                                                                                                        <option th:value="${ex.idDip}" th:text="${ex.codDip}"></option>
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                    <input type="date" name="listLiname" th:field="${listaLiname.fechaExcluido}" placeholder="last name"
+                                                                                                        class="form-control" id="liname3" required>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                    <select class="selectize" name="farmaceutica" >
+                                                                                                      <option value="">Forma..</option>
+                                                                                                      <th:block th:each="f: ${farmaceuticas}" th:if="${f.estadoFF != 'X'}">
+                                                                                                        <option th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}"></option>
+                                                                                                      </th:block>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                <select class="selectize" name="tipoUso" >
+                                                                                                    <option value="">Uso..</option>
+                                                                                                    <th:block th:each="tu: ${tipoUsos}" th:if="${tu.estado != 'X'}">
+                                                                                                        <option th:value="${tu.idTipoUso}" th:text="${tu.nombreTipoUso}"></option>
                                                                                                     </th:block>
                                                                                                 </select>
-                                                                                            </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                                <input type="date" name="persona1" th:field="${persona1.fecha_nac}" id="customDateInput"
-                                                                                                    class="form-control datepicker-here" data-language="en" placeholder="yy-mm-dd" />
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                                <select class="selectize" th:field="${persona1.sexo}" required>
-                                                                                                    <option value="">Genero...</option>
-                                                                                                    <option value="Femenino">Femenino</option>
-                                                                                                    <option value="Masculino">Masculino</option>
-                                                                                                    <option value="Otro">Otro..</option>
-                                                                            
-                                                                                                </select>
-                                                                                            </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                                <select class="selectize" name="estadoCivil" required>
-                                                                                                    <option value="">Estado civil..</option>
-                                                                                                    <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
-                                                                                                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
-                                                                                                    </th:block>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
-                                                                                                <select class="selectize" name="grado" >
-                                                                                                    <option value="">Grado Academico..</option>
-                                                                                                    <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
-                                                                                                        <option th:value="${g.idGradoAcademico}" th:text="${g.nombre_gradoAcademico}"></option>
-                                                                                                    </th:block>
-                                                                                                </select>
-                                                                                            </div>
-                                                                            
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col-sm-6">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="number" name="persona1" th:field="${persona1.celular}" placeholder="Telefono.."
-                                                                                                        class="form-control" id="useremail" required>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-6">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="text" name="persona1" th:field="${persona1.Direccion}" placeholder="Direccion.."
-                                                                                                        class="form-control" id="userpassword" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col-sm-6">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="text" th:field="${usuario.apodo}" name="Usuario" class="form-control"
-                                                                                                        placeholder="username">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-6">
-                                                                                                <div class="form-group form-group-custom mb-4">
-                                                                                                    <input type="password" th:field="${usuario.clave}" name="usuario" class="form-control"
-                                                                                                        placeholder="password">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                       
                                                                                         <div class="modal-footer">
                                                                                             <button type="submit" class="btn btn-primary">Save</button>
                                                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -236,7 +193,7 @@
                                                                         </div><!-- /.modal-content -->
                                                                     </div><!-- /.modal-dialog -->
                                                                 </div><!-- /.modal -->
-                                                                <div class="modal fade" id="exampleModalScrollable2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                                                <div class="modal fade" id="exampleModalScrollableL" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -246,10 +203,12 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../SavePerUsuario" method="post">
-                                                                                    <div id="replace_div">
+                                                                                <form class="needs-validation" action="../../../../SaveLiname" method="post">
+
+                                                                                    <div id="replace_divLiname">
                                                                                         
                                                                                     </div>
+                                                                                    
                                                                                 </form>
                                                                             </div>
                                                                         </div><!-- /.modal-content -->
@@ -264,37 +223,29 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Apellidos</th>
-                                                        <th>CI</th>
-                                                        <th>Expedido</th>
-                                                        <th>Genero</th>
-                                                        <th>Estado Civil</th>
-                                                        <th>Grado Academico</th>
-                                                        <th>N° Telefono</th>
-                                                        <th>Direccion</th>
-                                                        <th>Usuario</th>
-                                                        <!-- <th>Clave</th> -->
+                                                        <th>Liname codigo</th>
+                                                        <th>Atq Codigo</th>
+                                                        <th>Forma</th>
+                                                        <th>Uso</th>
+                                                        <th>Fecha Excluido</th>
+                                                        <th>Fecha Excluido</th>   
                                                         <th> op</th>
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
-                                                    <tr th:each="p : ${usuarios1}" th:if="${p.estado != 'X'}">
-                                                        <td th:text="${p.persona.nombres}"></td>
-                                                        <td th:text="${p.persona.apPaterno + '  ' + p.persona.apMaterno}"></td>
-                                                        <td th:text="${p.persona.ci}"></td>
-                                                        <td th:text="${p.persona.dip.codDip}"></td>
-                                                        <td th:text="${p.persona.sexo}"></td>
-                                                        <td th:if="${p.persona.tipos_estado_civil != null}" th:text="${p.persona.tipos_estado_civil.estadoCivil}"></td>
-                                                        <td th:if="${p.persona.grado_academico != null}" th:text="${p.persona.grado_academico.nombre_gradoAcademico}"></td>
-                                                        <td th:text="${p.persona.celular}"></td>
-                                                        <td th:text="${p.persona.direccion}"></td>
-                                                        <td th:text="${p.apodo}"></td>
-                                                        <td>
+                                                    <tr th:each="l : ${listLinames}" th:if="${l.estadoLiname != 'X'}">
+                                                        <td th:text="${l.codigoLiname}"></td>
+                                                        <td th:text="${l.codigoATQ}"></td>
+                                                        <td th:text="${l.forma_farmaceutica.nombreFormaFarmaceutica}"></td>
+                                                        <td th:text="${l.tipo_uso.nombreTipoUso}"></td>
+                                                        <td th:text="${l.fechaIncluido}"></td>
+                                                        <td th:text="${l.fechaExcluido}"></td>
+                                                         <!-- <td th:text="${l.persona.apPaterno + '  ' + p.persona.apMaterno}"></td> -->
+                                                         <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="mb-2">
-                                                                    <a th:href="${'../../../../eliminarUsuario/' + p.idUsuario}">
+                                                                    <a th:href="${'../../../../eliminLiname/' + l.idLiname}">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"
                                                                             style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-trash"></i>
@@ -304,8 +255,8 @@
                                                                 <div class="col-md-3 col-6 mb-2">
                                                                     <a style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton"
-                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollable2'}"
-                                                                            th:data-idusuario="${p.idUsuario}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
+                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableL'}"
+                                                                            th:data-idlinamee="${l.idLiname}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>
@@ -387,7 +338,7 @@
         <script src="../../../../assets/js/pages/form-validation.init.js"></script>
 
         <!-- modal-->
-        <script src="../../../../assets/js/pages/modal.js"></script>
+        <script src="../../../../assets/js/pages/modalLiname.js"></script>
 
         
         <!-- Spectrum colorpicker -->

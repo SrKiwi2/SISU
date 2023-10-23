@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,9 +38,11 @@ public class ListaLiname implements Serializable{
     private String codigoLiname;
 
     @Column(name = "fecha_incluido")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaIncluido;
 
     @Column(name = "fecha_excluido")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaExcluido;
 
     @Column(name = "estado_liname")

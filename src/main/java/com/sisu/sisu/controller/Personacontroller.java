@@ -92,6 +92,7 @@ public class Personacontroller {
 
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
     public String eliminarPersona(@PathVariable("idPersona")Long idPersona){
+        
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
         personaService.save(persona);

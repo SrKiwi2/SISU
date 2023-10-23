@@ -47,6 +47,7 @@ public class DipController {
 
     @RequestMapping(value = "/eliminarDip/{id_dip}")
     public String eliminarDip(@PathVariable("id_dip") Long id_dip) {
+        
         Dip dip = iDipService.findOne(id_dip);
         dip.setEstado("X");
         iDipService.save(dip);

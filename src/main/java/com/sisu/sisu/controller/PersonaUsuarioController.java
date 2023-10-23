@@ -204,7 +204,7 @@ public class PersonaUsuarioController {
 
    @RequestMapping(value = "/usuario/{idUsuario}")
     public String getContent1(@PathVariable(value = "idUsuario") Long idUsuario, Model model,
-            HttpServletRequest request) {
+        HttpServletRequest request) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
                 
