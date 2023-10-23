@@ -5,36 +5,38 @@
 </head>
 
 <body>
-    <div th:fragment="contentRE">
-        <input type="hidden" name="recetas" th:field="${recetas.idTipoReceta}">
-        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
-            <code>novalidate</code>
-            boolean attribute to your <code>&lt;form&gt;</code>.</p>
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom03">Descripción de Receta</label>
-                <input type="text" class="form-control" name="recetas"
-                    th:field="${recetas.descripcion_receta}" placeholder="Ej: De una descripcion de la receta" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Vigencia Receta</label>
-                <input type="text" class="form-control" name="recetas" id="validationCustom02" th:field="${recetas.vigencia_receta}"
-                    placeholder="Ej: Receta valida hasta la fecha ...." required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
+    <div th:fragment="contentTipoReceta">
 
+        <input type="hidden" th:field="${tipoReceta.idTipoRe}">
+        <div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group form-group-custom mb-4">
+                        <input type="text" name="tipoReceta" th:field="${tipoReceta.descripcionReceta}"
+                            placeholder="descripción" class="form-control" id="useremailA" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group form-group-custom mb-4">
+                        <input type="text" name="tipoReceta" th:field="${tipoReceta.vigencia_receta}"
+                            placeholder="vigencia" class="form-control" id="userpasswordB" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
+
+    <!-- ------------------------------------------------------------------------------------------ -->
+
     <div th:fragment="contentTp">
         <input type="hidden" th:field="${tipoProveedor.idTipoProveedor}">
         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code>
+        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
+            <code>novalidate</code>
             boolean attribute to your <code>&lt;form&gt;</code>.</p>
         <div class="row">
             <div class="col-md-4 mb-3">
@@ -53,13 +55,17 @@
                     Looks good!
                 </div>
             </div>
-        
+
         </div>
     </div>
+
+    <!-- ------------------------------------------------------------------------------------------ -->
+
     <div th:fragment="contentProveedor">
         <input type="hidden" th:field="${proveedor.idProveedor}">
         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code>
+        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
+            <code>novalidate</code>
             boolean attribute to your <code>&lt;form&gt;</code>.</p>
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -72,8 +78,8 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom06">NIT</label>
-                <input type="number" class="form-control" th:field="${proveedor.NIT}"
-                    placeholder="Introduce un NIT" required>
+                <input type="number" class="form-control" th:field="${proveedor.NIT}" placeholder="Introduce un NIT"
+                    required>
                 <div class="invalid-feedback">Debes introducir un NIT</div>
             </div>
             <div class="col-md-4 mb-3">
@@ -86,7 +92,7 @@
                 </select>
                 <div class="invalid-feedback">Debes Seleccionar un Estado Civil</div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
@@ -97,7 +103,7 @@
                     Looks good!
                 </div>
             </div>
-            
+
             <div class="col-md-12 mb-3">
                 <label for="validationCustom02">Direccion</label>
                 <input type="text" class="form-control" name="proveedor" id="validationCustom02"
@@ -108,10 +114,15 @@
             </div>
         </div>
     </div>
+
+
+    <!-- ------------------------------------------------------------------------------------------ -->
+
     <div th:fragment="contentRemedioLote">
         <input type="hidden" th:field="${remedioLote.idRemedioLote}">
         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code>
+        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
+            <code>novalidate</code>
             boolean attribute to your <code>&lt;form&gt;</code>.</p>
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -124,8 +135,8 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom04">Fecha </label>
-                <input type="date" name="remedioLote" th:field="${remedioLote.fechaVencimiento}" class="form-control datepicker-here"
-                    data-language="en" required>
+                <input type="date" name="remedioLote" th:field="${remedioLote.fechaVencimiento}"
+                    class="form-control datepicker-here" data-language="en" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -137,7 +148,7 @@
                     placeholder="Introduce una cantidad" required>
                 <div class="invalid-feedback">Debes introducir una cantidad</div>
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
@@ -158,7 +169,7 @@
                 </select>
                 <div class="invalid-feedback">Debes Seleccionar un Estado Civil</div>
             </div>
-            
+
         </div>
     </div>
 </body>

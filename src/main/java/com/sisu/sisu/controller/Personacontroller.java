@@ -105,6 +105,7 @@ public class Personacontroller {
             HttpServletRequest request) {
 
         model.addAttribute("persona", personaService.findOne(idPersona));
+        
         model.addAttribute("dips", dipService.findAll());
         model.addAttribute("grados", gradoService.findAll());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());

@@ -209,6 +209,7 @@ public class PersonaUsuarioController {
         Usuario usuario = usuarioService.findOne(idUsuario);
                 
         model.addAttribute("usuario", usuario);
+        
         model.addAttribute("persona1", personaService.findOne(usuario.getPersona().getIdPersona()));
         model.addAttribute("dips", dipService.findAll());
         model.addAttribute("grados", gradoService.findAll());

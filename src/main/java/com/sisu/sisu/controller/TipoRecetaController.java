@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sisu.sisu.Service.IGradoService;
 import com.sisu.sisu.Service.ITipoRecetaService;
 import com.sisu.sisu.entitys.TipoReceta;
+import com.sisu.sisu.entitys.Usuario;
 
 @Controller
 public class TipoRecetaController {
@@ -46,9 +47,9 @@ public class TipoRecetaController {
 
     /* eliminar */
 
-    @RequestMapping(value = "/eliminarReceta/{id_receta}")
-    public String eliminarReceta(@PathVariable("id_receta") Long id_receta) {
-        TipoReceta tipoReceta = tipoRecetaService.findOne(id_receta);
+    @RequestMapping(value = "/eliminarReceta/{idTipoRe}")
+    public String eliminarReceta(@PathVariable("idTipoRe") Long idTipoRe) {
+        TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         tipoReceta.setEstado("X");
         tipoRecetaService.save(tipoReceta);
         return "redirect:/ListaReceta";
@@ -57,10 +58,13 @@ public class TipoRecetaController {
 
 //     /* Editar */
 
-    @RequestMapping(value = "/editarReceta/{id_receta}")
-    public String editarReceta(@PathVariable("id_receta") Long id_receta, Model model) {
-        TipoReceta tipoReceta = tipoRecetaService.findOne(id_receta);
-        model.addAttribute("receta", tipoReceta);
+    @RequestMapping(value = "/editarReceta/{idTipoRe}")
+    public String editarReceta(@PathVariable("idTipoRe") Long idTipoRe, Model model) {
+
+        TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
+
+        model.addAttribute("tipoReceta", tipoReceta);
+
         return "formularios/ListaReceta";
     }
 
@@ -68,28 +72,36 @@ public class TipoRecetaController {
     @GetMapping(value = "/ListaReceta")
     public String listarReceta(@Validated TipoReceta tipoReceta, Model model) {
 
-        model.addAttribute("recetas", tipoRecetaService.findAll());
+        model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
 
         return "listas/listaTipoReceta";
     }
 
+
+
+
+
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosReceta")
     public String guardarCambiosReceta(@ModelAttribute TipoReceta tipoReceta) {
+
         tipoReceta.setEstado("A");
+
         tipoRecetaService.save(tipoReceta);
+
         return "redirect:/ListaReceta";
     }
 
-
     /* Modificación Modal */
-    @RequestMapping(value = "/receta/{idTipoReceta}")
-    public String getContentRE(@PathVariable(value = "idTipoReceta") Long idTipoReceta, Model model, 
+    @RequestMapping(value = "/tipoReceta/{idTipoRe}")
+    public String getContentREt(@PathVariable(value = "idTipoRe") Long idTipoRe, Model model, 
     HttpServletRequest request) {
+        
 
-        model.addAttribute("recetas", tipoRecetaService.findOne(idTipoReceta));
+        // TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
+        model.addAttribute("tipoReceta", tipoRecetaService.findOne(idTipoRe));
 
-        return "contentRE :: contentRE";
+        return "contentRE :: contentTipoReceta";
     }
 
 }
