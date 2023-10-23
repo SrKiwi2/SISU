@@ -58,12 +58,12 @@ public class DipController {
 
     /* -------------------Editar ------------------- */
 
-    @RequestMapping(value = "/editarDip/{id_dip}")
-    public String editarDip(@PathVariable("id_dip") Long id_dip, Model model) {
-        Dip dip = iDipService.findOne(id_dip);
-        model.addAttribute("dip", dip);
-        return "formularios/listaDip";
-    }
+    // @RequestMapping(value = "/editarDip/{id_dip}")
+    // public String editarDip(@PathVariable("id_dip")Long id_dip, Model model){
+    //     Dip dip = iDipService.findOne(id_dip);
+    //     model.addAttribute("dip", dip);
+    //     return "formularios/listaDip";
+    // }
 
     // --------------------------------------------
 
@@ -96,8 +96,33 @@ public class DipController {
 
         model.addAttribute("manydip", iDipService.findOne(idDip));
 
+        model.addAttribute("opcion", "Editar");
+
         return "contentDip :: contentDip";
     }
+
+    // -------------------------------------------------
+
+
+    //----------- Formulario para registrar --------
+
+        @RequestMapping(value = "/formRegistroDiptoList")
+    public String registroDiptoList(@Validated Dip dip, Model model){
+        
+        model.addAttribute("dip", new Dip());
+        model.addAttribute("dips", iDipService.findAll());
+  
+        model.addAttribute("opcion", "Registrar");
+
+        return "contentDip :: contentDip";
+    }
+
+    /* ------------- GUARDAR ------------ */
+
+ 
+    //--------------------------------------------
+
+    // -------------------------------------------------
 
 
 }

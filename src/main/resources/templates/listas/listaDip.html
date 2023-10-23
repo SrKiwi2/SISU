@@ -79,15 +79,6 @@
                                             <i class="mdi mdi-settings-outline mr-1"></i> OPCIONES
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                            <a>
-                                                <button type="buttonForm"
-                                                    class="btn btn-primary btn-sm waves-effect waves-light editarButton"
-                                                    data-toggle="modal" th:data-target="${'#bs-example-modal-center'}"
-                                                    th:data-iddip="${dip.idDip}" onclick="registrar(this)"
-                                                    style="margin: 5px; padding: 8px;">
-                                                    Editar
-                                                </button>
-                                            </a>
                                             <a class="dropdown-item" href="#">Another action</a>
                                             <a class="dropdown-item" href="#">Something else here</a>
                                             <div class="dropdown-divider"></div>
@@ -245,21 +236,7 @@
         }
     </script>
 
-    <script>
-        function registrar(buttonForm) {
-            // Capture the value of th:data-idpersona from the clicked button
-            var idDip = $(buttonForm).data('iddip');
 
-            // Create the URL to request the fragment using the captured idPersona
-            var url = "../../../../formRegistroDip";
-
-            // Load the fragment and replace content in #replace_div
-            $('#replace_dip').load(url, function () {
-                $('#modal-form').attr('action', '/guardarCambiosDip');
-                $('#bs-example-modal-center').modal('show');
-            });
-        }
-    </script>
 
     <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
     <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
