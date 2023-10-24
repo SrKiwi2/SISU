@@ -88,4 +88,10 @@ public class GradoController {
         return "contentGA :: contentGA";
     }
 
+    @RequestMapping(value = "/registrarGradoAcademico")
+    private String getRegistrarGradoA(Model model){
+        model.addAttribute("grado", new GradoAcademico());
+        model.addAttribute("grados", gradoService.findAll());
+        return "contentGA :: contentGA";
+    }
 }
