@@ -129,38 +129,19 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../saveHistorial" method="post">
-                                                                                    <input type="hidden" th:field="${historialLiname.idHistorialLiname}">
-                                                                                    <div>
+                                                                                <form class="needs-validation" action="../../../../saveTipoUso" method="post">
+                                                                                    <input type="hidden" th:field="${tipoUso.idTipoUso}">
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="historialLiname" th:field="${historialLiname.precio}" placeholder="code"
-                                                                                                        class="form-control" id="historialLiname" required>
+                                                                                                    <input type="text" name="tipoUso" th:field="${tipoUso.nombreTipoUso}" placeholder="code"
+                                                                                                        class="form-control" id="tipoUso" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="historialLiname" th:field="${historialLiname.observacion}" placeholder="ATQ"
-                                                                                                        class="form-control" id="historial1" required>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col-sm-6">
-                                                                                                <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="date" name="historialLiname" th:field="${historialLiname.fechaHistorialLiname}" placeholder="last name"
-                                                                                                        class="form-control" id="historial2" required>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-sm-6">
-                                                                                                <div class="form-group form-group-custom mb-6">
-                                                                                                    <select class="selectize" name="listaLiname" >
-                                                                                                      <option value="">Forma..</option>
-                                                                                                      <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
-                                                                                                        <option th:value="${ls.idLiname}" th:text="${ls.codigoLiname}"></option>
-                                                                                                      </th:block>
-                                                                                                    </select>
+                                                                                                    <input type="text" name="tipoUso" th:field="${tipoUso.descripcion}" placeholder="ATQ"
+                                                                                                        class="form-control" id="tipoUso1" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -168,13 +149,12 @@
                                                                                             <button type="submit" class="btn btn-primary">Save</button>
                                                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                                         </div>
-                                                                                    </div>
                                                                                 </form>
                                                                             </div>
                                                                         </div><!-- /.modal-content -->
                                                                     </div><!-- /.modal-dialog -->
                                                                 </div><!-- /.modal -->
-                                                             <div class="modal fade" id="exampleModalScrollableH" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
+                                                             <div class="modal fade" id="exampleModalScrollableT" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -186,7 +166,7 @@
                                                                             <div class="modal-body">
                                                                                 <form class="needs-validation" action="../../../../SaveHistorial" method="post">
 
-                                                                                    <div id="replace_divHistorial">
+                                                                                    <div id="replace_divTipoUso">
                                                                                         
                                                                                     </div>
                                                                                     
@@ -205,25 +185,19 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Fecha</th>
-                                                        <th>Precio</th>
-                                                        <th>Observacion</th>
-                                                        <th>Cod Liname</th>
+                                                        <th>Descripcion</th>
                                                         <th> </th> 
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
-                                                    <tr th:each="h : ${historiales}" th:if="${h.estadoHistorialLiname != 'X'}">
-                                                        <td th:text="${h.fechaHistorialLiname}"></td>
-                                                        <td th:text="${h.precio}"></td>
-                                                        <td th:text="${h.observacion}"></td>
-                                                        <td th:text="${h.lista_liname.codigoLiname}"></td>
-                                                        <!-- <td th:text="${h.tipo_uso.nombreTipoUso}"></td> -->
-                                                         <!-- <td th:text="${l.persona.apPaterno + '  ' + p.persona.apMaterno}"></td> -->
+                                                    <tr th:each="t : ${tipoUsos}" th:if="${t.estado != 'X'}">
+                                                        <td th:text="${t.nombreTipoUso}"></td>
+                                                        <td th:text="${t.descripcion}"></td>
                                                          <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="mb-2">
-                                                                    <a th:href="${'../../../../eliminHistorial/' + h.idHistorialLiname}">
+                                                                    <a th:href="${'../../../../eliminTipoUso/' + t.idTipoUso}">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"
                                                                             style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-trash"></i>
@@ -233,8 +207,8 @@
                                                                 <div class="col-md-3 col-6 mb-2">
                                                                     <a style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton"
-                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableH'}"
-                                                                            th:data-idhistorial="${h.idHistorialLiname}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
+                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableT'}"
+                                                                            th:data-idtipouso="${h.idHistorialLiname}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>

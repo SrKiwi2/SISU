@@ -1,4 +1,3 @@
-
 <div th:fragment="contentHistorial">
     <input type="hidden" th:field="${historialLiname.idHistorialLiname}">
     <div>
@@ -11,34 +10,58 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group form-group-custom mb-6">
-                    <input type="text" name="historialLiname" th:field="${historialLiname.observacion}" placeholder="ATQ"
-                        class="form-control" id="historial1" required>
+                    <input type="text" name="historialLiname" th:field="${historialLiname.observacion}"
+                        placeholder="ATQ" class="form-control" id="historial1" required>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group form-group-custom mb-6">
-                    <input type="date" name="historialLiname" th:field="${historialLiname.fechaHistorialLiname}" placeholder="last name"
-                        class="form-control" id="historial2" required>
+                    <input type="date" name="historialLiname" th:field="${historialLiname.fechaHistorialLiname}"
+                        placeholder="last name" class="form-control" id="historial2" required>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group form-group-custom mb-6">
-                    <select class="custom-select" name="listaLiname" >
-                      <option value="">Forma..</option>
-                      <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
-                        <option th:value="${ls.idLiname}" th:text="${ls.codigoLiname}"></option>
-                      </th:block>
+                    <select class="custom-select" name="listaLiname">
+                        <option value="">Forma..</option>
+                        <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
+                            <option th:value="${ls.idLiname}" th:text="${ls.codigoLiname}"></option>
+                        </th:block>
                     </select>
                 </div>
             </div>
         </div>
-       
+
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
+    </div>
+</div>
+
+<!------------------------------------------------------------Uso-------------------------------------------------------------------->
+
+<div th:fragment="contentTipoUso">
+    <input type="hidden" th:field="${tipoUso.idTipoUso}">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group form-group-custom mb-6">
+                <input type="text" name="tipoUso" th:field="${tipoUso.nombreTipoUso}" placeholder="code"
+                    class="form-control" id="tipoUso" required>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group form-group-custom mb-6">
+                <input type="text" name="tipoUso" th:field="${tipoUso.descripcion}" placeholder="ATQ"
+                    class="form-control" id="tipoUso1" required>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
 
 </div>
