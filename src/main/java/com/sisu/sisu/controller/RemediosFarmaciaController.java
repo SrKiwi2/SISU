@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IRemediosFarmaciaService;
-import com.sisu.sisu.Service.LinameService;
+import com.sisu.sisu.Service.ListaLinameService;
 import com.sisu.sisu.entitys.ListaLiname;
 import com.sisu.sisu.entitys.RemediosFarmacia;
 
@@ -23,7 +23,7 @@ public class RemediosFarmaciaController {
     private IRemediosFarmaciaService remediosFarmaciaService;
 
     @Autowired
-    private LinameService linameService;
+    private ListaLinameService linameService;
 
     @GetMapping(value = "/RegistroRemediosFarmacia")
     public String registroRemediosFarmacia(@Validated RemediosFarmacia remediosFarmacia, Model model) {
@@ -57,9 +57,9 @@ public class RemediosFarmaciaController {
     /* modificar con el modal */
 
     @RequestMapping(value = "/remediosFarmacia/{idRemediosFarmacia}")
-    public String getContentRemediosF(@PathVariable(value = "idRemedioFarmacia") Long idRemedioFarmaciaLong, Model model,
+    public String getContentRemediosF(@PathVariable(value = "idRemedioFarmacia") Long idRemedioFarmacia, Model model,
         HttpServletRequest request){
-            model.addAttribute("remediosFarmacia", remediosFarmaciaService.findOne(idRemedioFarmaciaLong));
+            model.addAttribute("remediosFarmacia", remediosFarmaciaService.findOne(idRemedioFarmacia));
             model.addAttribute("liname", new ListaLiname());
             model.addAttribute("listaLiname", linameService.findAll());
             return "contentFarmacia :: contentRemediosFarmacia";

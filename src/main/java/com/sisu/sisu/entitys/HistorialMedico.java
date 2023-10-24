@@ -48,12 +48,12 @@ public class HistorialMedico implements Serializable {
 
     /* RELACIONES */
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAtencionMedica")
-    private EstadoReceta atencion_medica;
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "idAtencionMedica")
+    // private EstadoReceta atencion_medica;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAsegurado")
-    private EstadoReceta asegurado;
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "idAsegurado")
+    // private EstadoReceta asegurado;
 
 }
