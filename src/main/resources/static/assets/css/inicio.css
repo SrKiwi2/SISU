@@ -1,5 +1,5 @@
 #welcomeText {
-    font-size: 100px;
+    font-size: 60px;
     font-weight: bold; /* Hace que las letras sean más gruesas */
     background: linear-gradient(45deg, #0306e0, #ca0303); /* Crea un fondo degradado */
     -webkit-background-clip: text;
