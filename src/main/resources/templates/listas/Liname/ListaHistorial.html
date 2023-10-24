@@ -109,13 +109,13 @@
                                     <div class="card">
                                         <div class="card-body">
             
-                                            <h4 class="header-title"></i>Liname</h4>
+                                            <h4 class="header-title"></i>Lista Usuarios</h4>
                                           
                                             <div class="table-responsive">
                                                 <table class="table table-centered mb-0">
                                                     <tbody>
                                                         <tr>
-                                                            <td>2023</td>
+                                                            <td>Scrollable modal</td>
                                                             <td>
                                                                 <!-- Small modal -->
                                                                 <button type="button" style="margin-right: 5%;" class="btn btn-info btn-sm waves-effect waves-light" data-placement="top" title="Registate" data-toggle="modal" data-target="#exampleModalScrollable1"><i class="mdi mdi-plus-thick"></i>Add</button>
@@ -129,38 +129,38 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../saveLiname" method="post">
-                                                                                    <input type="hidden" th:field="${listLiname.idLiname}">
+                                                                                <form class="needs-validation" action="../../../../saveHistorial" method="post">
+                                                                                    <input type="hidden" th:field="${historial.idHistorialLiname}">
                                                                                     <div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="liname" th:field="${listLiname.codigoLiname}" placeholder="code"
-                                                                                                        class="form-control" id="listLiname" required>
+                                                                                                    <input type="text" name="historial" th:field="${historial.precio}" placeholder="code"
+                                                                                                        class="form-control" id="historial" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="listLiname" th:field="${listLiname.codigoATQ}" placeholder="ATQ"
-                                                                                                        class="form-control" id="liname1" required>
+                                                                                                    <input type="text" name="historial" th:field="${historial.observacion}" placeholder="ATQ"
+                                                                                                        class="form-control" id="historial1" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="date" name="listLiname" th:field="${listLiname.fechaIncluido}" placeholder="last name"
-                                                                                                        class="form-control" id="liname2" required>
+                                                                                                    <input type="date" name="historial" th:field="${historial.fechaHistorialLiname}" placeholder="last name"
+                                                                                                        class="form-control" id="historial2" required>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-sm-6">
+                                                                                            <!-- <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="date" name="listLiname" th:field="${listaLiname.fechaExcluido}" placeholder="last name"
-                                                                                                        class="form-control" id="liname3" required>
+                                                                                                    <input type="date" name="historial" th:field="${listaLiname.fechaExcluido}" placeholder="last name"
+                                                                                                        class="form-control" id="historial3" required>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div> -->
                                                                                         </div>
-                                                                                        <div class="row">
+                                                                                        <!-- <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
                                                                                                     <select class="selectize" name="farmaceutica" >
@@ -181,7 +181,7 @@
                                                                                                 </select>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>
+                                                                                        </div> -->
                                                                                        
                                                                                         <div class="modal-footer">
                                                                                             <button type="submit" class="btn btn-primary">Save</button>
@@ -193,7 +193,7 @@
                                                                         </div><!-- /.modal-content -->
                                                                     </div><!-- /.modal-dialog -->
                                                                 </div><!-- /.modal -->
-                                                                <div class="modal fade" id="exampleModalScrollableL" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
+                                                              <!--  <div class="modal fade" id="exampleModalScrollableH" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -223,26 +223,24 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th>Liname codigo</th>
-                                                        <th>Atq Codigo</th>
-                                                        <th>Forma</th>
-                                                        <th>Uso</th>
+                                                        <th>Fecha</th>
+                                                        <th>Precio</th>
+                                                        <th>Observacion</th>
+                                                        <!-- <th>Uso</th>
                                                         <th>Fecha Excluido</th>
                                                         <th>Fecha Excluido</th>   
-                                                        <th> </th>
+                                                        <th> </th> -->
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
-                                                    <tr th:each="l : ${listLinames}" th:if="${l.estadoLiname != 'X'}">
-                                                        <td th:text="${l.codigoLiname}"></td>
-                                                        <td th:text="${l.codigoATQ}"></td>
-                                                        <td th:text="${l.forma_farmaceutica.nombreFormaFarmaceutica}"></td>
-                                                        <td th:text="${l.tipo_uso.nombreTipoUso}"></td>
-                                                        <td th:text="${l.fechaIncluido}"></td>
-                                                        <td th:text="${l.fechaExcluido}"></td>
+                                                    <tr th:each="h : ${historiales}" th:if="${h.estadoHistorialLiname != 'X'}">
+                                                        <td th:text="${h.fechaHistorialLiname}"></td>
+                                                        <td th:text="${h.precio}"></td>
+                                                        <td th:text="${h.observacion}"></td>
+                                                        <!-- <td th:text="${h.tipo_uso.nombreTipoUso}"></td> -->
                                                          <!-- <td th:text="${l.persona.apPaterno + '  ' + p.persona.apMaterno}"></td> -->
-                                                         <td>
+                                                         <!-- <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="mb-2">
                                                                     <a th:href="${'../../../../eliminLiname/' + l.idLiname}">
@@ -262,7 +260,7 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        </td>                                                
+                                                        </td>                                                 -->
                                                     </tr>
                                                 </tbody>
                                             </table>

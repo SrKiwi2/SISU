@@ -2,6 +2,7 @@ package com.sisu.sisu.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class RemediosFarmaciaController {
     private IRemediosFarmaciaService remediosFarmaciaService;
 
     @Autowired
-    private ListaLinameService linameService;
+    private ListaLinameService listaLinameService;
 
     @GetMapping(value = "/RegistroRemediosFarmacia")
     public String registroRemediosFarmacia(@Validated RemediosFarmacia remediosFarmacia, Model model) {
@@ -31,7 +32,7 @@ public class RemediosFarmaciaController {
         model.addAttribute("remediosFarmacias", remediosFarmaciaService.findAll());
 
         model.addAttribute("liname", new ListaLiname());
-        model.addAttribute("listaLiname", linameService.findAll());
+        model.addAttribute("listaLiname", listaLinameService.findAll());
 
         return "RemediosFarmacia";
     }
@@ -50,7 +51,7 @@ public class RemediosFarmaciaController {
     public String listarRemediosFarmacia(Model model) {
         model.addAttribute("remediosFarmacias", remediosFarmaciaService.findAll());
         model.addAttribute("liname", new ListaLiname());
-        model.addAttribute("listaLiname", linameService.findAll());
+        model.addAttribute("listaLiname", listaLinameService.findAll());
         return "listas/listaRemediosFarmacia";
     }
 
@@ -61,7 +62,7 @@ public class RemediosFarmaciaController {
         HttpServletRequest request){
             model.addAttribute("remediosFarmacia", remediosFarmaciaService.findOne(idRemedioFarmacia));
             model.addAttribute("liname", new ListaLiname());
-            model.addAttribute("listaLiname", linameService.findAll());
+            model.addAttribute("listaLiname", listaLinameService.findAll());
             return "contentFarmacia :: contentRemediosFarmacia";
         }
 
@@ -73,7 +74,7 @@ public class RemediosFarmaciaController {
         model.addAttribute("remediosFarmacias", remediosFarmaciaService.findAll());
 
         model.addAttribute("liname", new ListaLiname());
-        model.addAttribute("listaLiname", linameService.findAll());
+        model.addAttribute("listaLiname", listaLinameService.findAll());
         return "contentFarmacia :: contentRemediosFarmacia";
     }
 

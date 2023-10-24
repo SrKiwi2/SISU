@@ -19,9 +19,7 @@ import com.sisu.sisu.Service.ListaLinameService;
 import com.sisu.sisu.Service.TipoUsoService;
 import com.sisu.sisu.entitys.FormaFarmaceutica;
 import com.sisu.sisu.entitys.ListaLiname;
-import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.TipoUso;
-import com.sisu.sisu.entitys.Usuario;
 
 
 
@@ -54,7 +52,6 @@ public class LinameController {
     
     }
 
-    //-------------------------------save---------------------------------
 
     @PostMapping(value = "/saveLiname") // Enviar datos de Registro a Lista
 	public String guaradarLinam(@Validated ListaLiname listLiname, RedirectAttributes flash,HttpServletRequest request,
@@ -100,6 +97,7 @@ public class LinameController {
 
         return "redirect:/l-Liname";
     }
+
 
     //-------------------------------Edit---------------------------------
     @RequestMapping(value = "/editLiname/{idLiname}")
