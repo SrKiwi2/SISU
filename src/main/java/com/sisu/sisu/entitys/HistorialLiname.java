@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +35,7 @@ public class HistorialLiname implements Serializable{
     private String estadoHistorialLiname;
 
     @Column(name = "fecha_historial_liname")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaHistorialLiname;
 
     @Column(name = "precio")

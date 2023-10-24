@@ -130,18 +130,18 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <form class="needs-validation" action="../../../../saveHistorial" method="post">
-                                                                                    <input type="hidden" th:field="${historial.idHistorialLiname}">
+                                                                                    <input type="hidden" th:field="${historialLiname.idHistorialLiname}">
                                                                                     <div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="historial" th:field="${historial.precio}" placeholder="code"
-                                                                                                        class="form-control" id="historial" required>
+                                                                                                    <input type="text" name="historialLiname" th:field="${historialLiname.precio}" placeholder="code"
+                                                                                                        class="form-control" id="historialLiname" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="historial" th:field="${historial.observacion}" placeholder="ATQ"
+                                                                                                    <input type="text" name="historialLiname" th:field="${historialLiname.observacion}" placeholder="ATQ"
                                                                                                         class="form-control" id="historial1" required>
                                                                                                 </div>
                                                                                             </div>
@@ -149,8 +149,18 @@
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="date" name="historial" th:field="${historial.fechaHistorialLiname}" placeholder="last name"
+                                                                                                    <input type="date" name="historialLiname" th:field="${historialLiname.fechaHistorialLiname}" placeholder="last name"
                                                                                                         class="form-control" id="historial2" required>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group form-group-custom mb-6">
+                                                                                                    <select class="selectize" name="listaLiname" >
+                                                                                                      <option value="">Forma..</option>
+                                                                                                      <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
+                                                                                                        <option th:value="${ls.idLiname}" th:text="${ls.codigoLiname}"></option>
+                                                                                                      </th:block>
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <!-- <div class="col-sm-6">
@@ -193,7 +203,7 @@
                                                                         </div><!-- /.modal-content -->
                                                                     </div><!-- /.modal-dialog -->
                                                                 </div><!-- /.modal -->
-                                                              <!--  <div class="modal fade" id="exampleModalScrollableH" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
+                                                             <div class="modal fade" id="exampleModalScrollableH" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -203,9 +213,9 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../SaveLiname" method="post">
+                                                                                <form class="needs-validation" action="../../../../SaveHistorial" method="post">
 
-                                                                                    <div id="replace_divLiname">
+                                                                                    <div id="replace_divHistorial">
                                                                                         
                                                                                     </div>
                                                                                     
@@ -226,10 +236,8 @@
                                                         <th>Fecha</th>
                                                         <th>Precio</th>
                                                         <th>Observacion</th>
-                                                        <!-- <th>Uso</th>
-                                                        <th>Fecha Excluido</th>
-                                                        <th>Fecha Excluido</th>   
-                                                        <th> </th> -->
+                                                        <th>Cod Liname</th>
+                                                        <th> </th> 
                                                     </tr>
                                                 </thead>
             
@@ -238,12 +246,13 @@
                                                         <td th:text="${h.fechaHistorialLiname}"></td>
                                                         <td th:text="${h.precio}"></td>
                                                         <td th:text="${h.observacion}"></td>
+                                                        <td th:text="${h.lista_liname.codigoLiname}"></td>
                                                         <!-- <td th:text="${h.tipo_uso.nombreTipoUso}"></td> -->
                                                          <!-- <td th:text="${l.persona.apPaterno + '  ' + p.persona.apMaterno}"></td> -->
-                                                         <!-- <td>
+                                                         <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="mb-2">
-                                                                    <a th:href="${'../../../../eliminLiname/' + l.idLiname}">
+                                                                    <a th:href="${'../../../../eliminHistorial/' + h.idHistorialLiname}">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"
                                                                             style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-trash"></i>
@@ -253,14 +262,14 @@
                                                                 <div class="col-md-3 col-6 mb-2">
                                                                     <a style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton"
-                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableL'}"
-                                                                            th:data-idlinamee="${l.idLiname}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
+                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableH'}"
+                                                                            th:data-idhistorial="${h.idHistorialLiname}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        </td>                                                 -->
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -336,7 +345,7 @@
         <script src="../../../../assets/js/pages/form-validation.init.js"></script>
 
         <!-- modal-->
-        <script src="../../../../assets/js/pages/modalLiname.js"></script>
+        <script src="../../../../assets/js/pages/modalHistorial.js"></script>
 
         
         <!-- Spectrum colorpicker -->

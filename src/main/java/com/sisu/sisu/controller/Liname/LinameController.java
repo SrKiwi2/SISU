@@ -123,8 +123,8 @@ public class LinameController {
 
 
     @PostMapping(value = "/SaveLiname")
-    public String guardarCambiosPersona(@ModelAttribute ListaLiname listLiname,
-     @RequestParam(name="farmaceutica",required = false)Long idFormaFarmaceutica,
+    public String GuaradrLiname(@ModelAttribute ListaLiname listLiname,
+    @RequestParam(name="farmaceutica",required = false)Long idFormaFarmaceutica,
     @RequestParam(name="tipoUso",required = false)Long idTipoUso
     ) {
 
