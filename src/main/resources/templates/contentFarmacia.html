@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+    <div th:fragment="contentRemediosFarmacia">
+        <input type="hidden" th:field="${proveedor.idProveedor}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
+            <code>novalidate</code>
+            boolean attribute to your <code>&lt;form&gt;</code>.</p>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01">Ubicacion</label>
+                <input type="text" class="form-control" name="remediosFarmacia" id="validationCustom01"
+                    th:field="${remediosFarmacia.ubicacion}" placeholder="Introduce una ubicacion" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>  
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Liname</label>
+                <select class="custom-select" th:field="${liname.codigoLiname}" required>
+                    <option value="">Seleciones una opcion</option>
+                    <th:block th:each="ll: ${ListaLiname}" th:if="${ll.estadoLiname != 'X'}">
+                        <option th:value="${ll.idLiname}" th:text="${ll.codigoLiname}"></option>
+                    </th:block>
+                </select>
+                <div class="invalid-feedback">Debes Seleccionar un codigo</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

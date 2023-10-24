@@ -36,6 +36,9 @@ public class RemediosFarmacia implements Serializable{
     @Column(name = "ubicacion")
     private String ubicacion;
 
+    @Column(name = "estado")
+    private String estado;
+
     @Column(name = "registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
