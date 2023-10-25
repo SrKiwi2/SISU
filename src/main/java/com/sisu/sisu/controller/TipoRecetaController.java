@@ -53,6 +53,7 @@ public class TipoRecetaController {
 
         model.addAttribute("tipoReceta", new TipoReceta());
         model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
+
         return "listas/listaTipoReceta";
     }
 
@@ -62,7 +63,7 @@ public class TipoRecetaController {
     @RequestMapping(value = "/editarReceta/{idTipoRe}")
     public String editarReceta(@PathVariable("idTipoRe") Long idTipoRe, Model model) {
         TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
-        model.addAttribute("tipoReceta", tipoReceta);
+        model.addAttribute("tipoRecete", tipoReceta);
         return "formularios/ListaReceta";
     }
 
