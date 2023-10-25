@@ -139,7 +139,7 @@
                             
                                         <div class="text-right mt-3">
                                             <button type="submit" onclick="validarFormulario()" class="btn btn-primary mr-2">Guardar</button>
-                                            <button type="button" class="btn btn-primary">Cancelar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div th:insert ="~{layout/footer :: footer}"></div>    
+                <div th:insert ="~{layout/footer :: footer}"></div>
             </div>
         </div>
         <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
@@ -180,7 +180,7 @@
                 // Load the fragment and replace content in #replace_div
                 $('#replace_div_ec').load(url, function () {
                     // Modifica cualquier configuración necesaria para un nuevo registro.
-                    $('#modal-form').attr('action', '/guardarCambiosnewEstadoC'); // Por ejemplo, cambiar la acción del formulario.
+                    $('#modal-form').attr('action', '/guardarCambiosEstadoC'); // Por ejemplo, cambiar la acción del formulario.
                     $('#bs-example-modal-center').modal('show');
                 });
             }

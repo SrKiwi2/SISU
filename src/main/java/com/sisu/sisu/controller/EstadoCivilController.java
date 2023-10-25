@@ -23,24 +23,6 @@ public class EstadoCivilController {
     @Autowired
     private ITiposEstadoCivilService tiposEstadoCivilService;
 
-    /* obtener */
-    @GetMapping(value = "/formEstadoC")
-    public String registroFormC(@Validated TiposEstadoCivil tiposEstadoCivil, Model model) {
-
-        model.addAttribute("estadoCivil", new TiposEstadoCivil());
-        model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
-
-        return "formularios/formEst_Civil";
-    }
-
-    /* guardar */
-    @PostMapping(value = "/guardarEstadoC")
-    public String RegistrarEstadoc(@Validated TiposEstadoCivil tiposEstadoCivil) {
-        tiposEstadoCivil.setEstado("A");
-        tiposEstadoCivilService.save(tiposEstadoCivil);
-        return "redirect:/formEstadoC";
-    }
-
     /* Eliminar */
 
     @RequestMapping(value = "/eliminarEstadoC/{idTipoEstadoCivil}")
@@ -49,15 +31,12 @@ public class EstadoCivilController {
         tiposEstadoCivil.setEstado("X");
         tiposEstadoCivilService.save(tiposEstadoCivil);
         return "redirect:/ListasEstadoC";
-
     }
 
     /* lista */
     @GetMapping(value = "/ListasEstadoC")
     public String listarEstadoC(Model model) {
-
         model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
-
         return "listas/listaEstadoCivil";
     }
 
@@ -70,15 +49,15 @@ public class EstadoCivilController {
     }
 
     /* modificar con el mnodal */
-    @RequestMapping(value = "/estadoCivil/{idTipoEstadoCivil}")
+    @RequestMapping(value = "/estadoCivill/{idTipoEstadoCivil}")
     public String getContentPr(@PathVariable(value = "idTipoEstadoCivil") Long idTipoEstadoCivil, Model model,
             HttpServletRequest request) {
-        model.addAttribute("estadoCivil", new TiposEstadoCivil());
+        model.addAttribute("estadoCivil", tiposEstadoCivilService.findOne(idTipoEstadoCivil));
         return "contentGA :: contentER";
     }
 
     @PostMapping(value = "/guardarCambiosEstadoC")
-    public String guardarCambiosPersona(@ModelAttribute TiposEstadoCivil tiposEstadoCivil) {
+    public String guardarCambiosEstadoC(@ModelAttribute TiposEstadoCivil tiposEstadoCivil) {
         tiposEstadoCivil.setEstado("A");
         tiposEstadoCivilService.save(tiposEstadoCivil);
         return "redirect:/ListasEstadoC";
