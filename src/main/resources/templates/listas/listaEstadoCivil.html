@@ -45,10 +45,10 @@
                         <div class="container-fluid">
                             <div class="row align-items-center">
                                 <div class="col-md-8">
-                                    <h4 class="page-title mb-1">Datos de Personas</h4>
+                                    <h4 class="page-title mb-1">Datos Estado Civil</h4>
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Tabla</a></li>
-                                        <li class="breadcrumb-item active">Datos de Personas</li>
+                                        <li class="breadcrumb-item active">Datos Estado Civil</li>
                                     </ol>
                                 </div>
                                 <div class="col-md-4">
@@ -81,7 +81,8 @@
                                             <h4 class="header-title">Buttons example</h4>
                                             <p class="card-title-desc">The Buttons extension for DataTables</p>
                                             <div class="text-right mb-3">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Registrar</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm-effect waves-light"
+                                                onclick="NuevoRegistro()">Registrar</button>
                                             </div>
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
@@ -95,14 +96,18 @@
                                                         <td th:text="${e.estadoCivil}"></td> 
                                                         <td>
                                                             <div class="row justify-content-center">
-                                                                <div class="col-md-3 col-6 mb-2"> 
-                                                                    <a th:href="${'../../../../eliminarEstadoC/' + e.idTipoEstadoCivil}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
+                                                                <div class="mb-2"> 
+                                                                    <a th:href="${'../../../../eliminarEstadoC/' + e.idTipoEstadoCivil}" >
+                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"style="margin: 5px; padding: 8px;">
+                                                                            <i class="dripicons-trash"></i>
+                                                                        </button>
                                                                     </a>
                                                                 </div>
-                                                                <div class="col-md-3 col-6 mb-2"> 
-                                                                    <a th:href="${'../../../../editarEdtadoC/' + e.idTipoEstadoCivil}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-success alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
+                                                                <div class="mb-2">
+                                                                    <a>
+                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idestadoC="${e.idTipoEstadoCivil}" onclick="buscar(this)" style="margin: 5px; padding: 8px;">
+                                                                            <i class="dripicons-document-edit"></i>
+                                                                        </button>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -120,21 +125,23 @@
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title mt-0">Center modal</h5>
+                                    <h5 class="modal-title mt-0">Modificando registro estado civil</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" action="/editarPersona" method="post" novalidate>
-                                        <div id="replace_div">
-                                        
+                                    <form id="miFormulario" class="needs-validation" action="@{/guardarCambiosEstadoC}" method="post" novalidate>
+                                       
+                                        <div id="replace_div_ec">
+                                            
+                                        </div>                          
+                            
+                                        <div class="text-right mt-3">
+                                            <button type="submit" onclick="validarFormulario()" class="btn btn-primary mr-2">Guardar</button>
+                                            <button type="button" class="btn btn-primary">Cancelar</button>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -153,14 +160,56 @@
         <script>
             function buscar(button) {
                 // Capture the value of th:data-idpersona from the clicked button
-                var idPersona = $(button).data('idpersona');
-        
+                var idTipoEstadoCivil = $(button).data('idestadoC');
+                alert(idTipoEstadoCivil);
                 // Create the URL to request the fragment using the captured idPersona
-                var url = "../../../../persona/" + idPersona;
+                var url = "../../../../estadoCivil/" + idTipoEstadoCivil;
         
                 // Load the fragment and replace content in #replace_div
-                $('#replace_div').load(url);
+                $('#replace_div_ec').load(url, function (){
+                    $('#modal-form').attr('action', '/guardarCambiosEstadoC');
+                    $('#bs-example-modal-center').modal('show');
+                });
             }
+
+            function NuevoRegistro() {
+                
+                // Modifica la URL para cargar el modal vacío para registrar una nueva persona.
+                var url = "../../../../registrarEstadoCivil";
+
+                // Load the fragment and replace content in #replace_div
+                $('#replace_div_ec').load(url, function () {
+                    // Modifica cualquier configuración necesaria para un nuevo registro.
+                    $('#modal-form').attr('action', '/guardarCambiosnewEstadoC'); // Por ejemplo, cambiar la acción del formulario.
+                    $('#bs-example-modal-center').modal('show');
+                });
+            }
+            document.addEventListener("DOMContentLoaded", function() {
+                // Selecciona el formulario por su id
+                const form = document.getElementById("miFormulario");
+                        
+                form.addEventListener("submit", function(event) {
+                    let isValid = true; // Variable para rastrear la validez del formulario
+                
+                    // Obtén todos los campos obligatorios (los que tienen el atributo "required")
+                    const requiredFields = form.querySelectorAll("[required]");
+                
+                    requiredFields.forEach(function(field) {
+                        if (!field.value) {
+                            // Si un campo obligatorio está vacío, muestra un mensaje de error
+                            isValid = false;
+                            field.classList.add("is-invalid");
+                        } else {
+                            field.classList.remove("is-invalid");
+                        }
+                    });
+                
+                    if (!isValid) {
+                        // Si el formulario no es válido, evita que se envíe
+                        event.preventDefault();
+                    }
+                });
+            });
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -46,6 +46,29 @@
             </div>
         </div>
     </div>
+
+
+    <!-- --------------------------------  ESTADO CIVIL  ------------------------------------- -->
+
+    <div th:fragment="contentER">
+        <input type="hidden" name="estadosCiviles" th:field="${estadoCivil.idTipoEstadoCivil}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the
+            <code>novalidate</code>
+            boolean attribute to your <code>&lt;form&gt;</code>.</p>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Tipo Estado Civil</label>
+                <input type="text" class="form-control" name="estadosCiviles"
+                    th:field="${estadoCivil.estadoCivil}" placeholder="Ej: Universidad Amazónica de Pando" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
 </body>
 
 </html>
