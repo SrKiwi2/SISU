@@ -1,6 +1,25 @@
+
+<!------------------------------------------------------------Liname-------------------------------------------------------------------->
+
 <div th:fragment="contentLiname">
     <input type="hidden" th:field="${listLiname.idLiname}">
     <div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="validationCustom01">Medicamento</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="liname" th:field="${listLiname.medicamento}" placeholder="medicamento"
+                        class="form-control" id="listLiname" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="validationCustom01">Concentracion</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="listLiname" th:field="${listLiname.concentracion}" placeholder="0.00 gr"
+                        class="form-control" id="liname1" required>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-6">
                 <label for="validationCustom01">Codigo Liname</label>
@@ -40,7 +59,11 @@
                     <select class="custom-select" name="farmaceutica" >
                       <option value="">Elegir..</option>
                       <th:block th:each="f: ${farmaceuticas}" th:if="${f.estadoFF != 'X'}">
-                        <option th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}"></option>
+                      <th:block th:if="${listLiname.forma_farmaceutica != null}"> 
+                        <option th:if="${listLiname.forma_farmaceutica.idFormaFarmaceutica == f.idFormaFarmaceutica}" th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}" selected></option>
+                        <option th:if="${listLiname.forma_farmaceutica.idFormaFarmaceutica != f.idFormaFarmaceutica}" th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}"></option>
+                     </th:block>
+                       <!-- <option th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}"></option> -->
                       </th:block>
                     </select>
                 </div>
@@ -51,7 +74,10 @@
                 <select class="custom-select" name="tipoUso" >
                     <option value="">Elegir..</option>
                     <th:block th:each="tu: ${tipoUsos}" th:if="${tu.estado != 'X'}">
-                        <option th:value="${tu.idTipoUso}" th:text="${tu.nombreTipoUso}"></option>
+                    <th:block th:if="${listLiname.tipo_uso != null}">
+                        <option th:if="${listLiname.tipo_uso.idTipoUso == tu.idTipoUso}" th:value="${tu.idTipoUso}" th:text="${tu.nombreTipoUso}" selected></option>
+                        <option th:if="${listLiname.tipo_uso.idTipoUso != tu.idTipoUso}" th:value="${tu.idTipoUso}" th:text="${tu.nombreTipoUso}"></option>
+                    </th:block>
                     </th:block>
                 </select>
                 </div>
@@ -65,44 +91,80 @@
     </div>
 </div>
 
-
+<!------------------------------------------------------------Historial-------------------------------------------------------------------->
 
 <div th:fragment="contentHistorial">
     <input type="hidden" th:field="${historialLiname.idHistorialLiname}">
     <div>
         <div class="row">
             <div class="col-sm-6">
+                <label for="validationCustom01">Medicamento</label>
                 <div class="form-group form-group-custom mb-6">
-                    <input type="text" name="historialLiname" th:field="${historialLiname.precio}" placeholder="code"
-                        class="form-control" id="historialLiname" required>
+                    <select class="custom-select" name="listaLiname" >
+                      <option value="">Elegir..</option>
+                      <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
+                      <th:block th:if="${historialLiname.lista_liname != null}">
+                        <option th:if="${historialLiname.lista_liname.idLiname == ls.idLiname}" th:value="${ls.idLiname}" th:text="${ls.medicamento}" selected></option>
+                        <option th:if="${historialLiname.lista_liname.idLiname != ls.idLiname}" th:value="${ls.idLiname}" th:text="${ls.medicamento}"></option>
+                      </th:block>
+                      </th:block>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-6">
+                <label for="validationCustom01">Concentracion</label>
                 <div class="form-group form-group-custom mb-6">
-                    <input type="text" name="historialLiname" th:field="${historialLiname.observacion}"
-                        placeholder="ATQ" class="form-control" id="historial1" required>
+                    <select class="custom-select" name="listaLiname" >
+                      <option value="">Elegir..</option>
+                      <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
+                        <th:block th:if="${historialLiname.lista_liname != null}">
+                            <option th:if="${historialLiname.lista_liname.idLiname == ls.idLiname}" th:value="${ls.idLiname}" th:text="${ls.concentracion}" selected></option>
+                            <option th:if="${historialLiname.lista_liname.idLiname != ls.idLiname}" th:value="${ls.idLiname}" th:text="${ls.concentracion}"></option>
+                        </th:block>
+                      </th:block>
+                    </select>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
+                <label for="validationCustom01">Precio</label>
                 <div class="form-group form-group-custom mb-6">
-                    <input type="date" name="historialLiname" th:field="${historialLiname.fechaHistorialLiname}"
-                        placeholder="last name" class="form-control" id="historial2" required>
+                    <input type="text" name="historialLiname" th:field="${historialLiname.precio}" placeholder="0.00$"
+                        class="form-control" id="historialLiname" required>
                 </div>
             </div>
             <div class="col-sm-6">
+                <label for="validationCustom01">Observacion</label>
                 <div class="form-group form-group-custom mb-6">
-                    <select class="custom-select" name="listaLiname">
-                        <option value="">Forma..</option>
-                        <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
-                            <option th:value="${ls.idLiname}" th:text="${ls.codigoLiname}"></option>
+                    <input type="text" name="historialLiname" th:field="${historialLiname.observacion}" placeholder="Descripcion"
+                        class="form-control" id="historial1" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="validationCustom01">Fecha</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="date" name="historialLiname" th:field="${historialLiname.fechaHistorialLiname}" placeholder="last name"
+                        class="form-control" id="historial2" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="validationCustom01">Codigo Liname</label>
+                <div class="form-group form-group-custom mb-6">
+                    <select class="custom-select" name="listaLiname" >
+                      <option value="">cod liname..</option>
+                      <th:block th:each="ls: ${listaLinames}" th:if="${ls.estadoLiname != 'X'}">
+                        <th:block th:if="${historialLiname.lista_liname != null}">
+                            <option th:if="${historialLiname.lista_liname.idLiname == ls.idLiname}" th:value="${ls.idLiname}" th:text="${ls.codigoLiname}" selected></option>
+                            <option th:if="${historialLiname.lista_liname.idLiname != ls.idLiname}" th:value="${ls.idLiname}" th:text="${ls.codigoLiname}"></option>
                         </th:block>
+                      </th:block>
                     </select>
                 </div>
             </div>
         </div>
-
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

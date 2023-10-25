@@ -34,6 +34,12 @@ public class ListaLiname implements Serializable{
     @Column(name = "id_lista_liname")
     private Long idLiname;
 
+    @Column(name = "medicamento")
+    private String medicamento;
+
+    @Column(name = "concentracion")
+    private String concentracion;
+
     @Column(name = "codigo_liname")
     private String codigoLiname;
 

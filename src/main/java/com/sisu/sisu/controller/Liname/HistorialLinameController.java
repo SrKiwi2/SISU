@@ -109,7 +109,7 @@ public class HistorialLinameController {
 
     @PostMapping(value = "/SaveHistorial")
     public String GuardarHistorial(@ModelAttribute HistorialLiname historialLiname,
-     @RequestParam(name="listaLiname",required = false)Long idLiname
+    @RequestParam(name="listaLiname",required = false)Long idLiname
     ) {
 
         historialLiname.setEstadoHistorialLiname("A");
