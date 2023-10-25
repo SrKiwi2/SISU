@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sisu.sisu.Service.TipoUsoService;
-import com.sisu.sisu.entitys.HistorialLiname;
 import com.sisu.sisu.entitys.TipoUso;
 
 @Controller
@@ -30,12 +28,12 @@ public class TipoUsoController {
         model.addAttribute("tipoUso", new TipoUso());
         model.addAttribute("tipoUsos", tipoUsoService.findAll()); 
 
-       return "Liname";
+       return "tipoUso";
     }
 
     //-------------------------------save---------------------------------
 
-    @PostMapping(value = "/saveTipoUso") // Enviar datos de Registro a Lista
+    @PostMapping(value = "/saveTipouso") // Enviar datos de Registro a Lista
 	public String guaradarLinam(@Validated TipoUso tipoUso) { 
 
         tipoUso.setEstado("A");
@@ -93,13 +91,12 @@ public class TipoUsoController {
 
 
     @PostMapping(value = "/SaveTipoUso")
-    public String GuardarHistorial(@ModelAttribute TipoUso tipoUso
-    ) {
+    public String GuardarHistorial(@ModelAttribute TipoUso tipoUso) {
 
         tipoUso.setEstado("A");
         tipoUsoService.save(tipoUso);
-        
-        return "redirect:/l-Historial";
+
+        return "redirect:/l-TipoUso";
     }
 
 }

@@ -114,25 +114,29 @@
 
 <div th:fragment="contentTipoUso">
     <input type="hidden" th:field="${tipoUso.idTipoUso}">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group form-group-custom mb-6">
-                <input type="text" name="tipoUso" th:field="${tipoUso.nombreTipoUso}" placeholder="code"
-                    class="form-control" id="tipoUso" required>
+    <div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="validationCustom01">De usu:</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="tipoUso" th:field="${tipoUso.nombreTipoUso}" placeholder=""
+                        class="form-control" id="tipoUso" required>
+                </div>
+            </div>
+           
+            <div class="col-sm-6">
+                <label for="validationCustom01">Descripcion</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="tipoUso" th:field="${tipoUso.descripcion}" placeholder="ATQ"
+                        class="form-control" id="tipoUso1" required>
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group form-group-custom mb-6">
-                <input type="text" name="tipoUso" th:field="${tipoUso.descripcion}" placeholder="ATQ"
-                    class="form-control" id="tipoUso1" required>
-            </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-
 </div>
 
 <!------------------------------------------------------------FormaFarmaceutica-------------------------------------------------------------------->
@@ -142,14 +146,16 @@
     <div>
         <div class="row">
             <div class="col-sm-6">
+                <label for="validationCustom01">Tipo Medicamento</label>
                 <div class="form-group form-group-custom mb-6">
-                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.nombreFormaFarmaceutica}" placeholder="code"
+                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.nombreFormaFarmaceutica}" placeholder="forma"
                         class="form-control" id="formaFarmaceutica" required>
                 </div>
             </div>
             <div class="col-sm-6">
+                <label for="validationCustom01">Descripcion</label>
                 <div class="form-group form-group-custom mb-6">
-                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.descripcion}" placeholder="ATQ"
+                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.descripcion}" placeholder="descripcion"
                         class="form-control" id="formaFarmaceutica1" required>
                 </div>
             </div>

@@ -66,7 +66,7 @@ public class FarmaceuticaController {
     }
 
 
-     //-------------------------------Edit---------------------------------
+     //-------------------------------Edit--------------------------------------
     @RequestMapping(value = "/editFarmaceutica/{idFormaFarmaceutica}")
     public String editFarmaceutica(@PathVariable("idFormaFarmaceutica")Long idFormaFarmaceutica, Model model){
  
@@ -91,7 +91,7 @@ public class FarmaceuticaController {
         formaFarmaceutica.setEstadoFF("A");
         formaFarmaceuticaService.save(formaFarmaceutica);
       
-        return "redirect:/l-Historial";
+        return "redirect:/l-Farmaceutica";
     }
 
 

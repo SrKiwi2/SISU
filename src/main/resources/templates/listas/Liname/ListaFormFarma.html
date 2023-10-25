@@ -74,10 +74,10 @@
                         <div class="container-fluid">
                             <div class="row align-items-center">
                                 <div class="col-md-8">
-                                    <h4 class="page-title mb-1">Data Tables</h4>
+                                    <h4 class="page-title mb-1">Tipo de Medicamentos</h4>
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Liname</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Liname</a></li>
+                                    <li class="breadcrumb-item active">Tipo de Medicamentos</li>
                                     </ol>
                                 </div>
                                 <div class="col-md-4">
@@ -109,16 +109,16 @@
                                     <div class="card">
                                         <div class="card-body">
             
-                                            <h4 class="header-title"></i>Lista Usuarios</h4>
+                                            <!-- <h4 class="header-title"></i>Lista Usuarios</h4> -->
                                           
                                             <div class="table-responsive">
                                                 <table class="table table-centered mb-0">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Scrollable modal</td>
+                                                            
                                                             <td>
                                                                 <!-- Small modal -->
-                                                                <button type="button" style="margin-right: 5%;" class="btn btn-info btn-sm waves-effect waves-light" data-placement="top" title="Registate" data-toggle="modal" data-target="#exampleModalScrollable1"><i class="mdi mdi-plus-thick"></i>Add</button>
+                                                                <button type="button" style="margin-right: 5%;" class="btn btn-info btn-sm waves-effect waves-light" data-placement="top" title="Registate" data-toggle="modal" data-target="#exampleModalScrollable1"><i class="mdi mdi-plus-thick"></i>Registrar</button>
                                                                 <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
@@ -134,12 +134,14 @@
                                                                                     <div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
+                                                                                                <label for="validationCustom01">Tipo Medicamento</label>
                                                                                                 <div class="form-group form-group-custom mb-6">
                                                                                                     <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.nombreFormaFarmaceutica}" placeholder="forma"
                                                                                                         class="form-control" id="formaFarmaceutica" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
+                                                                                                <label for="validationCustom01">Descripcion</label>
                                                                                                 <div class="form-group form-group-custom mb-6">
                                                                                                     <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.descripcion}" placeholder="descripcion"
                                                                                                         class="form-control" id="formaFarmaceutica1" required>
