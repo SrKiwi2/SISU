@@ -135,18 +135,21 @@
                                                                                     <div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-4">
+                                                                                                <label for="validationCustom01">Nombre</label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="text" name="persona1" th:field="${persona1.nombres}" placeholder="name"
                                                                                                         class="form-control" id="useremailA" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-4">
+                                                                                                <label for="validationCustom01">Primer Apellido</label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="text" name="persona1" th:field="${persona1.apPaterno}" placeholder="last name"
                                                                                                         class="form-control" id="userpasswordB" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-4">
+                                                                                                <label for="validationCustom01">Segundo Apellido</label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="text" name="persona1" th:field="${persona1.apMaterno}" placeholder="last name"
                                                                                                         class="form-control" id="userpasswordC" required>
@@ -154,11 +157,16 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
+                                                                                           <div class="col-sm-4">
+                                                                                            <label for="validationCustom01">Cedula Indentidad</label>
+                                                                                            <div class="form-group form-group-custom mb-4">
                                                                                                 <input type="number" name="persona1" th:field="${persona1.ci}" placeholder="ci.."
-                                                                                                    class="form-control" id="username2" required>
+                                                                                                class="form-control" id="username2" required>
                                                                                             </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
+                                                                                           </div>
+                                                                                           <div class="col-sm-4">
+                                                                                           <label for="validationCustom01">Expedido en:</label>
+                                                                                            <div class="form-group form-group-custom mb-4">
                                                                                                 <select class="selectize" name="dip">
                                                                                                     <option value="">Expedido en.....</option>
                                                                                                     <th:block th:each="ex: ${dips}" th:if="${ex.estado != 'X'}">
@@ -166,13 +174,19 @@
                                                                                                     </th:block>
                                                                                                 </select>
                                                                                             </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
+                                                                                        </div>
+                                                                                        <div class="col-sm-4">
+                                                                                            <label for="validationCustom01">Fecha Nacimiento</label>
+                                                                                            <div class="form-group form-group-custom mb-4">
                                                                                                 <input type="date" name="persona1" th:field="${persona1.fecha_nac}" id="customDateInput"
                                                                                                     class="form-control datepicker-here" data-language="en" placeholder="yy-mm-dd" />
                                                                                             </div>
                                                                                         </div>
+                                                                                        </div>
                                                                                         <div class="row">
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
+                                                                                            <div class="col-sm-4">
+                                                                                                <label for="validationCustom01">Genero</label>
+                                                                                            <div class="form-group form-group-custom mb-4">
                                                                                                 <select class="selectize" th:field="${persona1.sexo}" required>
                                                                                                     <option value="">Genero...</option>
                                                                                                     <option value="Femenino">Femenino</option>
@@ -181,7 +195,10 @@
                                                                             
                                                                                                 </select>
                                                                                             </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
+                                                                                            </div>
+                                                                                            <div class="col-sm-4">
+                                                                                            <label for="validationCustom01">Estado Civil</label>
+                                                                                            <div class="form-group form-group-custom mb-4">
                                                                                                 <select class="selectize" name="estadoCivil" required>
                                                                                                     <option value="">Estado civil..</option>
                                                                                                     <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
@@ -189,7 +206,10 @@
                                                                                                     </th:block>
                                                                                                 </select>
                                                                                             </div>
-                                                                                            <div class="form-group form-group-custom mb-4 col-sm-4">
+                                                                                           </div>
+                                                                                           <div class="col-sm-4">
+                                                                                            <label for="validationCustom01">Grado Academico</label>
+                                                                                            <div class="form-group form-group-custom mb-4">
                                                                                                 <select class="selectize" name="grado" >
                                                                                                     <option value="">Grado Academico..</option>
                                                                                                     <th:block th:each="g: ${grados}" th:if="${g.estado != 'X'}">
@@ -197,16 +217,18 @@
                                                                                                     </th:block>
                                                                                                 </select>
                                                                                             </div>
-                                                                            
+                                                                                        </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
+                                                                                                <label for="validationCustom01">Celular</label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="number" name="persona1" th:field="${persona1.celular}" placeholder="Telefono.."
                                                                                                         class="form-control" id="useremail" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
+                                                                                                <label for="validationCustom01">Direccion</label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="text" name="persona1" th:field="${persona1.Direccion}" placeholder="Direccion.."
                                                                                                         class="form-control" id="userpassword" required>
@@ -215,12 +237,14 @@
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
+                                                                                                <label for="validationCustom01">Usuario</label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="text" th:field="${usuario.apodo}" name="Usuario" class="form-control"
                                                                                                         placeholder="username">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
+                                                                                                <label for="validationCustom01">Password </label>
                                                                                                 <div class="form-group form-group-custom mb-4">
                                                                                                     <input type="password" th:field="${usuario.clave}" name="usuario" class="form-control"
                                                                                                         placeholder="password">
