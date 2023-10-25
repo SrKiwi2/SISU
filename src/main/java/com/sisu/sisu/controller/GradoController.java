@@ -23,10 +23,8 @@ public class GradoController {
 
     @GetMapping(value = "/formGrado")
     public String registroGrado(@Validated GradoAcademico gradoAcademico, Model model) {
-
         model.addAttribute("grado", new GradoAcademico());
         model.addAttribute("grados", gradoService.findAll());
-
         return "formularios/formGrado";
     }
 
@@ -34,7 +32,6 @@ public class GradoController {
 
     @PostMapping(value = "/guardarGrado")
     public String RegistrarGrado(@Validated GradoAcademico gradoAcademico) {
-        
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
         return "redirect:/ListaGrado";
@@ -48,10 +45,9 @@ public class GradoController {
         gradoAcademico.setEstado("X");
         gradoService.save(gradoAcademico);
         return "redirect:/ListaGrado";
-
     }
 
-//     /* Editar */
+    /* Editar */
 
     @RequestMapping(value = "/editarGrado/{id_grado}")
     public String editarGrado(@PathVariable("id_grado") Long id_grado, Model model) {
@@ -60,12 +56,9 @@ public class GradoController {
         return "formularios/ListaGrado";
     }
 
-
     @GetMapping(value = "/ListaGrado")
     public String listarGrado(Model model) {
-
         model.addAttribute("grados", gradoService.findAll());
-
         return "listas/listaGrado";
     }
 
@@ -77,19 +70,16 @@ public class GradoController {
         return "redirect:/ListaGrado";
     }
 
-
     /* Modificación Modal */
     @RequestMapping(value = "/grado/{idGradoAcademico}")
-    public String getContentGA(@PathVariable(value = "idGradoAcademico") Long idGradoAcademico, Model model, 
-    HttpServletRequest request) {
-
+    public String getContentGA(@PathVariable(value = "idGradoAcademico") Long idGradoAcademico, Model model,
+            HttpServletRequest request) {
         model.addAttribute("grados", gradoService.findOne(idGradoAcademico));
-
         return "contentGA :: contentGA";
     }
 
     @RequestMapping(value = "/registrarGradoAcademico")
-    private String getRegistrarGradoA(Model model){
+    private String getRegistrarGradoA(Model model) {
         model.addAttribute("grado", new GradoAcademico());
         model.addAttribute("grados", gradoService.findAll());
         return "contentGA :: contentGA";
