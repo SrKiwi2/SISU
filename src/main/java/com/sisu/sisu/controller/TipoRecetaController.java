@@ -44,9 +44,11 @@ public class TipoRecetaController {
         TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         tipoReceta.setEstado("X");
         tipoRecetaService.save(tipoReceta);
+        
         return "redirect:/ListaReceta";
     }
 
+    /* Listar */
 
     @GetMapping(value = "/ListaReceta")
     public String listarReceta(@Validated TipoReceta tipoReceta, Model model) {
@@ -57,13 +59,13 @@ public class TipoRecetaController {
         return "listas/listaTipoReceta";
     }
 
-
-
     /* Editar */
     @RequestMapping(value = "/editarReceta/{idTipoRe}")
     public String editarReceta(@PathVariable("idTipoRe") Long idTipoRe, Model model) {
+
         TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
-        model.addAttribute("tipoRecete", tipoReceta);
+        model.addAttribute("tipoReceta", tipoReceta);
+
         return "formularios/ListaReceta";
     }
 
@@ -76,8 +78,6 @@ public class TipoRecetaController {
         return "contentRE :: contentTipoReceta";
     }
 
-
-    
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosReceta")
     public String guardarCambiosReceta(@ModelAttribute TipoReceta tipoReceta) {
@@ -87,6 +87,5 @@ public class TipoRecetaController {
 
         return "redirect:/ListaReceta";
     }
-
 
 }
