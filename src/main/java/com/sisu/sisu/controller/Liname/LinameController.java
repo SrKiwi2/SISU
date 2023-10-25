@@ -83,7 +83,7 @@ public class LinameController {
         model.addAttribute("tipoUso", new TipoUso());
         model.addAttribute("tipoUsos", tipoUsoService.findAll()); 
        
-        return "listas/ListaLiname";
+        return "listas/Liname/ListaLiname";
     
     }
 
@@ -119,7 +119,7 @@ public class LinameController {
         model.addAttribute("farmaceuticas", farmaceuticaService.findAll());
         model.addAttribute("tipoUsos", tipoUsoService.findAll()); 
 
-        return "content :: contentLiname";
+        return "listas/Liname/contentLiname :: contentLiname";
     }
 
 

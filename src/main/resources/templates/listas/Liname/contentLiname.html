@@ -1,3 +1,72 @@
+<div th:fragment="contentLiname">
+    <input type="hidden" th:field="${listLiname.idLiname}">
+    <div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="validationCustom01">Codigo Liname</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="liname" th:field="${listLiname.codigoLiname}" placeholder="code"
+                        class="form-control" id="listLiname" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="validationCustom01">Codigo ATQ</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="listLiname" th:field="${listLiname.codigoATQ}" placeholder="ATQ"
+                        class="form-control" id="liname1" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="validationCustom01">Fecha Incluido</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="date" name="listLiname" th:field="${listLiname.fechaIncluido}" placeholder="last name"
+                        class="form-control" id="liname2" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="validationCustom01">Fecha Excluido</label>
+                <div class="form-group form-group-custom mb-6">
+                    <input type="date" name="listLiname" th:field="${listLiname.fechaExcluido}" placeholder="last name"
+                        class="form-control" id="liname3" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="validationCustom01">Medicamento en:</label>
+                <div class="form-group form-group-custom mb-6">
+                    <select class="custom-select" name="farmaceutica" >
+                      <option value="">Elegir..</option>
+                      <th:block th:each="f: ${farmaceuticas}" th:if="${f.estadoFF != 'X'}">
+                        <option th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}"></option>
+                      </th:block>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="validationCustom01">De uso:</label>
+                <div class="form-group form-group-custom mb-6">
+                <select class="custom-select" name="tipoUso" >
+                    <option value="">Elegir..</option>
+                    <th:block th:each="tu: ${tipoUsos}" th:if="${tu.estado != 'X'}">
+                        <option th:value="${tu.idTipoUso}" th:text="${tu.nombreTipoUso}"></option>
+                    </th:block>
+                </select>
+                </div>
+            </div>
+        </div>
+       
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+
+
+
 <div th:fragment="contentHistorial">
     <input type="hidden" th:field="${historialLiname.idHistorialLiname}">
     <div>
@@ -64,4 +133,30 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
 
+</div>
+
+<!------------------------------------------------------------FormaFarmaceutica-------------------------------------------------------------------->
+
+<div th:fragment="contentFarmaceutica">
+    <input type="hidden" th:field="${formaFarmaceutica.idFormaFarmaceutica}">
+    <div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.nombreFormaFarmaceutica}" placeholder="code"
+                        class="form-control" id="formaFarmaceutica" required>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group form-group-custom mb-6">
+                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.descripcion}" placeholder="ATQ"
+                        class="form-control" id="formaFarmaceutica1" required>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
 </div>

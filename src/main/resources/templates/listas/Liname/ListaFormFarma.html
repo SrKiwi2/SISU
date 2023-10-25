@@ -77,7 +77,7 @@
                                     <h4 class="page-title mb-1">Data Tables</h4>
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Tables</li>
+                                    <li class="breadcrumb-item active">Liname</li>
                                     </ol>
                                 </div>
                                 <div class="col-md-4">
@@ -123,26 +123,26 @@
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Datos Personales</h5>
+                                                                                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Ingresar Datos</h5>
                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                                     <span aria-hidden="true">&times;</span>
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../Farmaceutica" method="post">
-                                                                                    <input type="hidden" th:field="${farmaceutica.idFormaFarmaceutica}">
+                                                                                <form class="needs-validation" action="../../../../saveformaFarma" method="post">
+                                                                                    <input type="hidden" th:field="${formaFarmaceutica.idFormaFarmaceutica}">
                                                                                     <div>
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="farmaceutica" th:field="${farmaceutica.nombreFormaFarmaceutica}" placeholder="code"
-                                                                                                        class="form-control" id="farmaceutica" required>
+                                                                                                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.nombreFormaFarmaceutica}" placeholder="forma"
+                                                                                                        class="form-control" id="formaFarmaceutica" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group form-group-custom mb-6">
-                                                                                                    <input type="text" name="farmaceutica" th:field="${farmaceutica.descripcion}" placeholder="ATQ"
-                                                                                                        class="form-control" id="farmaceutica1" required>
+                                                                                                    <input type="text" name="formaFarmaceutica" th:field="${formaFarmaceutica.descripcion}" placeholder="descripcion"
+                                                                                                        class="form-control" id="formaFarmaceutica1" required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -156,7 +156,7 @@
                                                                         </div><!-- /.modal-content -->
                                                                     </div><!-- /.modal-dialog -->
                                                                 </div><!-- /.modal -->
-                                                            <!-- <div class="modal fade" id="exampleModalScrollableH" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
+                                                                <div class="modal fade" id="exampleModalScrollableF" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitleL" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -166,9 +166,9 @@
                                                                                 </button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form class="needs-validation" action="../../../../SaveHistorial" method="post">
+                                                                                <form class="needs-validation" action="../../../../SaveFarmaceutica" method="post">
 
-                                                                                    <div id="replace_divHistorial">
+                                                                                    <div id="replace_divFarmaceutica">
                                                                                         
                                                                                     </div>
                                                                                     
@@ -206,15 +206,15 @@
                                                                         </button>
                                                                     </a>
                                                                 </div>
-                                                                <!-- <div class="col-md-3 col-6 mb-2">
+                                                                <div class="col-md-3 col-6 mb-2">
                                                                     <a style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton"
-                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableH'}"
-                                                                            th:data-idhistorial="${h.idHistorialLiname}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
+                                                                            data-toggle="modal" th:data-target="${'#exampleModalScrollableF'}"
+                                                                            th:data-idfarma="${f.idFormaFarmaceutica}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>
-                                                                </div> -->
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -287,7 +287,7 @@
         <script src="../../../../assets/js/pages/form-validation.init.js"></script>
 
         <!-- modal-->
-        <script src="../../../../assets/js/pages/modalHistorial.js"></script>
+        <script src="../../../../assets/js/pages/modalFarmaceutica.js"></script>
 
         
         <!-- Spectrum colorpicker -->
