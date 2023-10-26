@@ -25,8 +25,10 @@ public class GradoController {
 
     @GetMapping(value = "/formGrado")
     public String registroGrado(Model model) {
+
         model.addAttribute("grado", new GradoAcademico());
         model.addAttribute("grados", gradoService.findAll());
+
         return "";
     }
 
@@ -34,8 +36,10 @@ public class GradoController {
 
     @PostMapping(value = "/guardarGrado")
     public String RegistrarGrado(@Validated GradoAcademico gradoAcademico) {
+
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
+
         return "redirect:/ListaGrado";
     }
 
@@ -43,6 +47,7 @@ public class GradoController {
 
     @RequestMapping(value = "/eliminarGrado/{id_grado}")
     public String eliminarGrado(@PathVariable("id_grado") Long id_grado) {
+        
         GradoAcademico gradoAcademico = gradoService.findOne(id_grado);
         gradoAcademico.setEstado("X");
         gradoService.save(gradoAcademico);

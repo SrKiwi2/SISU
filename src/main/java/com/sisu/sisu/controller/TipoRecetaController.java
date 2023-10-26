@@ -23,8 +23,10 @@ public class TipoRecetaController {
     //muestra mi formulario y mi lista
     @GetMapping(value = "/formReceta")
     public String registroReceta(Model model) {
+        
         model.addAttribute("tipoReceta", new TipoReceta());
         model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
+
         return "";
     }
 
