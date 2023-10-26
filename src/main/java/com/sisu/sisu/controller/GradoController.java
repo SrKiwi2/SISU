@@ -23,31 +23,11 @@ public class GradoController {
     private IGradoService gradoService;
     // muestra mi formulario y mi lista
 
-    @GetMapping(value = "/formGrado")
-    public String registroGrado(Model model) {
-
-        model.addAttribute("grado", new GradoAcademico());
-        model.addAttribute("grados", gradoService.findAll());
-
-        return "";
-    }
-
-    /* GUARDAR */
-
-    @PostMapping(value = "/guardarGrado")
-    public String RegistrarGrado(@Validated GradoAcademico gradoAcademico) {
-
-        gradoAcademico.setEstado("A");
-        gradoService.save(gradoAcademico);
-
-        return "redirect:/ListaGrado";
-    }
-
     /* eliminar */
 
     @RequestMapping(value = "/eliminarGrado/{id_grado}")
     public String eliminarGrado(@PathVariable("id_grado") Long id_grado) {
-        
+
         GradoAcademico gradoAcademico = gradoService.findOne(id_grado);
         gradoAcademico.setEstado("X");
         gradoService.save(gradoAcademico);
@@ -65,16 +45,6 @@ public class GradoController {
         return "listas/listaGrado";
     }
 
-    /* Editar */
-    @RequestMapping(value = "/editarGrado/{id_grado}")
-    public String editarGrado(@PathVariable("id_grado") Long id_grado, Model model) {
-
-        GradoAcademico gradoAcademico = gradoService.findOne(id_grado);
-        model.addAttribute("grado", gradoAcademico);
-
-        return "formularios/ListaGrado";
-    }
-
     /* Cuando apretar sabe en editar, llama esta funcion: Modificación Modal */
 
     @RequestMapping(value = "/grado/{idGradoAcademico}")
@@ -87,17 +57,17 @@ public class GradoController {
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosGrado")
     public String guardarCambiosGrado(@ModelAttribute GradoAcademico gradoAcademico) {
-
+                  
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
 
         return "redirect:/ListaGrado";
     }
 
-    // @RequestMapping(value = "/registrarGradoAcademico")
-    // private String getRegistrarGradoA(Model model) {
-    //     model.addAttribute("grado", new GradoAcademico());
-    //     model.addAttribute("grados", gradoService.findAll());
-    //     return "contentGA :: contentGA";
-    // }
+    @RequestMapping(value = "/registrarGradoA")
+    public String getRegistrarGradoA(Model model) {
+        model.addAttribute("grado", new GradoAcademico());
+        model.addAttribute("grados", gradoService.findAll());
+        return "contentGA :: contentGrado";
+    }
 }
