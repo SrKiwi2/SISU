@@ -202,7 +202,7 @@
                                                                                                 <select class="selectize" name="estadoCivil" required>
                                                                                                     <option value="">Estado civil..</option>
                                                                                                     <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
-                                                                                                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                                                                                                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.NomEstadoCivil}"></option>
                                                                                                     </th:block>
                                                                                                 </select>
                                                                                             </div>
@@ -314,7 +314,7 @@
                                                         <td th:text="${p.persona.ci}"></td>
                                                         <td th:text="${p.persona.dip.codDip}"></td>
                                                         <td th:text="${p.persona.sexo}"></td>
-                                                        <td th:if="${p.persona.tipos_estado_civil != null}" th:text="${p.persona.tipos_estado_civil.estadoCivil}"></td>
+                                                        <td th:if="${p.persona.tipos_estado_civil != null}" th:text="${p.persona.tipos_estado_civil.NomEstadoCivil}"></td>
                                                         <td th:if="${p.persona.grado_academico != null}" th:text="${p.persona.grado_academico.nombre_gradoAcademico}"></td>
                                                         <td th:text="${p.persona.celular}"></td>
                                                         <td th:text="${p.persona.direccion}"></td>

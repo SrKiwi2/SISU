@@ -69,7 +69,7 @@
                 <select class="custom-select" th:field="${persona.tipos_estado_civil}" required>
                     <option value="">Seleccione estado civil</option>
                     <th:block th:each="es : ${estadosCiviles}" th:if="${es.estado != 'X'}">
-                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                        <option th:value="${es.idTipoEstadoCivil}" th:text="${es.NomEstadoCivil}"></option>
                     </th:block>
                 </select>
                 <div class="invalid-feedback">Debes Seleccionar un Estado Civil</div>
@@ -177,7 +177,7 @@
                     <select class="custom-select" name="estadoCivil">
                         <option value="">Estado civil..</option>
                         <th:block th:each="es: ${estadosCiviles}" th:if="${es.estado != 'X'}">
-                            <option th:value="${es.idTipoEstadoCivil}" th:text="${es.estadoCivil}"></option>
+                            <option th:value="${es.idTipoEstadoCivil}" th:text="${es.NomEstadoCivil}"></option>
                         </th:block>
                     </select>
                 </div>
