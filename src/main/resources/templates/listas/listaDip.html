@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Data Tables | Xoric - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Lista Persona | SISU</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
@@ -29,10 +29,6 @@
     <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
-
-    <link href="../../../../assets/css/style.css" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 
 
 
@@ -108,6 +104,12 @@
 
                                         <!-- ------------- -->
 
+                                       
+                                        <div class="text-right mb-3">
+                                            <button type="button"
+                                                class="btn btn-primary btn-sm waves-effect waves-light"
+                                                onclick="NuevoRegistro()">Registrar</button>
+                                        </div>
 
                                         <!-- ------------- -->
 
@@ -135,7 +137,7 @@
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
-                                                                <a style="padding: 2px; display: inline-block; margin: 0px;"
+                                                                <a 
                                                                     th:href="${'../../../../eliminarDip/' + dip.idDip}">
                                                                     <button type="button"
                                                                         class="btn btn-outline-danger alertElimin btn-sm"
@@ -143,10 +145,7 @@
                                                                         <i class="dripicons-trash"></i>
                                                                     </button>
                                                                 </a>
-
-
                                                             </div>
-
                                                             <div class="mb-2">
                                                                 <a>
                                                                     <button type="button"
@@ -181,6 +180,8 @@
             </div>
             <!-- End Page-content -->
 
+
+
             <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog"
                 aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -193,13 +194,16 @@
                         </div>
 
                         <div class="modal-body">
-                            <form class="needs-validation" th:action="@{/guardarCambiosDip}" method="post" novalidate>
+                            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosDip}"
+                                method="post" novalidate>
 
                                 <div id="replace_dip"></div>
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                <div class="text-right mt-3">
+                                    <button type="submit" onclick="validarFormulario()"
+                                        class="btn btn-primary mr-2">Guardar</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Cancelar</button>
                                 </div>
                             </form>
                         </div>
@@ -207,6 +211,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div th:insert="~{layout/footer :: footer}"></div>
@@ -234,46 +239,87 @@
                 $('#bs-example-modal-center').modal('show');
             });
         }
+
+        function NuevoRegistro() {
+
+            // Modifica la URL para cargar el modal vacío para registrar una nueva persona.
+
+            var url = "../../../../formRegistroDiptoList";
+
+            // Load the fragment and replace content in #replace_div
+            $('#replace_dip').load(url, function () {
+                // Modifica cualquier configuración necesaria para un nuevo registro.
+                $('#modal-form').attr('action', '/guardarCambiosDip'); // Por ejemplo, cambiar la acción del formulario.
+                $('#bs-example-modal-center').modal('show');
+            });
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Selecciona el formulario por su id
+            const form = document.getElementById("miFormulario");
+
+            form.addEventListener("submit", function (event) {
+                let isValid = true; // Variable para rastrear la validez del formulario
+
+                // Obtén todos los campos obligatorios (los que tienen el atributo "required")
+                const requiredFields = form.querySelectorAll("[required]");
+
+                requiredFields.forEach(function (field) {
+                    if (!field.value) {
+                        // Si un campo obligatorio está vacío, muestra un mensaje de error
+                        isValid = false;
+                        field.classList.add("is-invalid");
+                    } else {
+                        field.classList.remove("is-invalid");
+                    }
+                });
+
+                if (!isValid) {
+                    // Si el formulario no es válido, evita que se envíe
+                    event.preventDefault();
+                }
+            });
+        });
+
+
     </script>
 
 
 
-    <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
-    <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
+<script src="../../../../assets/libs/node-waves/waves.min.js"></script>
+<script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
-    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+<!-- Required datatable js -->
+<script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Required datatable js -->
-    <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="../../../../assets/libs/jszip/jszip.min.js"></script>
+<script src="../../../../assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../../assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-    <!-- Buttons examples -->
-    <script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../../../assets/libs/jszip/jszip.min.js"></script>
-    <script src="../../../../assets/libs/pdfmake/build/pdfmake.min.js"></script>
-    <script src="../../../../assets/libs/pdfmake/build/vfs_fonts.js"></script>
-    <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-    <!-- Responsive examples -->
-    <script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+<!-- Datatable init js -->
+<script src="../../../../assets/js/pages/datatables.init.js"></script>
 
-    <!-- Datatable init js -->
-    <script src="../../../../assets/js/pages/datatables.init.js"></script>
-
-    <!-- alert -->
-    <script src="../../../../assets/libs/alertifyjs/build/alertify.min.js"></script>
-    <script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
-
-    <script src="../../../../assets/js/pages/vistaPass.js"></script>
+<!-- alert -->
+<script src="../../../../assets/libs/alertifyjs/build/alertify.min.js"></script>
+<script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
 
 
-    <script src="../../../../assets/js/app.js"></script>
+<script src="../../../../assets/js/app.js"></script>
 </body>
 
 </html>

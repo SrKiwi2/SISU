@@ -97,8 +97,6 @@ public class DipController {
 
         model.addAttribute("manydip", iDipService.findOne(idDip));
 
-        model.addAttribute("opcion", "Editar");
-
         return "contentDip :: contentDip";
     }
 
@@ -108,12 +106,10 @@ public class DipController {
     //----------- Formulario para registrar --------
 
         @RequestMapping(value = "/formRegistroDiptoList")
-    public String registroDiptoList(@Validated Dip dip, Model model){
+    public String registroDiptoList(Model model){
         
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", iDipService.findAll());
-  
-        model.addAttribute("opcion", "Registrar");
 
         return "contentDip :: contentDip";
     }
