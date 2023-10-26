@@ -26,8 +26,8 @@ public class TiposEstadoCivil implements Serializable {
 	@Column(name = "id_tipo_estado_civil")
 	private Long idTipoEstadoCivil;
 
-	@Column(name = "estado_civil")
-	private String estadoCivil;
+	@Column(name = "Nom_estado_civil")
+	private String NomEstadoCivil;
 
 	@Column(name = "estado")
 	private String estado;

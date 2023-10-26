@@ -93,7 +93,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr th:each ="e : ${estadosCiviles}" th:if="${e.estado != 'X'}">
-                                                        <td th:text="${e.estadoCivil}"></td> 
+                                                        <td th:text="${e.NomEstadoCivil}"></td> 
                                                         <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="mb-2"> 
@@ -105,7 +105,9 @@
                                                                 </div>
                                                                 <div class="mb-2">
                                                                     <a>
-                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" th:data-target="${'#bs-example-modal-center'}" th:data-idestadoC="${e.idTipoEstadoCivil}" onclick="buscar(this)" style="margin: 5px; padding: 8px;">
+                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal"
+                                                                            th:data-target="${'#bs-example-modal-center'}" th:data-idestadocivil="${e.idTipoEstadoCivil}" onclick="buscar(this)"
+                                                                            style="margin: 5px; padding: 8px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>
@@ -131,9 +133,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="miFormulario" class="needs-validation" action="@{/guardarCambiosEstadoC}" method="post" novalidate>
+                                    <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosEstadoC}" method="post" novalidate>
                                        
-                                        <div id="replace_div_ec">
+                                        <div id="replace_div_estadoC">
                                             
                                         </div>                          
                             
@@ -160,13 +162,13 @@
         <script>
             function buscar(button) {
                 // Capture the value of th:data-idpersona from the clicked button
-                var idTipoEstadoCivil = $(button).data('idestadoC');
-                alert(idTipoEstadoCivil);
+                var idTipoEstadoCivil = $(button).data('idestadocivil');
+                
                 // Create the URL to request the fragment using the captured idPersona
-                var url = "../../../../estadoCivil/" + idTipoEstadoCivil;
+                var url = "../../../../estadoCivill/" + idTipoEstadoCivil;
         
                 // Load the fragment and replace content in #replace_div
-                $('#replace_div_ec').load(url, function (){
+                $('#replace_div_estadoC').load(url, function (){
                     $('#modal-form').attr('action', '/guardarCambiosEstadoC');
                     $('#bs-example-modal-center').modal('show');
                 });
@@ -178,7 +180,7 @@
                 var url = "../../../../registrarEstadoCivil";
 
                 // Load the fragment and replace content in #replace_div
-                $('#replace_div_ec').load(url, function () {
+                $('#replace_div_estadoC').load(url, function () {
                     // Modifica cualquier configuración necesaria para un nuevo registro.
                     $('#modal-form').attr('action', '/guardarCambiosEstadoC'); // Por ejemplo, cambiar la acción del formulario.
                     $('#bs-example-modal-center').modal('show');

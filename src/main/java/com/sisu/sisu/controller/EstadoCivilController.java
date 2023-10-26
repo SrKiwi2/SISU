@@ -1,12 +1,8 @@
 package com.sisu.sisu.controller;
 
 import com.sisu.sisu.Service.ITiposEstadoCivilService;
-import com.sisu.sisu.entitys.Proveedor;
-import com.sisu.sisu.entitys.TipoProveedor;
 import com.sisu.sisu.entitys.TiposEstadoCivil;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +18,24 @@ public class EstadoCivilController {
 
     @Autowired
     private ITiposEstadoCivilService tiposEstadoCivilService;
+
+    /* formulario */
+
+    @GetMapping(value = "/formRegistroEstadoC")
+    public String registroPersona(@Validated TiposEstadoCivil tiposEstadoCivil, Model model) {
+
+        model.addAttribute("estadoCivil", new TiposEstadoCivil());
+        model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
+
+        return "formularios/formEst_Civil";
+    }
+
+    @PostMapping(value = "/guardarEstadoCivil")
+    public String guardaEstadoCivil(@Validated TiposEstadoCivil tiposEstadoCivil) {
+        tiposEstadoCivil.setEstado("A");
+        tiposEstadoCivilService.save(tiposEstadoCivil);
+        return "redirect:/formRegistroEstadoC";
+    }
 
     /* Eliminar */
 
@@ -45,19 +59,19 @@ public class EstadoCivilController {
     public String getRegistroEstadoC(Model model) {
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
-        return "contentGA :: contentER";
+        return "contentGA :: contentEstadoC";
     }
 
     /* modificar con el mnodal */
     @RequestMapping(value = "/estadoCivill/{idTipoEstadoCivil}")
-    public String getContentPr(@PathVariable(value = "idTipoEstadoCivil") Long idTipoEstadoCivil, Model model,
+    public String getEstadoCivill(@PathVariable(value = "idTipoEstadoCivil") Long idTipoEstadoCivil, Model model,
             HttpServletRequest request) {
         model.addAttribute("estadoCivil", tiposEstadoCivilService.findOne(idTipoEstadoCivil));
-        return "contentGA :: contentER";
+        return "contentGA :: contentEstadoC";
     }
 
     @PostMapping(value = "/guardarCambiosEstadoC")
-    public String guardarCambiosEstadoC(@ModelAttribute TiposEstadoCivil tiposEstadoCivil) {
+    public String guardaCambiosEstadoC(@ModelAttribute TiposEstadoCivil tiposEstadoCivil) {
         tiposEstadoCivil.setEstado("A");
         tiposEstadoCivilService.save(tiposEstadoCivil);
         return "redirect:/ListasEstadoC";
