@@ -61,7 +61,7 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h4 class="page-title mb-1">Data Tables</h4>
+                                <h4 class="page-title mb-1">ADMINISTRACION DE DIP REGISTRADOS</h4>
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
                                     <li class="breadcrumb-item active">Data Tables</li>
@@ -75,10 +75,18 @@
                                             <i class="mdi mdi-settings-outline mr-1"></i> OPCIONES
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                           
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Separated link</a>
+                                            
+                                            <form th:action="@{${url}}" method="get">
+                                               
+                                                <input type="submit" th:value="${nameButton1}"></input>
+                                              </form>
+
+                                            <div class="dropdown-divider"></div>
+
+                                            <!-- <a class="dropdown-item" href="#">Separated link</a> -->
+
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +136,7 @@
                                             </thead>
 
                                             <tbody>
-                                                <tr th:each="dip : ${dips}" th:if="${dip.estado !='X'}">
+                                                <tr th:each="dip : ${dips}" th:if="${dip.estado != opcion1}">
                                                     <td th:text="${dip.codDip}"></td>
                                                     <td th:text="${dip.descripcion}"></td>
                                                     <!-- <td th:text="${us.idPersona.apMaterno}"></td>
@@ -162,21 +170,23 @@
 
                                                         </div>
                                                     </td>
-
-
-
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
-                                </div>
+                                    </div> 
+                              </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
                     </div>
                     <!-- end container-fluid -->
                 </div>
-                <!-- end page-content-wrapper -->
+
+
+
+
+
+                
             </div>
             <!-- End Page-content -->
 
@@ -244,12 +254,12 @@
 
             // Modifica la URL para cargar el modal vacío para registrar una nueva persona.
 
-            var url = "../../../../formRegistroDiptoList";
+            var url = "../../../../registrarDip";
 
             // Load the fragment and replace content in #replace_div
             $('#replace_dip').load(url, function () {
                 // Modifica cualquier configuración necesaria para un nuevo registro.
-                $('#modal-form').attr('action', '/guardarCambiosDip'); // Por ejemplo, cambiar la acción del formulario.
+                $('#modal-form').attr('action', '/guardarNuevaDip'); // Por ejemplo, cambiar la acción del formulario.
                 $('#bs-example-modal-center').modal('show');
             });
         }

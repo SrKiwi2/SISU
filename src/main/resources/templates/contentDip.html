@@ -6,21 +6,21 @@
 
 
 <body>
-    <div th:fragment="contentDip">
-        <input type="hidden" name="manydip" th:field="${manydip.idDip}">
+    <div th:fragment="contentdip">
+        <input type="hidden" name="dip" th:field="${dip.idDip}">
         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
         <div class="row">
             <div class="col-md-6 mb-6">
                 <label for="validationCustom03">DIP</label>
-                <input type="text" class="form-control" name="manydip" th:field="${manydip.codDip}" required>
+                <input type="text" class="form-control" name="dip" th:field="${dip.codDip}" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
             <div class="col-md-6 mb-6">
                 <label for="validationCustom02">Descripcion</label>
-                <input type="text" class="form-control" name="manydip" id="validationCustom02"
-                    th:field="${manydip.descripcion}" required>
+                <input type="text" class="form-control" name="dip" id="validationCustom02"
+                    th:field="${dip.descripcion}" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
