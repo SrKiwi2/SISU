@@ -14,30 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.ITipoRecetaService;
 import com.sisu.sisu.entitys.TipoReceta;
+import com.sisu.sisu.entitys.TiposEstadoCivil;
 
 @Controller
 public class TipoRecetaController {
 
     @Autowired
     private ITipoRecetaService tipoRecetaService;
-    //muestra mi formulario y mi lista
-    @GetMapping(value = "/formReceta")
-    public String registroReceta(Model model) {
-        
-        model.addAttribute("tipoReceta", new TipoReceta());
-        model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
-
-        return "";
-    }
-
-    /* GUARDAR */
-
-    @PostMapping(value = "/guardarReceta")
-    public String RegistrarReceta(@Validated TipoReceta tipoReceta) {
-        tipoReceta.setEstado("A");
-        tipoRecetaService.save(tipoReceta);
-        return "redirect:/ListaReceta";
-    }
+    
 
     /* eliminar */
 
@@ -61,16 +45,6 @@ public class TipoRecetaController {
         return "listas/listaTipoReceta";
     }
 
-    /* Editar */
-    @RequestMapping(value = "/editarReceta/{idTipoRe}")
-    public String editarReceta(@PathVariable("idTipoRe") Long idTipoRe, Model model) {
-
-        TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
-        model.addAttribute("tipoReceta", tipoReceta);
-
-        return "formularios/ListaReceta";
-    }
-
     /* Cuando apretar sabe en editar, llama esta funcion: Modificación Modal */
 
     @RequestMapping(value = "/tipoReceta/{idTipoRe}")
@@ -78,6 +52,14 @@ public class TipoRecetaController {
         // TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         model.addAttribute("tipoReceta", tipoRecetaService.findOne(idTipoRe));
         return "contentRE :: contentTipoReceta";
+    }
+
+    /* registrar con el modal */
+    @RequestMapping(value = "/registrarReceta")
+    public String getRegistroEstadoC(Model model) {
+        model.addAttribute("estadoCivil", new TipoReceta());
+        model.addAttribute("estadosCiviles", tipoRecetaService.findAll());
+        return "contentGA :: contentEstadoC";
     }
 
     /* Guardar Cambios */

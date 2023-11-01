@@ -81,6 +81,10 @@
                                         <div class="card-body">
                                             <h4 class="header-title">Buttons example</h4>
                                             <p class="card-title-desc">The Buttons extension for DataTables</p>
+                                            <div class="text-right mb-3">
+                                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light"
+                                                    onclick="NuevoRegistro()">Registrar</button>
+                                            </div>
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
@@ -99,19 +103,20 @@
                                                         <td th:text="${r.observacion}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a th:href="${'../../../../editarRoles/' + r.idRol}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
+                                                                <div class="mb-2">
+                                                                    <a th:href="${'../../../../eliminarRoles/' + r.idRol}">
+                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm" style="margin: 5px; padding: 8px;">
+                                                                            <i class="dripicons-trash"></i>
+                                                                        </button>
                                                                     </a>
                                                                 </div>
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a th:href="${'../../../../eliminarRoles/' + r.idRol}" style="padding: 2px; display: inline-block; margin: 0px;">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a style="padding: 2px; display: inline-block; margin: 0px;" data-idRol="~{r.idRol}">
-                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" id="editButton"><i class="dripicons-document-edit"></i></button>
+                                                                <div class="mb-2">
+                                                                    <a>
+                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal"
+                                                                            th:data-target="${'#bs-example-modal-center'}" th:data-idroles="${r.idRol}" onclick="buscar(this)"
+                                                                            style="margin: 5px; padding: 8px;">
+                                                                            <i class="dripicons-document-edit"></i>
+                                                                        </button>
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -124,83 +129,36 @@
                                 </div>
                             </div>
                         </div>
-                    </div>  
-                    
-                    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    </div>
+                    <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog"
+                        aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title mt-0">Center modal</h5>
+                                    <h5 class="modal-title mt-0">Modificando registro de persona</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="/guardarPersona" method="post" novalidate>
-                                        <input type="hidden" id="modal-idPersona" name="idPersona">
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label for="nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required title="Por favor, complete este campo">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="apellidoPaterno">Apellido Paterno</label>
-                                                <input type="text" class="form-control" id="apellidoPaterno" placeholder="Ingrese su apellido paterno" required title="Por favor, complete este campo">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="apellidoMaterno">Apellido Materno</label>
-                                                <input type="text" class="form-control" id="apellidoMaterno" placeholder="Ingrese su apellido materno" required title="Por favor, complete este campo">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="ci">Carnet de Identidad (CI)</label>
-                                                <input type="text" class="form-control" id="ci" placeholder="Ingrese su CI" required title="Por favor, complete este campo">
-                                            </div>
+                                    <form id="miFormulario" class="needs-validation" th:action="@{/guardarRoles}"
+                                        method="post" novalidate>
+                                
+                                        <div id="replace_div_rol">
+                                        
                                         </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-4">
-                                                <label for="genero">Género</label>
-                                                <select class="form-control" id="genero" required title="Por favor, complete este campo">
-                                                    <option value="masculino">Masculino</option>
-                                                    <option value="femenino">Femenino</option>
-                                                    <option value="otro">Otro</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-8">
-                                                <label for="direccion">Dirección</label>
-                                                <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección" required title="Por favor, complete este campo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="celular">Celular</label>
-                                                <input type="text" class="form-control" id="celular" placeholder="Ingrese su número de celular" required title="Por favor, complete este campo">
-                                            </div>
-                                            <!-- <div class="form-group col-md-4">
-                                                <label for="estadoCivil">Estado Civil</label>
-                                                <select class="form-control" id="estadoCivil" required title="Por favor, complete este campo">
-                                                    <option value="soltero">Soltero</option>
-                                                    <option value="casado">Casado</option>
-                                                    <option value="divorciado">Divorciado</option>
-                                                    <option value="viudo">Viudo</option>
-                                                </select>
-                                            </div> -->
-                                            <!-- <div class="form-group col-md-4">
-                                                <label for="gradoAcademico">Grado Académico</label>
-                                                <input type="text" class="form-control" id="gradoAcademico" placeholder="Ingrese su grado académico" required title="Por favor, complete este campo">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="dip">DIP</label>
-                                                <input type="text" class="form-control" id="dip" placeholder="Ingrese su DIP" required title="Por favor, complete este campo">
-                                            </div> -->
+                                    
+                                        <div class="text-right mt-3">
+                                            <button type="submit" onclick="validarFormulario()"
+                                                class="btn btn-primary mr-2">Guardar</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Cancelar</button>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Guardar</button>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-   
+                            </div>
+                        </div>
+                    </div>      
                 </div>
                 <div th:insert ="~{layout/footer :: footer}"></div>    
             </div>
@@ -209,6 +167,35 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
+        <script>
+
+            function buscar(button) {
+                // Capture the value of th:data-idpersona from the clicked button
+                var idRol = $(button).data('idroles');
+                alert(idRol)
+                // Create the URL to request the fragment using the captured idPersona
+                var url = "../../../../roles/" + idRol;
+
+                // Load the fragment and replace content in #replace_div
+                $('#replace_div_rol').load(url, function () {
+                    $('#modal-form').attr('action', '/guardarRoles');
+                    $('#bs-example-modal-center').modal('show');
+                });
+            }
+
+            function NuevoRegistro() {
+            
+                // Modifica la URL para cargar el modal vacío para registrar una nueva persona.
+                var url = "../../../../registrarRoles";
+                // Load the fragment and replace content in #replace_div
+                $('#replace_div_rol').load(url, function () {
+                    // Modifica cualquier configuración necesaria para un nuevo registro.
+                    $('#modal-form').attr('action', '/guardarRoles'); // Por ejemplo, cambiar la acción del formulario.
+                    $('#bs-example-modal-center').modal('show');
+                });
+            }
+        </script>
+
         <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
         <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>

@@ -1,5 +1,7 @@
 package com.sisu.sisu.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class RolesController {
     public String RegistroRol(@Validated Roles roles){
         roles.setEstado("A");
         rolesService.save(roles);
-        return "redirect:/formRegristroRoles";
+        return "redirect:/ListaDeRoles";
     }
 
     @RequestMapping(value = "/eliminarRoles/{idRol}")
@@ -41,16 +43,25 @@ public class RolesController {
         return "redirect:/ListaDeRoles";
     }
 
-    @RequestMapping(value = "/editarRoles/{idRol}")
-    public String editarRol(@PathVariable("idRol") Integer idRol, Model model){
-        Roles roles = rolesService.findOne(idRol);
-        model.addAttribute("role", roles);
-        return "formularios/formRoles";
-    }
-
     @GetMapping(value = "/ListaDeRoles")
     public String listarRol(Model model){
         model.addAttribute("roles", rolesService.findAll());
         return "listas/listaRoles";
+    }
+
+    /* modificar con el modal */
+    @RequestMapping(value = "/roles/{idRol}")
+    public String getContentRoless(@PathVariable(value = "idRol") Integer idRol, Model model,
+            HttpServletRequest request) {
+        model.addAttribute("role", rolesService.findOne(idRol));
+        return "content :: contentRol";
+    }
+
+    /* registrar con el modal */
+    @RequestMapping(value = "/registrarRoles")
+    public String getRegistroRoles(Model model) {
+        model.addAttribute("role", new Roles());
+        model.addAttribute("roles", rolesService.findAll());
+        return "content :: contentRol";
     }
 }

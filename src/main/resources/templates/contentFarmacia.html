@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="validationCustom01">Ubicacion</label>
-                <input type="text" class="form-control" name="remediosFarmacia" id="validationCustom01"
+                <input type="text" class="form-control" name="RemediosFarmacia" id="validationCustom01"
                     th:field="${remediosFarmacia.ubicacion}" placeholder="Introduce una ubicacion" required>
                 <div class="valid-feedback">
                     Looks good!
@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label>Liname</label>
-                <select class="custom-select" th:field="${remediosFarmacia.lista_liname}" required>
+                <select class="custom-select" th:field="${remediosFarmacia.lista_liname.idLiname}" required>
                     <option value="">Seleciones una opcion</option>
                     <th:block th:each="ll: ${listLinames}" th:if="${ll.estadoLiname != 'X'}">
                         <option th:value="${ll.idLiname}" th:text="${ll.codigoLiname}"></option>
@@ -79,7 +79,7 @@
                 <label>precio lote</label>
                 <select class="custom-select" th:field="${remediosFarmaciaLote.remedio_lote}" required>
                     <option value="">Seleccione una opcion</option>
-                    <th:block th:each="rl: ${remedioLotes}" th:if="${rl.estado != 'X'}">
+                    <th:block th:each="rl: ${remedioLotes}" th:if="${rl.estado != 'X'}">    
                         <option th:value="${rl.idRemedioLote}" th:text="${rl.precioLote}"></option>
                     </th:block>
                 </select>

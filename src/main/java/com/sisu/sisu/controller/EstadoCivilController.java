@@ -59,7 +59,7 @@ public class EstadoCivilController {
     public String getRegistroEstadoC(Model model) {
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
-        return "contentGA :: contentEstadoC";
+        return "contentRE :: contentEstadoReceta";
     }
 
     /* modificar con el mnodal */
@@ -67,7 +67,7 @@ public class EstadoCivilController {
     public String getEstadoCivill(@PathVariable(value = "idTipoEstadoCivil") Long idTipoEstadoCivil, Model model,
             HttpServletRequest request) {
         model.addAttribute("estadoCivil", tiposEstadoCivilService.findOne(idTipoEstadoCivil));
-        return "contentGA :: contentEstadoC";
+        return "contentRE :: contentEstadoReceta";
     }
 
     @PostMapping(value = "/guardarCambiosEstadoC")

@@ -84,39 +84,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <form class="needs-validation" action="/guardarRoles" method="post" novalidate>
-                                                <input type="hidden" th:field="${role.idRol}">
-                                                <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-                                                <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom01">Descripción del Rol</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" th:field="${role.descripcion}" placeholder="Introduce la descripcion del rol" required >
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom02">Simbolo del Rol</label>
-                                                        <input type="text" class="form-control" id="validationCustom02" th:field="${role.simbolo}" placeholder="Introduce el simbolo del rol" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom03">Nombre del Rol</label>
-                                                        <input type="text" class="form-control" id="validationCustom03" th:field="${role.rol}" placeholder="Introduce el nombre del rol" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom04">Observación</label>
-                                                        <input type="text" class="form-control" id="validationCustom04" th:field="${role.observacion}" placeholder="Introduce la observación" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                                 <button class="btn btn-primary" type="submit">Registrar</button>
                                             </form>
                                         </div>

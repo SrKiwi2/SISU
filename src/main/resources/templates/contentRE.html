@@ -31,6 +31,29 @@
 
     <!-- ------------------------------------------------------------------------------------------ -->
 
+    <div th:fragment="contentEstadoReceta">
+        <input type="hidden" th:field="${estadoReceta.idEstadoReceta}">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Estado receta</label>
+                <input type="text" class="form-control" id="validationCustom01" th:field="${estadoReceta.nombreEstado}" placeholder="Introduce el Estado" required >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Descripcion</label>
+                <input type="text" class="form-control" id="validationCustom01" th:field="${estadoReceta.descripcion}" placeholder="Introduce una descripcion" required >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+      
+        </div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------ -->
+
     <div th:fragment="contentTp">
         <input type="hidden" th:field="${tipoProveedor.idTipoProveedor}">
         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>

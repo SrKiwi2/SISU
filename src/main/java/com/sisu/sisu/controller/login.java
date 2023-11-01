@@ -28,7 +28,7 @@ public class login {
 	}
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111");
