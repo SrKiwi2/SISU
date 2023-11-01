@@ -41,10 +41,6 @@ public class PersonaUsuarioController {
 
     @Autowired
     private EstadoCivilService estadoCivilService;
-  
-    
-
-
 
     @GetMapping(value = "/formPerUsuario") // Pagina principal
 	public String registroPersona(Model model) {
@@ -65,7 +61,7 @@ public class PersonaUsuarioController {
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());
 
-        return "";
+        return "index/login";
 
 		
 	}
@@ -231,4 +227,65 @@ public class PersonaUsuarioController {
         usuarioService.save(usuario);
         return "redirect:/listaPerUsuario";
     }
+
+
+
+    //-----------------------------------Perosna Particular---------------------------------------------
+
+     @GetMapping(value = "/formPerParticular") // Pagina principal
+	public String registroPersonaParticuar(Model model) {
+
+    
+        model.addAttribute("personaP", new Persona());
+        model.addAttribute("personasP", personaService.findAll());
+
+        model.addAttribute("usuarioP", new Usuario());
+        model.addAttribute("usuariosP", usuarioService.findAll());
+
+        model.addAttribute("dipP", new Dip());
+        model.addAttribute("dipsP", dipService.findAll());
+
+        model.addAttribute("gradoP", new GradoAcademico());
+        model.addAttribute("gradosP", gradoService.findAll());
+		
+        model.addAttribute("estadoCivilP", new TiposEstadoCivil());
+        model.addAttribute("estadosCivilesP", estadoCivilService.findAll());
+
+        return "index/login";
+
+		
+	}
+
+
+    @PostMapping(value = "/savePerParticular") // Enviar datos de Registro a Lista
+	public String guardarPersonaParticular(@Validated Persona personaP, RedirectAttributes flash,HttpServletRequest request,
+    @RequestParam(name="apodo",required = false)String apodo,
+    @RequestParam(name="clave",required = false)String clave,
+    @RequestParam(name="grado",required = false)Long idGradoAcademico,
+    @RequestParam(name="dip",required = false)Long idDip,
+    @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
+    ) { 
+
+        personaP.setEstado("A");
+        personaP.setGrado_academico(gradoService.findOne(idGradoAcademico));
+        personaP.setDip(dipService.findOne(idDip));
+        personaP.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
+        personaService.save(personaP); // guardas todos los datos de la persona (1)
+
+        Usuario usuarioP = new Usuario(); // creas un nuevo registro de usuario 
+        usuarioP.setApodo(apodo);
+        usuarioP.setClave(clave);
+        usuarioP.setEstado("A");
+
+        usuarioP.setPersona(personaP);// aqui ya creas la relacion de la Persona con el Usuario (1)
+        usuarioService.save(usuarioP);
+		personaService.save(personaP);
+
+		return "redirect:/listaPerUsuario";
+	}
+
+
+
+
+
 }

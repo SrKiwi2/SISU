@@ -11,6 +11,8 @@ public class AdminControllers {
     @GetMapping("/admin")
     public String vista(Model model) {
 
+        
+
         return "index/inicio";
     }
     
