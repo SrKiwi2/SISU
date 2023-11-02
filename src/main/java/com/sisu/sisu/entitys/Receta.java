@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +34,7 @@ public class Receta implements Serializable {
     @Column(name = "id_receta")
     private Long idReceta;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "fecha")
     private Date fecha;
 
