@@ -24,7 +24,7 @@ import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.entitys.Persona;
 
 @Controller
-public class FichaSisuController {
+public class FichasisuController {
 	
 	@Autowired
 	private IPersonaService personaService;

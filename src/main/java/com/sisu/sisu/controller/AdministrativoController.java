@@ -30,7 +30,7 @@ public class AdministrativoController {
     private IPersonaService personaService;
 
 
-    @RequestMapping(value = "/administrativo", method = RequestMethod.GET)
+    @RequestMapping(value = "/administrativo", method = RequestMethod.POST)
 	public String administrativo(HttpServletRequest request,Model model,@RequestParam("codigoAdministrativo") String codigoAdministrativo) {
 			
 		try {
