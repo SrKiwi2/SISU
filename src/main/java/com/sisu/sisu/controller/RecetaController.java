@@ -67,6 +67,7 @@ public class RecetaController {
     @PostMapping(value = "/CargarTablaReceta")
     public String CargarTablaReceta(Model model) {
         model.addAttribute("recetas", recetaService.listarTodo());
+        
         return "listas/tablaReceta";
     }
 
