@@ -91,62 +91,43 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <form class="needs-validation"
-                                            th:action="${edit}? @{/ModificarReceta}: @{/RegistrarReceta2}" method="post"
-                                            novalidate>
-                                            <input type="hidden" th:field="${receta.idReceta}"
-                                                th:if="${receta.idReceta !=null}">
+                                            th:action="${edit}? @{/ModificarRecetaRemedios}: @{/RegistrarRecetaRemedios2}"
+                                            method="post" novalidate>
+                                            <input type="hidden" th:field="${recetaRemedio.idRecetaRemedios}"
+                                                th:if="${recetaRemedio.idRecetaRemedios !=null}">
                                             <h4 class="header-title"
                                                 th:text="${edit}? 'MODIFICA LOS SIGUIENTES DATOS': 'INTRODUZCA LOS SIGUIENTES DATOS'">
                                             </h4>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <label for="validationCustom01">Prescripción</label>
-                                                    <input type="text" class="form-control" name="prescripcion"
-                                                        id="validationCustom01" th:field="${receta.prescripcionMedica}"
-                                                        placeholder="Introduce Prescripción" required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="validationCustom02">Fecha</label>
-                                                    <input type="text" class="form-control datepickerformReceta"
-                                                        name="fechaReceta" id="validationCustom02"
-                                                        th:field="${receta.fecha}" placeholder="Introduce fecha"
-                                                        required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Tipo de Receta</label>
+                                                    <label>Receta</label>
                                                     <select class="custom-select selectform" style="width: 100%;"
-                                                        th:field="${receta.tipo_receta}" required>
-                                                        <option th:value="${edit}? ${receta.tipo_receta}: '0'"
-                                                            th:text="${edit}? ${receta.tipo_receta.descripcionReceta}: 'Selecciona tipo Receta'">
+                                                        th:field="${recetaRemedio.receta}" required>
+                                                        <option
+                                                            th:value="${edit}? ${recetaRemedio.receta.idReceta}: '0'"
+                                                            th:text="${edit}? ${recetaRemedio.receta.prescripcionMedica}: 'Selecciona Receta'">
                                                         </option>
-                                                        <option th:each="tipoReceta: ${tipoRecetas}"
-                                                            th:if="${tipoReceta.estado != 'X'}"
-                                                            th:value="${tipoReceta.idTipoRe}"
-                                                            th:text="${tipoReceta.descripcionReceta}"></option>
+                                                        <option th:each="receta: ${listReceta}"
+                                                            th:if="${receta.estado != 'X'}"
+                                                            th:value="${receta.idReceta}"
+                                                            th:text="${receta.prescripcionMedica}"></option>
                                                     </select>
                                                     <div class="invalid-feedback">Example invalid custom select feedback
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="validationCustom07">Estado</label>
+                                                    <label for="validationCustom07">Remedio Farmacia</label>
                                                     <select class="custom-select selectform" style="width: 100%;"
-                                                        th:field="${receta.estado_receta}" required>
+                                                        th:field="${recetaRemedio.remedios_farmacia}" required>
                                                         <option
-                                                            th:value="${edit}? ${receta.estado_receta.idEstadoReceta}: '0'"
-                                                            th:text="${edit}? ${receta.estado_receta.nombreEstado}: 'Seleccione Estado Receta'">
+                                                            th:value="${edit}? ${recetaRemedio.remedios_farmacia.idRemediosFarmacia}: '0'"
+                                                            th:text="${edit}? ${recetaRemedio.remedios_farmacia.ubicacion}: 'Seleccione Remedio Farmacia'">
                                                         </option>
-                                                        <option th:each="estReceta: ${estadoRecetas}"
-                                                            th:if="${estReceta.estado != 'X'}"
-                                                            th:value="${estReceta.idEstadoReceta}"
-                                                            th:text="${estReceta.nombreEstado}"></option>
+                                                        <option th:each="remedioFarmacia: ${listaRemediosFarmacia}"
+                                                            th:if="${remedioFarmacia.estado != 'X'}"
+                                                            th:value="${remedioFarmacia.idRemediosFarmacia}"
+                                                            th:text="${remedioFarmacia.ubicacion}">
+                                                        </option>
                                                     </select>
                                                     <div class="valid-feedback">¡Se ve bien!</div>
                                                 </div>
@@ -156,9 +137,7 @@
                                                     <input type="submit" class="btn btn-success"
                                                         th:value="${edit}? 'Modificar' :'Registrar'">
                                                 </div>
-                                                <button th:id="${edit}? 'botonCerrarM' :'botonCerrarR'"
-                                                    th:if="${receta.idReceta !=null}"
-                                                    class="btn btn-secondary">Cancelar</button>
+                                                <button class="btn btn-secondary">Cancelar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -218,19 +197,6 @@
 
     <script src="../../../../assets/js/app.js"></script>
     <script src="../../../../assets/js/pages/select2 4.1.js"></script>
-    <script>
-
-        $(function () {
-            $('select.selectform').select2();
-
-            $('input.datepickerformReceta').datepicker({
-                format: "DD/MM/YYYY",
-                minDate: "1900-01-01"
-            });
-
-        });
-    </script>
-
     <!-- Right Sidebar -->
 
 
@@ -239,73 +205,49 @@
 </html>
 
 <th:block th:if="${modalVentana != null}">
-    <form class="needs-validation" th:action="${edit}? @{/ModificarReceta}: @{/RegistrarReceta}" method="post"
-        th:id="${edit}? 'formularioRecetaM' :'formularioRecetaR'" novalidate>
-        <input type="hidden" th:field="${receta.idReceta}" th:if="${receta.idReceta !=null}">
+    <form class="needs-validation" th:action="${edit}? @{/ModificarRecetaRemedios}: @{/RegistrarRecetaRemedios}"
+        method="post" id="formularioRecetaR" novalidate>
+        <input type="hidden" th:field="${recetaRemedio.idRecetaRemedios}"
+            th:if="${recetaRemedio.idRecetaRemedios !=null}">
         <h4 class="header-title" th:text="${edit}? 'MODIFICA LOS SIGUIENTES DATOS': 'INTRODUZCA LOS SIGUIENTES DATOS'">
         </h4>
         <div class="row">
             <div class="col-md-6">
-                <label for="validationCustom01">Prescripción</label>
-                <input type="text" class="form-control" name="prescripcion" id="validationCustom01"
-                    th:field="${receta.prescripcionMedica}" placeholder="Introduce Prescripción" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustom02">Fecha</label>
-                <input type="text" class="form-control datepickerformReceta" name="fechaReceta" id="validationCustom02"
-                    th:field="${receta.fecha}" placeholder="Introduce fecha" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <label>Tipo de Receta</label>
-                <select th:class="${edit}? 'custom-select selectformRecetaM': 'custom-select selectformRecetaR'"
-                    style="width: 100%;" th:field="${receta.tipo_receta}" required>
-                    <option th:value="${edit}? ${receta.tipo_receta}: '0'"
-                        th:text="${edit}? ${receta.tipo_receta.descripcionReceta}: 'Selecciona tipo Receta'">
+                <label>Receta</label>
+                <select class="custom-select selectform" style="width: 100%;" th:field="${recetaRemedio.receta}"
+                    required>
+                    <option th:value="${edit}? ${recetaRemedio.receta.idReceta}: '0'"
+                        th:text="${edit}? ${recetaRemedio.receta.prescripcionMedica}: 'Selecciona Receta'">
                     </option>
-                    <option th:each="tipoReceta: ${tipoRecetas}" th:if="${tipoReceta.estado != 'X'}"
-                        th:value="${tipoReceta.idTipoRe}" th:text="${tipoReceta.descripcionReceta}"></option>
+                    <option th:each="receta: ${listReceta}" th:if="${receta.estado != 'X'}"
+                        th:value="${receta.idReceta}" th:text="${receta.prescripcionMedica}"></option>
                 </select>
                 <div class="invalid-feedback">Example invalid custom select feedback
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="validationCustom07">Estado</label>
-                <select th:class="${edit}? 'custom-select selectformRecetaM': 'custom-select selectformRecetaR'"
-                    style="width: 100%;" th:field="${receta.estado_receta}" required>
-                    <option th:value="${edit}? ${receta.estado_receta.idEstadoReceta}: '0'"
-                        th:text="${edit}? ${receta.estado_receta.nombreEstado}: 'Seleccione Estado Receta'">
+                <label for="validationCustom07">Remedio Farmacia</label>
+                <select class="custom-select selectform" style="width: 100%;"
+                    th:field="${recetaRemedio.remedios_farmacia}" required>
+                    <option th:value="${edit}? ${recetaRemedio.remedios_farmacia.idRemediosFarmacia}: '0'"
+                        th:text="${edit}? ${recetaRemedio.remedios_farmacia.ubicacion}: 'Seleccione Remedio Farmacia'">
                     </option>
-                    <option th:each="estReceta: ${estadoRecetas}" th:if="${estReceta.estado != 'X'}"
-                        th:value="${estReceta.idEstadoReceta}" th:text="${estReceta.nombreEstado}"></option>
+                    <option th:each="remedioFarmacia: ${listaRemediosFarmacia}" th:if="${remedioFarmacia.estado != 'X'}"
+                        th:value="${remedioFarmacia.idRemediosFarmacia}" th:text="${remedioFarmacia.ubicacion}">
+                    </option>
                 </select>
                 <div class="valid-feedback">¡Se ve bien!</div>
             </div>
         </div>
         <div class="modal-footer">
-            <div id="botonSubmit">
+            <div id="botonSubmitformM">
                 <input type="submit" class="btn btn-success" th:value="${edit}? 'Modificar' :'Registrar'">
             </div>
-    </form>
-    <button th:id="${edit}? 'botonCerrarM' :'botonCerrarR'" class="btn btn-secondary"
-        data-dismiss="modal">Cancelar</button>
-    </div>
-
+        </form>
+            <button id="botonCerrarR" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
     <script>
         $(document).ready(function () {
-
-            $('input.datepickerformReceta').datepicker({
-                format: "DD/MM/YYYY",
-                minDate: "1900-01-01"
-            });
-
 
             // FORMULARIO PLANTILLA DE CERTIFICADO
             $('#formularioRecetaR').submit(function (event) {
@@ -336,11 +278,12 @@
                     processData: false,
                     contentType: false,
                     success: function (response) {
-                        if (textAction[textAction.length - 1] === "ModificarReceta") {
+                        $('#botonCerrarR').click();
+                        /*if (textAction[textAction.length - 1] === "ModificarReceta") {
                             $('#botonCerrarM').click();
                         } else {
                             $('#botonCerrarR').click();
-                        }
+                        }*/
                         CargarTabla();
                         Swal.fire({
                             icon: 'success',
@@ -356,7 +299,7 @@
                 });
             });
 
-            $('#formularioRecetaM').submit(function (event) {
+            /*$('#formularioRecetaRemedioR').submit(function (event) {
                 event.preventDefault();
                 var form = this;
                 var action = $(this).attr('action');
@@ -403,7 +346,7 @@
                         console.error(error);
                     }
                 });
-            });
+            });*/
         });
     </script>
 </th:block>

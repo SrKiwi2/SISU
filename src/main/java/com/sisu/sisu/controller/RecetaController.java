@@ -67,8 +67,8 @@ public class RecetaController {
     @PostMapping(value = "/CargarTablaReceta")
     public String CargarTablaReceta(Model model) {
         model.addAttribute("recetas", recetaService.listarTodo());
-        
-        return "listas/tablaReceta";
+        model.addAttribute("tablaRecarga", "true");
+        return "listas/listaReceta";
     }
 
     @GetMapping(value = "/ListaReceta2")
@@ -77,24 +77,6 @@ public class RecetaController {
         return "listas/listaReceta";
     }
 
-    /*
-     * @PostMapping(value = "/RegistrarReceta")
-     * 
-     * @ResponseBody
-     * public ResponseEntity<String[]> RegistrarReceta(@Validated Receta receta) {
-     * String[] respuestaRegistro = new String[5];
-     * receta.setEstado("A");
-     * receta.setRegistro(new Date());
-     * recetaService.registrarReceta(receta);
-     * respuestaRegistro[0] = String.valueOf(receta.getIdReceta());
-     * respuestaRegistro[1] = receta.getPrescripcionMedica();
-     * respuestaRegistro[2] = String.valueOf(receta.getFecha());
-     * respuestaRegistro[3] = receta.getTipo_receta().getDescripcionReceta();
-     * respuestaRegistro[4] = receta.getEstado_receta().getNombreEstado();
-     * 
-     * return ResponseEntity.ok(respuestaRegistro);
-     * }
-     */
     @PostMapping(value = "/RegistrarReceta")
     @ResponseBody
     public void RegistrarReceta(@Validated Receta receta) {

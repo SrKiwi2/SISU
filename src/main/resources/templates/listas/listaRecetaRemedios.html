@@ -96,7 +96,7 @@
                                                 data-toggle="modal" data-target="#formRecetaModal"
                                                 onclick="NuevoRegistroReceta()"><i
                                                     class="fa-solid fa-file-circle-plus"></i>
-                                                Registrar Receta</a>
+                                                Registrar Receta Remedio</a>
                                         </div>
                                         <div id="seccionTabla">
 
@@ -120,22 +120,22 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formRecetaModal">Registrar Nueva Receta</h5>
+                    <h5 class="modal-title" id="formRecetaModal">Registrar Nueva Receta Remedio</h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
                 </div>
-                <div class="modal-body" id="vetanaFormRecetaModal">
+                <div class="modal-body" id="vetanaFormRecetaRemedioModal">
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="formModificarRecetaModal" tabindex="-1" role="dialog"
+    <!--<div class="modal fade" id="formModificarRecetaModal" tabindex="-1" role="dialog"
         aria-labelledby="formModificarRecetaModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modificar Receta</h5>
+                    <h5 class="modal-title">Modificar Receta Remedio</h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
@@ -144,7 +144,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
     <div class="rightbar-overlay"></div>
 
@@ -157,10 +157,9 @@
         function NuevoRegistroReceta() {
             $.ajax({
                 type: 'POST',
-                url: "/VentanaFormRecetaModal",
+                url: "/VentanaFormRecetaRemediosModal",
                 success: function (response) {
-                    $("#vetanaFormRecetaModal").html(response);
-                    $('select.selectformRecetaR').select2();
+                    $("#vetanaFormRecetaRemedioModal").html(response);
                 }
             });
         }
@@ -168,17 +167,17 @@
         function CargarTabla() {
             $.ajax({
                 type: 'POST',
-                url: "/CargarTablaReceta",
+                url: "/CargarTablaRecetaRemedios",
                 success: function (response) {
                     $("#seccionTabla").html(response);
                 }
             });
         }
 
-        function EliminarRegistro(id, nombre) {
+        function EliminarRegistro(id) {
             Swal.fire({
                 title: 'Eliminar?',
-                text: "Estas Segurgo que deseas Eliminar el registro " + nombre + "?",
+                text: "Estas Segurgo que deseas Eliminar el registro de esta Receta Remedio?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -196,7 +195,7 @@
                     });
                     $.ajax({
                         type: 'POST',
-                        url: "/EliminarReceta/" + id,
+                        url: "/EliminarRecetaRemedios/" + id,
                         success: function () {
                             CargarTabla();
                             Swal.close();
@@ -214,10 +213,10 @@
         function ModificarRegistro(id) {
             $.ajax({
                 type: 'POST',
-                url: "/VentanaEditFormRecetaModal/" + id,
+                url: "/VentanaEditFormRecetaRemediosModal/" + id,
                 success: function (response) {
-                    $("#vetanaFormModificarRecetaModal").html(response);
-                    $('select.selectformRecetaM').select2();
+                    //$("#vetanaFormRecetaRemedioModal").html(response);
+                    $("#vetanaFormRecetaRemedioModal").html(response);
                 }
             });
         }
@@ -252,7 +251,7 @@
     </script>
 
 
-    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
     <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
@@ -296,31 +295,31 @@
         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
             <tr>
-                <th class="text-center">Prescripción</th>
-                <th class="text-center">Fecha</th>
-                <th class="text-center">Tipo de Receta</th>
-                <th class="text-center">Estado</th>
+                <th class="text-center">Receta</th>
+                <th class="text-center">Remedio Farmacia</th>
                 <th class="text-center">Opciones</th>
             </tr>
         </thead>
-        <tbody id="tableBodyReceta">
-            <th:block th:each="r : ${recetas}" th:if="${r.estado !='X'}">
-                <tr th:id="${'fila'+r.idReceta}">
-                    <td class="text-center" th:text="${r.prescripcionMedica}">
-                    </td>
-                    <td class="text-center" th:text="${r.fecha}"></td>
-                    <td class="text-center" th:text="${r.tipo_receta.descripcionReceta}"></td>
-                    <td class="text-center" th:text="${r.estado_receta.nombreEstado}">
+        <tbody>
+            <th:block th:each="rr : ${listRecetaRemedios}" th:if="${rr.estado !='X'}">
+                <tr th:id="${'fila'+rr.idRecetaRemedios}">
+                    <td class="text-center" th:text="${rr.receta.prescripcionMedica}"></td>
+                    <td class="text-center" th:text="${rr.remedios_farmacia.ubicacion}">
                     </td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <a class="btn btn-info" type="button" style="color: aliceblue;" data-toggle="modal"
+                            <!--<a class="btn btn-info" type="button" style="color: aliceblue;" data-toggle="modal"
                                 data-target="#formModificarRecetaModal"
-                                th:attr="onclick='ModificarRegistro(\'' + ${r.idReceta} + '\')'">
+                                th:attr="onclick='ModificarRegistro(\'' + ${rr.idRecetaRemedios} + '\')'">
+                                <li class="fas fa-pencil-alt"></li>
+                            </a>-->
+                            <a class="btn btn-info" type="button" style="color: aliceblue;"
+                            data-toggle="modal" data-target="#formRecetaModal"
+                                th:attr="onclick='ModificarRegistro(\'' + ${rr.idRecetaRemedios} + '\')'">
                                 <li class="fas fa-pencil-alt"></li>
                             </a>
                             <a class="btn btn-danger" type="button" style="color: aliceblue;"
-                                th:attr="onclick='EliminarRegistro(\'' + ${r.idReceta} + '\', \'' + ${r.prescripcionMedica} + '\')'">
+                                th:attr="onclick='EliminarRegistro(\'' + ${rr.idRecetaRemedios} + '\')'">
                                 <li class="fa-solid fa-trash"></li>
                             </a>
                         </div>
