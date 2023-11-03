@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.sisu.sisu.entitys.UsrRoles;
+import com.sisu.sisu.entitys.Usuario;
 
 public interface UsrRolesDao extends JpaRepository<UsrRoles, Integer> {
 	
-	@Query("select d from UsrRoles d where  d.estado='A' ")
-	List<UsrRoles>listarRoles();
-	
+	@Query("SELECT u FROM Usuario u WHERE u.idUsuario = ?1")
+    List<Usuario> buscarUsuarioPorId(Long id);
 
 }

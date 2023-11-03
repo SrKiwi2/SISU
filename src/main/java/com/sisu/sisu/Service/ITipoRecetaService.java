@@ -13,7 +13,7 @@ public interface ITipoRecetaService {
 
     public void save(TipoReceta tipoReceta); // GUARDAR REGISTRO
 
-    public TipoReceta findOne(Long id); // MOSTRAR UN REGSITRO
+    public TipoReceta findOne(Integer id); // MOSTRAR UN REGSITRO
 
-    public void delete(Long id); // ELIMINAR REGISTRO
+    public void delete(Integer id); // ELIMINAR REGISTRO
 }

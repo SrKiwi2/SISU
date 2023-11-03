@@ -26,7 +26,7 @@ public class GradoController {
     /* eliminar */
 
     @RequestMapping(value = "/eliminarGrado/{id_grado}")
-    public String eliminarGrado(@PathVariable("id_grado") Long id_grado) {
+    public String eliminarGrado(@PathVariable("id_grado") Integer id_grado) {
 
         GradoAcademico gradoAcademico = gradoService.findOne(id_grado);
         gradoAcademico.setEstado("X");
@@ -48,7 +48,8 @@ public class GradoController {
     /* Cuando apretar sabe en editar, llama esta funcion: Modificación Modal */
 
     @RequestMapping(value = "/grado/{idGradoAcademico}")
-    public String getContentGA(@PathVariable(value = "idGradoAcademico") Long idGradoAcademico, Model model, HttpServletRequest request) {
+    public String getContentGA(@PathVariable(value = "idGradoAcademico") Integer idGradoAcademico, Model model,
+            HttpServletRequest request) {
 
         model.addAttribute("grado", gradoService.findOne(idGradoAcademico));
         return "contentGA :: contentGrado";
@@ -57,7 +58,7 @@ public class GradoController {
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosGrado")
     public String guardarCambiosGrado(@ModelAttribute GradoAcademico gradoAcademico) {
-                  
+
         gradoAcademico.setEstado("A");
         gradoService.save(gradoAcademico);
 

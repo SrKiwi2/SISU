@@ -17,13 +17,25 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 	@Override
 	public List<UsrRoles> listarRoles() {
 		// TODO Auto-generated method stub
-		return usrRolesDao.listarRoles() ;
+		throw new UnsupportedOperationException("Unimplemented method 'listarRoles'");
 	}
 
 	@Override
 	public void registrarUsrRoles(UsrRoles usrRoles) {
-		usrRolesDao.save(usrRoles);		
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'registrarUsrRoles'");
 	}
+
+	// @Override
+	// public List<UsrRoles> listarRoles() {
+	// 	// TODO Auto-generated method stub
+	// 	return usrRolesDao.listarRoles() ;
+	// }
+
+	// @Override
+	// public void registrarUsrRoles(UsrRoles usrRoles) {
+	// 	usrRolesDao.save(usrRoles);		
+	// }
 	
 	
 	

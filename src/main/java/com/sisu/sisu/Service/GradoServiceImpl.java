@@ -27,13 +27,13 @@ public class GradoServiceImpl implements IGradoService {
 	}
 
 	@Override
-	public GradoAcademico findOne(Long id) {
+	public GradoAcademico findOne(Integer id) {
 
 		return iGradoDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Integer id) {
 
 		iGradoDao.deleteById(id);
 	}

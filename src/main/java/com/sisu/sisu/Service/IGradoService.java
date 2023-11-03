@@ -13,8 +13,8 @@ public interface IGradoService {
 
     public void save(GradoAcademico gradoAcademico); // GUARDAR REGISTRO
 
-    public GradoAcademico findOne(Long id); // MOSTRAR UN REGSITRO
+    public GradoAcademico findOne(Integer id); // MOSTRAR UN REGSITRO
 
-    public void delete(Long id); // ELIMINAR REGISTRO
+    public void delete(Integer id); // ELIMINAR REGISTRO
 
 }

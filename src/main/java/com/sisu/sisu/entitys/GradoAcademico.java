@@ -29,7 +29,7 @@ public class GradoAcademico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = " id_grado_academico")
-	private Long idGradoAcademico;
+	private Integer idGradoAcademico;
 
 	@Column(name = "nombre_grado")
 	private String nombre_gradoAcademico;

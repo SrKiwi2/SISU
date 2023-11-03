@@ -3,6 +3,7 @@ package com.sisu.sisu.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.Dao.UsuarioDao;
@@ -37,5 +38,11 @@ public class UsuarioServiceImpl implements UsuarioService{
         
         usuarioDao.deleteById(id);
     }
+
+    @Override
+    public Usuario buscarUsuarioPorId(Long id) {
+        return usuarioDao.buscarUsuarioPorId(id);
+    }
+
     
 }

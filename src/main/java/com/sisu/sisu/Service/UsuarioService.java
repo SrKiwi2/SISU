@@ -2,6 +2,7 @@ package com.sisu.sisu.Service;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.entitys.Usuario;
@@ -16,5 +17,7 @@ public interface UsuarioService {
     public Usuario findOne(Long id);  // MOSTRAR UN REGSITRO
 
     public void delete(Long id); // ELIMINAR REGISTRO
+
+    Usuario buscarUsuarioPorId(Long id);
     
 }

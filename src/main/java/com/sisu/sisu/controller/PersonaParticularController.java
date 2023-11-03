@@ -76,7 +76,7 @@ public class PersonaParticularController {
 	public String guardarPersonaParticular(@Validated Persona personaP,BindingResult bindingResult, RedirectAttributes flash,HttpServletRequest request,
     @RequestParam(name="apodo",required = false)String apodo,
     @RequestParam(name="clave",required = false)String clave,
-    @RequestParam(name="grado",required = false)Long idGradoAcademico,
+    @RequestParam(name="grado",required = false) Integer idGradoAcademico,
     @RequestParam(name="dip",required = false)Long idDip,
     @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
     ) { 

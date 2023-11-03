@@ -26,7 +26,7 @@ public class TipoRecetaController {
     /* eliminar */
 
     @RequestMapping(value = "/eliminarReceta/{idTipoRe}")
-    public String eliminarReceta(@PathVariable("idTipoRe") Long idTipoRe) {
+    public String eliminarReceta(@PathVariable("idTipoRe") Integer idTipoRe) {
         TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         tipoReceta.setEstado("X");
         tipoRecetaService.save(tipoReceta);
@@ -48,7 +48,7 @@ public class TipoRecetaController {
     /* Cuando apretar sabe en editar, llama esta funcion: Modificación Modal */
 
     @RequestMapping(value = "/tipoReceta/{idTipoRe}")
-    public String getContentREt(@PathVariable(value = "idTipoRe") Long idTipoRe, Model model, HttpServletRequest request) {
+    public String getContentREt(@PathVariable(value = "idTipoRe") Integer idTipoRe, Model model, HttpServletRequest request) {
         // TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         model.addAttribute("tipoReceta", tipoRecetaService.findOne(idTipoRe));
         return "contentRE :: contentTipoReceta";

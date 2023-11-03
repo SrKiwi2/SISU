@@ -27,13 +27,13 @@ public class TipoRecetaImpl implements ITipoRecetaService {
     }
 
     @Override
-    public TipoReceta findOne(Long id) {
+    public TipoReceta findOne(Integer id) {
 
         return tipoRecetaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
 
         tipoRecetaDao.deleteById(id);
     }
