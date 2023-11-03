@@ -86,44 +86,86 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form class="needs-validation" action="/guardarEnlace" method="post" id="form1" novalidate>
+                                        <form class="needs-validation" action="/guardarEnlace" method="post" id="form1"
+                                            novalidate>
                                             <input type="hidden" th:field="${enlace.idEnlace}">
                                             <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom02">Enlace</label>
-                                                    <input type="text" class="form-control" name="enlace" id="validationCustom02"
-                                                        th:field="${enlace.enlace}" placeholder="Digite un número" required>
+                                                <!-- <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom03">Enlace</label>
+                                                    <input type="text" class="form-control" name="enlace"
+                                                        id="validationCustom03" th:field="${enlace.enlace}"
+                                                        placeholder="ruta" required>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom03">Ruta</label>
-                                                    <input type="text" class="form-control" name="ruta" id="validationCustom03"
-                                                        th:field="${enlace.ruta}" placeholder="ruta" required>
+                                                    <input type="text" class="form-control" name="enlace"
+                                                        id="validationCustom03" th:field="${enlace.ruta}"
+                                                        placeholder="ruta" required>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom04">Tabla</label>
-                                                    <input type="number" class="form-control" name="tabla" id="validationCustom04"
-                                                        th:field="${enlace.tabla}" placeholder="Digite en número de la Tabla" required>
+                                                    <input type="number" class="form-control" name="enlace"
+                                                        id="validationCustom04" th:field="${enlace.tabla}"
+                                                        placeholder="Digite en número de la Tabla" required>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom04">Observación</label>
-                                                    <input type="text" name="persona" th:field="${enlace.obs}" id="customDateInput" 
-                                                    placeholder="Observacion" class="form-control datepicker-here" data-language="en">
+                                                    <input type="text" name="enlace" th:field="${enlace.obs}"
+                                                        id="customDateInput" placeholder="Observacion"
+                                                        class="form-control datepicker-here" data-language="en">
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>ROLES PADRES</label>
+                                                    <select class="custom-select" name="enlace"
+                                                        th:field="${enlace.enlace}" required>
+                                                        <option value="">Selecciona los roles padres</option>
+                                                        <option value="Hombre">Geston de Datos</option>
+                                                        <option value="Mujer">Gestión de Registros</option>
+                                                        <option value="otro">Liname</option>
+                                                        <option value="Rarito">Administrativos</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Debes seleccionar un Genero</div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label>Roles Hijos</label>
+                                                    <select class="custom-select" name="enlace"
+                                                        th:field="${enlace.enlace}" required>
+                                                        <option value="">Selecciona los roles Hijos</option>
+                                                        <option value="Hombre">Lista Persona</option>
+                                                        <option value="Mujer">Lista Dip</option>
+                                                        <option value="otro">Grado Academico</option>
+                                                        <option value="Rarito">Lista Receta</option>
+                                                        <option value="Rarito">Lista Receta Remedio</option>
+                                                        <option value="Rarito">Lista Roles</option>
+                                                        <option value="Rarito">Lista Enlace</option>
+                                                        <option value="Rarito">Persona Externa</option>
+                                                        <option value="Rarito">Lista Estado Civil</option>
+                                                        <option value="Rarito">Lista Estado Receta</option>
+                                                        <option value="Rarito">Lista Tipos Provedor</option>
+                                                        <option value="Rarito">Lista Proveedor</option>
+                                                        <option value="Rarito">Lista Remedio Lote</option>
+                                                        <option value="Rarito">Lista Remedio Farmacia</option>
+                                                        <option value="Rarito">Lote</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Debes seleccionar un Genero</div>
+                                                    <!-- <button class="btn btn-primary" type="submit">Registrar</button> -->
+
+                                                </div>
                                             </div>
-                
+
                                             <button class="btn btn-primary" type="submit">Registrar</button>
                                         </form>
                                     </div>

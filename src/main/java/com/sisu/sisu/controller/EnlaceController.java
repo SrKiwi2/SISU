@@ -33,8 +33,8 @@ public class EnlaceController {
         model.addAttribute("enlace", new Enlace());
         model.addAttribute("enlaces", enlaceService.findAll());
 
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios", usuarioService.findAll());
+        // model.addAttribute("usuario", new Usuario());
+        // model.addAttribute("usuarios", usuarioService.findAll());
 
         return "formularios/formEnlace";
     }
@@ -43,14 +43,11 @@ public class EnlaceController {
     @PostMapping(value = "/guardarEnlace")
     public String RegistrarEnlace(@Validated Enlace enlace, RedirectAttributes flash, HttpServletRequest request) {
         Usuario usuario = new Usuario();
-        System.out.println("+++++++++++++++++++++++++1");
         long idUsuario = 1;
-        System.out.println("+++++++++++++++++++++++++2");
         usuario = usuarioService.buscarUsuarioPorId(idUsuario);
         if (usuario!=null) {
             System.out.println(usuario.getPersona().getNombres());
         }
-        System.out.println("+++++++++++++++++++++++++3");
         enlace.setEstado("A");
         // enlaceService.save(enlace);
         return "redirect:formEnlace";
