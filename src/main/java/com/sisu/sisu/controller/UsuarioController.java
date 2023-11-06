@@ -44,7 +44,7 @@ public class UsuarioController {
 
         usuarioService.save(usuarios);
 
-        return "";
+        return "redirect:/listaUs";
     }
 
     //-------------------------LISTAR---------------------------------------
