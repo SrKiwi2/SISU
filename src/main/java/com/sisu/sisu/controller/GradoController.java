@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IGradoService;
 import com.sisu.sisu.entitys.GradoAcademico;
-import com.sisu.sisu.entitys.TipoReceta;
 
 @Controller
 public class GradoController {

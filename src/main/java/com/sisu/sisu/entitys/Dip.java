@@ -25,23 +25,12 @@ import lombok.Setter;
 @Table(name = "dip")
 public class Dip implements Serializable {
 
-	// attributes
-	/*
-	 * idDip
-	 * codDip
-	 * descripcion
-	 * estado
-	 * 
-	 * 
-	 * registro
-	 * modificacion
-	 */
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_dip")
-	private Long idDip;
+	private Integer idDip;
 
 	@Column(name = "descripcion")
 	private String descripcion;

@@ -10,7 +10,7 @@ public interface IDipService {
 
     public List<Dip> findAll(); //Muestra todos los registros
     public void save(Dip dip); //Guarda registro
-    public Dip findOne(Long id); //Muestra un registro
-    public void delete(Long id); //Elimina registro
+    public Dip findOne(Integer id); //Muestra un registro
+    public void delete(Integer id); //Elimina registro
     
 }

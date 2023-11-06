@@ -38,6 +38,7 @@ public class HistoriaLinameServiceImpl implements HistoriaLinameService{
     public void delete(Long id) {
        
         historiaLinameDao.deleteById(id);
+        
     }
     
 }

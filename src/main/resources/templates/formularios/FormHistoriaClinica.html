@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Registro Persona | SISU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.ico">
+
+    <!-- DataTables -->
+    <link href="../../../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="../../../../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
+
+    <!-- Responsive datatable examples -->
+    <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+        rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap Css -->
+    <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body data-topbar="colored">
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <div th:insert="~{layout/topbar :: topbar}"></div>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div th:insert="~{layout/sidebar :: sidebar}"></div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+
+                <!-- Page-Title -->
+                <div class="page-title-box">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <h4 class="page-title mb-1">FORMULARIO DE REGISTRO GRADO ACADÉMICO</h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                    <li class="breadcrumb-item active">Form Validation</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="float-right d-none d-md-block">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Separated link</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+
+                <style>
+                    form {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-family: "Georgia", sans-serif;
+                        font-size: 20px;
+                        color: black;
+                    }
+
+                    form .row {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+
+                    input[type="text"] {
+                        font-family: "Georgia", sans-serif;
+                        font-size: 20px;
+                        color: black;
+                    }
+
+                    input[type="number"] {
+                        font-family: "Georgia", sans-serif;
+                        font-size: 20px;
+                        color: black;
+                    }
+
+                    input[type="date"] {
+                        font-family: "Georgia", sans-serif;
+                        font-size: 20px;
+                        color: black;
+                    }
+
+                    input[type="time"] {
+                        font-family: "Georgia", sans-serif;
+                        font-size: 20px;
+                        color: black;
+                    }
+
+
+                    textarea {
+                        margin-top: 5PX;
+                        font-family: "Georgia", sans-serif;
+                        font-size: 30px;
+                        
+                    }
+
+                </style>
+
+                <script>
+
+
+
+
+                </script>
+
+                <div class="page-content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12 " style=" display: flex;  justify-content: center; ">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <form class="needs-validation" action="/guardarHistorialClinico" method="post">
+
+
+
+                                            <input type="hidden" th:field="${historiaClinica.idHistoriaClinica}">
+
+                                            <div class="row">
+
+                                                <!-- Contenido (Nombre, Edad, carrera, ru, FN) -->
+
+                                                <div class="container row g-12 needs-validation"
+                                                    style="border: 3px solid blue; padding: 0; border-radius: 5px; ">
+
+                                                    <!-- -------------------------------------------------------------------- -->
+
+                                                    <div class="container row g-12 needs-validation"
+                                                        style=" border: 3px solid blue; padding: 0; ">
+
+                                                        <div class="container col-md-2 needs-validation"
+                                                            style="padding: 0; ">
+
+
+                                                            <img style="  display: block;    margin: 0 auto;  max-width: 100%;  height: auto;"
+                                                                src="../../../../assets/images/LOGO HC.webp" alt="logo">
+
+
+                                                        </div>
+
+                                                        <div class="container col-md-8 needs-validation"
+                                                            style="padding: 0; ">
+
+
+                                                            <img style="display: block;    margin: 0 auto;  max-width: 100%;  height: auto;"
+                                                                src="../../../../assets/images/LOGOHC1.webp"
+                                                                alt="logo1">
+                                                            <h1
+                                                                style=" display: flex; justify-content: space-around; color: black">
+                                                                HISTORIA CLINICA</h1>
+
+                                                        </div>
+
+                                                        <div class="container col-md-2 needs-validation"
+                                                            style="padding: 0; ">
+
+
+                                                            <img style=" display: block;    margin: 0 auto;  max-width: 100%;  height: auto;"
+                                                                src="../../../../assets/images/LOGO HC.webp" alt="logo">
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-------------------------- <img src="../../../../assets/images/LOGOHC1.webp" alt=""> -------------------------->
+
+                                                    <div class="col-md-3"
+                                                        style="border: 3px solid blue; ">
+                                                        <label for="validationCustom01" class="form-label">NOMBRE:
+                                                        </label>
+                                                        <input style=" border: none;" type="text" class="form-control"
+                                                            id="validationCustom03" required>
+                                                        <!-- th:field="${dip.codDip}" -->
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                          </div>
+                                                    </div>
+
+                                                    <div class="col-md-2" style="border: 3px solid blue; ">
+                                                        <label for="validationCustom02" style="margin-top: 1px;" class="form-label">EDAD:</label>
+
+                                                        <input style=" border: none;  width: 100%; margin: 7px;" type="text" class="form-number"   id="validationCustom03" required>
+                                                        <!-- th:field="${dip.codDip}" -->
+
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3" style="border: 3px solid blue;">
+                                                        <label for="validationCustom02"
+                                                            class="form-label">CARRERA:</label>
+                                                        <input style=" border: none;" type="text" class="form-control"
+                                                            id="validationCustom03" required>
+                                                        <!-- th:field="${dip.codDip}" -->
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2 " style="border: 3px solid blue;">
+                                                        <label for="validationCustom02" style="margin-top: 1px;" class="form-label">RU:</label>
+                                                        <input style=" border: none; width: 100%; margin: 7px;" type="text" class="form-number"
+                                                            id="validationCustom03" required>
+                                                        <!-- th:field="${dip.codDip}" -->
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2" style="border: 3px solid blue;">
+                                                        <label for="validationCustom02" class="form-label">FN:</label>
+                                                        <input style=" border: none;" type="text" class="form-control"
+                                                            id="validationCustom03" required>
+                                                        <!-- th:field="${dip.codDip}" -->
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Contenido (NACIONALIDAD, DOMICILIO, OCUPACION, ESTADO CIVIL, FECHA, HORA) -->
+
+                                                    <div class="container row g-12 needs-validation"
+                                                        style="border: 3px solid blue; padding: 0; ">
+
+                                                        <div class="col-md-4 "
+                                                            style=" display: flex; justify-content: space-around;">
+
+                                                            <label for="validationCustom02" class="form-label"
+                                                                style="margin-top: 10PX;">NACIONALIDAD:</label>
+                                                            <input style=" border: none; " type="text"
+                                                                class="form-control" id="validationCustom03" required>
+                                                            <!-- th:field="${dip.codDip}" -->
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6"
+                                                            style=" display: flex; justify-content: space-around;">
+                                                            <label for="validationCustom02" class="form-label"
+                                                                style="margin-top: 10PX;">DOMICILIO:</label>
+                                                            <input style=" border: none; " type="text"
+                                                                class="form-control" id="validationCustom03" required>
+                                                            <!-- th:field="${dip.codDip}" -->
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-md-2"></div>
+
+                                                        <div class="col-md-4"
+                                                            style=" display: flex; justify-content: space-around;">
+                                                            <label for="validationCustom02" class="form-label"
+                                                                style="margin-top: 10PX;">OCUPACION:</label>
+                                                            <input style=" border: none; " type="text"
+                                                                class="form-control" id="validationCustom03" required>
+                                                            <!-- th:field="${dip.codDip}"  -->
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6"
+                                                            style=" display: flex; justify-content: space-around;">
+                                                            <label for="validationCustom02" class="form-label"
+                                                                style="margin-top: 10PX; white-space: nowrap;">ESTADO
+                                                                CIVIL:</label>
+                                                            <input style=" border: none; " type="text"
+                                                                class="form-control" id="validationCustom03" required>
+                                                            <!-- th:field="${dip.codDip}" -->
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-2"></div>
+
+                                                        <div class="col-md-4" style=" display: flex; ">
+                                                            <label for="validationCustom02" class="form-label"
+                                                                style="margin-top: 10PX;">FECHA:</label>
+                                                            <input style=" border: none; width: 60%;" type="date"
+                                                                class="form-control" id="validationCustom03" required>
+                                                            <!-- th:field="${dip.codDip}"  -->
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6"
+                                                            style=" display: flex; justify-content: space-around;">
+                                                            <label for="validationCustom02" class="form-label"
+                                                                style="margin-top: 10PX;">HORA:</label>
+                                                            <input style=" border: none; " type="time"
+                                                                class="form-control" id="validationCustom03" required>
+                                                            <!-- th:field="${dip.codDip}"  -->
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-2"></div>
+
+                                                        <!-- Contenido (DATOS DEL INFORMANTE, NOMBRE, DOMICILIO) -->
+
+                                                        <div class="container row g-12 needs-validation"
+                                                            style="border-top: 3px solid blue; padding: 0; ">
+
+
+                                                            <div class="col-md-12">
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 10PX;">DATOS DEL INFORMANTE:</label>
+                                                                <br>
+                                                                <input class="OTROS1"
+                                                                    th:field="${historiaClinica.relacionInformante}"
+                                                                    type="radio" value="PADRE"> PADRE
+
+                                                                <input class="OTROS1"
+                                                                    th:field="${historiaClinica.relacionInformante}"
+                                                                    type="radio" value="MADRE"
+                                                                    style="margin-left: 20px;"> MADRE
+
+                                                                <input class="OTROS1"
+                                                                    th:field="${historiaClinica.relacionInformante}"
+                                                                    type="radio" value="MISMO"
+                                                                    style="margin-left: 20px;"> MISMO
+
+                                                                <input class="OTROS1" name="relacionInformante"
+                                                                    type="radio" value="OTROS"
+                                                                    style="margin-left: 20px;"> OTROS
+
+                                                                <input
+                                                                    th:field="${historiaClinica.relacionInformante}"
+                                                                    type="text" id="otrosInput" placeholder="Escriba otro..."
+                                                                    style="border-color: blue; margin-left: 20px; height: 30px; display: none;">
+
+                                                                <div class="valid-feedback">
+
+                                                                    Looks good!
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around;">
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 10PX;">NOMBRE:</label>
+                                                                <input style=" border: none; " type="text"
+                                                                    class="form-control" id="validationCustom03"
+                                                                    th:field="${historiaClinica.nombreInformante}"
+                                                                    required>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around;">
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 10PX;">DOMICILIO:</label>
+                                                                <input style=" border: none; " type="text"
+                                                                    class="form-control" id="validationCustom03"
+                                                                    th:field="${historiaClinica.domicilioInformante}"
+                                                                    required>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <!-- Contenido (DATOS DEL INFORMANTE, NOMBRE, DOMICILIO) -->
+
+                                                        <div class="container row g-12 needs-validation"
+                                                            style=" border-top: 3px solid blue; padding: 0; ">
+
+                                                            <div class="col-md-12">
+                                                                <label>SIGNOS VITALES </label>
+                                                            </div>
+
+
+                                                            <div class="col-md-4 "
+                                                                style=" display: flex;  align-items: center;">
+
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;">Peso:</label>
+                                                                <input style=" border: none; width: 20%;" type="number"
+                                                                    class="form-numberF" id="validationCustom03"
+                                                                    th:field="${historiaClinica.peso}" required>
+
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px; width: 55%;">kg</label>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-md-4"
+                                                                style=" display: flex;  align-items: center;">
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;">Talla:</label>
+
+                                                                <input style=" border: none;" type="text"
+                                                                    class="form-control" id="validationCustom03"
+                                                                    th:field="${historiaClinica.talla}" required>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4"
+                                                                style="  display: flex; align-items: center;">
+
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;">PA:</label>
+                                                                <input style=" border: none; width: 30%;" type="number"
+                                                                    class="form-numberF" id="validationCustom03"
+                                                                    th:field="${historiaClinica.presiónArterial}"
+                                                                    required>
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px; width: 60%;">mmHg</label>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-md-4"
+                                                                style=" display: flex;  align-items: center;">
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;">FC:</label>
+
+                                                                <input style=" border: none; width: 20%;" type="number"
+                                                                    class="form-number" id="validationCustom03"
+                                                                    th:field="${historiaClinica.frecuenciaCardiaca}"
+                                                                    required>
+
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px; width: 49%;">lpm</label>
+                                                                    
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4"
+                                                                style=" display: flex;  align-items: center;">
+
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;">FR:</label>
+                                                                <input style=" border: none;  width: 25%;" type="number"
+                                                                    class="form-number" id="validationCustom03"
+                                                                    th:field="${historiaClinica.frecuenciaRespiratoria}"
+                                                                    required>
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;  width: 75%;">rpm</label>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-md-4"
+                                                                style=" display: flex;  align-items: center;">
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px;">T:</label>
+                                                                <input style=" border: none; width: 20%;" type="number"
+                                                                    class="form-numberF" id="validationCustomNumber"
+                                                                    th:field="${historiaClinica.temperaturaCorporal}"
+                                                                    required>
+                                                                <label for="validationCustom02" class="form-label"
+                                                                    style="margin-top: 8px; width: 56%;">C</label>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Contenido (DATOS DEL INFORMANTE, NOMBRE, DOMICILIO) --> 
+                                                            
+                                                            <div class="container row g-12 needs-validation"
+                                                                style=" border-top: 3px solid blue; padding: 0; ">
+
+
+                                                                <div class="col-md-12"
+                                                                    style=" display: flex; justify-content: space-around;">
+                                                                    <label for="validationCustom02" class="form-label"
+                                                                        style="margin-top: 10PX; white-space: nowrap;">MOTIVO
+                                                                        DE CONSULTA:</label>
+                                                                    <input style=" border: none; " type="text"
+                                                                        class="form-control" id="validationCustom03"
+                                                                        th:field="${historiaClinica.motivoConsulta}"
+                                                                        required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-md-12"
+                                                                    style=" display: flex; justify-content: space-around;">
+                                                                    <label for="validationCustom02" class="form-label"
+                                                                        style="margin-top: 10PX; white-space: nowrap;">ENFERMEDAD
+                                                                        ACTUAL:</label>
+                                                                    <input style=" border: none; " type="text"
+                                                                        class="form-control" id="validationCustom03"
+                                                                        th:field="${historiaClinica.enfermedadActual}"
+                                                                        required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- Contenido (Ant. Personales Patologicos; Enf. Congenitas, Quirurgicos, Alergias, Patologias) -->
+
+                                                                <div class="container row g-12 needs-validation"
+                                                                    style=" border-top: 3px solid blue; padding: 0; ">
+
+                                                                    <div class="container col-md-6  needs-validation"
+                                                                        style="border-right: 3px solid blue; padding: 0; ">
+
+                                                                        <div class="col-md-12">
+                                                                            <label for="validationCustom02"
+                                                                                class="form-label"
+                                                                                style="margin-top: 10PX; ">Ant.
+                                                                                Personales
+                                                                                patologicos</label>
+
+                                                                            <div class="valid-feedback">
+                                                                                Looks good!
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-12"
+                                                                            style=" display: flex; justify-content: space-around;">
+                                                                            <label for="validationCustom02"
+                                                                                class="form-label"
+                                                                                style="margin-top: 10PX; white-space: nowrap;">Enf.
+                                                                                Congenitas:</label>
+                                                                            <input style=" border: none; " type="text"
+                                                                                class="form-control"
+                                                                                id="validationCustom03"
+                                                                                th:field="${historiaClinica.enfCongenitas}"
+                                                                                required>
+                                                                            <div class="valid-feedback">
+                                                                                Looks good!
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-12"
+                                                                            style=" display: flex; justify-content: space-around;">
+                                                                            <label for="validationCustom02"
+                                                                                class="form-label"
+                                                                                style="margin-top: 10PX;  ">Quirurgicos:</label>
+                                                                            <input style=" border: none; " type="text"
+                                                                                class="form-control"
+                                                                                id="validationCustom03"
+                                                                                th:field="${historiaClinica.quirurgicos}"
+                                                                                required>
+                                                                            <div class="valid-feedback">
+                                                                                Looks good!
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-12"
+                                                                            style=" display: flex; justify-content: space-around;">
+                                                                            <label for="validationCustom02"
+                                                                                class="form-label"
+                                                                                style="margin-top: 10PX;  ">Alergias:</label>
+                                                                            <input style=" border: none; " type="text"
+                                                                                class="form-control"
+                                                                                id="validationCustom03"
+                                                                                th:field="${historiaClinica.alergiasPatologicos}"
+                                                                                required>
+                                                                            <div class="valid-feedback">
+                                                                                Looks good!
+                                                                            </div>
+                                                                        </div>
+
+
+
+                                                                        <div class="col-md-12">
+                                                                            <label for="validationCustom02"
+                                                                                class="form-label"
+                                                                                style="margin-top: 10PX; ">Patologias:</label>
+
+                                                                            <input class="OTROS2"
+                                                                                th:field="${historiaClinica.patologias}"
+                                                                                type="radio" name="radioPat"
+                                                                                value="HTA"> HTA
+
+                                                                            <input class="OTROS2"
+                                                                                th:field="${historiaClinica.patologias}"
+                                                                                type="radio" name="radioPat" value="DM"
+                                                                                style="margin-left: 5px;"> DM
+
+                                                                            <input class="OTROS2" name="patologias"
+                                                                                type="radio" value="OTROS"
+                                                                                style="margin-left: 20px;"> OTROS
+
+                                                                                <!-- OTROS2 -->
+
+                                                                            <input 
+                                                                                th:field="${historiaClinica.patologias}" 
+                                                                                type="text" id="otrosInput1" placeholder="Escriba otro..."
+                                                                                style="border-color: blue; margin: 5px; display: none; width: 30%; height: 30px;">
+
+                                                                            <div class="valid-feedback">
+
+                                                                                Looks good!
+
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                    <!-- Contenido (Ant. Familiares Patologicos) -->
+
+                                                                    <div class="container col-md-6  needs-validation">
+
+                                                                        <div class="col-md-12">
+                                                                            <label
+                                                                                style="white-space: nowrap; margin-top: 10PX;"
+                                                                                for="validationCustom12"
+                                                                                class="form-label">Ant. Familiares
+                                                                                Patologicos</label>
+                                                                            <textarea
+                                                                                th:field="${historiaClinica.antFamiliaresPatologicos}"
+                                                                                style="border: none;  width: 100%; 
+                                                                                resize: none;
+                                                                                 height: 175px;
+                                                                                padding: 0px;"
+                                                                                class="form-control"
+                                                                                id="exampleFormControlTextarea1"
+                                                                                rows="3"></textarea>
+                                                                            <div class="valid-feedback">
+                                                                                Looks good!
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- Contenido (Ant. Familiares no Patologicos, Grupo Sanguineo,  Alergias, Factores de riesgo) -->
+                                                                <div class="container row g-12 needs-validation"
+                                                                    style=" border-top: 3px solid blue; padding: 0; ">
+
+                                                                    <div class="col-md-12">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; ">Ant. Personales
+                                                                            No patologicos</label>
+
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-6"
+                                                                        style=" display: flex; justify-content: space-around;">
+
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; white-space: nowrap;">Grupo
+                                                                            Sanguineo:</label>
+                                                                        <input style=" border: none; " type="text"
+                                                                            class="form-control" id="validationCustom03"
+                                                                            th:field="${historiaClinica.grupoSanguineo}"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-md-6"
+                                                                        style=" display: flex; justify-content: space-around;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX;">Alergias:</label>
+                                                                        <input style=" border: none; " type="text"
+                                                                            class="form-control" id="validationCustom03"
+                                                                            th:field="${historiaClinica.alergiasNoPatologicos}"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="col-md-12">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; ">Factores de
+                                                                            riesgo:</label> <!-- factoresRiesgo4 -->
+
+                                                                        <input class="OTROS3"
+                                                                            th:field="${historiaClinica.factoresRiesgo}"
+                                                                            type="radio" name="factoresRiesgo"
+                                                                            value="Tabaquismo" required> Tabaquismo
+                                                                            
+                                                                        <input class="OTROS3"
+                                                                            th:field="${historiaClinica.factoresRiesgo}"
+                                                                            type="radio" name="factoresRiesgo"
+                                                                            value="Alcoholismo"
+                                                                            style="margin-left: 5px;" required>  Alcoholismo
+
+                                                                        <input class="OTROS3" 
+                                                                            th:field="${historiaClinica.factoresRiesgo}"
+                                                                            type="radio" name="factoresRiesgo" value="Drogas"
+                                                                            style="margin-left: 5px;" required> Drogas
+
+                                                                        <input class="OTROS3" name="factoresRiesgo"
+                                                                            type="radio" value="OTROS"
+                                                                            style="margin-left: 5px;" required> Otros
+
+                                                                            <!-- OTROS3 -->
+
+                                                                            <input
+                                                                            th:field="${historiaClinica.factoresRiesgo}"
+                                                                            type="text" id="otrosInput2" placeholder="Escriba otro..."
+                                                                            style="border-color: blue; margin-left: 20px; height: 30px; display: none;">
+
+                                                                        <div class="valid-feedback">
+
+                                                                            Looks good!
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+
+
+                                                                <!-- Contenido (Antecedentes Gineco-obstetricos, Menarca,  Menst. Ritmo, Menopausia, Vida sexual,  Metodo Anticeptivo) -->
+                                                                <div class="container row g-12 needs-validation"
+                                                                    style=" border-top: 3px solid blue; padding: 0; ">
+
+                                                                    <div class="col-md-12">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; white-space: nowrap;">Antecedentes
+                                                                            Gineco-obstetricos</label>
+
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-6"
+                                                                        style=" display: flex; align-items: center;">
+
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; ">Menarca:</label>
+
+                                                                        <input style=" border: none; width: 12%; margin-top: 5PX;"
+                                                                            min="0" type="number" class="form-number"
+                                                                            id="validationCustom03"
+                                                                            th:field="${historiaClinica.menarca}"
+                                                                            required>
+
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; width: 50%;">Año</label>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-md-6"
+                                                                        style=" display: flex; justify-content: space-around;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; white-space: nowrap;">Menst.
+                                                                            Ritmo:</label>
+                                                                        <input style=" border: none; " type="text"
+                                                                            class="form-control" id="validationCustom03"
+                                                                            th:field="${historiaClinica.menstRitmo}"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+                                                                    <div class="col-md-6"
+                                                                        style=" display: flex; justify-content: space-around;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; white-space: nowrap;">Met.
+                                                                            Anticeptivo:</label>
+                                                                        <input style=" border: none; " type="text"
+                                                                            class="form-control" id="validationCustom03"
+                                                                            th:field="${historiaClinica.metodoAnticeptivo}"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-6"
+                                                                        style=" display: flex; justify-content: space-around;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 10PX; white-space: nowrap;">Menopausia:</label>
+                                                                        <input style=" border: none; " type="text"
+                                                                            class="form-control" id="validationCustom03"
+                                                                            th:field="${historiaClinica.menopausia}"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-4"
+                                                                        style="padding: 0px; display: flex; align-items: center;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style=" white-space: nowrap; margin: 0 5px;">Vida
+                                                                            sexual:</label>
+
+                                                                        <input th:field="${historiaClinica.vidaSexual}"
+                                                                            type="radio" name="radioRies" value="+"
+                                                                            style=" margin: 0 12px;" required>+
+                                                                        <input th:field="${historiaClinica.vidaSexual}"
+                                                                            type="radio" name="radioRies" value="-"
+                                                                            style=" margin:  0 12px;" required>-
+
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-2"
+                                                                        style="padding: 0px; display: flex; align-items: center;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 5PX; white-space: nowrap;">G:</label>
+
+                                                                        <input style=" border: none; width: 27%;"
+                                                                            type="number" class="form-number"
+                                                                            id="numeroInput"
+                                                                            th:field="${historiaClinica.numeroEmbarazos}"
+                                                                            min="0"  required>
+                                                                            
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                        style=" display: flex; align-items: center;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 5PX; white-space: nowrap;">P:</label>
+                                                                        <input style=" border: none; width: 30%;"
+                                                                            type="number" class="form-number"
+                                                                            id="numeroInput"
+                                                                            th:field="${historiaClinica.numeroPartos}"
+                                                                            min="0" required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                        style=" display: flex; align-items: center;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style="margin-top: 5PX; white-space: nowrap;">C:</label>
+                                                                        <input style=" border: none; width: 30%;"
+                                                                            type="number" class="form-number"
+                                                                            id="numeroInput"
+                                                                            th:field="${historiaClinica.numeroAbortos}"
+                                                                            min="0" required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-2"
+                                                                        style=" display: flex;     align-items: center;">
+                                                                        <label for="validationCustom02"
+                                                                            class="form-label"
+                                                                            style=" white-space: nowrap; margin-top: 5PX; ">A:</label>
+                                                                        <input style=" border: none; width: 30%;"
+                                                                            type="number" class="form-number"
+                                                                            id="numeroInput"
+                                                                            th:field="${historiaClinica.numeroCesarias}"
+                                                                            min="0" required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+
+
+
+
+                                                                    <!-- ESTADO DEL PACIENTE IMPRESIÓN GENERAL-->
+
+                                                                    <div class="container row g-12 needs-validation"
+                                                                        style=" border-top: 3px solid blue; padding: 0; ">
+
+
+                                                                        <div class="container col-md-2  needs-validation"
+                                                                            style=" padding: 0;  ">
+
+                                                                            <div class="col-md-12">
+                                                                                <label for="validationCustom02"
+                                                                                    class="form-label"
+                                                                                    style=" margin-top: 5px; ">ESTADO
+                                                                                    DEL PACIENTE IMPRESIÓN
+                                                                                    GENERAL:</label>
+
+                                                                                <div class="valid-feedback">
+                                                                                    Looks good!
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="container col-md-9  needs-validation"
+                                                                            style="padding: 0; height: 136px; border-left: 3px solid blue;">
+
+                                                                            <div class="col-md-12">
+                                                                                <textarea
+                                                                                    th:field="${historiaClinica.estadoPaciente}"
+                                                                                    style="  resize: none; border: none;"
+                                                                                    class="form-control"
+                                                                                    id="exampleFormControlTextarea1"
+                                                                                    rows="3"></textarea>
+
+                                                                                <div class="valid-feedback">
+                                                                                    Looks good!
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+
+
+
+                                                                </div>
+
+                                                                <!-- FIN -->
+                                                            </div>
+
+                                                            <!-- Contenido (Antecedentes Gineco-obstetricos, Menarca,  Menst. Ritmo, Menopausia, Vida sexual,  Metodo Anticeptivo) -->
+
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">CABEZA:</label>
+                                                                <textarea th:field="${historiaClinica.cabeza}"
+                                                                    style=" resize: none; border: none; height: 80px; "
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">CUELLO:</label>
+
+                                                                <textarea th:field="${historiaClinica.cuello}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">TORAX:</label>
+
+                                                                <textarea th:field="${historiaClinica.torax}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">ABDOMEN:</label>
+
+                                                                <textarea th:field="${historiaClinica.abdomen}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">EXTREMIDADES:</label>
+
+                                                                <textarea th:field="${historiaClinica.extremidades}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">NEUROLOGICO:</label>
+
+                                                                <textarea th:field="${historiaClinica.neurologico}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX; white-space: nowrap; "
+                                                                    for="validationCustom12" class="form-label">EXAMENES
+                                                                    COMPLEMENTARIOS:</label>
+
+                                                                <textarea
+                                                                    th:field="${historiaClinica.examenesComplementarios}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">DIAGNOSTICO:</label>
+
+                                                                <textarea th:field="${historiaClinica.diagnostico}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12"
+                                                                style=" display: flex; justify-content: space-around; border-top: 3px solid blue;">
+                                                                <label style=" margin-top: 10PX;"
+                                                                    for="validationCustom12"
+                                                                    class="form-label">TRATAMIENTO:</label>
+
+                                                                <textarea th:field="${historiaClinica.tratamiento}"
+                                                                    style=" resize: none; border: none; height: 80px;"
+                                                                    class="form-control"
+                                                                    id="exampleFormControlTextarea1"
+                                                                    rows="3"></textarea>
+
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                    </div>
+
+
+                                                    <!-- FIN fomulario-->
+                                                </div>
+
+
+                                                <!--  -->
+                                                <div class="container row g-12 needs-validation"
+                                                    style="margin: 15px; border-top: 3px ">
+
+                                                    <div class="col-md-4 "> </div>
+
+
+                                                    <div class="col-md-4 "
+                                                        style="margin-top: 60px; border-top: 3px solid black;">
+
+                                                        <label
+                                                            style=" margin-top: 10PX;  display: flex; justify-content: space-around;"
+                                                            for="validationCustom12" class="form-label">SELLO DEL
+                                                            MEDICO</label>
+
+                                                    </div>
+
+
+
+                                                    <div class="col-md-4">
+
+                                                        <button class="btn btn-primary" type="submit">Registrar</button>
+
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+
+
+
+
+
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end container-fluid -->
+                </div>
+                <!-- end page-content-wrapper -->
+            </div>
+            <!-- End Page-content -->
+
+            <div th:insert="~{layout/footer :: footer}"></div>
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Right Sidebar -->
+    <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
+    <!-- /Right-bar -->
+
+    <!-- Right bar overlay-->
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
+    <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
+
+
+
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="../../../../assets/libs/jszip/jszip.min.js"></script>
+    <script src="../../../../assets/libs/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../../../../assets/libs/pdfmake/build/vfs_fonts.js"></script>
+    <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Responsive examples -->
+    <script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="../../../../assets/js/pages/datatables.init.js"></script>
+
+    <script src="../../../../assets/js/app.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.form-numberF').on('input', function () {
+                var valor = $(this).val();
+                // Verificamos si el valor ingresado es un número real válido
+                if (isNaN(parseFloat(valor))) {
+                    // Si no es un número real válido, eliminamos el último carácter ingresado
+                    $(this).val(valor.slice(0, -1));
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.form-number').on('keypress', function (e) {
+                // Obtenemos el código de la tecla presionada
+                var keyCode = e.which;
+
+                // Verificamos si la tecla presionada es un número (entre 48 y 57 en el código ASCII)
+                if (keyCode < 48 || keyCode > 57) {
+                    // Si no es un número, prevenimos la acción por defecto para evitar que el carácter se ingrese
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+
+
+<!-- OTROS1 -->
+    <script>
+        $(document).ready(function () {
+
+            $('.OTROS1').change(function () {
+
+                if ($(this).val() === 'OTROS') {
+                    $('#otrosInput').show();
+                } else {
+                    $('#otrosInput').hide().val('');
+                }
+            });
+        });
+
+    </script>
+
+<!-- OTROS2 -->
+    <script>
+        $(document).ready(function () {
+
+            $('.OTROS2').change(function () {
+
+                if ($(this).val() === 'OTROS') {
+                    $('#otrosInput1').show();
+                } else {
+                    $('#otrosInput1').hide().val('');
+                }
+            });
+        });
+
+    </script>
+
+
+<!-- OTROS3 -->
+
+<script>
+    $(document).ready(function () {
+
+        $('.OTROS3').change(function () {
+
+            if ($(this).val() === 'OTROS') {
+                $('#otrosInput2').show();
+            } else {
+                $('#otrosInput2').hide().val('');
+            }
+        });
+    });
+
+</script>
+
+
+
+</body>
+
+</html>

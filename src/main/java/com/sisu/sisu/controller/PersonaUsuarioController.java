@@ -74,7 +74,7 @@ public class PersonaUsuarioController {
     @RequestParam(name="apodo",required = false)String apodo,
     @RequestParam(name="clave",required = false)String clave,
     @RequestParam(name="grado",required = false)Integer idGradoAcademico,
-    @RequestParam(name="dip",required = false)Long idDip,
+    @RequestParam(name="dip",required = false)Integer idDip,
     @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
     ) { 
 
@@ -109,7 +109,7 @@ public class PersonaUsuarioController {
         @RequestParam(name = "apodo") String apodo,
         @RequestParam(name = "clave") String clave,
         @RequestParam(name="grado",required = false)Integer idGradoAcademico,
-        @RequestParam(name="dip",required = false)Long idDip,
+        @RequestParam(name="dip",required = false)Integer idDip,
         @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
         ) { 
 

@@ -60,7 +60,7 @@ public class Personacontroller {
     @PostMapping(value = "/guardarPersona")
     public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash, HttpServletRequest request,
             @RequestParam(name = "grado", required = false) Integer idGradoAcademico,
-            @RequestParam(name = "dip", required = false) Long idDip,
+            @RequestParam(name = "dip", required = false) Integer idDip,
             @RequestParam(name = "estadoCivil", required = false) Long idTipoEstadoCivil) {
         Persona existingPersona = personaService.findByCi(persona.getCi());
 

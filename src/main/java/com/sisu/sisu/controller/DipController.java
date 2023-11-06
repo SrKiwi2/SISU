@@ -45,7 +45,7 @@ public class DipController {
     /*--------------- eliminar -----------*/
 
     @RequestMapping(value = "/eliminarDip/{id_dip}")
-    public String eliminarDip(@PathVariable("id_dip") Long id_dip) {
+    public String eliminarDip(@PathVariable("id_dip") Integer id_dip) {
 
         Dip dip = iDipService.findOne(id_dip);
         dip.setEstado("X");
@@ -92,7 +92,7 @@ public class DipController {
 
     /* Modificación Modal */
     @RequestMapping(value = "/dip/{idDip}")
-    public String getContentDip(@PathVariable(value = "idDip") Long idDip, Model model,
+    public String getContentDip(@PathVariable(value = "idDip") Integer idDip, Model model,
             HttpServletRequest request) {
 
         model.addAttribute("dip", iDipService.findOne(idDip));
@@ -114,15 +114,6 @@ public class DipController {
 
     // --------------------------------------------
 
-    /* -------------------Editar ------------------- */
-
-    // @RequestMapping(value = "/editarDip/{id_dip}")
-    // public String editarDip(@PathVariable("id_dip") Long id_dip, Model model) {
-    //     Dip dip = iDipService.findOne(id_dip);
-    //     model.addAttribute("dip", dip);
-    //     return "formularios/listaDip";
-    // }
-
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosDip")
     public String guardarCambiosDip(@ModelAttribute Dip dip) {
@@ -132,11 +123,4 @@ public class DipController {
     }
 
     // -------------------------------------------------
-
-    /* ------------- GUARDAR ------------ */
-
-    // --------------------------------------------
-
-    // -------------------------------------------------
-
 }

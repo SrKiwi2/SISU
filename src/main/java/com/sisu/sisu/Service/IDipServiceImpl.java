@@ -25,12 +25,12 @@ public class IDipServiceImpl implements IDipService{
     }
 
     @Override
-    public Dip findOne(Long id) {
+    public Dip findOne(Integer id) {
        return dipDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         dipDao.deleteById(id);
     }
     
