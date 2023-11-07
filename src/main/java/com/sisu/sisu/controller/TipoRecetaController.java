@@ -54,11 +54,11 @@ public class TipoRecetaController {
     }
 
     /* registrar con el modal */
-    @RequestMapping(value = "/registrarReceta")
-    public String getRegistroEstadoC(Model model) {
-        model.addAttribute("estadoCivil", new TipoReceta());
-        model.addAttribute("estadosCiviles", tipoRecetaService.findAll());
-        return "contentGA :: contentEstadoC";
+    @RequestMapping(value = "/registrarTipoReceta")
+    public String getRegistroTipoR(Model model) {
+        model.addAttribute("tipoReceta", new TipoReceta());
+        model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
+        return "contentRE :: contentTipoReceta";
     }
 
     /* Guardar Cambios */

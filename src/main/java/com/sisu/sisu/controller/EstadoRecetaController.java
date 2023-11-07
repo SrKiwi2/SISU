@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.EstadoRecetaService;
 import com.sisu.sisu.entitys.EstadoReceta;
-import com.sisu.sisu.entitys.ListaLiname;
-import com.sisu.sisu.entitys.RemediosFarmacia;
 
 @Controller
 public class EstadoRecetaController {
@@ -22,30 +20,12 @@ public class EstadoRecetaController {
     @Autowired
     private EstadoRecetaService estadoRecetaService;
 
-    /* obtener */
-    @GetMapping(value = "/formEstadoR")
-    public String registroFormR(@Validated EstadoReceta estadoReceta, Model model) {
-
-        model.addAttribute("estadoReceta", new EstadoReceta());
-        model.addAttribute("estadosReceta", estadoRecetaService.findAll());
-
-        return "formularios/formEstadoReceta";
-    }
-
     /* guardar */
     @PostMapping(value = "/guardarEstadoR")
     public String RegistrarEstadoR(@Validated EstadoReceta estadoReceta) {
         estadoReceta.setEstado("A");
         estadoRecetaService.save(estadoReceta);
         return "redirect:/ListaEstadoR";
-    }
-
-    /* editar */
-    @RequestMapping(value = "/editarEdtador/{idEstadoReceta}")
-    public String editarEstadoR(@PathVariable("idEstadoReceta") Integer idEstadoReceta, Model model) {
-        EstadoReceta estadoReceta = estadoRecetaService.findOne(idEstadoReceta);
-        model.addAttribute("estadoReceta", estadoReceta);
-        return "formularios/formEstadoReceta";
     }
 
     /* Eliminar */
@@ -71,9 +51,9 @@ public class EstadoRecetaController {
     /* modificar con el modal */
 
     @RequestMapping(value = "/estadoReceta/{idEstadoReceta}")
-    public String getContentRemediosF(@PathVariable(value = "idEstadoReceta") Integer idEstadoReceta, Model model,
+    public String getContentEstadoReceta(@PathVariable(value = "idEstadoReceta") Integer idEstadoReceta, Model model,
             HttpServletRequest request) {
-        model.addAttribute("estadosReceta", estadoRecetaService.findOne(idEstadoReceta));
+        model.addAttribute("estadoReceta", estadoRecetaService.findOne(idEstadoReceta));
 
         return "contentRE :: contentEstadoReceta";
     }

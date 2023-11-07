@@ -24,7 +24,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "estado_receta")
 public class EstadoReceta implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final int MY_CONSTANT = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado_receta")

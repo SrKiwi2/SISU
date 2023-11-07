@@ -11,7 +11,7 @@ public interface EstadoRecetaService {
 
     public List<EstadoReceta> findAll(); // Muestra todos los registros
 
-    public void save(EstadoReceta EstadoReceta); // Guarda registro
+    public void save(EstadoReceta estadoReceta); // Guarda registro
 
     public EstadoReceta findOne(Integer id); // Muestra un registro
 

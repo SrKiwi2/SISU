@@ -19,23 +19,7 @@ public class EstadoCivilController {
     @Autowired
     private ITiposEstadoCivilService tiposEstadoCivilService;
 
-    /* formulario */
 
-    @GetMapping(value = "/formRegistroEstadoC")
-    public String registroPersona(@Validated TiposEstadoCivil tiposEstadoCivil, Model model) {
-
-        model.addAttribute("estadoCivil", new TiposEstadoCivil());
-        model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
-
-        return "formularios/formEst_Civil";
-    }
-
-    @PostMapping(value = "/guardarEstadoCivil")
-    public String guardaEstadoCivil(@Validated TiposEstadoCivil tiposEstadoCivil) {
-        tiposEstadoCivil.setEstado("A");
-        tiposEstadoCivilService.save(tiposEstadoCivil);
-        return "redirect:/formRegistroEstadoC";
-    }
 
     /* Eliminar */
 
@@ -59,7 +43,7 @@ public class EstadoCivilController {
     public String getRegistroEstadoC(Model model) {
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", tiposEstadoCivilService.findAll());
-        return "contentRE :: contentEstadoReceta";
+        return "contentGA :: contentEstadoC";
     }
 
     /* modificar con el mnodal */
@@ -67,7 +51,7 @@ public class EstadoCivilController {
     public String getEstadoCivill(@PathVariable(value = "idTipoEstadoCivil") Integer idTipoEstadoCivil, Model model,
             HttpServletRequest request) {
         model.addAttribute("estadoCivil", tiposEstadoCivilService.findOne(idTipoEstadoCivil));
-        return "contentRE :: contentEstadoReceta";
+        return "contentGA :: contentEstadoC";
     }
 
     @PostMapping(value = "/guardarCambiosEstadoC")

@@ -12,26 +12,26 @@ import com.sisu.sisu.entitys.EstadoReceta;
 public class EstadoRecetaServiceImpl implements EstadoRecetaService {
     @Autowired
 
-    private EstadoRecetaDao EstadoRecetaDao;
+    private EstadoRecetaDao estadoRecetaDao;
 
     @Override
     public List<EstadoReceta> findAll() {
-        return (List<EstadoReceta>) EstadoRecetaDao.findAll();
+        return (List<EstadoReceta>) estadoRecetaDao.findAll();
     }
 
     @Override
-    public void save(EstadoReceta tipo_receta) {
-        EstadoRecetaDao.save(tipo_receta);
+    public void save(EstadoReceta estadoReceta) {
+        estadoRecetaDao.save(estadoReceta);
 
     }
 
     @Override
     public EstadoReceta findOne(Integer id) {
-        return EstadoRecetaDao.findById(id).orElse(null);
+        return estadoRecetaDao.findById(id).orElse(null);
     }
 
     @Override
     public void delete(Integer id) {
-        EstadoRecetaDao.deleteById(id);
+        estadoRecetaDao.deleteById(id);
     }
 }

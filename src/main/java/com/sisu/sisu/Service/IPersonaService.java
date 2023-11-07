@@ -13,7 +13,7 @@ public interface IPersonaService {
     public void save(Persona persona); // Guarda registro
 
     public Persona findOne(Integer id); // Muestra un registro
-
+    
     public void delete(Integer id); // Elimina registro
 
     public Persona findByCi(String ci);

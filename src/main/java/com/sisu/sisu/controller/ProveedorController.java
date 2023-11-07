@@ -80,7 +80,7 @@ public class ProveedorController {
     @PostMapping(value = "/guardarCambiosPr")
     public String guardarCambiosPersona(@ModelAttribute Proveedor proveedor) {
         proveedor.setEstado("A");
-        proveedorService.save(proveedor);
+        proveedorService.save(proveedor);   
         return "redirect:/ListaProveedor";
     }
 
