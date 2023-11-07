@@ -15,6 +15,7 @@ public interface IEnlaceService {
     public Enlace findOne(Integer id); // Muestra un registro
 
     public void delete(Integer id); // Elimina registros
+    List<Enlace>listaEnlacePadre();
 
     
 }

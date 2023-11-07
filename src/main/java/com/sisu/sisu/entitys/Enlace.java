@@ -12,7 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 @Table(name = "enlace")
 public class Enlace implements Serializable {
 
@@ -27,7 +32,7 @@ public class Enlace implements Serializable {
     private String estado;
 
     @Column(name = "enlace")
-    private String enlace;
+    private String nombre_enlace;
 
     @Column(name = "ruta")
     private String ruta;
@@ -45,12 +50,12 @@ public class Enlace implements Serializable {
     @ManyToOne(optional = false)
     private Usuario id_usuario;
 
-    public Enlace(Integer idEnlace, String estado, String enlace, String ruta, String imagen, Integer tabla, String obs,
+    public Enlace(Integer idEnlace, String estado, String nombre_enlace, String ruta, String imagen, Integer tabla, String obs,
             Usuario id_usuario) {
         super();
         this.idEnlace = idEnlace;
         this.estado = estado;
-        this.enlace = enlace;
+        this.nombre_enlace = nombre_enlace;
         this.ruta = ruta;
         this.imagen = imagen;
         this.tabla = tabla;
@@ -79,11 +84,11 @@ public class Enlace implements Serializable {
     }
 
     public String getEnlace() {
-        return enlace;
+        return nombre_enlace;
     }
 
-    public void setEnlace(String enlace) {
-        this.enlace = enlace;
+    public void setEnlace(String nombre_enlace) {
+        this.nombre_enlace = nombre_enlace;
     }
 
     public String getRuta() {
@@ -126,4 +131,4 @@ public class Enlace implements Serializable {
         this.id_usuario = id_usuario;
     }
 
-}
+ }//

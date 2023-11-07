@@ -33,4 +33,9 @@ public class EnlaceServiceImpl implements IEnlaceService {
     enlaceDao.deleteById(id);
 
     }
+
+    @Override
+    public List<Enlace> listaEnlacePadre() {
+       return enlaceDao.listaEnlacePadre();
+    }
 }

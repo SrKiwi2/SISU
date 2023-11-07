@@ -14,14 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.ITipoRecetaService;
 import com.sisu.sisu.entitys.TipoReceta;
-import com.sisu.sisu.entitys.TiposEstadoCivil;
 
 @Controller
 public class TipoRecetaController {
 
     @Autowired
     private ITipoRecetaService tipoRecetaService;
-    
 
     /* eliminar */
 
@@ -30,7 +28,7 @@ public class TipoRecetaController {
         TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         tipoReceta.setEstado("X");
         tipoRecetaService.save(tipoReceta);
-        
+
         return "redirect:/ListaReceta";
     }
 
@@ -48,7 +46,8 @@ public class TipoRecetaController {
     /* Cuando apretar sabe en editar, llama esta funcion: Modificación Modal */
 
     @RequestMapping(value = "/tipoReceta/{idTipoRe}")
-    public String getContentREt(@PathVariable(value = "idTipoRe") Integer idTipoRe, Model model, HttpServletRequest request) {
+    public String getContentREt(@PathVariable(value = "idTipoRe") Integer idTipoRe, Model model,
+            HttpServletRequest request) {
         // TipoReceta tipoReceta = tipoRecetaService.findOne(idTipoRe);
         model.addAttribute("tipoReceta", tipoRecetaService.findOne(idTipoRe));
         return "contentRE :: contentTipoReceta";
