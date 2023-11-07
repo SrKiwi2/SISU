@@ -35,19 +35,19 @@ public class Usr_rolesController {
 
     //----------------------Metodo listar----------------------------
 
-    @GetMapping(value = "/lista_usr")
-    public String listar_usr(Model model, @Validated Usuario usuario){
+    // @GetMapping(value = "/lista_usr")
+    // public String listar_usr(Model model, @Validated Usuario usuario){
 
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios", usuarioService.findAll());
+    //     model.addAttribute("usuario", new Usuario());
+    //     model.addAttribute("usuarios", usuarioService.findAll());
 
-        model.addAttribute("rol", new Roles());
-        model.addAttribute("roles", iRolesService.findAll());
+    //     model.addAttribute("rol", new Roles());
+    //     model.addAttribute("roles", iRolesService.findAll());
 
 
-        return "listas/ListaUsr";
+    //     return "listas/ListaUsr";
 
-    }
+    // }-------
 
     // @GetMapping(value="/listaRoles")
     // public String listarRoles(Model model, @Validated Roles roles) {

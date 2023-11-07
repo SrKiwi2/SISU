@@ -159,20 +159,14 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Apellido Paterno</th>
-                                                        <th>Apellido Materno</th>
-                                                        <th>Usuario</th>
+                                                       
                                                         <th>Clave</th>
-                                                        <th></th>
+                                                        
                                                     </tr>
                                                 </thead>
             
                                                 <tbody>
                                                     <tr th:each ="us : ${usuarios}" th:if="${us.estado !='X'}">
-                                                        <td th:text="${us.idPersona.nombres}"></td>
-                                                        <td th:text="${us.idPersona.apPaterno}"></td>
-                                                        <td th:text="${us.idPersona.apMaterno}"></td>
                                                         <td th:text="${us.apodo}"></td>
                                                         <td class="col-2">
                                                             <input class="col-4" type="password" id="passwordInput" th:value="${us.clave}" disabled="disabled" />
