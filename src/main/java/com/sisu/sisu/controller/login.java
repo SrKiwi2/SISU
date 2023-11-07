@@ -18,21 +18,41 @@ public class login {
 	
 	@Autowired
 	UsrRolesService usrRolesService;
+
+	@RequestMapping(value = "/InicioSesion", method = RequestMethod.GET)
+	public String iniciosesion(Model model) {
+		
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "index/login"; 
+	}
 	
-	
-	@RequestMapping(value = "/loginE", method = RequestMethod.GET)
+	@RequestMapping(value = "/Inicio", method = RequestMethod.GET)
+	public String inicio(Model model) {
+		
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "index/index"; 
+	}
+
+	@RequestMapping(value = "/loginE", method = RequestMethod.POST)
 	public String loginE(Model model) {
 		
 		System.out.println("11111111111111111111111111111111111111111111");
 		return "index/index"; 
 	}
-	
+
 	
 	@RequestMapping(value = "/loginS", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111");
 		return "index/loginS";
+	}
+
+	@RequestMapping(value = "/loginK", method = RequestMethod.GET)
+	public String Ficha(Model model, HttpServletRequest request) {
+		
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "index/loginK";
 	}
 	
 	

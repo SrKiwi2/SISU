@@ -29,6 +29,13 @@ public class FichaSisuController {
 	@Autowired
 	private IPersonaService personaService;
 
+	@RequestMapping(value = "/Ficha", method = RequestMethod.GET)
+	public String ficha(Model model) {
+		
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "busqueda/GenerarFicha"; 
+	}
+
 	@RequestMapping(value = "universitario", method = RequestMethod.GET)
 	public String universitario(HttpServletRequest request,Model model,
 			@RequestParam("codigoUniversitario") String ru) {
@@ -75,6 +82,7 @@ public class FichaSisuController {
 				model.addAttribute("celular", data.get("celular").toString());
 				model.addAttribute("tipoSanguineo", data.get("tipo_sanguineo").toString());
 				model.addAttribute("sexo", data.get("sexo").toString());
+				model.addAttribute("estadoMatriculacion", data.get("estado_matriculacion").toString());
             	System.out.println("EL NOMBRE DEL UNIVERSITARIO ES "+data.get("nombres").toString());
 			}
 
@@ -109,80 +117,80 @@ public class FichaSisuController {
             if (resp.getBody().get("status").toString().equals("200")) {
         		System.out.println("----------------------------------SS--------");
 
-				
-            	Map<String, Object> data = (Map) resp.getBody().get("data");
+				Map<String, Object> data = (Map) resp.getBody().get("data");
+
             	System.out.println("------------RD: "+rd+"---------");
         		System.out.println("------------------------------------------");
             	System.out.println("EL NOMBRE DEL DOCENTE ES "+data.get("nombres").toString());
             	System.out.println("-----------------DOCENTE------------------");
+
+				String DatosDocente = data.get("nombres").toString();
+
+				model.addAttribute("DatosDocente", DatosDocente);
+
+				model.addAttribute("apellidoPaterno", data.get("apellido_paterno")).toString();
+				model.addAttribute("apellidoMaterno", data.get("apellido_materno")).toString();
+				model.addAttribute("ci", data.get("ci").toString());
+				model.addAttribute("fechaNacimiento", data.get("fecha_nacimiento")).toString();
+				model.addAttribute("titulo", data.get("titulo").toString());
+				model.addAttribute("gradoAcademico", data.get("grado_academico").toString());
+				model.addAttribute("rd", data.get("rd").toString());
+				model.addAttribute("tipoSanguineo", data.get("tipo_sanguineo")).toString();
+				model.addAttribute("sexo", data.get("sexo")).toString();
+				model.addAttribute("direccion", data.get("direccion")).toString();
+				model.addAttribute("activo", data.get("activo")).toString();
         		
-				
 			}
 
 		
-		return "index/index";
+		return "index/DatosDocente";
 	}
 	
 	// @RequestMapping(value = "administrativo", method = RequestMethod.GET)
 	// public String administrativo(HttpServletRequest request,Model model,@RequestParam("codigoAdministrativo") String codigoAdministrativo) {
+	
+	// try {
 		
-	// 	try {
-			
-	// 		Map<String,Object> request1=new HashMap<String,Object>();
-			
-	// 		request1.put("usuario", codigoAdministrativo);
-			
-	// 		String url="https://digital.uap.edu.bo/api/londra/api/londraPost/v1/personaLondra/obtenerDatos";
-			
-			
-	// 		 HttpHeaders headers=new HttpHeaders();
-	// 		  headers.setContentType(MediaType.APPLICATION_JSON);
-			  
-			  
-	// 		  HttpEntity<HashMap> req = new HttpEntity(request1, headers);
-			  
-	// 		  RestTemplate restTemplate = new RestTemplate();
-
-	// 	   ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
-			   
-	// 		System.out.println("7777777777777777777777777777777777777+2");
-			
-	// 		if (resp.getBody().get("status").toString().equals("200")) {
+	// Map<String,Object> request1=new HashMap<String,Object>();
+		
+	// request1.put("usuario", codigoAdministrativo);
+		
+	// String url="https://digital.uap.edu.bo/api/londra/api/londraPost/v1/personaLondra/obtenerDatos";
+		
+		
+	// HttpHeaders headers=new HttpHeaders();
+	// headers.setContentType(MediaType.APPLICATION_JSON);
+		  
+		  
+	// HttpEntity<HashMap> req = new HttpEntity(request1, headers);
+		  
+	// RestTemplate restTemplate = new RestTemplate();
+	// ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
+		   
+	// System.out.println("7777777777777777777777777777777777777+2");
+		
+	// if (resp.getBody().get("status").toString().equals("200")) {
 	// 			Map<String, Object> data = (Map) resp.getBody();
-	// 			String ci=data.get("per_num_doc").toString();
-				
+	// 			String ci=data.get("per_num_doc").toString();		
 	// 			System.out.println("-----------------ADMINISTRATIVO------------------");
 	// 			System.out.println("-----------------------CA: "+codigoAdministrativo+"-----------------");
 	// 			System.out.println("---------------------------"+ci+"---------------");
 	// 		}
-
 	// 		return "index/index";
 	// 	} catch (Exception e) {
-			
-			
-			
+
 	// 		String msn = "Error: Revise su usuario y contraseña ";
 	// 		model.addAttribute("msn", msn);
 	// 		System.out.println("hola-------------------------------------");
 	// 		return "index/index";
 	// 	}
-		
-		
-		
-		
-	
 	// }
-	
-	
+
 
 	// @RequestMapping(value = "particular", method = RequestMethod.GET)
-	// public String particular(HttpServletRequest request,Model model) {
-		
+	// public String particular(HttpServletRequest request, Model model) {
 	// 	System.out.print("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAA++PARTICULAR");
-		
 	// 	return "index/index";
 	// }
-	
-	
-	
+
 }
