@@ -91,8 +91,8 @@ public class Personacontroller {
     /* eliminar */
 
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
-    public String eliminarPersona(@PathVariable("idPersona")Long idPersona){
-        
+    public String eliminarPersona(@PathVariable("idPersona") Long idPersona) {
+
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
         personaService.save(persona);
@@ -106,7 +106,7 @@ public class Personacontroller {
             HttpServletRequest request) {
 
         model.addAttribute("persona", personaService.findOne(idPersona));
-        
+
         model.addAttribute("dips", dipService.findAll());
         model.addAttribute("grados", gradoService.findAll());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());
@@ -128,17 +128,15 @@ public class Personacontroller {
 
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());
-        
+
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "content :: content1";
     }
 
-
-
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
-    public String editarPersona(@PathVariable("idPersona")Long idPersona, Model model){
+    public String editarPersona(@PathVariable("idPersona") Long idPersona, Model model) {
         Persona persona = personaService.findOne(idPersona);
         model.addAttribute("persona", persona);
         return "formularios/formPersona";

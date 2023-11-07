@@ -40,7 +40,7 @@ public class EstadoCivilController {
     /* Eliminar */
 
     @RequestMapping(value = "/eliminarEstadoC/{idTipoEstadoCivil}")
-    public String eliminarEstadoC(@PathVariable("idTipoEstadoCivil") Long idTipoEstadoCivil) {
+    public String eliminarEstadoC(@PathVariable("idTipoEstadoCivil") Integer idTipoEstadoCivil) {
         TiposEstadoCivil tiposEstadoCivil = tiposEstadoCivilService.findOne(idTipoEstadoCivil);
         tiposEstadoCivil.setEstado("X");
         tiposEstadoCivilService.save(tiposEstadoCivil);
@@ -64,7 +64,7 @@ public class EstadoCivilController {
 
     /* modificar con el mnodal */
     @RequestMapping(value = "/estadoCivill/{idTipoEstadoCivil}")
-    public String getEstadoCivill(@PathVariable(value = "idTipoEstadoCivil") Long idTipoEstadoCivil, Model model,
+    public String getEstadoCivill(@PathVariable(value = "idTipoEstadoCivil") Integer idTipoEstadoCivil, Model model,
             HttpServletRequest request) {
         model.addAttribute("estadoCivil", tiposEstadoCivilService.findOne(idTipoEstadoCivil));
         return "contentRE :: contentEstadoReceta";

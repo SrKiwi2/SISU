@@ -42,7 +42,7 @@ public class EstadoRecetaController {
 
     /* editar */
     @RequestMapping(value = "/editarEdtador/{idEstadoReceta}")
-    public String editarEstadoR(@PathVariable("idEstadoReceta") Long idEstadoReceta, Model model) {
+    public String editarEstadoR(@PathVariable("idEstadoReceta") Integer idEstadoReceta, Model model) {
         EstadoReceta estadoReceta = estadoRecetaService.findOne(idEstadoReceta);
         model.addAttribute("estadoReceta", estadoReceta);
         return "formularios/formEstadoReceta";
@@ -51,7 +51,7 @@ public class EstadoRecetaController {
     /* Eliminar */
 
     @RequestMapping(value = "/eliminarEstadoR/{idEstadoReceta}")
-    public String eliminarEstadoR(@PathVariable("idEstadoReceta") Long idEstadoReceta) {
+    public String eliminarEstadoR(@PathVariable("idEstadoReceta") Integer idEstadoReceta) {
         EstadoReceta estadoReceta = estadoRecetaService.findOne(idEstadoReceta);
         estadoReceta.setEstado("X");
         estadoRecetaService.save(estadoReceta);

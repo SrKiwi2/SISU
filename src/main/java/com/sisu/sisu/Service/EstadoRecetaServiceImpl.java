@@ -26,12 +26,12 @@ public class EstadoRecetaServiceImpl implements EstadoRecetaService {
     }
 
     @Override
-    public EstadoReceta findOne(Long id) {
+    public EstadoReceta findOne(Integer id) {
         return EstadoRecetaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         EstadoRecetaDao.deleteById(id);
     }
 }

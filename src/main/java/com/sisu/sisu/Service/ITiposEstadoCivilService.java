@@ -12,7 +12,7 @@ public interface ITiposEstadoCivilService {
 
     public void save(TiposEstadoCivil TiposEstadoCivil); // Guarda registro
 
-    public TiposEstadoCivil findOne(Long id); // Muestra un registro
+    public TiposEstadoCivil findOne(Integer id); // Muestra un registro
 
-    public void delete(Long id); // Elimina registro
+    public void delete(Integer id); // Elimina registro
 }

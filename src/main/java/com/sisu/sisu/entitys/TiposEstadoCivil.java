@@ -24,7 +24,7 @@ public class TiposEstadoCivil implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tipo_estado_civil")
-	private Long idTipoEstadoCivil;
+	private Integer idTipoEstadoCivil;
 
 	@Column(name = "Nom_estado_civil")
 	private String NomEstadoCivil;
@@ -41,5 +41,5 @@ public class TiposEstadoCivil implements Serializable {
 	private Date modificacion;
 
 	/* RELACION */
-	
+
 }

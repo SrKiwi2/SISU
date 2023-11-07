@@ -13,7 +13,7 @@ public interface EstadoRecetaService {
 
     public void save(EstadoReceta EstadoReceta); // Guarda registro
 
-    public EstadoReceta findOne(Long id); // Muestra un registro
+    public EstadoReceta findOne(Integer id); // Muestra un registro
 
-    public void delete(Long id); // Elimina registro
+    public void delete(Integer id); // Elimina registro
 }

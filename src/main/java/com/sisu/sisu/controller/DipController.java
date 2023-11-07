@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IDipService;
 import com.sisu.sisu.entitys.Dip;
+
 @Controller
 public class DipController {
 
@@ -28,7 +29,7 @@ public class DipController {
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", iDipService.findAll());
 
-        return "formularios/formDip";
+        return "formularios/formModeloReceta";
     }
 
     /* ------------- GUARDAR ------------ */
@@ -73,7 +74,7 @@ public class DipController {
         return "listas/listaDip";
     }
 
-        @GetMapping(value = "/ListasEliminadosDip")
+    @GetMapping(value = "/ListasEliminadosDip")
     public String listarEliminadoDip(Model model) {
 
         model.addAttribute("dip", new Dip());
@@ -113,6 +114,15 @@ public class DipController {
     }
 
     // --------------------------------------------
+
+    /* -------------------Editar ------------------- */
+
+    // @RequestMapping(value = "/editarDip/{id_dip}")
+    // public String editarDip(@PathVariable("id_dip") Long id_dip, Model model) {
+    // Dip dip = iDipService.findOne(id_dip);
+    // model.addAttribute("dip", dip);
+    // return "formularios/listaDip";
+    // }
 
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosDip")

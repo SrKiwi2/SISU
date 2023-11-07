@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Registro Persona | SISU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../../../assets/images/favicon.ico">
+
+    <!-- DataTables -->
+    <link href="../../../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive datatable examples -->
+    <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />     
+
+    <!-- Bootstrap Css -->
+    <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body data-topbar="colored">
+    
+   <!-- Begin page -->
+   <div id="layout-wrapper">
+
+    <div th:insert="~{layout/topbar :: topbar}"></div>
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div th:insert="~{layout/sidebar :: sidebar}"></div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+
+            <!-- Page-Title -->
+            <div class="page-title-box">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h4 class="page-title mb-1">FORMULARIO DE REGISTRO GRADO ACADÉMICO</h4>
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                            <li class="breadcrumb-item active">Form Validation</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="float-right d-none d-md-block">
+                                <div class="dropdown">
+                                    <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+
+            <style>
+/* 
+              label {
+             text-align: center;
+             } 
+             */
+              
+             header,section,footer{
+               border: 2px solid blue;
+               margin: auto;
+               width: 1000px;
+               line-height: 40px ;
+             } 
+
+             h1 {
+             font-size: 39px;
+             color: rgb(5, 5, 243);
+             text-align: center;
+             font-family:'Times New Roman';
+             }
+             
+             h2 {
+             font-size: 30px;
+             color: blue;
+             text-align: center;
+             font-family:'Times New Roman';
+             }
+             
+             h3 {
+              font-size: 25px;
+              color: #d60404;
+              text-align: center;
+              font-family:'Times New Roman';
+             }
+
+             input[name="NOMBRE"] {
+              width: 300px;
+              min-height: 10px;  
+              margin-left: 5px;   
+                   
+             }
+             
+             input[name="CÓDIGO"] {
+             width: 115px;
+             min-height: 18px;
+             } 
+
+             input[name="ASEG/AFIL"] {
+             width: 300px;
+             min-height: 12px;
+             } 
+             
+             input[name="NOTA"] {
+             width: 800px;
+             min-height: 15px;
+             } 
+
+             form{
+              line-height: 35px;
+             }
+             header{
+              line-height: 20px;
+             }
+             footer table {
+                margin: 0 auto;
+                width: 800px;
+                text-align: center;
+              }
+
+              footer table td, th {
+                padding: 5px;
+                border: 1px solid #5f5b5b;
+
+              }
+
+              footer table th {
+                background-color: rgba(225, 220, 228, 0.986);
+                font-weight: bold;
+              }
+
+
+
+            </style>
+       
+
+            <div class="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                class="needs-validation" action="/guardarDip" method="post" novalidate>
+                                        <input type="hidden" th:field="${dip.idDip}">
+                                        <div class="col-md-2 mb-3"></div>
+                                        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
+                                        <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
+                                      
+
+                                        <header>
+                                          <h1>Universidad Amazónica de Pando</h1>
+                                          <h3>Sistema Integral Social Universitario</h3>
+                                          <h2>Seguro de salud</h2>
+                                        </header>
+                                       
+                                      <section>
+                                        <form action="/" method="post">
+                                          <div class="datos">
+                                            <label for="NOMBRE">NOMBRE:</label>
+                                            <input type="text" id="NOMBRE" name="NOMBRE">
+                                            <label for="CÓDIGO">CÓDIGO:</label>
+                                            <input type="int" id="CÓDIGO" name="CÓDIGO">
+                                          </div>
+                                      
+                                          
+                                          <div class="datos">
+                                           <label for="ASEG/AFIL">ASEG/AFIL:</label>
+                                            <input type="text" id="ASEG/AFIL" name="ASEG/AFIL">
+                                            <label for="FECHA">FECHA:</label>
+                                            <input type="date" id="FECHA" name="FECHA">
+                                          </div>
+                                          
+                                          
+                                          <div class="datos">
+                                            <label for="tipo_servicio">Tipo de servicio:</label>
+                                            <label for="medicina_general">Medicina general</label>
+                                            <input type="radio" id="medicina_general" name="tipo_servicio" value="medicina_general">
+                                            <label for="fisioterapia">Fisioterapia</label>
+                                            <input type="radio" id="fisioterapia" name="tipo_servicio" value="fisioterapia">
+                                            <label for="cirugia">Cirugía</label>
+                                            <input type="radio" id="cirugia" name="tipo_servicio" value="cirugia">
+                                            <label for="odontologia">Odontología</label>
+                                            <input type="radio" id="odontologia" name="tipo_servicio" value="odontologia">
+                                           
+                                          </div>
+                                      
+                                          <div class="indicaciones">
+                                            <label for="indicaciones">Indicaciones médicas:</label>
+                                            <textarea id="indicaciones" name="indicaciones"placeholder="Observaciones"></textarea>
+                                          </div>
+                                      
+                                          <div class="FARMACIA">
+                                              <label for="FARMACIA">FARMACIA:</label>
+                                              <input type="text" id="FARMACIA" name="FARMACIA"placeholder="Total:Bs"/>
+                                          </div>
+                                        
+                                        
+                                      </section>
+
+
+                                      <footer>
+                                          <table>
+                                            <thead>
+                                              <tr>
+                                                <th>Cantidad</th>
+                                                <th>Unidad</th>
+                                                <th>Medicamento</th>
+                                              </tr>
+                                            </thead>
+                                      
+                                            <tbody>
+                                                <tr>
+                                                  <td><input type="number" name="cantidad"></td>
+                                                  <td><input type="text" name="unidad"></td>
+                                                  <td><input type="text" name="medicamento"></td>
+                                                </tr>
+                                            </tbody>
+                                      
+                                            <tbody>
+                                                  <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                      
+                                            <tbody>
+                                                  <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                      
+                                            <tbody>
+                                                  <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                                
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                      
+                                            <tbody>
+                                                  <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                      
+                                            <tbody>
+                                                  <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                      
+                                            <tbody>
+                                                  <tr>
+                                                    <td><input type="number" name="cantidad"></td>
+                                                    <td><input type="text" name="unidad"></td>
+                                                    <td><input type="text" name="medicamento"></td>
+                                                  </tr>
+                                            </tbody>
+                                          </table> 
+                                      
+                                          <div class="">
+                                            <label for="NOMBRE">NOMBRE:</label>
+                                            <input type="text" id="NOMBRE" name="NOMBRE">
+                                            <label for="CÓDIGO">CÓDIGO:</label>
+                                            <input type="int" id="CÓDIGO" name="CÓDIGO">
+                                          </div>
+                                      </footer>     
+                                   
+                                    
+                                 <section>
+                                  <div class="ENFERMERIA">
+                                      <label for="ENFERMERIA">ENFERMERIA:</label>
+                                      <input type="text" id="ENFERMERIA" name="ENFERMERIA"placeholder="Total:Bs"/>
+                                  </div>
+
+                                  <div class="datos">
+                                    <label for="tipo_servicio">Tipo de servicio:</label>
+
+                                    <label for="Inyectable">Inyectable</label>
+                                    <input type="radio" id="Inyectable" name="tipo_servicio" value="Inyectable">
+                                  
+                                    <label for="Curación">Curación</label>
+                                    <input type="radio" id="Curación" name="tipo_servicio" value="Curación">
+                                    
+                                    <label for="Nebulización">Nebulización</label>
+                                    <input type="radio" id="Nebulización" name="tipo_servicio" value="Nebulización">
+                                    
+                                    <label for="Otro">Otro</label>
+                                    <input type="radio" id="Otro" name="tipo_servicio" value="Otro">
+                                   
+                                  </div>
+
+
+                                  <div class="NOTA">
+                                    <label for="NOTA">NOTA:</label>
+                                    <input type="text" id="NOTA" name="NOTA"placeholder="Nota:"/>
+                                </div>
+
+                                  </section>  
+
+
+                              </form> 
+
+                                            <a href="/agregar">Agregar receta</a>
+                                            <a href="/buscar">Buscar receta</a>
+                                            <a href="/imprimir">Imprimir receta</a>
+                                          
+                                      
+                                           <input type="submit" value="Enviar">
+                   
+                                        </div>
+
+                                        <button class="btn btn-primary" type="submit">Registrar</button>
+
+                                    
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end container-fluid -->
+            </div> 
+            <!-- end page-content-wrapper -->
+        </div>
+        <!-- End Page-content -->
+
+        <div th:insert="~{layout/footer :: footer}"></div>
+    </div>
+    <!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Right Sidebar -->
+<div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!-- JAVASCRIPT -->
+<script src="../../../../assets/libs/jquery/jquery.min.js"></script>
+<script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
+<script src="../../../../assets/libs/node-waves/waves.min.js"></script>
+
+<script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+<!-- Required datatable js -->
+<script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="../../../../assets/libs/jszip/jszip.min.js"></script>
+<script src="../../../../assets/libs/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../../assets/libs/pdfmake/build/vfs_fonts.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="../../../../assets/js/pages/datatables.init.js"></script>
+
+<script src="../../../../assets/js/app.js"></script>
+
+
+
+</body>
+</html>
