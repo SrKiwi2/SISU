@@ -87,7 +87,7 @@ public class AdministrativoController {
 
 
 			
-			return "administrativo/listaAdmin";
+			return "Client/inicioCaja";
 		} catch (Exception e) {
 			
 			
@@ -99,9 +99,6 @@ public class AdministrativoController {
 		}
 		
 		
-		
-		
-	
 	}
 
 
@@ -112,7 +109,7 @@ public class AdministrativoController {
         
 		persona.setEstado("R");
         personaService.save(persona);
-        return "redirect:/administrativo";
+        return "redirect:/ficha";
 
     } catch (Exception e) { 
         // Manejo de errores si ocurre alguna excepción al guardar la persona
