@@ -3,11 +3,9 @@ package com.sisu.sisu.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.Dao.UsuarioDao;
-import com.sisu.sisu.controller.login;
 import com.sisu.sisu.entitys.Usuario;
 
 @Service

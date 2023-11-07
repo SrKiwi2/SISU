@@ -87,7 +87,7 @@ public class AdministrativoController {
 
 
 			
-			return "Client/inicioCaja";
+			return "Client/vistaDatosCliente";
 		} catch (Exception e) {
 			
 			

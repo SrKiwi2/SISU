@@ -17,6 +17,13 @@ public class VistaClienteController {
 		return "index/loginS";
 	}
 
+	 @RequestMapping(value = "/vistaCliente", method = RequestMethod.GET)
+	public String vistaCliente(Model model, HttpServletRequest request) {
+		
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "index/loginS";
+	}
+
 	@RequestMapping(value = "/inicioCaja", method = RequestMethod.GET)
 	public String homeCaja(Model model, HttpServletRequest request) {
 		
@@ -28,6 +35,6 @@ public class VistaClienteController {
 	public String vistaFicha(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111");
-		return "Client/vistaCliente";
+		return "Client/vistaFicha";
 	}
 }
