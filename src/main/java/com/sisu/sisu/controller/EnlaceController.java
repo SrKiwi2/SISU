@@ -43,7 +43,10 @@ public class EnlaceController {
     @PostMapping(value = "/guardarEnlace")
     public String RegistrarEnlace(@Validated Enlace enlace, RedirectAttributes flash, HttpServletRequest request) {
 
-        Usuario usuario = usuarioService.buscarUsuarioPorId(1l);
+        Usuario usuario = usuarioService.buscarUsuarioPorId(1);  
+        // Usuario usuario = usuarioService.buscarUsuarioPorId(1l);
+
+
 
         enlace.setId_usuario(usuario);
         // enlaceService.listaEnlacePadre();
@@ -77,7 +80,7 @@ public class EnlaceController {
     @PostMapping(value = "/guardarEnlaceHijo")
     public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam (name = "idEnlace" ) Integer idEnlace,  RedirectAttributes flash, HttpServletRequest request) {
  System.out.println("+++++++++++++++++1");
-        Usuario usuario = usuarioService.buscarUsuarioPorId(1l);
+        Usuario usuario = usuarioService.buscarUsuarioPorId(1);
 
         enlace.setId_usuario(usuario);
 

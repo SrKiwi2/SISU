@@ -11,6 +11,6 @@ import com.sisu.sisu.entitys.Usuario;
 public interface UsrRolesDao extends JpaRepository<UsrRoles, Integer> {
 	
 	@Query("SELECT u FROM Usuario u WHERE u.idUsuario = ?1")
-    List<Usuario> buscarUsuarioPorId(Long id);
+    List<Usuario> buscarUsuarioPorId(Integer id);
 
 }
