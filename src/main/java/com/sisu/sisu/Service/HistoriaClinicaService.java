@@ -10,7 +10,7 @@ public interface HistoriaClinicaService {
 
     public List<HistoriaClinica> findAll(); //Muestra todos los registros
     public void save(HistoriaClinica dip); //Guarda registro
-    public HistoriaClinica findOne(Long id); //Muestra un registro
-    public void delete(Long id); //Elimina registro
+    public HistoriaClinica findOne(Integer id); //Muestra un registro
+    public void delete(Integer id); //Elimina registro
     
 }

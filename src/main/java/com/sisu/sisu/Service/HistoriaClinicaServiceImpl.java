@@ -25,12 +25,12 @@ public class HistoriaClinicaServiceImpl implements HistoriaClinicaService{
     }
 
     @Override
-    public HistoriaClinica findOne(Long id) {
+    public HistoriaClinica findOne(Integer id) {
        return historiaClinicaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         historiaClinicaDao.deleteById(id);
     }
     

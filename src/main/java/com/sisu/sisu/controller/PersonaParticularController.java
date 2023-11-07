@@ -77,7 +77,7 @@ public class PersonaParticularController {
     @RequestParam(name="apodo",required = false)String apodo,
     @RequestParam(name="clave",required = false)String clave,
     @RequestParam(name="grado",required = false) Integer idGradoAcademico,
-    @RequestParam(name="dip",required = false)Long idDip,
+    @RequestParam(name="dip",required = false)Integer idDip,
     @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
     ) { 
 
