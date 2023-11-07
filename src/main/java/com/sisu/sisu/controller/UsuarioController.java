@@ -22,7 +22,7 @@ public class UsuarioController {
     @Autowired
     private IPersonaService personaService;
 
-    @GetMapping(value="/formUs")
+    @GetMapping(value = "/formUs")
     public String vistaUs(Model model, @Validated Usuario usuarios) {
 
         model.addAttribute("usuario", new Usuario());
@@ -34,10 +34,9 @@ public class UsuarioController {
         return "usuarios";
     }
 
+    // -------------------------GUARDAR---------------------------------------
 
-    //-------------------------GUARDAR---------------------------------------
-    
-    @PostMapping(value="/saveUs")
+    @PostMapping(value = "/saveUs")
     public String saveUsiario(@Validated Usuario usuarios) {
 
         usuarios.setEstado("A");
@@ -47,25 +46,25 @@ public class UsuarioController {
         return "redirect:/listaUs";
     }
 
-    //-------------------------LISTAR---------------------------------------
+    // -------------------------LISTAR---------------------------------------
 
-    @GetMapping(value="/listaUs")
+    @GetMapping(value = "/listaUs")
     public String listaUs(Model model, @Validated Usuario usuarios) {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
-        
+
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
 
         return "listas/listaUs";
-    
+
     }
 
-    //-------------------------EDITAR---------------------------------------
+    // -------------------------EDITAR---------------------------------------
 
-    @GetMapping(value="/editarUs/{idUsuario}")
-    public String editarUs(Model model, @PathVariable("idUsuario") Long idUsuario) {
+    @GetMapping(value = "/editarUs/{idUsuario}")
+    public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 
@@ -77,14 +76,13 @@ public class UsuarioController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
 
-
         return "usuarios";
     }
 
-    //-------------------------ELIMINAR---------------------------------------
+    // -------------------------ELIMINAR---------------------------------------
 
-    @GetMapping(value="/eliminarUs/{idUsuario}")
-    public String deleteUs(@PathVariable("idUsuario") Long idUsuario) {
+    @GetMapping(value = "/eliminarUs/{idUsuario}")
+    public String deleteUs(@PathVariable("idUsuario") Integer idUsuario) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 

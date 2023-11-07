@@ -26,8 +26,7 @@ import com.sisu.sisu.entitys.Usuario;
 @Controller
 public class PersonaParticularController {
 
-
-     @Autowired
+    @Autowired
     private IPersonaService personaService;
 
     @Autowired
@@ -42,15 +41,13 @@ public class PersonaParticularController {
     @Autowired
     private EstadoCivilService estadoCivilService;
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    // -----------------------------------Perosna
+    /////////////////////////////////////////////////////////////////////////////////////////////////// Particular---------------------------------------------
 
-     ///////////////////////////////////////////////////////////////////////////////////////////////////
-    //-----------------------------------Perosna Particular---------------------------------------------
+    @GetMapping(value = "/formPerParticular") // Pagina principal
+    public String registroPersonaParticuar(Model model) {
 
-
-     @GetMapping(value = "/formPerParticular") // Pagina principal
-	public String registroPersonaParticuar(Model model) {
-
-    
         model.addAttribute("personaP", new Persona());
         model.addAttribute("personasP", personaService.findAll());
 
@@ -62,24 +59,22 @@ public class PersonaParticularController {
 
         model.addAttribute("gradoP", new GradoAcademico());
         model.addAttribute("gradosP", gradoService.findAll());
-		
+
         model.addAttribute("estadoCivilP", new TiposEstadoCivil());
         model.addAttribute("estadosCivilesP", estadoCivilService.findAll());
 
         return "index/loginS";
 
-		
-	}
-
+    }
 
     @PostMapping(value = "/savePerParticular") // Enviar datos de Registro a Lista
-	public String guardarPersonaParticular(@Validated Persona personaP,BindingResult bindingResult, RedirectAttributes flash,HttpServletRequest request,
-    @RequestParam(name="apodo",required = false)String apodo,
-    @RequestParam(name="clave",required = false)String clave,
-    @RequestParam(name="grado",required = false) Integer idGradoAcademico,
-    @RequestParam(name="dip",required = false)Integer idDip,
-    @RequestParam(name="estadoCivil",required = false)Long idTipoEstadoCivil
-    ) { 
+    public String guardarPersonaParticular(@Validated Persona personaP, BindingResult bindingResult,
+            RedirectAttributes flash, HttpServletRequest request,
+            @RequestParam(name = "apodo", required = false) String apodo,
+            @RequestParam(name = "clave", required = false) String clave,
+            @RequestParam(name = "grado", required = false) Integer idGradoAcademico,
+            @RequestParam(name = "dip", required = false) Integer idDip,
+            @RequestParam(name = "estadoCivil", required = false) Integer idTipoEstadoCivil) {
 
         personaP.setEstado("A");
         personaP.setGrado_academico(gradoService.findOne(idGradoAcademico));
@@ -87,17 +82,16 @@ public class PersonaParticularController {
         personaP.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
         personaService.save(personaP); // guardas todos los datos de la persona (1)
 
-        Usuario usuarioP = new Usuario(); // creas un nuevo registro de usuario 
+        Usuario usuarioP = new Usuario(); // creas un nuevo registro de usuario
         usuarioP.setApodo(apodo);
         usuarioP.setClave(clave);
         usuarioP.setEstado("A");
 
         usuarioP.setPersona(personaP);// aqui ya creas la relacion de la Persona con el Usuario (1)
         usuarioService.save(usuarioP);
-		personaService.save(personaP);
+        personaService.save(personaP);
 
-		return "redirect:/formPerParticular";
-	}
+        return "redirect:/formPerParticular";
+    }
 
-    
 }

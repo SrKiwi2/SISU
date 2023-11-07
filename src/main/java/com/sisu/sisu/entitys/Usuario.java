@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_usuario")
-  private Long idUsuario;
+  private Integer idUsuario;
 
   @Column(name = "apodo")
   private String apodo;
@@ -53,9 +53,8 @@ public class Usuario implements Serializable {
 
   // --------------------------RELACION--------------------------------------
 
-
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name="idPersona")
+  @JoinColumn(name = "idPersona")
   private Persona persona;
 
   // @ManyToOne(fetch = FetchType.LAZY)

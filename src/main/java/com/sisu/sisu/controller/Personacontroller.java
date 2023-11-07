@@ -61,7 +61,7 @@ public class Personacontroller {
     public String RegistrarPersona(@Validated Persona persona, RedirectAttributes flash, HttpServletRequest request,
             @RequestParam(name = "grado", required = false) Integer idGradoAcademico,
             @RequestParam(name = "dip", required = false) Integer idDip,
-            @RequestParam(name = "estadoCivil", required = false) Long idTipoEstadoCivil) {
+            @RequestParam(name = "estadoCivil", required = false) Integer idTipoEstadoCivil) {
         Persona existingPersona = personaService.findByCi(persona.getCi());
 
         if (existingPersona != null) {
@@ -91,7 +91,7 @@ public class Personacontroller {
     /* eliminar */
 
     @RequestMapping(value = "/eliminarPersona/{idPersona}")
-    public String eliminarPersona(@PathVariable("idPersona") Long idPersona) {
+    public String eliminarPersona(@PathVariable("idPersona") Integer idPersona) {
 
         Persona persona = personaService.findOne(idPersona);
         persona.setEstado("X");
@@ -102,7 +102,7 @@ public class Personacontroller {
     /* modificar un registro con el modal */
 
     @RequestMapping(value = "/persona/{idPersona}")
-    public String getContent1(@PathVariable(value = "idPersona") Long idPersona, Model model,
+    public String getContent1(@PathVariable(value = "idPersona") Integer idPersona, Model model,
             HttpServletRequest request) {
 
         model.addAttribute("persona", personaService.findOne(idPersona));
@@ -136,7 +136,7 @@ public class Personacontroller {
     /* Editar */
 
     @RequestMapping(value = "/editarPersona/{idPersona}")
-    public String editarPersona(@PathVariable("idPersona") Long idPersona, Model model) {
+    public String editarPersona(@PathVariable("idPersona") Integer idPersona, Model model) {
         Persona persona = personaService.findOne(idPersona);
         model.addAttribute("persona", persona);
         return "formularios/formPersona";

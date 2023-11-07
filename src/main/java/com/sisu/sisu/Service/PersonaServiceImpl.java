@@ -9,8 +9,8 @@ import com.sisu.sisu.Dao.IPersonaDao;
 import com.sisu.sisu.entitys.Persona;
 
 @Service
-public class PersonaServiceImpl implements IPersonaService{
-    
+public class PersonaServiceImpl implements IPersonaService {
+
     @Autowired
     private IPersonaDao personaDao;
 
@@ -25,12 +25,12 @@ public class PersonaServiceImpl implements IPersonaService{
     }
 
     @Override
-    public Persona findOne(Long id) {
+    public Persona findOne(Integer id) {
         return personaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         personaDao.deleteById(id);
     }
 

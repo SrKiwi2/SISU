@@ -68,15 +68,15 @@ public class EstadoRecetaController {
         return "listas/listaEstadoReceta";
     }
 
-     /* modificar con el modal */
+    /* modificar con el modal */
 
     @RequestMapping(value = "/estadoReceta/{idEstadoReceta}")
-    public String getContentRemediosF(@PathVariable(value = "idEstadoReceta") Long idEstadoReceta, Model model,
-        HttpServletRequest request){
-            model.addAttribute("estadosReceta", estadoRecetaService.findOne(idEstadoReceta));
-            
-            return "contentRE :: contentEstadoReceta";
-        }
+    public String getContentRemediosF(@PathVariable(value = "idEstadoReceta") Integer idEstadoReceta, Model model,
+            HttpServletRequest request) {
+        model.addAttribute("estadosReceta", estadoRecetaService.findOne(idEstadoReceta));
+
+        return "contentRE :: contentEstadoReceta";
+    }
 
     /* Registrar con el modal */
 

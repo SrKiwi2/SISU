@@ -43,9 +43,9 @@ public class EnlaceController {
     @PostMapping(value = "/guardarEnlace")
     public String RegistrarEnlace(@Validated Enlace enlace, RedirectAttributes flash, HttpServletRequest request) {
         Usuario usuario = new Usuario();
-        long idUsuario = 1;
+        Integer idUsuario = 1;
         usuario = usuarioService.buscarUsuarioPorId(idUsuario);
-        if (usuario!=null) {
+        if (usuario != null) {
             System.out.println(usuario.getPersona().getNombres());
         }
         enlace.setEstado("A");

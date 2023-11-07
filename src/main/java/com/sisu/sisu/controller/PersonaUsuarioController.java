@@ -72,7 +72,7 @@ public class PersonaUsuarioController {
             @RequestParam(name = "clave", required = false) String clave,
             @RequestParam(name = "grado", required = false) Integer idGradoAcademico,
             @RequestParam(name = "dip", required = false) Integer idDip,
-            @RequestParam(name = "estadoCivil", required = false) Long idTipoEstadoCivil) {
+            @RequestParam(name = "estadoCivil", required = false) Integer idTipoEstadoCivil) {
 
         persona1.setEstado("A");
         persona1.setGrado_academico(gradoService.findOne(idGradoAcademico));
@@ -94,8 +94,8 @@ public class PersonaUsuarioController {
 
     @PostMapping(value = "/SavePerUsuario") // Enviar datos de Registro a Lista
     public String guardarPersona_2(RedirectAttributes flash, HttpServletRequest request,
-            @RequestParam(name = "idPersona") Long id_persona,
-            @RequestParam(name = "idUsuario") Long idUsuario,
+            @RequestParam(name = "idPersona") Integer id_persona,
+            @RequestParam(name = "idUsuario") Integer idUsuario,
             @RequestParam(name = "nombres") String nombres,
             @RequestParam(name = "apPaterno") String apPaterno,
             @RequestParam(name = "apMaterno") String apMaterno,
@@ -106,7 +106,7 @@ public class PersonaUsuarioController {
             @RequestParam(name = "clave") String clave,
             @RequestParam(name = "grado", required = false) Integer idGradoAcademico,
             @RequestParam(name = "dip", required = false) Integer idDip,
-            @RequestParam(name = "estadoCivil", required = false) Long idTipoEstadoCivil) {
+            @RequestParam(name = "estadoCivil", required = false) Integer idTipoEstadoCivil) {
 
         Persona persona = personaService.findOne(id_persona);
 
@@ -155,7 +155,7 @@ public class PersonaUsuarioController {
     // -------------------------EDITAR---------------------------------------
 
     @GetMapping(value = "/editarPer/{idUsuario}")
-    public String editarUs(Model model, @PathVariable("idUsuario") Long idUsuario) {
+    public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
 
         // Obtener la persona y el usuario correspondientes al ID proporcionado
 
@@ -190,7 +190,7 @@ public class PersonaUsuarioController {
     }
 
     @RequestMapping(value = "/usuario/{idUsuario}")
-    public String getContent1(@PathVariable(value = "idUsuario") Long idUsuario, Model model,
+    public String getContent1(@PathVariable(value = "idUsuario") Integer idUsuario, Model model,
             HttpServletRequest request) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
@@ -208,7 +208,7 @@ public class PersonaUsuarioController {
     // -------------------------ELIMINAR---------------------------------------
 
     @RequestMapping(value = "/eliminarUsuario/{idUsuario}")
-    public String eliminarPersona(@PathVariable("idUsuario") Long idUsuario) {
+    public String eliminarPersona(@PathVariable("idUsuario") Integer idUsuario) {
         Usuario usuario = usuarioService.findOne(idUsuario);
         Persona persona = personaService.findOne(usuario.getIdUsuario());
         persona.setEstado("X");
