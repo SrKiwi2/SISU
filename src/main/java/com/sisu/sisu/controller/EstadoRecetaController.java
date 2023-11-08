@@ -57,7 +57,6 @@ public class EstadoRecetaController {
 
         return "contentRE :: contentEstadoReceta";
     }
-
     /* Registrar con el modal */
 
     @RequestMapping(value = "/registrarEstadoReceta")

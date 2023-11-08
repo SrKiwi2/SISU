@@ -44,7 +44,7 @@ public class UsuarioController {
         usuarioService.save(usuarios);
 
         return "redirect:/listaUs";
-    
+
     }
 
     // -------------------------LISTAR---------------------------------------
@@ -54,7 +54,7 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
-     
+
         return "listas/listaUs";
 
     }

@@ -15,53 +15,49 @@ import com.sisu.sisu.entitys.UsrRoles;
 
 @Controller
 public class login {
-	
+
 	@Autowired
 	UsrRolesService usrRolesService;
 
 	@RequestMapping(value = "/InicioSesion", method = RequestMethod.GET)
 	public String iniciosesion(Model model) {
-		
+
 		System.out.println("11111111111111111111111111111111111111111111");
-		return "index/login"; 
+		return "index/login";
 	}
-	
+
 	@RequestMapping(value = "/Inicio", method = RequestMethod.GET)
 	public String inicio(Model model) {
-		
+
 		System.out.println("11111111111111111111111111111111111111111111");
-		return "index/index"; 
+		return "index/index";
 	}
 
 	@RequestMapping(value = "/loginE", method = RequestMethod.POST)
 	public String loginE(Model model) {
-		
+
 		System.out.println("11111111111111111111111111111111111111111111");
-		return "index/index"; 
+		return "index/index";
 	}
 
 	@RequestMapping(value = "/loginK", method = RequestMethod.GET)
 	public String Ficha(Model model, HttpServletRequest request) {
-		
+
 		System.out.println("11111111111111111111111111111111111111111111");
 		return "index/loginK";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "roles", method = RequestMethod.GET)
 	public String roles(Model model, HttpServletRequest request) {
-		
-		
-		UsrRoles usr=new UsrRoles();
-		
-		List<UsrRoles>listadeUsuarios=usrRolesService.listarRoles();
-		
+
+		UsrRoles usr = new UsrRoles();
+
+		List<UsrRoles> listadeUsuarios = usrRolesService.listarRoles();
+
 		System.out.println("hola");
-		
+
 		model.addAttribute("listadeUsuarios", listadeUsuarios);
 		return "formularios/formulario";
 	}
-	
- 
+
 }
