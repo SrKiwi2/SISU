@@ -100,49 +100,21 @@
                                                         Looks good!
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-md-4 mb-3">
-                                                    <label>Estado Civil</label>
-                                                    <select class="custom-select" th:field="${idEnlace}" required>
-                                                        <option value="">Seleccione estado civil</option>
+                                                    <label>Enlace</label>
+                                                    
+                                                    <select class="custom-select" name="idEnlace2" required>
+
+                                                        <option value="">Seleccione un enlace</option>
+
                                                         <th:block th:each="es : ${listaEnlace}">
-                                                            <input type="text" id="idEnlace" th:field="${idEnlace.nombre_enlace}">
-                                                        <option th:value="${es.idEnlace}" th:text="${es.nombre_enlace}"></option>
+                                                            <option th:value="${es.idEnlace}"
+                                                            th:text="${es.nombre_enlace}"></option>
                                                         </th:block>
                                                     </select>
-                                                    <div class="invalid-feedback">Debes Seleccionar un Estado Civil</div>
+                                                    <div class="invalid-feedback">Debes seleccionar un enlace</div>
                                                 </div>
-                                                <!-- <div class="col-md-4 mb-3">
-                                                    <label>ruta</label>
-                                                    <select class="custom-select" name="enlace" th:field="${enlace.nombre_enlace}" required>
-                                                        <option value="">Selecciona una ruta</option>
-                                                        <option value="Hombre">Lista Persona</option>
-                                                        <option value="Mujer">Lista Dip</option>
-                                                        <option value="otro">Lista Usuarios</option>
-                                                        <option value="Rarito">Rarito...</option>
-                                                    </select>
-                                                    <div class="invalid-feedback">Debes seleccionar un Genero</div>
-                                                </div> -->
-                                                <!-- <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom04">Tabla</label>
-                                                    <input type="number" class="form-control" name="enlace"
-                                                        id="validationCustom04" th:field="${enlace.tabla}"
-                                                        placeholder="Digite en número de la Tabla" required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom04">Observación</label>
-                                                    <input type="text" name="enlace" th:field="${enlace.obs}"
-                                                        id="customDateInput" placeholder="Observacion"
-                                                        class="form-control datepicker-here" data-language="en">
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div> -->
-                                                
-                                                
-                                                 
                                             </div>
 
                                             <button class="btn btn-primary" type="submit">Registrar</button>
@@ -225,3 +197,34 @@
 </body>
 
 </html>
+
+ <!-- <div class="col-md-4 mb-3">
+                                                    <label>ruta</label>
+                                                    <select class="custom-select" name="enlace" th:field="${enlace.nombre_enlace}" required>
+                                                        <option value="">Selecciona una ruta</option>
+                                                        <option value="Hombre">Lista Persona</option>
+                                                        <option value="Mujer">Lista Dip</option>
+                                                        <option value="otro">Lista Usuarios</option>
+                                                        <option value="Rarito">Rarito...</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Debes seleccionar un Genero</div>
+                                                </div> -->
+                                                <!-- <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom04">Tabla</label>
+                                                    <input type="number" class="form-control" name="enlace"
+                                                        id="validationCustom04" th:field="${enlace.tabla}"
+                                                        placeholder="Digite en número de la Tabla" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom04">Observación</label>
+                                                    <input type="text" name="enlace" th:field="${enlace.obs}"
+                                                        id="customDateInput" placeholder="Observacion"
+                                                        class="form-control datepicker-here" data-language="en">
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div> -->
+                                                

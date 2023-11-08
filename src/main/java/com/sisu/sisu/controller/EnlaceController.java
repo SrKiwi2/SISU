@@ -78,7 +78,7 @@ public class EnlaceController {
 
     /* GUARDAR */
     @PostMapping(value = "/guardarEnlaceHijo")
-    public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam (name = "idEnlace" ) Integer idEnlace,  RedirectAttributes flash, HttpServletRequest request) {
+    public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam (name = "idEnlace2" ) Integer idEnlace,  RedirectAttributes flash, HttpServletRequest request) {
  System.out.println("+++++++++++++++++1");
         Usuario usuario = usuarioService.buscarUsuarioPorId(1);
 
@@ -86,7 +86,7 @@ public class EnlaceController {
 
         enlace.setEstado("A");
 
-        enlace.setTabla(enlace.getIdEnlace());
+        enlace.setTabla(idEnlace);
         System.out.println(idEnlace);
         enlace.setObs("1");
         System.out.println(enlace.getIdEnlace());
