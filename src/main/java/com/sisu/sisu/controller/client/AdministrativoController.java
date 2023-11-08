@@ -1,4 +1,4 @@
-package com.sisu.sisu.controller;
+package com.sisu.sisu.controller.client;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -108,7 +108,7 @@ public class AdministrativoController {
     try {
         
 		persona.setEstado("R");
-        personaService.save(persona);
+       // personaService.save(persona);
         return "redirect:/ficha";
 
     } catch (Exception e) { 
