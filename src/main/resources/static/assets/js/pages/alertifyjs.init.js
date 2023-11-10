@@ -59,5 +59,9 @@ $(function(){
         });
     });
 
+    $('#alert-warning').click(function(){
+        alertify.warning('Warning message');
+    });
+
     /* ------------------ Fin Eliminar Persona persona ------------------------- */
 });

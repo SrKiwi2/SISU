@@ -23,38 +23,60 @@
     
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-chart-pie"></i></div>
-                            <span>Gestion de datos</span>
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-friends"></i></div>
+                            <span>Gestion de personas</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="../../../../ListaPersona">Lista Personas</a></li>
-                            <li><a href="../../../../ListasDip">Lista Dip</a></li>
                             <li><a href="../../../../listaUs">Lista Usuarios</a></li>
-                            <li><a href="../../../../ListaGrado">Grados Academicos</a></li>
-                            <li><a th:href="@{/ListaReceta2}">Lista Receta</a></li>
-                            <li><a href="../../../../ListaReceta">Tipo de Receta</a></li>
-                            <li><a href="../../../../ListaRecetaRemedios">Lista Receta Remedio</a></li>
                             <li><a href="../../../../ListaDeRoles">Lista Roles</a></li>
                             <li><a href="../../../../formEnlace">Lista Enlace</a></li>
                             <li><a href="../../../../listaPerUsuario">Persona Externa</a></li>
-                            <li><a href="../../../../ListasEstadoC">Lista Estado Civil</a></li>
-                            <li><a href="../../../../ListaEstadoR">Lista Estado Receta</a></li>
-                            <!-- <li><a href="../../../../l-Liname">Liname</a></li>
-                            <li><a href="../../../../l-Historial">Historial Liname</a></li>
-                            <li><a href="../../../../l-Farmaceutica">Farmacia</a></li> -->
-                            <li><a href="../../../../ListaTipoProveedor">Lista Tipos Proveedor</a></li>
-                            <li><a href="../../../../ListaProveedor">Lista Proveedor</a></li>
-                            <li><a href="../../../../ListaRemedioLote">Lista Remedio Lote</a></li>
-                            <li><a href="../../../../ListaRemediosFar">Lista Remedio Farmacia</a></li>
-                            <li><a href="../../../../ListaRemedioFarLot">Lista Remedio Farmacia Lote</a></li>
-                            <li><a href="../../../../ListaUsr">Lista usruario_roles</a></li>
+                            <li><a href="../../../../ListaUrs">Lista usruario_roles</a></li>
 
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-cog"></i></div>
+                            <span>Informacion Personal</span>
+                        </a>
+                        <ul>
+                            <li><a href="../../../../ListasDip">Dip</a></li>
+                            <li><a href="../../../../ListaGrado">Grados Academicos</a></li>
+                            <li><a href="../../../../ListasEstadoC">Estado Civil</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-border-inner"></i></div>
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-window-restore"></i></div>
+                            <span>Informacion Receta</span>
+                        </a>
+                        <ul>
+                            <li><a th:href="@{/ListaReceta2}">Lista Receta</a></li>
+                            <li><a href="../../../../ListaReceta">Tipo de Receta</a></li>
+                            <li><a href="../../../../ListaRecetaRemedios">Lista Receta Remedio</a></li>
+                            <li><a href="../../../../ListaEstadoR">Lista Estado Receta</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-plus-circle"></i></div>
+                            <span>Informacion Farmacia</span>
+                        </a>
+                        <ul>
+                            <li><a href="../../../../ListaRemedioLote">Lista Remedio Lote</a></li>
+                            <li><a href="../../../../ListaRemediosFar">Lista Remedio Farmacia</a></li>
+                            <li><a href="../../../../ListaRemedioFarLot">Lista Remedio Farmacia Lote</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-prescription-bottle-alt"></i></div>
                             <span>Liname</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
@@ -62,6 +84,17 @@
                             <li><a href="../../../../l-Farmaceutica">Tipo de Medicamentos</a></li>
                             <li><a href="../../../../l-TipoUso">Uso</a></li>
                             <li><a href="../../../../l-Historial">Historial Liname</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-dolly-flatbed"></i></div>
+                            <span>Proveedor</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="../../../../ListaTipoProveedor">Lista Tipos Proveedor</a></li>
+                            <li><a href="../../../../ListaProveedor">Lista Proveedor</a></li>
                         </ul>
                     </li>
 
@@ -97,14 +130,14 @@
                         </ul>
                     </li>
     
-                   <li>
+                    <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-comment-message"></i></div>
+                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-receipt"></i></div>
                             <span>Generar Ficha</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="../../../../Ficha">Generar Ficha</a></li>
-                            <li><a href="../../../../ListaPersona">Docente</a></li>
+                            
                         </ul>
                     </li>
                      <!-- 
