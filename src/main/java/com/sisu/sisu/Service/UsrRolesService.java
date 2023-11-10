@@ -6,7 +6,7 @@ import com.sisu.sisu.entitys.UsrRoles;
 
 public interface UsrRolesService {
 	
-	List<UsrRoles>listarRoles();
+	List<UsrRoles>findAll();
 	
 	 void registrarUsrRoles(UsrRoles usrRoles);
 

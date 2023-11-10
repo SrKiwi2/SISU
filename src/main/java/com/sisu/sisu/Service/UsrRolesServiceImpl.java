@@ -15,9 +15,9 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 	UsrRolesDao usrRolesDao;
 
 	@Override
-	public List<UsrRoles> listarRoles() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'listarRoles'");
+	public List<UsrRoles> findAll() {
+		        return (List<UsrRoles>) usrRolesDao.findAll();
+
 	}
 
 	@Override
@@ -25,7 +25,9 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'registrarUsrRoles'");
 	}
+	
 
+	
 	// @Override
 	// public List<UsrRoles> listarRoles() {
 	// 	// TODO Auto-generated method stub

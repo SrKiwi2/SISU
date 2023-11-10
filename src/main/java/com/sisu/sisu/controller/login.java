@@ -49,11 +49,12 @@ public class login {
 
 	@RequestMapping(value = "roles", method = RequestMethod.GET)
 	public String roles(Model model, HttpServletRequest request) {
-
-		UsrRoles usr = new UsrRoles();
-
-		List<UsrRoles> listadeUsuarios = usrRolesService.listarRoles();
-
+		
+		
+		UsrRoles usr=new UsrRoles();
+		
+		List<UsrRoles>listadeUsuarios=usrRolesService.findAll();
+		
 		System.out.println("hola");
 
 		model.addAttribute("listadeUsuarios", listadeUsuarios);

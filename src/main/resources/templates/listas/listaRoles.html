@@ -81,10 +81,10 @@
                                         <div class="card-body">
                                             <h4 class="header-title">Buttons example</h4>
                                             <p class="card-title-desc">The Buttons extension for DataTables</p>
-                                            <div class="text-right mb-3">
+                                            <!-- <div class="text-right mb-3">
                                                 <button type="button" class="btn btn-primary btn-sm waves-effect waves-light"
                                                     onclick="NuevoRegistro()">Registrar</button>
-                                            </div>
+                                            </div> -->
                                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
@@ -102,24 +102,6 @@
                                                         <td th:text="${r.rol}"></td>
                                                         <td th:text="${r.observacion}"></td>
                                                         <td>
-                                                            <div class="row justify-content-center">
-                                                                <div class="mb-2">
-                                                                    <a th:href="${'../../../../eliminarRoles/' + r.idRol}">
-                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm" style="margin: 5px; padding: 8px;">
-                                                                            <i class="dripicons-trash"></i>
-                                                                        </button>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="mb-2">
-                                                                    <a>
-                                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal"
-                                                                            th:data-target="${'#bs-example-modal-center'}" th:data-idroles="${r.idRol}" onclick="buscar(this)"
-                                                                            style="margin: 5px; padding: 8px;">
-                                                                            <i class="dripicons-document-edit"></i>
-                                                                        </button>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
