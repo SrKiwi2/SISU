@@ -47,6 +47,7 @@ public class FormaFarmaceutica implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
+
     //------------------------RELACIONES----------------------------------------
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "forma_farmaceutica", fetch = FetchType.LAZY)

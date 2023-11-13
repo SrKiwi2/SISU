@@ -20,14 +20,18 @@ public class Menu implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_menu")
     private Integer idMenu;
+
     @Column(name = "estado")
     private String idEstado;
+
     @JoinColumn(name = "id_enlace", referencedColumnName = "id_enlace")
     @ManyToOne(optional = false)
     private Enlace idEnlace;
+
     @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     @ManyToOne(optional = false)
     private Roles idRol;
+    
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false)
     private Usuario id_usuario;
