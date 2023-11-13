@@ -15,4 +15,8 @@ public interface IMenuService {
     public Menu findOne(Integer id); // Muestra un registro
 
     public void delete(Integer id); // Elimina registro
+
+
+
+
 }

@@ -1,9 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
-    <title>Registro Grado Académico | SISU</title>
+    <title>Lista Enlace| SISU</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
@@ -20,6 +19,9 @@
     <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
         rel="stylesheet" type="text/css" />
 
+    <link href="../../../../assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
+
     <!-- Bootstrap Css -->
     <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
@@ -28,18 +30,15 @@
     <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
 </head>
-
 <body data-topbar="colored">
 
-    <!-- Begin page -->
     <div id="layout-wrapper">
 
         <div th:insert="~{layout/topbar :: topbar}"></div>
-
-        <div th:insert="~{layout/sidebar :: sidebar}"></div>
-
+        <div class="vertical-menu">
+            <div th:insert="~{layout/sidebar :: sidebar}"></div>
+        </div>
         <div class="main-content">
-
             <div class="page-content">
 
                 <!-- Page-Title -->
@@ -47,10 +46,10 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h4 class="page-title mb-1">FORMULARIO DE REGISTRO GRADO ACADÉMICO</h4>
+                                <h4 class="page-title mb-1">Datos Lista Menu</h4>
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                    <li class="breadcrumb-item active">Form Validation</li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tabla</a></li>
+                                    <li class="breadcrumb-item active">Datos Menu</li>
                                 </ol>
                             </div>
                             <div class="col-md-4">
@@ -58,114 +57,102 @@
                                     <div class="dropdown">
                                         <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                            <i class="mdi mdi-settings-outline mr-1"></i> Configuraciones
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="#">Más</a>
+                                            <a class="dropdown-item" href="#">Otros</a>
+                                            <a class="dropdown-item" href="#">Contactos</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">Separated link</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
+
                         </div>
 
                     </div>
                 </div>
-                <!-- end page title end breadcrumb -->
 
                 <div class="page-content-wrapper">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form class="needs-validation" action="/guardarGrado" method="post" novalidate>
-                                            <input type="hidden" th:field="${grado.idGradoAcademico}">
-                                            <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
-                                            <p class="card-title-desc">For custom Bootstrap form validation messages,
-                                                you’ll need to add the <code>novalidate</code> boolean attribute to your
-                                                <code>&lt;form&gt;</code>.</p>
-                                            <div class="row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom03">Grado Academico</label>
-                                                    <input type="text" class="form-control" name="grado" id="validationCustom03"
-                                                        th:field="${grado.nombre_gradoAcademico}" placeholder="Ej: Universidad Amazónica de Pando" required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
+                                            <form class="needs-validation" action="/guardarMenu" method="post" id="form1" novalidate>
+                                                <input type="hidden" th:field="${menu.idMenu}">
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom01">Menu</label>
+                                                        <input type="text" class="form-control" name="menu" id="validationCustom01" placeholder="Introduce el nombre del menu" required >
+                                                        <div class="valid-feedback">
+                                                            Looks good!
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom02">Sigla</label>
-                                                    <input type="text" class="form-control" name="grado"
-                                                        id="validationCustom02" th:field="${grado.simbolo}"
-                                                        placeholder="Ej: Ing./Lic." required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="validationCustom07"> Menu Padre</label>
+                                                        <select class="custom-select" name="role" required>
+                                                            <option value="">Seleccione el Menú Padre</option>
+                                                            <th:block th:each="r : ${roles}" th:if="${r.estado != 'X'}">
+                                                                <option th:value="${r.idRol}" th:text="${r.rol}"></option>
+                                                            </th:block>
+                                                        </select>
+                                                        <div class="valid-feedback">¡Se ve bien!</div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom03">Institucion</label>
-                                                    <input type="text" class="form-control" name="grado"
-                                                        id="validationCustom03" th:field="${grado.nombre_institucion}"
-                                                        placeholder="Ej: Universidad Amazónica de Pando" required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom04">Estado del Grado Académico</label>
-                                                    <input type="text" class="form-control" name="grado"
-                                                        id="validationCustom04" th:field="${grado.status}"
-                                                        placeholder="Ej: Vigente/En progreso" required>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
 
-                                    <button class="btn btn-primary" type="submit">Registrar</button>
-                                    </form>
+                                                    <label>Selecciona solicitudes de becas:</label>
+                                                    <div th:each="solicitud : ${listaEnlacesHijo}">
+                                                        <input type="checkbox" th:id="${'solicitud-' + solicitud.idEnlace}" th:name="solicitudesSeleccionadas" th:value="${solicitud.idEnlace}" />
+                                                        <label th:for="${'solicitud-' + solicitud.idEnlace}" th:text="${solicitud.nombre_enlace}"></label><br />
+                                                    </div>
+
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Registrar</button>
+                                            </form>
+                                       
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end container-fluid -->
             </div>
-            <!-- end page-content-wrapper -->
+            <div th:insert="~{layout/footer :: footer}"></div>
         </div>
-        <!-- End Page-content -->
-
-        <div th:insert="~{layout/footer :: footer}"></div>
     </div>
-    <!-- end main content-->
-
-    </div>
-    <!-- END layout-wrapper -->
-
-    <!-- Right Sidebar -->
     <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
-    <!-- /Right-bar -->
-
-    <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
     <!-- JAVASCRIPT -->
-    <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
+    <!-- <script src="../../../../assets/libs/jquery/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- <script>
+            function buscar(button) {
+                // Capture the value of th:data-idpersona from the clicked button
+                var idPersona = $(button).data('idpersona');
+        
+                // Create the URL to request the fragment using the captured idPersona
+                var url = "../../../../persona/" + idPersona;
+        
+                // Load the fragment and replace content in #replace_div
+                $('#replace_div').load(url);
+            }
+        </script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
     <script src="../../../../assets/libs/simplebar/simplebar.min.js"></script>
     <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
-
     <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
     <!-- Required datatable js -->
     <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
     <!-- Buttons examples -->
     <script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
     <script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
@@ -182,8 +169,11 @@
     <!-- Datatable init js -->
     <script src="../../../../assets/js/pages/datatables.init.js"></script>
 
+    <!-- alert -->
+    <script src="../../../../assets/libs/alertifyjs/build/alertify.min.js"></script>
+    <script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
+
+
     <script src="../../../../assets/js/app.js"></script>
-
 </body>
-
 </html>

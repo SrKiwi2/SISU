@@ -51,7 +51,7 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h4 class="page-title mb-1">FORMULARIO DE REGISTRO ENLACE</h4>
+                                <h4 class="page-title mb-1">REGISTRO ENLACES HIJOS </h4>
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
                                     <li class="breadcrumb-item active">Form Validation</li>
@@ -92,21 +92,30 @@
                                             <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom03">enlace</label>
+                                                    <label for="validationCustom03">Nombre del enlace Hijo</label>
                                                     <input type="text" class="form-control" name="enlace"
                                                         id="validationCustom03" th:field="${enlace.nombre_enlace}"
-                                                        placeholder="ruta" required>
+                                                        placeholder="nombre enlace hijo" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationCustom03">Ruta del enlace</label>
+                                                    <input type="text" class="form-control" name="ruta"
+                                                        id="validationCustom03" th:field="${enlace.ruta}"
+                                                        placeholder="digite la ruta del enlace" required>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-md-4 mb-3">
-                                                    <label>Enlace</label>
+                                                    <label>Enlaces Padres</label>
                                                     
                                                     <select class="custom-select" name="idEnlace2" required>
 
-                                                        <option value="">Seleccione un enlace</option>
+                                                        <option value="">Seleccione un enlace padre</option>
 
                                                         <th:block th:each="es : ${listaEnlace}">
                                                             <option th:value="${es.idEnlace}"

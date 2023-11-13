@@ -35,7 +35,12 @@ public class EnlaceServiceImpl implements IEnlaceService {
     }
 
     @Override
-    public List<Enlace> listaEnlacePadre() {
+    public List<Enlace> listaEnlacePadre( ) {
        return enlaceDao.listaEnlacePadre();
+    }
+
+    @Override
+    public List<Enlace> listaEnlaceHijo(int idEnlacePadre) {
+        return enlaceDao.listaEnlaceHijo(idEnlacePadre);
     }
 }

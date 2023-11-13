@@ -17,5 +17,7 @@ public interface IEnlaceService {
     public void delete(Integer id); // Elimina registros
     List<Enlace>listaEnlacePadre();
 
+    List<Enlace>listaEnlaceHijo(int idEnlacePadre);
+
     
 }

@@ -43,10 +43,8 @@ public class EnlaceController {
     @PostMapping(value = "/guardarEnlace")
     public String RegistrarEnlace(@Validated Enlace enlace, RedirectAttributes flash, HttpServletRequest request) {
 
-        Usuario usuario = usuarioService.buscarUsuarioPorId(1);  
+        Usuario usuario = usuarioService.buscarUsuarioPorId(1);
         // Usuario usuario = usuarioService.buscarUsuarioPorId(1l);
-
-
 
         enlace.setId_usuario(usuario);
         // enlaceService.listaEnlacePadre();
@@ -69,6 +67,7 @@ public class EnlaceController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+
         model.addAttribute("listaEnlace", enlaceService.listaEnlacePadre());
         System.out.println(enlaceService.listaEnlacePadre().size());
         System.out.println("+++++++++++++++++");
@@ -78,18 +77,22 @@ public class EnlaceController {
 
     /* GUARDAR */
     @PostMapping(value = "/guardarEnlaceHijo")
-    public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam (name = "idEnlace2" ) Integer idEnlace,  RedirectAttributes flash, HttpServletRequest request) {
- System.out.println("+++++++++++++++++1");
+    public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam(name = "idEnlace2") Integer idEnlace,
+            RedirectAttributes flash, HttpServletRequest request) {
+        System.out.println("+++++++++++++++++1");
         Usuario usuario = usuarioService.buscarUsuarioPorId(1);
 
         enlace.setId_usuario(usuario);
 
         enlace.setEstado("A");
+        // enlace.setRuta(null);
 
         enlace.setTabla(idEnlace);
-        System.out.println(idEnlace);
+        // System.out.println(idEnlace);
         enlace.setObs("1");
-        System.out.println(enlace.getIdEnlace());
+        // System.out.println(enlace.getIdEnlace());
+
+        System.out.println("EL NOMBRE DEL ENLACE ES: " + enlace.getEnlace());
         enlaceService.save(enlace);
         return "redirect:formEnlace";
     }
@@ -98,35 +101,42 @@ public class EnlaceController {
 
     @RequestMapping(value = "/eliminarEnlace/{idEnlace}")
     public String eliminarEnlace(@PathVariable("idEnlace") Integer idEnlace) {
-    Enlace enlace = enlaceService.findOne(idEnlace);
-    enlace.setEstado("A");
-    enlaceService.save(enlace);
+        Enlace enlace = enlaceService.findOne(idEnlace);
+        enlace.setEstado("A");
+        enlaceService.save(enlace);
 
-    return "redirect:/ListarEnlace";
+        return "redirect:/ListarEnlace";
     }
 
     /* modificar un registro con el modal */
 
     @RequestMapping(value = "enlace/{idEnlace}")
-    public String getContent1(@PathVariable(value = "idEnlace") Integer idEnlace,  Model model, HttpServletRequest request) {
-    model.addAttribute("enlace", enlaceService.findOne(idEnlace));
+    public String getContent1(@PathVariable(value = "idEnlace") Integer idEnlace, Model model,
+            HttpServletRequest request) {
+        model.addAttribute("enlace", enlaceService.findOne(idEnlace));
 
-    return "content :: content1";
+        return "content :: content1";
     }
 
     /* EDITAR */
     @RequestMapping(value = "/editarEnlace/{idEnlace}")
     public String editarEnlaceR(@PathVariable("idEnlace") Integer idEnlace, Model model) {
-    Enlace enlace = enlaceService.findOne(idEnlace);
-    model.addAttribute("enlace", enlace);
+        Enlace enlace = enlaceService.findOne(idEnlace);
+        model.addAttribute("enlace", enlace);
 
-    return "formularios/formEnlace";
+        return "formularios/formEnlace";
     }
+
     /* LISTAR */
     @GetMapping(value = "/ListaEnlace")
-    public String listarEnlace(Model model){
-    model.addAttribute("enlace", enlaceService.findAll());
-    
-    return "listas/listaEnlace";
+    public String listarEnlace(Model model) {
+
+        model.addAttribute("enlace", new Enlace());
+        model.addAttribute("enlaces", enlaceService.findAll());
+
+        System.out.println(enlaceService.findAll().size());
+        model.addAttribute("listaEnlace", enlaceService.listaEnlacePadre());
+
+        return "listas/listaEnlace";
     }
 }
