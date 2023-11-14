@@ -88,4 +88,13 @@ public class Persona implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idDip")
     private Dip dip;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
+    private List<Asegurado> asegurado;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
+    private List<PersonalMedico> personal_medico;
+
+
 }

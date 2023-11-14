@@ -2,12 +2,16 @@ package com.sisu.sisu.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +28,7 @@ public class EstadoSeguro implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado_seguro")
-    private Long idEstadoSeguro;
+    private Integer idEstadoSeguro;
 
     @Column(name = "tipo_estado")
     private String tipoEstado;
@@ -42,5 +46,8 @@ public class EstadoSeguro implements Serializable{
     @Column(name = "modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estado_seguro", fetch = FetchType.LAZY)
+	private List<HistorialSeguro> historial_seguro;
 
 }
