@@ -82,7 +82,8 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-right mb-3">
-                                            <form class="needs-validation" action="/guardarEnlaceHijo" method="post" id="form1" novalidate>
+                                            <form class="needs-validation" action="/guardarEnlaceHijo" method="post"
+                                                id="form1" novalidate>
                                                 <input type="hidden" th:field="${enlace.idEnlace}">
                                         </div>
                                         <table id="datatable-buttons"
@@ -104,7 +105,9 @@
                                                     <td th:text="${en.tabla}"></td>
                                                     <td th:text="${en.obs}"></td>
                                                     <td>
-                                                        <button class="btn btn-primary" type="button" onclick="registrarEnlace('${en.id}')">Registrar</button>
+                                                        <a th:href="@{'../../../../formMenu2/' + ${en.idEnlace}}">
+                                                            <button class="btn btn-primary" type="button">Enviar</button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -112,24 +115,24 @@
                                         </form>
                                     </div>
                                 </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-              
-                <!-- lista -->
-                <!-- <label>Selecciona solicitudes de becas:</label>
+            </div>
+        </div>
+
+        <!-- lista -->
+        <!-- <label>Selecciona solicitudes de becas:</label>
                 <div th:each="solicitud : ${listaEnlace}">
                     <input type="checkbox" th:id="${'solicitud-' + solicitud.id_tipobeca}"
                         th:name="solicitudesSeleccionadas" th:value="${solicitud.id_tipobeca}" />
                     <label th:for="${'solicitud-' + solicitud.idEnlace}"
                         th:text="${solicitud.tipobeca_nom}"></label><br />
                 </div> -->
-            </div>
-            <div th:insert="~{layout/footer :: footer}"></div>
-        </div>
+    </div>
+    <div th:insert="~{layout/footer :: footer}"></div>
+    </div>
     </div>
     <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
     <div class="rightbar-overlay"></div>
@@ -195,14 +198,14 @@
 
 <!-- lista enlace anterior, que no tenái botones -->
 
-   <!-- <script>
+<!-- <script>
                     function registrarEnlace(id) {
                         alert('Registrar enlace con ID ' + id);
                     }
                 </script>
                  -->
 
-                <!-- <div class="page-content-wrapper">
+<!-- <div class="page-content-wrapper">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">

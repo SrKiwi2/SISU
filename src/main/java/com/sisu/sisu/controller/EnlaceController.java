@@ -27,7 +27,7 @@ public class EnlaceController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping(value = "formEnlace")
+    @RequestMapping(value = "formEnlace")
     public String registroEnlace(@Validated Enlace enlace, Model model) {
 
         model.addAttribute("enlace", new Enlace());
@@ -79,7 +79,7 @@ public class EnlaceController {
     @PostMapping(value = "/guardarEnlaceHijo")
     public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam(name = "idEnlace2") Integer idEnlace,
             RedirectAttributes flash, HttpServletRequest request) {
-        System.out.println("+++++++++++++++++1");
+        System.out.println("+++++++++++++++++1  ");
         Usuario usuario = usuarioService.buscarUsuarioPorId(1);
 
         enlace.setId_usuario(usuario);
@@ -97,18 +97,7 @@ public class EnlaceController {
         return "redirect:formEnlace";
     }
 
-    /* ELIMINAR */
-
-    @RequestMapping(value = "/eliminarEnlace/{idEnlace}")
-    public String eliminarEnlace(@PathVariable("idEnlace") Integer idEnlace) {
-        Enlace enlace = enlaceService.findOne(idEnlace);
-        enlace.setEstado("A");
-        enlaceService.save(enlace);
-
-        return "redirect:/ListarEnlace";
-    }
-
-    /* modificar un registro con el modal */
+    /* modificar un registro con el modal 
 
     @RequestMapping(value = "enlace/{idEnlace}")
     public String getContent1(@PathVariable(value = "idEnlace") Integer idEnlace, Model model,
@@ -116,9 +105,9 @@ public class EnlaceController {
         model.addAttribute("enlace", enlaceService.findOne(idEnlace));
 
         return "content :: content1";
-    }
+    }*/
 
-    /* EDITAR */
+    /* EDITAR 
     @RequestMapping(value = "/editarEnlace/{idEnlace}")
     public String editarEnlaceR(@PathVariable("idEnlace") Integer idEnlace, Model model) {
         Enlace enlace = enlaceService.findOne(idEnlace);

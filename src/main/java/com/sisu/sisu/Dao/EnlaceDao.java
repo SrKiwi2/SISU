@@ -13,7 +13,11 @@ public interface EnlaceDao extends CrudRepository<Enlace, Integer>{
     @Query("select L from Enlace L where L.obs  = '0' and L.estado='A'")
     List<Enlace>listaEnlacePadre();
 
-    @Query("select e from Enlace e where e.obs  = '1' and e.estado='A' and e.tabla=?1")
+    @Query("select L from Enlace L where L.obs  = '1' and L.tabla=?1 and L.estado='A' ")
     List<Enlace>listaEnlaceHijo(int idEnlacePadre);
+
+
+    @Query("SELECT ee FROM Enlace ee where ee.tabla=?1")
+    List<Enlace>buscarEnlacesHijosPrIdEnlacePadre(int idEnlacePadrePrueba);
 
 } 

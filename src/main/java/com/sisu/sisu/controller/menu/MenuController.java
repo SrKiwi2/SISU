@@ -1,7 +1,10 @@
 package com.sisu.sisu.controller.menu;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+//import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,30 +42,43 @@ public class MenuController {
 
     /* FORM MENU 1 */
 
-    @GetMapping(value = "formMenu1")
-    public String registroMenu(@Validated Menu menu, Model model) {
+    @GetMapping("/formMenu2/{enlaceId}")
+    public String procesarEnlace(@PathVariable("enlaceId") Integer enlaceId, Model model) {
+
+        System.out.println("El enlace es: " + enlaceId + "+++++++++++++++++++++++++++++++++1");
 
         model.addAttribute("menu", new Menu());
         model.addAttribute("menus", menuService.findAll());
 
+        // model.addAttribute("enlaceHijo", new Enlace());
         model.addAttribute("enlace", new Enlace());
-        model.addAttribute("enlaces", enlaceService.findAll());
+        // List<Enlace> listaEnlaceHijos = enlaceService.listaEnlaceHijo(enlaceId);
+        List<Enlace> listaEnlaceHijos = enlaceService.listaEnlaceHijo(enlaceId);
+        
+        model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(enlaceId));
 
         model.addAttribute("role", new Roles());
         model.addAttribute("roles", rolesService.findAll());
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
-
+        System.out.println("El enlace es: " + enlaceId + "+++++++++++++++++++++++++++++++++1");
+        System.out.println(listaEnlaceHijos.size());
         // model.addAttribute("listaEnlacesHijo",
         // enlaceService.listaEnlaceHijo(idEnlacePadre));
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++1");
+        System.out.println("El enlace es: " + enlaceId + "+++++++++++++++++++++++++++++++++2");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++3");
+        System.out.println(enlaceService.listaEnlaceHijo(20).size());
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++4");
 
-        return "listas/listaMenu";
+        return "formularios/formaAsignarRol1";
 
     }
 
     @PostMapping(value = "/guardarMenu")
     public String guardarMenu(@Validated Menu menu) {
+
         menu.setIdEstado("A");
         menuService.save(menu);
 
@@ -78,11 +94,15 @@ public class MenuController {
         model.addAttribute("role", new Roles());
         model.addAttribute("roles", rolesService.findAll());
 
+        model.addAttribute("enlace", new Enlace());
+        model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(idEnlacePadre));
+
         // model.addAttribute("listaEnlacesHijo",
         // enlaceService.listaEnlaceHijo(idEnlacePadre));
 
         return "listas/listaMenu";
     }
+
     /* FORM MENU 2 */
 
     // /* registrar con el modal */
