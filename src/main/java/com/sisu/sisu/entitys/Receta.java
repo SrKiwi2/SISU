@@ -55,6 +55,9 @@ public class Receta implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receta", fetch = FetchType.LAZY)
 	private List<RecetaRemedios> receta_remedios;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receta", fetch = FetchType.LAZY)
+	private List<HistorialReceta> historialReceta;
     
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idTipoRe")

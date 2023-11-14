@@ -50,6 +50,13 @@ public class Servicios implements Serializable {
 
     // --------------------------RELACION--------------------------------------
 
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicios", fetch = FetchType.LAZY)
+	private List<ServicioMedico> servicioMedico;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicios", fetch = FetchType.LAZY)
+	private List<ConceptosServicios> conceptosServicios;
+
     //   @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicios", fetch = FetchType.LAZY)
 	// private List<ConceptosServicios> receta;
 

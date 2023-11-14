@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -47,9 +49,12 @@ public class ServicioMedico implements Serializable {
     private Date modificacion;
 
     // --------------------------RELACION--------------------------------------
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio_medico", fetch = FetchType.LAZY)
+	private List<MedicoServicio> medicoServicio;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio_medico", fetch = FetchType.LAZY)
-	private List<Servicios> receta;
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idServicio")
+    private Servicios servicios;
+
 
 }

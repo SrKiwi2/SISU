@@ -61,7 +61,9 @@ public class RemedioLote implements Serializable {
 
 
     //----------------------RELACIONES------------------------------------------
-
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idProveedor")
+    private Proveedor proveedor;
 
     // @OneToMany(cascade = CascadeType.ALL, mappedBy = "remedio_lote", fetch = FetchType.LAZY)
 	// private List<RemediosFarmaciaLote> remedios_farmacia_lote;
