@@ -5,13 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -51,7 +49,7 @@ public class PersonaUsuarioController {
         model.addAttribute("personas1", personaService.findAll());
 
         model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios", usuarioService.findAll());
+        model.addAttribute("usuarios1", usuarioService.findAll());
 
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", dipService.findAll());
@@ -83,7 +81,7 @@ public class PersonaUsuarioController {
         Usuario usuario = new Usuario(); // creas un nuevo registro de usuario
         usuario.setApodo(apodo);
         usuario.setClave(clave);
-        usuario.setEstado("A");
+        usuario.setEstado_usuario("A");
 
         usuario.setPersona(persona1);// aqui ya creas la relacion de la Persona con el Usuario (1)
         usuarioService.save(usuario);
@@ -92,7 +90,7 @@ public class PersonaUsuarioController {
         return "redirect:/listaPerUsuario";
     }
 
-    @PostMapping(value = "/SavePerUsuario") // Enviar datos de Registro a Lista
+    @PostMapping(value = "/SavePersonaUsuario") // Enviar datos de Registro a Lista
     public String guardarPersona_2(RedirectAttributes flash, HttpServletRequest request,
             @RequestParam(name = "idPersona") Integer id_persona,
             @RequestParam(name = "idUsuario") Integer idUsuario,
@@ -131,7 +129,7 @@ public class PersonaUsuarioController {
     }
 
     @GetMapping(value = "/listaPerUsuario")
-    public String listaUs(Model model, @Validated Persona persona1, Usuario usuario) {
+    public String listaUs(Model model) {
 
         model.addAttribute("persona1", new Persona());
         model.addAttribute("personas1", personaService.findAll());
@@ -166,7 +164,7 @@ public class PersonaUsuarioController {
         if (persona != null && usuario != null) {
             // Configurar el estado de la persona y el usuario si es necesario
             persona.setEstado("A");
-            usuario.setEstado("A");
+            usuario.setEstado_usuario("A");
 
             // Agregar la persona y el usuario al modelo
             model.addAttribute("persona1", persona);
@@ -212,7 +210,7 @@ public class PersonaUsuarioController {
         Usuario usuario = usuarioService.findOne(idUsuario);
         Persona persona = personaService.findOne(usuario.getIdUsuario());
         persona.setEstado("X");
-        usuario.setEstado("X");
+        usuario.setEstado_usuario("X");
         personaService.save(persona);
         usuarioService.save(usuario);
         return "redirect:/listaPerUsuario";

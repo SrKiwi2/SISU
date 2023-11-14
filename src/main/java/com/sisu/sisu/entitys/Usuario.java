@@ -37,7 +37,7 @@ public class Usuario implements Serializable {
   private String clave;
 
   @Column(name = "estado")
-  private String estado;
+  private String estado_usuario;
 
   @Column(name = "registro")
   @Temporal(TemporalType.TIMESTAMP)

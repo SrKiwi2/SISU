@@ -28,8 +28,6 @@ public class UsuarioController {
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
 
-        model.addAttribute("persona", new Persona());
-        model.addAttribute("personas", personaService.findAll());
 
         return "usuarios";
     }
@@ -39,7 +37,7 @@ public class UsuarioController {
     @PostMapping(value = "/saveUs")
     public String saveUsiario(@Validated Usuario usuarios) {
 
-        usuarios.setEstado("A");
+        usuarios.setEstado_usuario("A");
 
         usuarioService.save(usuarios);
 
@@ -66,7 +64,7 @@ public class UsuarioController {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 
-        usuario.setEstado("A");
+        usuario.setEstado_usuario("A");
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
@@ -81,7 +79,7 @@ public class UsuarioController {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 
-        usuario.setEstado("X");
+        usuario.setEstado_usuario("X");
 
         usuarioService.save(usuario);
 
