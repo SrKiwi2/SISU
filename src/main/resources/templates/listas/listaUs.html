@@ -102,7 +102,7 @@
                                                 <table class="table table-centered mb-0">
                                                     <tbody>
                                                         <tr>
-                                                            <button type="button1" style="margin-right: 5%;" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center"><i class="mdi mdi-plus-thick"></i>Add</button>
+                                                            <button type="button1" style="margin-right: 5%;" class="btn btn-primary btn-sm waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" title="ADICIONAR"><i class="mdi mdi-plus-thick"></i>Add</button>
                                                             <td>
                                                                 <!-- Small modal -->
                                                                 
@@ -168,7 +168,7 @@
                                                 </thead>
             
                                                 <tbody>
-                                                    <tr th:each ="us : ${usuarios}" th:if="${us.estado !='X'}">
+                                                    <tr th:each ="us : ${usuarios}" th:if="${us.estado_usuario !='X'}">
                                                         <td th:text="${us.apodo}"></td>
                                                         <td class="col-2">
                                                             <input class="col-4" type="password" id="passwordInput" th:value="${us.clave}" disabled="disabled" />
@@ -177,12 +177,12 @@
                                                         <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a th:href="${'../../../../editarUs/' + us.idUsuario}" style="padding: 2px; display: inline-block; margin: 0px;">
+                                                                    <a th:href="${'../../../../editarUs/' + us.idUsuario}" style="padding: 2px; display: inline-block; margin: 0px;" title="MODIFICAR">
                                                                         <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-md-3 col-6 mb-2"> <!-- En pantallas medianas, ocupará la mitad del ancho disponible -->
-                                                                    <a th:href="${'../../../../eliminarUs/' + us.idUsuario}" style="padding: 2px; display: inline-block; margin: 0px;">
+                                                                    <a th:href="${'../../../../eliminarUs/' + us.idUsuario}" style="padding: 2px; display: inline-block; margin: 0px;" title="ELIMINAR">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
                                                                     </a>
                                                                 </div>
@@ -191,10 +191,33 @@
                                                       
                                                         
                                                         <td>
-                                                            <div class="btn-group dropup mt-1 mr-1">
-                                                                
-                                                                
-                                                            </div>
+
+                                                           
+
+                                                            <!-- Split dropright button 
+                                                            <form action="../../../../asignacionrol" method="post">
+                                                                <button type="submit" class="btn btn-primary">Rol</button>
+                                                            <div class="btn-group mt-1 mr-1 dropright" title="ELEGIR ROL">
+                                                                <button type="button" class="btn btn-info waves-effect waves-light">
+                                                                    Elegir rol
+                                                                </button>
+                                                                <button type="button" class="btn btn-info waves-effect waves-light dropdown-toggle-split dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="mdi mdi-chevron-right"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu">
+                                                                    <a class="dropdown-item" href="#">nose</a>
+                                                                    <a class="dropdown-item" href="#">nose</a>
+                                                                    <a class="dropdown-item" href="#">nose</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="#">nose</a>
+                                                                </div>
+                                                            </div> -->
+                                                            </form>
+
+
+                                                            <a th:href="@{'../../../../asignacionrol/' + ${us.idUsuario}}">
+                                                                <button class="btn btn-primary" type="button">Enviar</button>
+                                                            </a>
                                                         </td>
                                                                                                                                                           
                                                     </tr>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.Dao.UsrRolesDao;
 import com.sisu.sisu.entitys.UsrRoles;
+import com.sisu.sisu.entitys.Usuario;
 
 @Service
 public class UsrRolesServiceImpl implements UsrRolesService {
@@ -14,16 +15,28 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 	@Autowired
 	UsrRolesDao usrRolesDao;
 
-	@Override
-	public List<UsrRoles> findAll() {
-		        return (List<UsrRoles>) usrRolesDao.findAll();
+	 @Override
+    public UsrRoles findOne(Integer id) {
 
-	}
+        return usrRolesDao.findById(id).orElse(null);
+    }
 
 	@Override
 	public void registrarUsrRoles(UsrRoles usrRoles) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'registrarUsrRoles'");
+	}
+
+	@Override
+	public void save(UsrRoles usrRoles) {
+		// TODO Auto-generated method stub
+			 usrRolesDao.save(usrRoles);
+	}
+
+	@Override
+	public List<UsrRoles> findAll() {
+		// TODO Auto-generated method stub
+		return (List<UsrRoles>) usrRolesDao.findAll();
 	}
 	
 
