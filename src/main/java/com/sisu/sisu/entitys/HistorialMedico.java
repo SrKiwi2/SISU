@@ -49,7 +49,7 @@ public class HistorialMedico implements Serializable {
   @Temporal(TemporalType.TIMESTAMP)
   private Date modificacion;
 
-  /* RELACIONES */
+  // ----------------------RELACIONES------------------------------------------
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "idAsegurado")
@@ -60,14 +60,10 @@ public class HistorialMedico implements Serializable {
   private ConceptosServicios concepto_servicio;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "historial_medico", fetch = FetchType.LAZY)
-  private List<HistorialReceta> historialReceta;
+  private List<HistorialReceta> historial_receta;
 
-  // @ManyToOne(fetch = FetchType.LAZY)
-  // @JoinColumn(name = "idAtencionMedica")
-  // private AtencionMedica atencion_medica;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "historial_medico", fetch = FetchType.LAZY)
+  private List<HistorialMedicoServicio> historial_medico_servicio;
 
-  // @ManyToOne(fetch = FetchType.LAZY)
-  // @JoinColumn(name = "idAsegurado")
-  // private Asegurado asegurado;
 
 }

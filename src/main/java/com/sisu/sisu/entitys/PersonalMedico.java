@@ -49,13 +49,13 @@ public class PersonalMedico implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
-    //--------------relaciones
+    //---------------------RELACIONES-------------------------------------------
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPersona")
     private Persona persona;
 
-     @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idTipoRegistroMedico")
     private TipoRegistroMedico tipo_registro_medico;
 
@@ -63,12 +63,12 @@ public class PersonalMedico implements Serializable{
     @JoinColumn(name = "idTipoPersonalMedico")
     private TipoPersonalMedico tipo_personal_medico;
 
+   
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal_medico", fetch = FetchType.LAZY)
-	private List<PersonalMedicoTurno> personalMedicoTurno;
+	  private List<MedicoServicio> medico_servicio;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal_medico", fetch = FetchType.LAZY)
+	  private List<PersonalMedicoTurno> personalMedicoTurno;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idMedicoServicio")
-    private MedicoServicio medico_servicio;
 
 }

@@ -22,8 +22,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "servicios")
-public class Servicios implements Serializable {
+@Table(name = "servicio")
+public class Servicio implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -51,13 +51,11 @@ public class Servicios implements Serializable {
     // --------------------------RELACION--------------------------------------
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicios", fetch = FetchType.LAZY)
-	private List<ServicioMedico> servicioMedico;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.LAZY)
+	private List<ServicioMedico> servicio_medico;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicios", fetch = FetchType.LAZY)
-	private List<ConceptosServicios> conceptosServicios;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.LAZY)
+	private List<ConceptosServicios> concepto_servicio;
 
-    //   @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicios", fetch = FetchType.LAZY)
-	// private List<ConceptosServicios> receta;
-
+ 
 }

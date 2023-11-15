@@ -21,60 +21,56 @@ import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
 @Table(name = "asegurado")
 public class Asegurado implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_asegurado")
-    private Long idAsegurado;
+  private static final long serialVersionUID = 1L;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_asegurado")
+  private Long idAsegurado;
 
-    @Column(name = "titular")
-    private String titular;
+  @Column(name = "titular")
+  private String titular;
 
-    @Column(name = "ru")
-    private String ru;
+  @Column(name = "ru")
+  private String ru;
 
-    @Column(name = "fecha_alta")
-    private String fecha_alta;
+  @Column(name = "fecha_alta")
+  private String fecha_alta;
 
-    @Column(name = "fecha_baja")
-    private String fecha_baja;
+  @Column(name = "fecha_baja")
+  private String fecha_baja;
 
-    @Column(name = "estado")
-    private String estado;
+  @Column(name = "estado")
+  private String estado;
 
-    @Column(name = "codigo_seguro")
-    private String codigoSeguro;
+  @Column(name = "codigo_seguro")
+  private String codigoSeguro;
 
-    @Column(name = "codigo_seguro_principal")
-    private String codigoSeguroPrincipal;
+  @Column(name = "codigo_seguro_principal")
+  private String codigoSeguroPrincipal;
 
-    @Column(name = "registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
-    
-    @Column(name = "modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+  @Column(name = "registro")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date registro;
 
+  @Column(name = "modificacion")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date modificacion;
 
-    //----------------------RELACIONES------------------------------------------
+  // ----------------------RELACIONES------------------------------------------
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
-	private List<HistorialSeguro> historial_seguro;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
+  private List<HistorialSeguro> historial_seguro;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idPersona")
+  private Persona persona;
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "idPersona")
-          private Persona persona;
-
-           @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
-	private List<HistorialMedico> historial_medico;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
+  private List<HistorialMedico> historial_medico;
 
 }
-

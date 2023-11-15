@@ -3,9 +3,7 @@ package com.sisu.sisu.entitys;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,15 +48,16 @@ public class HistorialMedicoServicio implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
-    /* RELACIONES */
+    //---------------------RELACIONES-------------------------------------------
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idMedicoServicio")
     private MedicoServicio medico_servicio;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "idAsegurado")
-    // private Asegurado asegurado;
+     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idHistorialMedico")
+    private HistorialMedico historial_medico;
+
 
 }

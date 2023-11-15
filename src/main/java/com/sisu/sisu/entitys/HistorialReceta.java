@@ -22,30 +22,31 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name = "historial_receta")
-public class HistorialReceta implements Serializable{
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_historial_receta")
-    private Integer idHistorialReceta;
+public class HistorialReceta implements Serializable {
+  private static final long serialVersionUID = 1L;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_historial_receta")
+  private Integer idHistorialReceta;
 
-    @Column(name = "estado")
-    private String estado;
+  @Column(name = "estado")
+  private String estado;
 
-    @Column(name = "registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+  @Column(name = "registro")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date registro;
 
-    @Column(name = "modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+  @Column(name = "modificacion")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date modificacion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idReceta")
-    private Receta receta;
+  //----------------------------------------------------------------
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idReceta")
+  private Receta receta;
 
-      @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "idHistorialMedico")
-          private HistorialMedico historial_medico;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "idHistorialMedico")
+  private HistorialMedico historial_medico;
 }

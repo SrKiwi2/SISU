@@ -47,8 +47,6 @@ public class TipoRegistroMedico implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
-
-
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_registro_medico", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_registro_medico", fetch = FetchType.LAZY)
 	private List<PersonalMedico> personal_medico;
 }

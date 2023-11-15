@@ -53,9 +53,9 @@ public class ConceptosServicios implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idServicio")
-    private Servicios servicios;
+    private Servicio servicios;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "concepto_servicio", fetch = FetchType.LAZY)
-	private List<HistorialMedico> historialMedico;
+	private List<HistorialMedico> historial_medico;
 
 }

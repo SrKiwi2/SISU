@@ -49,12 +49,13 @@ public class ServicioMedico implements Serializable {
     private Date modificacion;
 
     // --------------------------RELACION--------------------------------------
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio_medico", fetch = FetchType.LAZY)
-	private List<MedicoServicio> medicoServicio;
+	private List<MedicoServicio> medico_servicio;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idServicio")
-    private Servicios servicios;
+    private Servicio servicio;
 
 
 }

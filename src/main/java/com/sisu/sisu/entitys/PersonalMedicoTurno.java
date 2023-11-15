@@ -49,6 +49,7 @@ public class PersonalMedicoTurno implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
 
+    //---------------------RELACIONES-------------------------------------------
 
    @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersonalMedico")
