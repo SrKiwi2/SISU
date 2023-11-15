@@ -49,7 +49,7 @@ public class PersonaUsuarioController {
         model.addAttribute("personas1", personaService.findAll());
 
         model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios1", usuarioService.findAll());
+        model.addAttribute("usuarios", usuarioService.findAll());
 
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", dipService.findAll());
@@ -74,7 +74,6 @@ public class PersonaUsuarioController {
 
         persona1.setEstado("A");
         persona1.setGrado_academico(gradoService.findOne(idGradoAcademico));
-        
         persona1.setDip(dipService.findOne(idDip));
         persona1.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
         personaService.save(persona1); // guardas todos los datos de la persona (1)
@@ -91,7 +90,7 @@ public class PersonaUsuarioController {
         return "redirect:/listaPerUsuario";
     }
 
-    @PostMapping(value = "/SavePersonaUsuario") // Enviar datos de Registro a Lista
+    @PostMapping(value = "/SavePerUsuario") // Enviar datos de Registro a Lista
     public String guardarPersona_2(RedirectAttributes flash, HttpServletRequest request,
             @RequestParam(name = "idPersona") Integer id_persona,
             @RequestParam(name = "idUsuario") Integer idUsuario,
@@ -130,7 +129,7 @@ public class PersonaUsuarioController {
     }
 
     @GetMapping(value = "/listaPerUsuario")
-    public String listaUs(Model model) {
+    public String listaUs(Model model, @Validated Persona persona1, Usuario usuario) {
 
         model.addAttribute("persona1", new Persona());
         model.addAttribute("personas1", personaService.findAll());

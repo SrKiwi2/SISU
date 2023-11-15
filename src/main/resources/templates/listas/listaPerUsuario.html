@@ -109,13 +109,16 @@
                                     <div class="card">
                                         <div class="card-body">
             
-                                            <h4 class="header-title"></i>Lista Personas</h4>
+                                            <h4 class="header-title"></i>Lista Usuarios</h4>
                                           
                                             <div class="table-responsive">
                                                 <table class="table table-centered mb-0">
-                                                    
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Scrollable modal</td>
+                                                            <td>
                                                                 <!-- Small modal -->
-                                                                <button type="button" style="margin-right: 0%;"class="btn btn-danger  btn-sm waves-effect waves-light" data-placement="top" title="Registate" data-toggle="modal" data-target="#exampleModalScrollable1"><i class="mdi mdi-plus-thick"></i>Registrar</button><br>
+                                                                <button type="button" style="margin-right: 5%;" class="btn btn-info btn-sm waves-effect waves-light" data-placement="top" title="Registate" data-toggle="modal" data-target="#exampleModalScrollable1"><i class="mdi mdi-plus-thick"></i>Add</button>
                                                                 <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-scrollable">
                                                                         <div class="modal-content">
@@ -270,7 +273,7 @@
 
                                                                             <div class="modal-body">
 
-                                                                                <form class="needs-validation" action="../../../../SavePersonaUsuario" method="post">
+                                                                                <form class="needs-validation" action="../../../../SavePerUsuario" method="post">
                                                                                     <div id="replace_div">
                                                                                         
                                                                                     </div>
@@ -280,7 +283,9 @@
                                                                         </div><!-- /.modal-content -->
                                                                     </div><!-- /.modal-dialog -->
                                                                 </div><!-- /.modal -->
-                                                    
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                      
@@ -303,21 +308,21 @@
                                                 </thead>
             
                                                 <tbody>
-                                                    <tr th:each="u : ${usuarios1}" th:if="${u.estado_usuario != 'X'}">
-                                                        <td th:text="${u.persona.nombres}"></td>
-                                                        <td th:text="${u.persona.apPaterno + '  ' + u.persona.apMaterno}"></td>
-                                                        <td th:text="${u.persona.ci}"></td>
-                                                        <td th:text="${u.persona.dip.codDip}"></td>
-                                                        <td th:text="${u.persona.sexo}"></td>
-                                                        <td th:if="${u.persona.tipos_estado_civil != null}" th:text="${u.persona.tipos_estado_civil.NomEstadoCivil}"></td>
-                                                        <td th:if="${u.persona.grado_academico != null}" th:text="${u.persona.grado_academico.nombre_gradoAcademico}"></td>
-                                                        <td th:text="${u.persona.celular}"></td>
-                                                        <td th:text="${u.persona.direccion}"></td>
-                                                        <td th:text="${u.apodo}"></td>
+                                                    <tr th:each="p : ${usuarios1}" th:if="${p.estado_usuario != 'X'}">
+                                                        <td th:text="${p.persona.nombres}"></td>
+                                                        <td th:text="${p.persona.apPaterno + '  ' + p.persona.apMaterno}"></td>
+                                                        <td th:text="${p.persona.ci}"></td>
+                                                        <td th:text="${p.persona.dip.codDip}"></td>
+                                                        <td th:text="${p.persona.sexo}"></td>
+                                                        <td th:if="${p.persona.tipos_estado_civil != null}" th:text="${p.persona.tipos_estado_civil.NomEstadoCivil}"></td>
+                                                        <td th:if="${p.persona.grado_academico != null}" th:text="${p.persona.grado_academico.nombre_gradoAcademico}"></td>
+                                                        <td th:text="${p.persona.celular}"></td>
+                                                        <td th:text="${p.persona.direccion}"></td>
+                                                        <td th:text="${p.apodo}"></td>
                                                         <td>
                                                             <div class="row justify-content-center">
                                                                 <div class="mb-2">
-                                                                    <a th:href="${'../../../../eliminarUsuario/' + u.idUsuario}">
+                                                                    <a th:href="${'../../../../eliminarUsuario/' + p.idUsuario}">
                                                                         <button type="button" class="btn btn-outline-danger alertElimin btn-sm"
                                                                             style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-trash"></i>
@@ -328,7 +333,7 @@
                                                                     <a style="padding: 2px; display: inline-block; margin: 0px;">
                                                                         <button type="button" class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                             data-toggle="modal" th:data-target="${'#exampleModalScrollable2'}"
-                                                                            th:data-idusuario="${u.idUsuario}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
+                                                                            th:data-idusuario="${p.idUsuario}" onclick="buscar(this)" style="margin: 3px; padding: 5px;">
                                                                             <i class="dripicons-document-edit"></i>
                                                                         </button>
                                                                     </a>
