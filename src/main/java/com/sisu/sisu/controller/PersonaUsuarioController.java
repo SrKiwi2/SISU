@@ -74,6 +74,7 @@ public class PersonaUsuarioController {
 
         persona1.setEstado("A");
         persona1.setGrado_academico(gradoService.findOne(idGradoAcademico));
+        
         persona1.setDip(dipService.findOne(idDip));
         persona1.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
         personaService.save(persona1); // guardas todos los datos de la persona (1)

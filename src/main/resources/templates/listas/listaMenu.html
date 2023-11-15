@@ -103,7 +103,7 @@
                                                         <div class="valid-feedback">¡Se ve bien!</div>
                                                     </div>
 
-                                                    <label>Selecciona solicitudes de becas:</label>
+                                                    <!-- <label>Selecciona solicitudes de becas:</label> -->
                                                     <div th:each="solicitud : ${listaEnlacesHijo}">
                                                         <input type="checkbox" th:id="${'solicitud-' + solicitud.idEnlace}" th:name="solicitudesSeleccionadas" th:value="${solicitud.idEnlace}" />
                                                         <label th:for="${'solicitud-' + solicitud.idEnlace}" th:text="${solicitud.nombre_enlace}"></label><br />

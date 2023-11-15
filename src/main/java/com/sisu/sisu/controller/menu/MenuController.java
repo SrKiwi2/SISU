@@ -54,7 +54,7 @@ public class MenuController {
         model.addAttribute("enlace", new Enlace());
         // List<Enlace> listaEnlaceHijos = enlaceService.listaEnlaceHijo(enlaceId);
         List<Enlace> listaEnlaceHijos = enlaceService.listaEnlaceHijo(enlaceId);
-        
+
         model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(enlaceId));
 
         model.addAttribute("role", new Roles());
@@ -77,8 +77,11 @@ public class MenuController {
     }
 
     @PostMapping(value = "/guardarMenu")
-    public String guardarMenu(@Validated Menu menu) {
+    public String guardarMenu(@Validated Menu menu, RedirectAttributes flash, HttpServletRequest request,
+    @RequestParam(name = "role", required = false) Integer idRol) {
 
+        menu.setIdRol(rolesService.findOne((idRol))
+        );
         menu.setIdEstado("A");
         menuService.save(menu);
 
@@ -96,9 +99,6 @@ public class MenuController {
 
         model.addAttribute("enlace", new Enlace());
         model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(idEnlacePadre));
-
-        // model.addAttribute("listaEnlacesHijo",
-        // enlaceService.listaEnlaceHijo(idEnlacePadre));
 
         return "listas/listaMenu";
     }

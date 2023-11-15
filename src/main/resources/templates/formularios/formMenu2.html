@@ -75,8 +75,6 @@
                 </div>
                 <!-- end page title end breadcrumb -->
 
-
-
                 <div class="page-content-wrapper">
                     <div class="container-fluid">
                         <div class="row">
@@ -84,11 +82,9 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>Lista Dip</h4>
-
                                         <!-- ------------- -->
 
-                                       
+
                                         <div class="text-right mb-3">
                                             <button type="button"
                                                 class="btn btn-primary btn-sm waves-effect waves-light"
@@ -103,11 +99,6 @@
                                             <thead>
                                                 <tr>
                                                     <th>Enlaces Padres</th>
-                                                   
-                                                    <!-- <th>Apellido Materno</th>
-                                                    <th>Usuario</th>
-                                                    <th>Clave</th> -->
-                                                    <!-- <th></th> -->
                                                 </tr>
                                             </thead>
 
@@ -115,7 +106,7 @@
                                                 <tr th:each="menu : ${menus}" th:if="${menu.idEnlace.estado != 'X'}">
 
                                                     <td th:text="${menu.idEnlace.enlace}"></td>
-                                                  
+
                                                     <!-- <td th:text="${us.idPersona.apMaterno}"></td>
                                                     <td th:text="${us.apodo}"></td> -->
 
@@ -150,33 +141,17 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div> 
-                              </div>
-                            </div> 
-                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!-- end page-content-wrapper -->
             </div>
-            <!-- End Page-content -->
 
             <div th:insert="~{layout/footer :: footer}"></div>
         </div>
-        <!-- end main content-->
 
     </div>
 
