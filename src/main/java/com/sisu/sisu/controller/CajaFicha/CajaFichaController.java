@@ -56,7 +56,6 @@ public class CajaFichaController {
 			String nombreUniversitario = data.get("nombres").toString();
 			// String urlImagen = data.get("url_imagen").toString();
 
-			
 			System.out.println("EL NOMBRE DEL UNIVERSITARIO ES " + data.get("nombres").toString());
 
 			if (request.getHeader("X-Requested-With") != null
