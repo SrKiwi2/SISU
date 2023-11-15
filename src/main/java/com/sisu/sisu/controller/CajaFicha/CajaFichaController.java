@@ -62,6 +62,8 @@ public class CajaFichaController {
 					&& request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
 				Map<String, Object> responseData = new HashMap<>();
 				responseData.put("nombreUniversitario", nombreUniversitario);
+				responseData.put("apPaterno", data.get("apellido_paterno").toString());
+				responseData.put("apMaterno", data.get("apellido_materno").toString());
 				responseData.put("ci", data.get("ci").toString());
 				responseData.put("ru", data.get("ru").toString());
 				responseData.put("fechaNacimiento", data.get("fecha_nacimiento").toString());
@@ -86,11 +88,12 @@ public class CajaFichaController {
 
 	
 	@RequestMapping(value = "docenteC", method = RequestMethod.GET)
-	public String docenteC(HttpServletRequest request,Model model,@RequestParam("rd") String rd) {
+	public Object docenteC(HttpServletRequest request,Model model,
+				@RequestParam("codigoDocente") String rd) {
 		
-	Map<String, Object> request1 = new HashMap<String, Object>();
+		Map<String, Object> request1 = new HashMap<>();
 	
-	System.out.println("el codigo docente es"+rd);
+		System.out.println("el codigo docente es"+rd);
 		
 		request1.put("rd",rd);
 		
@@ -102,42 +105,48 @@ public class CajaFichaController {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("x-api-key", key);
 		
-		
-		HttpEntity<HashMap> req = new HttpEntity(request1, headers);
-		RestTemplate restTemplate=new RestTemplate();		
+		HttpEntity<Map<String, Object>> req = new HttpEntity<>(request1, headers);
+		RestTemplate restTemplate= new RestTemplate();
 		
 		ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
+
 		System.out.println("---------------"+resp.getBody().get("status").toString()+"--------------------------");
 
-            if (resp.getBody().get("status").toString().equals("200")) {
-        		System.out.println("----------------------------------SS--------");
+        if (resp.getBody().get("status").toString().equals("200")) {
+        	System.out.println("----------------------------------SS--------");
+			Map<String, Object> data = (Map) resp.getBody().get("data");
+        	System.out.println("------------RD: "+rd+"---------");
+        	System.out.println("------------------------------------------");
+        	System.out.println("EL NOMBRE DEL DOCENTE ES "+data.get("nombres").toString());
+        	System.out.println("-----------------DOCENTE------------------");
+			String DatosDocente = data.get("nombres").toString();
+			if (request.getHeader("X-Requested-With") != null &&
+			 		request.getHeader("X-Requested-With").equals("XMLHttpRequest")) {
+				Map<String, Object> responseDataD = new HashMap<>();
+				responseDataD.put("DatosDocente", DatosDocente);
+				responseDataD.put("apellidoPaterno",data.get("apellido_paterno").toString());
+				responseDataD.put("apellidoMaterno", data.get("apellido_materno").toString());
+				responseDataD.put("ci", data.get("ci").toString());
+				responseDataD.put("rd", data.get("rd").toString());
+				responseDataD.put("gradoAcademicoD", data.get("grado_academico").toString());
+				responseDataD.put("titulo", data.get("titulo").toString());
+				responseDataD.put("fechaNacimiento", data.get("fecha_nacimiento").toString());
+				responseDataD.put("tipoSanguineoD", data.get("tipo_sanguineo").toString());
+				responseDataD.put("sexo", data.get("sexo").toString());
+				responseDataD.put("direccion", data.get("direccion").toString());
+				responseDataD.put("celular", data.get("celular").toString());
+				responseDataD.put("correo", data.get("correos").toString());
+				// responseDataD.put("asignatura", data.get("asignatura").toString());
+				// responseDataD.put("tipodocente", data.get("tipo_docente")).toString();
+				// responseDataD.put("carrera", data.get("carrera").toString());
+				// responseDataD.put("facultad", data.get("facultad").toString());
+				responseDataD.put("activo", data.get("activo").toString());
 
-				Map<String, Object> data = (Map) resp.getBody().get("data");
-
-            	System.out.println("------------RD: "+rd+"---------");
-        		System.out.println("------------------------------------------");
-            	System.out.println("EL NOMBRE DEL DOCENTE ES "+data.get("nombres").toString());
-            	System.out.println("-----------------DOCENTE------------------");
-
-				String DatosDocente = data.get("nombres").toString();
-
-				model.addAttribute("DatosDocente", DatosDocente);
-
-				model.addAttribute("apellidoPaterno", data.get("apellido_paterno")).toString();
-				model.addAttribute("apellidoMaterno", data.get("apellido_materno")).toString();
-				model.addAttribute("ci", data.get("ci").toString());
-				model.addAttribute("fechaNacimiento", data.get("fecha_nacimiento")).toString();
-				model.addAttribute("titulo", data.get("titulo").toString());
-				model.addAttribute("gradoAcademico", data.get("grado_academico").toString());
-				model.addAttribute("rd", data.get("rd").toString());
-				model.addAttribute("tipoSanguineo", data.get("tipo_sanguineo")).toString();
-				model.addAttribute("sexo", data.get("sexo")).toString();
-				model.addAttribute("direccion", data.get("direccion")).toString();
-				model.addAttribute("activo", data.get("activo")).toString();
-        		
+				return new ResponseEntity<>(responseDataD, HttpStatus.OK);
+			}else{
+				return "busqueda/GenerarFicha";
 			}
-
-		
-		return "index/DatosDocente";
+		}
+		return "Error al procesar la solicitud";
 	}
 }
