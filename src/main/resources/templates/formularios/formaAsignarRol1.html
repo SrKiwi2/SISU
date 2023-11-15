@@ -51,7 +51,7 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h4 class="page-title mb-1">REGISTRO ENLACES HIJOS </h4>
+                                <h4 class="page-title mb-1">ASIGNAR ROLES</h4>
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
                                     <li class="breadcrumb-item active">Form Validation</li>
@@ -88,15 +88,17 @@
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <form class="needs-validation" action="/guardarEnlaceHijo" method="post"
+                                        <form class="needs-validation" action="/guardarEnlaceRolMenu" method="post"
                                             id="form1" novalidate>
                                             <input type="hidden" th:field="${enlace.idEnlace}">
+                                            <input type="hidden" th:field="${idEnlacePadre}">
+
                                             <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                             <div class="row">
                                                 <div class="col-md-3 mb-3">
                                                     <label>Enlaces </label>
                                                     <div th:each="solicitud : ${listaEnlaceHijo}" class="custom-control custom-radio mb-2">
-                                                        <input type="radio"
+                                                        <input type="checkbox"
                                                             th:id="${'solicitud-' + solicitud.idEnlace}"
                                                             th:name="solicitudesSeleccionadas"
                                                             th:value="${solicitud.idEnlace}" />
@@ -108,7 +110,7 @@
                                                 <div class="col-2">
                                                     <label for="validationCustom01">Roles</label>
                                                     <div class="form-group form-group-custom">
-                                                        <select class="custom-select" name="role">
+                                                        <select class="custom-select" name="idRol">
                                                             <option value="">Role</option>
                                                             <th:block th:each="r: ${roles}" th:if="${r.estado != 'X'}">
                                                                 <option th:value="${r.idRol}" th:text="${r.rol}">

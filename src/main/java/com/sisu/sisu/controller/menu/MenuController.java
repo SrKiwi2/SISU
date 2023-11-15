@@ -60,8 +60,12 @@ public class MenuController {
         model.addAttribute("role", new Roles());
         model.addAttribute("roles", rolesService.findAll());
 
+        model.addAttribute("idEnlacePadre", enlaceId);
+        System.out.println("el enlace padre: " + enlaceId);
+
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+
         System.out.println("El enlace es: " + enlaceId + "+++++++++++++++++++++++++++++++++1");
         System.out.println(listaEnlaceHijos.size());
         // model.addAttribute("listaEnlacesHijo",
@@ -78,14 +82,36 @@ public class MenuController {
 
     @PostMapping(value = "/guardarMenu")
     public String guardarMenu(@Validated Menu menu, RedirectAttributes flash, HttpServletRequest request,
-    @RequestParam(name = "role", required = false) Integer idRol) {
+            @RequestParam(name = "role", required = false) Integer idRol) {
 
-        menu.setIdRol(rolesService.findOne((idRol))
-        );
+        menu.setIdRol(rolesService.findOne((idRol)));
         menu.setIdEstado("A");
         menuService.save(menu);
 
         return "redirect:/formMenu1";
+    }
+
+    @PostMapping(value = "/guardarEnlaceRolMenu")
+    public String manejarFormulario(@RequestParam(name = "idRol") Integer idRol,
+            @RequestParam(name = "solicitudesSeleccionadas", required = false)Integer [] solicitudesSeleccionadas) {
+      
+                Roles roles = rolesService.findOne(idRol);
+
+                for (int i = 0; i < solicitudesSeleccionadas.length; i++) {
+                    
+                    Enlace enlace = enlaceService.findOne(solicitudesSeleccionadas[i]);
+
+                    System.out.println(roles.getRol()+" "+enlace.getEnlace());
+                   
+
+                   Menu menu = new Menu();
+                   menu.setIdEnlace(enlaceService.findOne(solicitudesSeleccionadas[i]));
+                   menu.setIdRol(rolesService.findOne(roles.getIdRol())); 
+                   menu.setId_usuario(usuarioService.findOne(1));
+                   menu.setIdEstado("A");
+                   menuService.save(menu);
+                }
+        return "redirect:/ListaEnlace";
     }
 
     @GetMapping(value = "/listaMenu")
