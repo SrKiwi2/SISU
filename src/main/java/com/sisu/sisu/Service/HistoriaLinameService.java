@@ -10,7 +10,7 @@ public interface HistoriaLinameService {
 
     public void save (HistorialLiname historiaLiname);
 
-    public HistorialLiname findOne(Long id);
+    public HistorialLiname findOne(Integer id);
 
-    public void delete (Long id);
+    public void delete (Integer id);
 }

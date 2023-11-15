@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.Service.UsuarioService;
-import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.Usuario;
 
 @Controller

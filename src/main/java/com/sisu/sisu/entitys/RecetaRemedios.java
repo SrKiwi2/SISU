@@ -28,7 +28,7 @@ public class RecetaRemedios implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_receta_remedios")
-    private Long idRecetaRemedios;
+    private Integer idRecetaRemedios;
 
     @Column(name = "estado")
     private String estado;

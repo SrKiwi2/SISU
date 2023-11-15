@@ -30,7 +30,7 @@ public class HistorialMedico implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_historial_medico")
-  private Long idHistorialMedico;
+  private Integer idHistorialMedico;
 
   @Column(name = "observacion")
   private String Oberservacion;

@@ -24,7 +24,7 @@ public class AtencionMedica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_atencion_medica")
-    private Long idAtencionMedica;
+    private Integer idAtencionMedica;
 
     @Column(name = "fecha_atencion_medica")
     private Date fechaAtencionMedica;

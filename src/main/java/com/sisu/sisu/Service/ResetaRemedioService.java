@@ -7,6 +7,6 @@ import com.sisu.sisu.entitys.RecetaRemedios;
 public interface ResetaRemedioService {
     public List<RecetaRemedios> listarTodo();
     public void registrar(RecetaRemedios recetaRemedios);
-    public RecetaRemedios buscarId(Long id);
+    public RecetaRemedios buscarId(Integer id);
     public void eliminar(RecetaRemedios recetaRemedios);
 }

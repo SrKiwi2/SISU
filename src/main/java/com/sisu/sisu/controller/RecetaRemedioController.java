@@ -48,7 +48,7 @@ public class RecetaRemedioController {
     }
 
     @PostMapping(value = "/VentanaEditFormRecetaRemediosModal/{idRecetaRemedios}")
-    public String VentanaEditFormRecetaRemediosModal(Model model, @PathVariable(value = "idRecetaRemedios") Long idRecetaRemedios) {
+    public String VentanaEditFormRecetaRemediosModal(Model model, @PathVariable(value = "idRecetaRemedios") Integer idRecetaRemedios) {
 
         model.addAttribute("recetaRemedio", resetaRemedioService.buscarId(idRecetaRemedios));
         model.addAttribute("listReceta", recetaService.listarTodo());
@@ -99,7 +99,7 @@ public class RecetaRemedioController {
 
     @PostMapping(value = "/EliminarRecetaRemedios/{idRecetaRemedios}")
     @ResponseBody
-    public void EliminarRecetaRemedios(@PathVariable(value = "idRecetaRemedios") Long idRecetaRemedios) {
+    public void EliminarRecetaRemedios(@PathVariable(value = "idRecetaRemedios") Integer idRecetaRemedios) {
         resetaRemedioService.eliminar(resetaRemedioService.buscarId(idRecetaRemedios));
     }
 }

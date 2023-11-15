@@ -28,7 +28,7 @@ public class FormaFarmaceutica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_forma_farmaceutica")
-    private Long idFormaFarmaceutica;
+    private Integer idFormaFarmaceutica;
 
     @Column(name = "nombre_forma_farmaceutica")
     private String nombreFormaFarmaceutica;

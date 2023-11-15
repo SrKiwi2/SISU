@@ -25,12 +25,12 @@ public class RemediosFarmaciaLoteServiceImpl implements IRemediosFarmaciaLoteSer
     }
 
     @Override
-    public RemediosFarmaciaLote findOne(Long id) {
+    public RemediosFarmaciaLote findOne(Integer id) {
         return remediosFarmaciaLoteDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         remediosFarmaciaLoteDao.deleteById(id);
     }
     

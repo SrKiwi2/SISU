@@ -56,7 +56,7 @@ public class FarmaceuticaController {
 
     //-------------------------------Delete---------------------------------
     @RequestMapping(value = "/eliminFarma/{idFormaFarmaceutica}")
-    public String eliminarFFarmaceutica(@PathVariable("idFormaFarmaceutica")Long idFormaFarmaceutica){
+    public String eliminarFFarmaceutica(@PathVariable("idFormaFarmaceutica")Integer idFormaFarmaceutica){
 
         FormaFarmaceutica formaFarmaceutica = formaFarmaceuticaService.findOne(idFormaFarmaceutica);
         formaFarmaceutica.setEstadoFF("X");
@@ -68,7 +68,7 @@ public class FarmaceuticaController {
 
      //-------------------------------Edit--------------------------------------
     @RequestMapping(value = "/editFarmaceutica/{idFormaFarmaceutica}")
-    public String editFarmaceutica(@PathVariable("idFormaFarmaceutica")Long idFormaFarmaceutica, Model model){
+    public String editFarmaceutica(@PathVariable("idFormaFarmaceutica")Integer idFormaFarmaceutica, Model model){
  
         FormaFarmaceutica formaFarmaceutica = formaFarmaceuticaService.findOne(idFormaFarmaceutica);
         model.addAttribute("formaFarmaceutica", formaFarmaceutica);
@@ -77,7 +77,7 @@ public class FarmaceuticaController {
     }
 
     @RequestMapping(value = "/formaFarmaceutica/{idFormaFarmaceutica}")
-    public String getContent1(@PathVariable(value = "idFormaFarmaceutica") Long idFormaFarmaceutica, Model model,
+    public String getContent1(@PathVariable(value = "idFormaFarmaceutica") Integer idFormaFarmaceutica, Model model,
     HttpServletRequest request) {
 
         model.addAttribute("formaFarmaceutica", formaFarmaceuticaService.findOne(idFormaFarmaceutica));

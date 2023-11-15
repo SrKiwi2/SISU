@@ -43,7 +43,7 @@ public class RemedioLoteController {
     }
     /* editar */
     @GetMapping(value = "/editarRemedioLote/{idRemedioLote}")
-    public String editarRemedioLote(@PathVariable("idRemedioLote") Long idRemedioLote, Model model) {
+    public String editarRemedioLote(@PathVariable("idRemedioLote") Integer idRemedioLote, Model model) {
         RemedioLote remedioLote = remedioLoteService.findOne(idRemedioLote);
         model.addAttribute("remedioLote", remedioLote);
         return "formularios/ListaRemedioLote";
@@ -51,7 +51,7 @@ public class RemedioLoteController {
     
     /* eliminar */
     @RequestMapping(value = "/eliminarRemedioLote/{idRemedioLote}")
-    public String eliminarRemedioLote(@PathVariable("idRemedioLote") Long idRemedioLote) {
+    public String eliminarRemedioLote(@PathVariable("idRemedioLote") Integer idRemedioLote) {
         RemedioLote remedioLote = remedioLoteService.findOne(idRemedioLote);
         remedioLote.setEstado("X");
         remedioLoteService.save(remedioLote);
@@ -69,7 +69,7 @@ public class RemedioLoteController {
 
     /* modificar con el modal */
     @RequestMapping(value = "/remedioLote/{idRemedioLote}")
-    public String getContentRe(@PathVariable(value = "idRemedioLote") Long idRemedioLote, Model model,
+    public String getContentRe(@PathVariable(value = "idRemedioLote") Integer idRemedioLote, Model model,
             HttpServletRequest request) {
         model.addAttribute("remedioLote", remedioLoteService.findOne(idRemedioLote));
         model.addAttribute("proveedor", new Proveedor());

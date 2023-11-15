@@ -28,7 +28,7 @@ public class TipoPersonalMedico implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_personal_medico")
-    private Long idTipoPersonalMedico;
+    private Integer idTipoPersonalMedico;
 
     @Column(name = "tipo_personal")
     private String tipoPersonal;

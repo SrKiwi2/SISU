@@ -30,7 +30,7 @@ public class Asegurado implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_asegurado")
-  private Long idAsegurado;
+  private Integer idAsegurado;
 
   @Column(name = "titular")
   private String titular;

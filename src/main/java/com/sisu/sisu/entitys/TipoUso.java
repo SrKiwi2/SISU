@@ -28,7 +28,7 @@ public class TipoUso implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_uso")
-    private Long idTipoUso;
+    private Integer idTipoUso;
 
     @Column(name = "nombre_tipo_uso")
     private String nombreTipoUso;

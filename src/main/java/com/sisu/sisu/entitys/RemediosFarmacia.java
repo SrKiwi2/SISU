@@ -31,7 +31,7 @@ public class RemediosFarmacia implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "id_remedios_farmacia")
-    private Long idRemediosFarmacia; 
+    private Integer idRemediosFarmacia; 
 
     @Column(name = "ubicacion")
     private String ubicacion;

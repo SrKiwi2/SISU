@@ -28,13 +28,13 @@ public class ListaLinameServiceImpl implements ListaLinameService{
     }
 
     @Override
-    public ListaLiname findOne(Long id) {
+    public ListaLiname findOne(Integer id) {
         
         return linameDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         
         linameDao.deleteById(id);
     }

@@ -32,7 +32,7 @@ public class Receta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_receta")
-    private Long idReceta;
+    private Integer idReceta;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "fecha")

@@ -29,13 +29,13 @@ public class TipoUsoServiceImpl implements TipoUsoService{
     }
 
     @Override
-    public TipoUso findOne(Long id) {
+    public TipoUso findOne(Integer id) {
         
         return tipoUsoDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         
         tipoUsoDao.deleteById(id);
     }

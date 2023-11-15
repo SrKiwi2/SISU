@@ -28,7 +28,7 @@ public class TipoRegistroMedico implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_registro_medico")
-    private Long idTipoRegistroMedico;
+    private Integer idTipoRegistroMedico;
     
     @Column(name = "tipo_registro_medico")
     private String tipoRegistroMedico;

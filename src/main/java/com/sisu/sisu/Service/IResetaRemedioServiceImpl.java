@@ -25,7 +25,7 @@ public class IResetaRemedioServiceImpl implements ResetaRemedioService{
     }
 
     @Override
-    public RecetaRemedios buscarId(Long id) {
+    public RecetaRemedios buscarId(Integer id) {
         return recetaRemedioDao.findById(id).orElse(null);
     }
 

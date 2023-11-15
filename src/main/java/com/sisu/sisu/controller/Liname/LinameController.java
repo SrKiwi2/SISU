@@ -56,8 +56,8 @@ public class LinameController {
 
     @PostMapping(value = "/saveLiname") // Enviar datos de Registro a Lista
 	public String guaradarLinam(@Validated ListaLiname listLiname, RedirectAttributes flash,HttpServletRequest request,
-    @RequestParam(name="farmaceutica",required = false)Long idFormaFarmaceutica,
-    @RequestParam(name="tipoUso",required = false)Long idTipoUso
+    @RequestParam(name="farmaceutica",required = false)Integer idFormaFarmaceutica,
+    @RequestParam(name="tipoUso",required = false)Integer idTipoUso
     ) { 
         listLiname.setEstadoLiname("A");
         listLiname.setForma_farmaceutica(farmaceuticaService.findOne(idFormaFarmaceutica));
@@ -90,7 +90,7 @@ public class LinameController {
 
     //-------------------------------Delete---------------------------------
     @RequestMapping(value = "/eliminLiname/{idLiname}")
-    public String eliminarLiname(@PathVariable("idLiname")Long idLiname){
+    public String eliminarLiname(@PathVariable("idLiname")Integer idLiname){
 
         ListaLiname listLiname = listaLinameService.findOne(idLiname);
         listLiname.setEstadoLiname("X");
@@ -102,7 +102,7 @@ public class LinameController {
 
     //-------------------------------Edit---------------------------------
     @RequestMapping(value = "/editLiname/{idLiname}")
-    public String editLiname(@PathVariable("idLiname")Long idLiname, Model model){
+    public String editLiname(@PathVariable("idLiname")Integer idLiname, Model model){
 
         ListaLiname listLiname = listaLinameService.findOne(idLiname);
         model.addAttribute("listLiname", listLiname);
@@ -112,7 +112,7 @@ public class LinameController {
 
 
     @RequestMapping(value = "/listLiname/{idLiname}")
-    public String getContent1(@PathVariable(value = "idLiname") Long idLiname, Model model,
+    public String getContent1(@PathVariable(value = "idLiname") Integer idLiname, Model model,
     HttpServletRequest request) {
 
         model.addAttribute("listLiname", listaLinameService.findOne(idLiname));
@@ -125,8 +125,8 @@ public class LinameController {
 
     @PostMapping(value = "/SaveLiname")
     public String GuaradrLiname(@ModelAttribute ListaLiname listLiname,
-    @RequestParam(name="farmaceutica",required = false)Long idFormaFarmaceutica,
-    @RequestParam(name="tipoUso",required = false)Long idTipoUso
+    @RequestParam(name="farmaceutica",required = false)Integer idFormaFarmaceutica,
+    @RequestParam(name="tipoUso",required = false)Integer idTipoUso
     ) {
 
         listLiname.setEstadoLiname("A");

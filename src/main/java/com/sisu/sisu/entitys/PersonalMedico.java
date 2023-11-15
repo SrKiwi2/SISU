@@ -30,7 +30,7 @@ public class PersonalMedico implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_personal_medico")
-    private Long idPersonalMedico;
+    private Integer idPersonalMedico;
 
     @Column(name = "fecha_inico")
     private Date fechaInicio;

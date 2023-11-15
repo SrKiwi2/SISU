@@ -59,7 +59,7 @@ public class TipoUsoController {
 
     //-------------------------------Delete---------------------------------
     @RequestMapping(value = "/eliminTipoUso/{idTipoUso}")
-    public String eliminarLiname(@PathVariable("idTipoUso")Long idTipoUso){
+    public String eliminarLiname(@PathVariable("idTipoUso")Integer idTipoUso){
 
         TipoUso tipoUso = tipoUsoService.findOne(idTipoUso);
         tipoUso.setEstado("X");
@@ -70,7 +70,7 @@ public class TipoUsoController {
 
      //-------------------------------Edit---------------------------------
      @RequestMapping(value = "/edittipoUso/{idTipoUso}")
-     public String editTipoUso(@PathVariable("idTipoUso")Long idTipoUso, Model model){
+     public String editTipoUso(@PathVariable("idTipoUso")Integer idTipoUso, Model model){
  
  
          TipoUso tipoUso = tipoUsoService.findOne(idTipoUso);
@@ -81,7 +81,7 @@ public class TipoUsoController {
 
 
     @RequestMapping(value = "/tipoUso/{idTipoUso}")
-    public String getContent1(@PathVariable(value = "idTipoUso") Long idTipoUso, Model model,
+    public String getContent1(@PathVariable(value = "idTipoUso") Integer idTipoUso, Model model,
     HttpServletRequest request) {
 
         model.addAttribute("tipoUso", tipoUsoService.findOne(idTipoUso));

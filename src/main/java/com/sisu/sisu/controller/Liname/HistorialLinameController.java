@@ -47,7 +47,7 @@ public class HistorialLinameController {
     @PostMapping(value = "saveHistorial")
     public String saveHistorial(@Validated HistorialLiname historialLiname, 
      RedirectAttributes flash, HttpServletRequest request,
-    @RequestParam(name = "listaLiname", required = false) Long idLiname
+    @RequestParam(name = "listaLiname", required = false) Integer idLiname
     ){
 
         historialLiname.setEstadoHistorialLiname("A");
@@ -74,7 +74,7 @@ public class HistorialLinameController {
 
     //-------------------------------Delete---------------------------------
     @RequestMapping(value = "/eliminHistorial/{idHistorialLiname}")
-    public String eliminarLiname(@PathVariable("idHistorialLiname")Long idHistorialLiname){
+    public String eliminarLiname(@PathVariable("idHistorialLiname")Integer idHistorialLiname){
 
         HistorialLiname historialLiname = historialService.findOne(idHistorialLiname);
         historialLiname.setEstadoHistorialLiname("X");
@@ -86,7 +86,7 @@ public class HistorialLinameController {
 
     //-------------------------------Edit---------------------------------
     @RequestMapping(value = "/editHistorial/{idHistorialLiname}")
-    public String editLiname(@PathVariable("idHistorialLiname")Long idHistorialLiname, Model model){
+    public String editLiname(@PathVariable("idHistorialLiname")Integer idHistorialLiname, Model model){
 
 
         HistorialLiname historialLiname = historialService.findOne(idHistorialLiname);
@@ -97,7 +97,7 @@ public class HistorialLinameController {
 
 
     @RequestMapping(value = "/historialLiname/{idHistorialLiname}")
-    public String getContent1(@PathVariable(value = "idHistorialLiname") Long idHistorialLiname, Model model,
+    public String getContent1(@PathVariable(value = "idHistorialLiname") Integer idHistorialLiname, Model model,
     HttpServletRequest request) {
 
         model.addAttribute("historialLiname", historialService.findOne(idHistorialLiname));
@@ -109,7 +109,7 @@ public class HistorialLinameController {
 
     @PostMapping(value = "/SaveHistorial")
     public String GuardarHistorial(@ModelAttribute HistorialLiname historialLiname,
-    @RequestParam(name="listaLiname",required = false)Long idLiname
+    @RequestParam(name="listaLiname",required = false)Integer idLiname
     ) {
 
         historialLiname.setEstadoHistorialLiname("A");

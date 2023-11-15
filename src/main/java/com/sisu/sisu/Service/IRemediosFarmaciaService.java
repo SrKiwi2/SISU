@@ -10,6 +10,6 @@ import com.sisu.sisu.entitys.RemediosFarmacia;
 public interface IRemediosFarmaciaService {
     public List<RemediosFarmacia> findAll();
     public void save(RemediosFarmacia remediosFarmacia);
-    public RemediosFarmacia findOne(Long id);
-    public void delete(Long id);
+    public RemediosFarmacia findOne(Integer id);
+    public void delete(Integer id);
 }

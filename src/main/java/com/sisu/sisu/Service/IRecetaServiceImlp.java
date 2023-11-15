@@ -25,7 +25,7 @@ public class IRecetaServiceImlp implements RecetaService{
     }
 
     @Override
-    public Receta buscarRecetaId(Long id) {
+    public Receta buscarRecetaId(Integer id) {
         return recetaDao.findById(id).orElse(null);
     }
 

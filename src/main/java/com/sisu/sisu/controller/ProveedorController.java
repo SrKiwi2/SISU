@@ -44,7 +44,7 @@ public class ProveedorController {
     }
 
     @RequestMapping(value = "/eliminarProveedor/{idProveedor}")
-    public String eliminarProveedor(@PathVariable("idProveedor") Long idProveedor) {
+    public String eliminarProveedor(@PathVariable("idProveedor") Integer idProveedor) {
         Proveedor proveedor = proveedorService.findOne(idProveedor);
         proveedor.setEstado("X");
         proveedorService.save(proveedor);
@@ -52,7 +52,7 @@ public class ProveedorController {
     }
 
     @RequestMapping(value = "/editarProveedor/{idProveedor}")
-    public String editarProveedor(@PathVariable("idProveedor") Long idProveedor, Model model) {
+    public String editarProveedor(@PathVariable("idProveedor") Integer idProveedor, Model model) {
         Proveedor proveedor = proveedorService.findOne(idProveedor);
         model.addAttribute("proveedor", proveedor);
         return "formularios/ListaProveedor";
@@ -68,7 +68,7 @@ public class ProveedorController {
 
     /* modificar con el mdal */
     @RequestMapping(value = "/proveedor/{idProveedor}")
-    public String getContentPr(@PathVariable(value = "idProveedor") Long idProveedor, Model model,
+    public String getContentPr(@PathVariable(value = "idProveedor") Integer idProveedor, Model model,
             HttpServletRequest request) {
         model.addAttribute("proveedor", proveedorService.findOne(idProveedor));
         

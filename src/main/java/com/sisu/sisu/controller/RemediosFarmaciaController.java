@@ -38,7 +38,7 @@ public class RemediosFarmaciaController {
 
     /* Eliminar un registro */
     @RequestMapping(value = "/eliminarRemediosFar/{idRemedios}")
-    public String eliminarRemediosFar(@PathVariable("idRemedios") Long idRemedios) {
+    public String eliminarRemediosFar(@PathVariable("idRemedios") Integer idRemedios) {
         RemediosFarmacia remediosFarmacia = remediosFarmaciaService.findOne(idRemedios);
         remediosFarmacia.setEstado("X");
         remediosFarmaciaService.save(remediosFarmacia);
@@ -57,7 +57,7 @@ public class RemediosFarmaciaController {
     /* modificar con el modal */
 
     @RequestMapping(value = "/remediosFarmacia/{idRemediosFarmacia}")
-    public String getContentRemediosF(@PathVariable(value = "idRemedioFarmacia") Long idRemedioFarmacia, Model model,
+    public String getContentRemediosF(@PathVariable(value = "idRemedioFarmacia") Integer idRemedioFarmacia, Model model,
         HttpServletRequest request){
             model.addAttribute("remediosFarmacia", remediosFarmaciaService.findOne(idRemedioFarmacia));
             model.addAttribute("liname", new ListaLiname());

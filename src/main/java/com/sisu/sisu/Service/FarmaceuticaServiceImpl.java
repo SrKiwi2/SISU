@@ -27,13 +27,13 @@ public class FarmaceuticaServiceImpl implements FarmaceuticaService{
     }
 
     @Override
-    public FormaFarmaceutica findOne(Long id) {
+    public FormaFarmaceutica findOne(Integer id) {
        
         return farmaceuticaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
        
         farmaceuticaDao.deleteById(id);
     }

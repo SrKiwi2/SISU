@@ -29,7 +29,7 @@ public class HistorialLiname implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_historial_liname")
-    private Long idHistorialLiname;
+    private Integer idHistorialLiname;
 
     @Column(name = "estado_historial_liname")
     private String estadoHistorialLiname;

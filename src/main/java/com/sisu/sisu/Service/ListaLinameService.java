@@ -10,7 +10,7 @@ public interface ListaLinameService {
 
     public void save(ListaLiname listaLiname);  //GUARDAR REGISTRO
 
-    public ListaLiname findOne(Long id);  // MOSTRAR UN REGSITRO
+    public ListaLiname findOne(Integer id);  // MOSTRAR UN REGSITRO
 
-    public void delete(Long id); // ELIMINAR REGISTRO
+    public void delete(Integer id); // ELIMINAR REGISTRO
 }

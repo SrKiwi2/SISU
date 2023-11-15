@@ -25,12 +25,12 @@ public class ProveedorServiceImpl implements IProveedorService{
     }
 
     @Override
-    public Proveedor findOne(Long id) {
+    public Proveedor findOne(Integer id) {
         return proveedorDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         proveedorDao.deleteById(id);
     }
     

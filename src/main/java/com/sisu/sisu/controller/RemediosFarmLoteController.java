@@ -42,7 +42,7 @@ public class RemediosFarmLoteController {
 
     /* eliminar */
     @RequestMapping(value = "/eliminarRemediosFarLote/{idRemediosFarmacialote}")
-    public String eliminarRemFarLote(@PathVariable("idRemediosFarmacialote") Long idRemediosFarmacialote) {
+    public String eliminarRemFarLote(@PathVariable("idRemediosFarmacialote") Integer idRemediosFarmacialote) {
         RemediosFarmaciaLote remediosFarmaciaLote = remediosFarmaciaLoteService.findOne(idRemediosFarmacialote);
         remediosFarmaciaLote.setEstado("X");
         remediosFarmaciaLoteService.save(remediosFarmaciaLote);

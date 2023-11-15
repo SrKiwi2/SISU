@@ -25,12 +25,12 @@ public class RemedioLoteServiceImpl implements IRemedioLoteService{
     }
 
     @Override
-    public RemedioLote findOne(Long id) {
+    public RemedioLote findOne(Integer id) {
         return remedioLoteDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         remedioLoteDao.deleteById(id);
     }
     

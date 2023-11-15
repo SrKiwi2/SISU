@@ -32,7 +32,7 @@ public class ListaLiname implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_lista_liname")
-    private Long idLiname;
+    private Integer idLiname;
 
     @Column(name = "medicamento")
     private String medicamento;

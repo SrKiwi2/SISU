@@ -25,12 +25,12 @@ public class TipoProveedorServiceImpl implements ITipoProveedorService{
     }
 
     @Override
-    public TipoProveedor findOne(Long id) {
+    public TipoProveedor findOne(Integer id) {
         return tipoProveedorDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         tipoProveedorDao.deleteById(id);
     }
     

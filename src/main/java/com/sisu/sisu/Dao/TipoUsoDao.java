@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.sisu.sisu.entitys.TipoUso;
 
-public interface TipoUsoDao extends CrudRepository<TipoUso, Long>{
+public interface TipoUsoDao extends CrudRepository<TipoUso, Integer>{
 }

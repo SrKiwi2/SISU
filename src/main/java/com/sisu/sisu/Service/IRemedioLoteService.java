@@ -10,6 +10,6 @@ import com.sisu.sisu.entitys.RemedioLote;
 public interface IRemedioLoteService {
     public List<RemedioLote> findAll();
     public void save(RemedioLote remedioLote);
-    public RemedioLote findOne(Long id);
-    public void delete(Long id);
+    public RemedioLote findOne(Integer id);
+    public void delete(Integer id);
 }

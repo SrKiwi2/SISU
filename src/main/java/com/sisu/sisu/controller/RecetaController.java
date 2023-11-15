@@ -3,7 +3,6 @@ package com.sisu.sisu.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -15,11 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sisu.sisu.Service.EstadoRecetaService;
 import com.sisu.sisu.Service.ITipoRecetaService;
 import com.sisu.sisu.Service.RecetaService;
-import com.sisu.sisu.entitys.Dip;
-import com.sisu.sisu.entitys.GradoAcademico;
-import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.Receta;
-import com.sisu.sisu.entitys.TiposEstadoCivil;
 
 @Controller
 public class RecetaController {
@@ -54,7 +49,7 @@ public class RecetaController {
     }
 
     @PostMapping(value = "/VentanaEditFormRecetaModal/{idReceta}")
-    public String VentanaEditFormRecetaModal(Model model, @PathVariable(value = "idReceta") Long idReceta) {
+    public String VentanaEditFormRecetaModal(Model model, @PathVariable(value = "idReceta") Integer idReceta) {
 
         model.addAttribute("receta", recetaService.buscarRecetaId(idReceta));
         model.addAttribute("tipoRecetas", tipoRecetaService.findAll());
@@ -105,7 +100,7 @@ public class RecetaController {
 
     @PostMapping(value = "/EliminarReceta/{idReceta}")
     @ResponseBody
-    public void ModificarReceta(@PathVariable(value = "idReceta") Long idReceta) {
+    public void ModificarReceta(@PathVariable(value = "idReceta") Integer idReceta) {
         recetaService.eliminarReceta(recetaService.buscarRecetaId(idReceta));
     }
 }

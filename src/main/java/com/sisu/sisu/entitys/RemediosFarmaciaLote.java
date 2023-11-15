@@ -27,7 +27,7 @@ public class RemediosFarmaciaLote implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_remedios_farmacia_lote")
-    private Long idRemediosFarmaciaLote;
+    private Integer idRemediosFarmaciaLote;
 
     @Column(name = "fecha_ingreso")
     private Date fechaIngreso;

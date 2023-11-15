@@ -36,7 +36,7 @@ public class TipoProveedorController {
     }
 
     @RequestMapping(value = "/EliminarTipoProve/{idTipoProveedor}")
-    public String eliminarTipoProveedor(@PathVariable("idTipoProveedor") Long idTipoProveedor) {
+    public String eliminarTipoProveedor(@PathVariable("idTipoProveedor") Integer idTipoProveedor) {
         TipoProveedor tipoProveedor = tipoProveedorService.findOne(idTipoProveedor);
         tipoProveedor.setEstado("X");
         tipoProveedorService.save(tipoProveedor);
@@ -44,7 +44,7 @@ public class TipoProveedorController {
     }
 
     @RequestMapping(value = "/EditarTipoProve/{idTipoProveedor}")
-    public String editarTipoProveedor(@PathVariable("idTipoProveedor") Long idTipoProveedor, Model model) {
+    public String editarTipoProveedor(@PathVariable("idTipoProveedor") Integer idTipoProveedor, Model model) {
         TipoProveedor tipoProveedor = tipoProveedorService.findOne(idTipoProveedor);
         model.addAttribute("tipoProveedor", tipoProveedor);
         return "formularios/ListaTipoProveedor";
@@ -58,7 +58,7 @@ public class TipoProveedorController {
     }
 
     @RequestMapping(value = "/tipoproveedor/{idTipoProveedor}")
-    public String getContentTp(@PathVariable(value = "idTipoProveedor") Long idTipoProveedor, Model model,
+    public String getContentTp(@PathVariable(value = "idTipoProveedor") Integer idTipoProveedor, Model model,
             HttpServletRequest request) {
 
         model.addAttribute("tipoProveedor", tipoProveedorService.findOne(idTipoProveedor));

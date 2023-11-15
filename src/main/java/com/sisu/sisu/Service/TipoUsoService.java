@@ -10,7 +10,7 @@ public interface TipoUsoService {
 
     public void save(TipoUso tipoUso);
 
-    public TipoUso findOne(Long id);
+    public TipoUso findOne(Integer id);
 
-    public void delete(Long id);
+    public void delete(Integer id);
 }

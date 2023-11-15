@@ -25,12 +25,12 @@ public class RemediosFarmaciaService implements IRemediosFarmaciaService {
     }
 
     @Override
-    public RemediosFarmacia findOne(Long id) {
+    public RemediosFarmacia findOne(Integer id) {
         return remediosFarmaciaDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         remediosFarmaciaDao.deleteById(id);
     }
     

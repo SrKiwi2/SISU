@@ -10,7 +10,7 @@ public interface FarmaceuticaService {
 
     public void save (FormaFarmaceutica farmaceutica);
 
-    public FormaFarmaceutica findOne(Long id);
+    public FormaFarmaceutica findOne(Integer id);
 
-    public void delete(Long id);
+    public void delete(Integer id);
 }

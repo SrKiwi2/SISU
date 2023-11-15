@@ -29,13 +29,13 @@ public class HistoriaLinameServiceImpl implements HistoriaLinameService{
     }
 
     @Override
-    public HistorialLiname findOne(Long id) {
+    public HistorialLiname findOne(Integer id) {
          
         return historiaLinameDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
        
         historiaLinameDao.deleteById(id);
         
