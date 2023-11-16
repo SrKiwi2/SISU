@@ -1,162 +1,174 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <title>CAJA | SISU - FICHA DE ATENCION</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesdesign" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+<head>
+    <meta charset="utf-8" />
+    <title>CAJA | SISU - FICHA DE ATENCION</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+    <link rel="stylesheet" href="assets/css/inicio.css">
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
 
-    </head>
+<body data-topbar="colored">
 
-    <body data-topbar="colored">
+    <!-- Begin page -->
+    <div id="layout-wrapper">
 
-        <!-- Begin page -->
-        <div id="layout-wrapper">
+        <div th:insert="~{layout/topbar :: topbar}"></div>
 
-            <div th:insert="~{layout/topbar :: topbar}"></div>
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
 
-            <!-- ========== Left Sidebar Start ========== -->
-            <div class="vertical-menu">
+            <div th:insert="~{layout/sidebar :: sidebar}"></div>
+        </div>
+        <!-- Left Sidebar End -->
 
-                <div th:insert="~{layout/sidebar :: sidebar}"></div>
-            </div>
-            <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
 
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-            <div class="main-content">
+            <div class="page-content">
 
-                <div class="page-content">
-
-                    <!-- Page-Title -->
-                    <div class="page-title-box">
-                        <div class="container-fluid">
-                            <div class="row align-items-center">
-                                <div class="col-md-8">
-                                    <h4 class="page-title mb-1">CAJA</h4>
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">FICHA</a></li>
+                <!-- Page-Title -->
+                <div class="page-title-box">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-1">CAJA</h4>
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">FICHA</a></li>
                                     <li class="breadcrumb-item active">CAJA</li>
-                                    </ol>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="float-right d-none d-md-block">
-                                        <div class="dropdown">
-                                            <button class="btn btn-light btn-rounded dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="mdi mdi-settings-outline mr-1"></i> Settings
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Separated link</a>
-                                            </div>
+                                </ol>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="float-right d-none d-md-block">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="mdi mdi-settings-outline mr-1"></i> Settings
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Separated link</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                    <!-- end page title end breadcrumb -->
 
-                    <div class="page-content-wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-10">
-                                                    <div class="text-center mt-4">
-                                                        <h4>GENERAR FICHA DE ATENCIÓN - SISU</h4>
-                                                        <p class="text-muted">Seleccione el personal correspondiente para generar la ficha de atención</p>
-                                                    </div>
-                                                    <form action="universitarioC">
-                                                        <div class="row mt-5">
-                                                            <div class="col-lg-4">
-                                                                <div class="accordion custom-accordion" id="accordionExample">
-                                                                    <div class="card shadow-none mb-2">
-                                                                        <a data-toggle="collapse" href="#collapseOne" class="faq" aria-expanded="true" aria-controls="collapseOne">
-                                                                            <div class="card-header" id="headingOne">
-                                                                                <h6 class="mb-0 faq-question">
-                                                                                    <i class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR FICHA UNIVERSITARIO
-                                                                                    <i class="mdi mdi-chevron-up float-right accor-plus-icon"></i>
-                                                                                </h6>
-                                                                            </div>
-                                                                        </a>
-                                        
-                                                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                                                            <div class="card-body">
-                                                                                <div class="modal-body">
-                                                                                    <p></p>
-                                                                                    <div class="input-group mb-3">
-                                                                                        <input type="text" id="codigoUniversitarioInput" class="form-control" placeholder="Introduce el código universitario">
-                                                                                        <div class="input-group-append">
-                                                                                            <button type="button" class="btn btn-primary" onclick="cargarInformacion()">Cargar Información</button>
-                                                                                        </div>
+                    </div>
+                </div>
+
+                <!-- end page title end breadcrumb -->
+
+                <div class="page-content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-10">
+                                                <div class="text-center mt-4">
+                                                    <h4>GENERAR FICHA DE ATENCIÓN - SISU</h4>
+                                                    <p class="text-muted">Seleccione el personal correspondiente para
+                                                        generar la ficha de atención</p>
+                                                </div>
+                                                <form action="universitarioC">
+                                                    <div class="row mt-5">
+                                                        <div class="col-lg-4">
+                                                            <div class="accordion custom-accordion"
+                                                                id="accordionExample">
+                                                                <div class="card shadow-none mb-2">
+                                                                    <a class="collapsed faq" data-toggle="collapse"
+                                                                        href="#collapseOne" aria-expanded="false"
+                                                                        aria-controls="collapseOne">
+                                                                        <div class="card-header" id="headingOne">
+                                                                            <h6 class="mb-0 faq-question">
+                                                                                <i
+                                                                                    class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR
+                                                                                FICHA UNIVERSITARIO
+                                                                                <i
+                                                                                    class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </a>
+
+                                                                    <div id="collapseOne" class="collapse"
+                                                                        aria-labelledby="headingOne"
+                                                                        data-parent="#accordionExample">
+                                                                        <div class="card-body">
+                                                                            <div class="modal-body">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text"
+                                                                                        id="codigoUniversitarioInput"
+                                                                                        class="form-control"
+                                                                                        placeholder="Introduce el código universitario"><br>
+                                                                                    <div class="input-group-append">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            data-toggle="modal"
+                                                                                            data-target="#myModal"
+                                                                                            onclick="cargarInformacion()">Cargar
+                                                                                            Información</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>  
-                                                            <!-- ------------------------------------------------------------------------------------------------------------------------- -->
-                                                            <div class="col-lg-4">
-                                                                <div class="accordion custom-accordion" id="accordionExample">
-                                                                    <div class="card shadow-none mb-2">
-                                                                        <a class="collapsed faq" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                                                            <div class="card-header" id="headingTwo">
-                                                                                <h6 class="mb-0 faq-question">
-                                                                                    <i class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR FICHA DOCENTE
-                                                                                    <i class="mdi mdi-chevron-up float-right accor-plus-icon"></i>
-                                                                                </h6>
-                                                                            </div>
-                                                                        </a>
-        
-                                                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                                                            <div class="card-body">
-                                                                                <div class="modal-body">
-                                                                                    <p></p>
-                                                                                    <input type="text" id="codigoDocenteInput" placeholder="Introduce el código universitario">
-                                                                                    <button type="button" class="btn btn-primary" onclick="cargarInformacion2()">Cargar Información</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
-                                                                <div class="accordion custom-accordion" id="accordionExample">
-                                                                    <div class="card shadow-none mb-2">
-                                                                        <a class="collapsed faq" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                                                            <div class="card-header" id="headingThree">
-                                                                                <h6 class="mb-0 faq-question">
-                                                                                    <i class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR FICHA PARTICULAR
-                                                                                    <i class="mdi mdi-chevron-up float-right accor-plus-icon"></i>
-                                                                                </h6>
-                                                                            </div>
-                                                                        </a>
-        
-                                                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                                                            <div class="card-body">
-                                                                                <p class="text-muted mb-0 faq-ans">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages new common will be more simple.</p>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="accordion custom-accordion"
+                                                                id="accordionExample">
+                                                                <div class="card shadow-none mb-2">
+                                                                    <a class="collapsed faq" data-toggle="collapse"
+                                                                        href="#collapseTwo" aria-expanded="false"
+                                                                        aria-controls="collapseTwo">
+                                                                        <div class="card-header" id="headingTwo">
+                                                                            <h6 class="mb-0 faq-question">
+                                                                                <i
+                                                                                    class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR
+                                                                                FICHA DOCENTE
+                                                                                <i
+                                                                                    class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </a>
+                                                                    <div id="collapseTwo" class="collapse"
+                                                                        aria-labelledby="headingTwo"
+                                                                        data-parent="#accordionExample">
+                                                                        <div class="card-body">
+                                                                            <div class="modal-body">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text"
+                                                                                        id="codigoDocenteInput"
+                                                                                        class="form-control"
+                                                                                        placeholder="Introduce el código universitario"><br>
+                                                                                    <div class="input-group-append">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            onclick="cargarInformacion2()">Cargar
+                                                                                            Información</button>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -164,362 +176,428 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- MODAL CON INFORMACION UNIVERSITARIO-->
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                <div class="card bg-light">
-                                                                    <div class="card-body p-4">
-                                                                        <form action="Ficha" method="post">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="nombreUniversitario">Nombre del Universitario:</label>
-                                                                                    <input type="text" id="nombreUniversitario" name="nombreUniversitario" class="form-control" th:value="${nombreUniversitario}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="urlImagen">Foto Univeristario</label>
-                                                                                    <!-- <img src="${urlImagen}" alt="Foto del Univeristario" class="ing-fluid"> -->
-                                                                                    <img src="assets/images/person-placeholder.webp" style="width: 25%; height: auto;" alt="">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="apPaterno">Apellido Paterno</label>
-                                                                                    <input type="text" id="apPaterno" name="apPaterno" class="form-control" th:value="${apPaterno}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="apMaterno">Apellido Materno</label>
-                                                                                    <input type="text" id="apMaterno" name="apMaterno" class="form-control" th:value="${apMaterno}" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="ci">CI:</label>
-                                                                                    <input type="text" id="ci" name="ci" class="form-control" th:value="${ci}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="ru">RU:</label>
-                                                                                    <input type="text" id="ru" name="ru" class="form-control" th:value="${ru}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                                                                                    <input type="text" id="fechaNacimiento" name="fechaNacimiento" class="form-control" th:value="${fechaNacimiento}" readonly>
+                                                        <div class="col-lg-4">
+                                                            <div class="accordion custom-accordion"
+                                                                id="accordionExample">
+                                                                <div class="card shadow-none mb-2">
+                                                                    <a class="collapsed faq" data-toggle="collapse"
+                                                                        href="#collapseThree" aria-expanded="false"
+                                                                        aria-controls="collapseThree">
+                                                                        <div class="card-header" id="headingThree">
+                                                                            <h6 class="mb-0 faq-question">
+                                                                                <i
+                                                                                    class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR
+                                                                                FICHA PARTICULAR
+                                                                                <i
+                                                                                    class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </a>
+
+                                                                    <div id="collapseThree" class="collapse"
+                                                                        aria-labelledby="headingThree"
+                                                                        data-parent="#accordionExample">
+                                                                        <div class="card-body">
+                                                                            <div class="modal-body">
+                                                                                <div class="input-group mb-3">
+                                                                                    <input type="text"
+                                                                                        id="codigoParticularInput"
+                                                                                        class="form-control"
+                                                                                        placeholder="Introduce el código universitario">
+                                                                                    <div class="input-group-append">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-primary"
+                                                                                            onclick="cargarInformacion3()">Cargar
+                                                                                            Información</button>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="direccion">Dirección:</label>
-                                                                                    <input type="text" id="direccion" name="direccion" class="form-control" th:value="${direccion}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="correo">Correo:</label>
-                                                                                    <input type="text" id="correo" name="correo" class="form-control" th:value="${correo}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="celular">Celular:</label>
-                                                                                    <input type="text" id="celular" name="celular" class="form-control" th:value="${celular}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="carrera">Carrera:</label>
-                                                                                    <input type="text" id="carrera" name="carrera" class="form-control" th:value="${carrera}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="tipoSanguineo">Tipo Sanguíneooo:</label>
-                                                                                    <input type="text" id="tipoSanguineo" name="tipoSanguineo" class="form-control" th:value="${tipoSanguineo}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="sexo">Sexo:</label>
-                                                                                    <input type="text" id="sexo" name="sexo" class="form-control" th:value="${sexo}" readonly>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="estadoMatriculacion">Estado Matricula</label>
-                                                                                    <input type="text" id="estadoMatriculacion" name="estadoMatriculacion" class="form-control"
-                                                                                        th:value="${estadoMatriculacion}" readonly>
-                                                                            
-                                                                                </div>
-                                                                            </div>
-                                                                            
-                                                                            <div class="text-right mt-3">
-                                                                                <button type="submit" id="generarFichaButton" class="btn btn-success mr-2" formaction="Ficha"
-                                                                                    th:text="${estadoMatriculacion != null && estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
-                                                                                </button>
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                            </div>
-                                                                                                                                                             
-                                                                        </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                    <!-- MODAL CON INFORMACION UNIVERSITARIO-->
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">INFORMACIÓN</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="" method="">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="nombreUniversitario">Nombre
+                                                                                    del Universitario:</label>
+                                                                                <input type="text"
+                                                                                    id="nombreUniversitario"
+                                                                                    name="nombreUniversitario"
+                                                                                    class="form-control"
+                                                                                    th:value="${nombreUniversitario}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
 
-                                                        <!-- MODAL CON INFORMACION DOCNETE-->
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                <div class="card bg-light">
-                                                                    <div class="card-body p-4">
-                                                                        <form action="Ficha" method="post">
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="DatosDocente">Nombre del docente:</label>
-                                                                                    <input type="text" id="DatosDocente" name="DatosDocente" class="form-control" th:value="${DatosDocente}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="urlImagen">Foto Docente</label>
-                                                                                    <!-- <img src="${urlImagen}" alt="Foto del Univeristario" class="ing-fluid"> -->
-                                                                                    <img src="assets/images/person-placeholder.webp" style="width: 25%; height: auto;" alt="">
-                                                                                </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="apellidoPaterno">Apellido Paterno</label>
-                                                                                    <input type="text" id="apellidoPaterno" name="apellidoPaterno" class="form-control" th:value="${apellidoPaterno}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="apellidoMaterno">Apellido Materno</label>
-                                                                                    <input type="text" id="apellidoMaterno" name="apellidoMaterno" class="form-control" th:value="${apellidoMaterno}" readonly>
-                                                                                </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="urlImagen">Foto
+                                                                                    Univeristario</label>
+                                                                                <!-- <img src="${urlImagen}" alt="Foto del Univeristario" class="ing-fluid"> -->
+                                                                                <img src="assets/images/person-placeholder.webp"
+                                                                                    style="width: 25%; height: auto;"
+                                                                                    alt="">
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="ci">CI:</label>
-                                                                                    <input type="text" id="ciD" name="ci" class="form-control" th:value="${ci}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="rd">RD:</label>
-                                                                                    <input type="text" id="rd" name="rd" class="form-control" th:value="${rd}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="gradoAcademicoD">Grado Academico:</label>
-                                                                                    <input type="text" id="gradoAcademicoD" name="gradoAcademicoD" class="form-control" th:value="${gradoAcademicoD}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="titulo">Titulo</label>
-                                                                                    <input type="text" id="titulo" name="titulo" class="form-control" th:value="${titulo}" readonly>
-                                                                                </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="apPaterno">Apellido
+                                                                                    Paterno</label>
+                                                                                <input type="text" id="apPaterno"
+                                                                                    name="apPaterno"
+                                                                                    class="form-control"
+                                                                                    th:value="${apPaterno}" readonly>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="fechaNacimientoD">Fecha Nacimiento</label>
-                                                                                    <input type="text" id="fechaNacimientoD" name="fechaNacimientoD" class="form-control" th:value="${fechaNacimiento}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="tipoSanguineoD">Tipo Sanguineo:</label>
-                                                                                    <input type="text" id="tipoSanguineoD" name="tipoSanguineoD" class="form-control" th:value="${tipoSanguineo}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="sexoD">Sexo:</label>
-                                                                                    <input type="text" id="sexoD" name="sexoD" class="form-control" th:value="${sexo}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="correoD">Correo:</label>
-                                                                                    <input type="text" id="correoD" name="correoD" class="form-control" th:value="${correo}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="direccionD">Dirección:</label>
-                                                                                    <input type="text" id="direccionD" name="direccionD" class="form-control" th:value="${direccion}" readonly>
-                                                                                </div>
-                                                                                
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="celularD">Celular:</label>
-                                                                                    <input type="text" id="celularD" name="celularD" class="form-control" th:value="${celular}" readonly>
-                                                                                </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="apMaterno">Apellido
+                                                                                    Materno</label>
+                                                                                <input type="text" id="apMaterno"
+                                                                                    name="apMaterno"
+                                                                                    class="form-control"
+                                                                                    th:value="${apMaterno}" readonly>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="asignaturaD">Asignatura</label>
-                                                                                    <input type="text" id="asignaturaD" name="asignaturaD" class="form-control" th:value="${asignatura}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="tipoDocente">Tipo Docente</label>
-                                                                                    <input type="text" id="tipoDocente" name="tipoDocente" class="form-control" th:value="${tipoDocente}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="carrera">Carrera:</label>
-                                                                                    <input type="text" id="carrera" name="carrera" class="form-control" th:value="${carrera}" readonly>
-                                                                                </div>
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="facultad">Facultad:</label>
-                                                                                    <input type="text" id="facultad" name="facultad" class="form-control" th:value="${facultad}" readonly>
-                                                                                </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="ci">CI:</label>
+                                                                                <input type="text" id="ci" name="ci"
+                                                                                    class="form-control"
+                                                                                    th:value="${ci}" readonly>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-4 mb-3">
-                                                                                    <label for="activo">Estado Docente</label>
-                                                                                    <input type="text" id="activo" name="activo" class="form-control"
-                                                                                        th:value="${activo}" readonly>
-                                                                            
-                                                                                </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="ru">RU:</label>
+                                                                                <input type="text" id="ru" name="ru"
+                                                                                    class="form-control"
+                                                                                    th:value="${ru}" readonly>
                                                                             </div>
-                                                                            
-                                                                            <div class="text-right mt-3">
-                                                                                <button type="submit" id="generarFichaButton" class="btn btn-success mr-2" formaction="Ficha"
-                                                                                    th:text="${activo != null && activo ? 'Generar Ficha' : 'Generar Ficha Particular'}">
-                                                                                </button>
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="fechaNacimiento">Fecha de
+                                                                                    Nacimiento:</label>
+                                                                                <input type="text" id="fechaNacimiento"
+                                                                                    name="fechaNacimiento"
+                                                                                    class="form-control"
+                                                                                    th:value="${fechaNacimiento}"
+                                                                                    readonly>
                                                                             </div>
-                                                                                                                                                             
-                                                                        </form>
-                                                                    </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label
+                                                                                    for="direccion">Dirección:</label>
+                                                                                <input type="text" id="direccion"
+                                                                                    name="direccion"
+                                                                                    class="form-control"
+                                                                                    th:value="${direccion}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="correo">Correo:</label>
+                                                                                <input type="text" id="correo"
+                                                                                    name="correo" class="form-control"
+                                                                                    th:value="${correo}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="celular">Celular:</label>
+                                                                                <input type="text" id="celular"
+                                                                                    name="celular" class="form-control"
+                                                                                    th:value="${celular}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="carrera">Carrera:</label>
+                                                                                <input type="text" id="carrera"
+                                                                                    name="carrera" class="form-control"
+                                                                                    th:value="${carrera}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="tipoSanguineo">Tipo
+                                                                                    Sanguíneooo:</label>
+                                                                                <input type="text" id="tipoSanguineo"
+                                                                                    name="tipoSanguineo"
+                                                                                    class="form-control"
+                                                                                    th:value="${tipoSanguineo}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="sexo">Sexo:</label>
+                                                                                <input type="text" id="sexo" name="sexo"
+                                                                                    class="form-control"
+                                                                                    th:value="${sexo}" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="estadoMatriculacion">Estado
+                                                                                    Matricula</label>
+                                                                                <input type="text"
+                                                                                    id="estadoMatriculacion"
+                                                                                    name="estadoMatriculacion"
+                                                                                    class="form-control"
+                                                                                    th:value="${estadoMatriculacion}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit"
+                                                                            id="generarFichaButton"
+                                                                            class="btn btn-success mr-2"
+                                                                            formaction=""
+                                                                            th:text="${estadoMatriculacion != null && estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
 
-                                                    </form>
+                                                    <!-- MODAL CON INFORMACION DOCNETE-->
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">INFORMACIÓN</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="" method="">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="DatosDocente">Nombre del
+                                                                                    docente:</label>
+                                                                                <input type="text" id="DatosDocente"
+                                                                                    name="DatosDocente"
+                                                                                    class="form-control"
+                                                                                    th:value="${DatosDocente}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
 
-                                                    
-                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="urlImagen">Foto
+                                                                                    Docente</label>
+                                                                                <!-- <img src="${urlImagen}" alt="Foto del Univeristario" class="ing-fluid"> -->
+                                                                                <img src="assets/images/person-placeholder.webp"
+                                                                                    style="width: 25%; height: auto;"
+                                                                                    alt="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="apellidoPaterno">Apellido
+                                                                                    Paterno</label>
+                                                                                <input type="text" id="apellidoPaterno"
+                                                                                    name="apellidoPaterno"
+                                                                                    class="form-control"
+                                                                                    th:value="${apellidoPaterno}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="apellidoMaterno">Apellido
+                                                                                    Materno</label>
+                                                                                <input type="text" id="apellidoMaterno"
+                                                                                    name="apellidoMaterno"
+                                                                                    class="form-control"
+                                                                                    th:value="${apellidoMaterno}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="ci">CI:</label>
+                                                                                <input type="text" id="ciD" name="ci"
+                                                                                    class="form-control"
+                                                                                    th:value="${ci}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="rd">RD:</label>
+                                                                                <input type="text" id="rd" name="rd"
+                                                                                    class="form-control"
+                                                                                    th:value="${rd}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="gradoAcademicoD">Grado
+                                                                                    Academico:</label>
+                                                                                <input type="text" id="gradoAcademicoD"
+                                                                                    name="gradoAcademicoD"
+                                                                                    class="form-control"
+                                                                                    th:value="${gradoAcademicoD}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="titulo">Titulo</label>
+                                                                                <input type="text" id="titulo"
+                                                                                    name="titulo" class="form-control"
+                                                                                    th:value="${titulo}" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="fechaNacimientoD">Fecha
+                                                                                    Nacimiento</label>
+                                                                                <input type="text" id="fechaNacimientoD"
+                                                                                    name="fechaNacimientoD"
+                                                                                    class="form-control"
+                                                                                    th:value="${fechaNacimiento}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="tipoSanguineoD">Tipo
+                                                                                    Sanguineo:</label>
+                                                                                <input type="text" id="tipoSanguineoD"
+                                                                                    name="tipoSanguineoD"
+                                                                                    class="form-control"
+                                                                                    th:value="${tipoSanguineo}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="sexoD">Sexo:</label>
+                                                                                <input type="text" id="sexoD"
+                                                                                    name="sexoD" class="form-control"
+                                                                                    th:value="${sexo}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="correoD">Correo:</label>
+                                                                                <input type="text" id="correoD"
+                                                                                    name="correoD" class="form-control"
+                                                                                    th:value="${correo}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label
+                                                                                    for="direccionD">Dirección:</label>
+                                                                                <input type="text" id="direccionD"
+                                                                                    name="direccionD"
+                                                                                    class="form-control"
+                                                                                    th:value="${direccion}" readonly>
+                                                                            </div>
+
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="celularD">Celular:</label>
+                                                                                <input type="text" id="celularD"
+                                                                                    name="celularD" class="form-control"
+                                                                                    th:value="${celular}" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label
+                                                                                    for="asignaturaD">Asignatura</label>
+                                                                                <input type="text" id="asignaturaD"
+                                                                                    name="asignaturaD"
+                                                                                    class="form-control"
+                                                                                    th:value="${asignatura}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="tipoDocente">Tipo
+                                                                                    Docente</label>
+                                                                                <input type="text" id="tipoDocente"
+                                                                                    name="tipoDocente"
+                                                                                    class="form-control"
+                                                                                    th:value="${tipoDocente}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="carrera">Carrera:</label>
+                                                                                <input type="text" id="carrera"
+                                                                                    name="carrera" class="form-control"
+                                                                                    th:value="${carrera}" readonly>
+                                                                            </div>
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="facultad">Facultad:</label>
+                                                                                <input type="text" id="facultad"
+                                                                                    name="facultad" class="form-control"
+                                                                                    th:value="${facultad}" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-4 mb-3">
+                                                                                <label for="activo">Estado
+                                                                                    Docente</label>
+                                                                                <input type="text" id="activo"
+                                                                                    name="activo" class="form-control"
+                                                                                    th:value="${activo}" readonly>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit"
+                                                                        id="generarFichaButton"
+                                                                        class="btn btn-success mr-2"
+                                                                        formaction=""
+                                                                        th:text="${activo != null && activo ? 'Generar Ficha' : 'Generar Ficha Particular'}">
+                                                                    </button>
+                                                                    <button type="button"
+                                                                        class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancelar
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            
-                                            <!-- end row -->
                                         </div>
+                                        <!-- end row -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
-
                         </div>
-                        <!-- end container-fluid -->
-                    </div> 
-                    <!-- end page-content-wrapper -->
+                        <!-- end row -->
+                    </div>
+                    <!-- end container-fluid -->
                 </div>
-                <!-- End Page-content -->
-
-                
-                <div th:insert="~{layout/footer :: footer}"></div>
+                <!-- end page-content-wrapper -->
             </div>
-            <!-- end main content-->
+            <!-- End Page-content -->
 
+
+            <div th:insert="~{layout/footer :: footer}"></div>
         </div>
-        <!-- END layout-wrapper -->
+        <!-- end main content-->
 
-        <!-- Right Sidebar -->
-        <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
-        <!-- /Right-bar -->
+    </div>
+    <!-- END layout-wrapper -->
 
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
+    <!-- Right Sidebar -->
+    <div th:insert="~{layout/right-sidebar :: right-sidebar}"></div>
+    <!-- /Right-bar -->
 
-        <!-- JAVASCRIPT -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-        <script>
-            function cargarInformacion() {
-                // Obtener el valor del campo de entrada
-                var codigoUniversitario = $("#codigoUniversitarioInput").val();
+    <!-- JAVASCRIPT -->
 
-                // Hacer la solicitud AJAX
-                $.ajax({
-                    type: "GET",
-                    url: "/universitarioC",
-                    data: { codigoUniversitario: codigoUniversitario },
-                    success: function (data) {
-                        // Actualizar los campos del modal con los valores obtenidos
-                        $("#nombreUniversitario").val(data.nombreUniversitario);
-                        $('#apPaterno').val(data.apPaterno);                        
-                        $('#apMaterno').val(data.apMaterno)                            
-                        $("#ci").val(data.ci);
-                        $("#ru").val(data.ru);
-                        $("#fechaNacimiento").val(data.fechaNacimiento);
-                        $("#direccion").val(data.direccion);
-                        $("#correo").val(data.correo);
-                        $("#celular").val(data.celular);
-                        $("#carrera").val(data.carrera);
-                        $("#tipoSanguineo").val(data.tipoSanguineo);
-                        $("#sexo").val(data.sexo);
-                    
-                        if (data.estadoMatriculacion == 'true') {
-                            $("#estadoMatriculacion").val("ACTIVO").css("color", "green");
-                            // Cambiar el texto y la acción del botón en función del estado de matriculación
-                            $("#generarFichaButton").text("Generar Ficha");
-                            $("#generarFichaButton").attr("formaction", "Ficha");
-                        } else {
-                            $("#estadoMatriculacion").val("INACTIVO").css("color", "red");
-                            // Cambiar el texto y la acción del botón en función del estado de matriculación
-                            $("#generarFichaButton").text("Generar Ficha Particular");
-                            $("#generarFichaButton").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
-                        }
-                        // Otros campos...
-                    
-                        // Mostrar el modal
-                        $("#myModal").modal("show").attr("data-backdrop", "static").attr("data-keyboard", "false");
-                    },
-                    error: function (error) {
-                        console.log("Error al cargar la información del universitario:", error);
-                    }
-                });
-            }
+    <script src="assets/js/funcionesficha.js"></script>
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
 
-            function cargarInformacion2() {
-                // Obtener el valor del campo de entrada
-                var codigoDocente = $("#codigoDocenteInput").val();
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
-                // Hacer la solicitud AJAX
-                $.ajax({
-                    type: "GET",
-                    url: "/docenteC",
-                    data: { codigoDocente: codigoDocente },
-                    success: function (data) {
-                        // Actualizar los campos del modal con los valores obtenidos
-                        $("#DatosDocente").val(data.DatosDocente);
-                        $("#apellidoPaterno").val(data.apellidoPaterno);
-                        $("#apellidoMaterno").val(data.apellidoMaterno);
-                        $("#ciD").val(data.ci);
-                        $("#rd").val(data.rd);
-                        $("#gradoacademicoD").val(data.gradoacademicoD);
-                        $("#titulo").val(data.titulo);
-                        $("#fechaNacimientoD").val(data.fechaNacimiento);
-                        $("#tipoSanguineoD").val(data.tipoSanguineoD);
-                        $("#sexoD").val(data.sexo);
-                        $("#direccionD").val(data.direccion);
-                        $("#celularD").val(data.celular);
-                        $("#correoD").val(data.correo);
-                        $("#asignatura").val(data.asignatura);
-                        $("#tipoDocente").val(data.tipoDocente);                        
-                        $("#carrera").val(data.carrera);
-                        $("#facultad").val(data.facultad);
+    <!-- alertifyjs js -->
 
-                        if (data.activo == 'true') {
-                            $("#activo").val("ACTIVO").css("color", "green");
-                            // Cambiar el texto y la acción del botón en función del estado de matriculación
-                            $("#generarFichaButton").text("Generar Ficha");
-                            $("#generarFichaButton").attr("formaction", "Ficha");
-                        } else {
-                            $("#activo").val("INACTIVO").css("color", "red");
-                            // Cambiar el texto y la acción del botón en función del estado de matriculación
-                            $("#generarFichaButton").text("Generar Ficha Particular");
-                            $("#generarFichaButton").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
-                        }
-                        // Otros campos...
-                    
-                        // Mostrar el modal
-                        $("#myModal2").modal("show").attr("data-backdrop", "static").attr("data-keyboard", "false");
-                    },
-                    error: function (error) {
-                        console.log("Error al cargar la información del universitario:", error);
-                    }
-                });
-            }
-        </script>
+    <script src="assets/js/app.js"></script>
+    <!-- <script src="../../assets/js/modals.js"></script> -->
+</body>
 
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-
-        <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
-
-        <!-- alertifyjs js -->
-        
-        <script src="assets/js/app.js"></script>
-        <!-- <script src="../../assets/js/modals.js"></script> -->
-    </body>
 </html>

@@ -71,6 +71,8 @@ public class FichaSisuController {
 
 				model.addAttribute("ci", data.get("ci").toString());
 				model.addAttribute("ru", data.get("ru").toString());
+				model.addAttribute("apPaterno", data.get("apellido_paterno").toString());
+				model.addAttribute("apMaterno", data.get("apellido_materno").toString());
 				model.addAttribute("fechaNacimiento", data.get("fecha_nacimiento").toString());
 				model.addAttribute("direccion", data.get("direccion").toString());
 				model.addAttribute("correo", data.get("correo").toString());

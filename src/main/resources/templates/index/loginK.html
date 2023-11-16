@@ -16,7 +16,7 @@
     <link href="../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
-    
+
 
 </head>
 
@@ -30,7 +30,7 @@
                 <div class="col-lg-12">
                     <div class="text-center mb-5">
                         <a href="index.html" class="logo"><img src="../../assets/images/logo-light.png" height="180"
-                                alt="logo"> SISU</a>
+                               class="img-fluid" alt="logo"> SISU</a>
                         <br>
                         <br>
                         <h5 class="font-size-20 text-white-50 mb-10">Universidad Amazonica de Pando</h5>
@@ -46,7 +46,7 @@
                                 <h5 class="mb-5 text-center">SELECIONE AL ASEGURADO QUE VA HACER ENTENDIDO</h5>
                                 <form class="form-horizontal" action="universitario">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-12">
 
                                             <div class="mt-4">
                                                 <button type="button"
@@ -107,7 +107,7 @@
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
                                             </div><!-- /.modal -->
-                                <!-- --------------------------------------------------------------------------------------------------- -->
+                                            <!-- --------------------------------------------------------------------------------------------------- -->
                                             <!-- /.modal-2 -->
                                             <div class="modal fade" id="modalUniversitario" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -126,19 +126,22 @@
 
                                                             <input type="text" class="form-control"
                                                                 name="codigoUniversitario"
-                                                                placeholder="Introduca solo numeros" pattern="^[0-9]+$" onkeydown="return checkEnter(event)">
+                                                                placeholder="Introduca solo numeros" pattern="^[0-9]+$"
+                                                                onkeydown="return checkEnter(event)">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="mt-4">
                                                                 <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light" formaction="universitario">ACEPTAR</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-success btn-block waves-effect waves-light"
+                                                                        formaction="universitario">ACEPTAR</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                <!-- --------------------------------------------------------------------------------------------------- -->
+                                            <!-- --------------------------------------------------------------------------------------------------- -->
                                             <!-- /.modal-3 -->
                                             <div class="modal fade" id="modalDocente" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -156,12 +159,14 @@
                                                         <div class="modal-body">
                                                             <p></p>
                                                             <input type="text" class="form-control" name="rd"
-                                                                placeholder="Introduca solo numeros" pattern="^[0-9]+$" onkeydown="return checkEnter(event)">
+                                                                placeholder="Introduca solo numeros" pattern="^[0-9]+$"
+                                                                onkeydown="return checkEnter(event)">
                                                         </div>
                                                         <div class="modal-footer">
 
-                                                            <button class="btn btn-success btn-block waves-effect waves-light" 
-                                                            type="submit" formaction="docente">ACEPTAR</button>
+                                                            <button
+                                                                class="btn btn-success btn-block waves-effect waves-light"
+                                                                type="submit" formaction="docente">ACEPTAR</button>
 
                                                         </div>
                                                     </div><!-- /.modal-content -->
@@ -196,7 +201,8 @@
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
                                             </div>
-                                    </div>
+                                        </div>
+                                    </div>    
                                 </form>
                             </div>
                         </div>
@@ -219,14 +225,14 @@
             if (e.key === "Enter") {
                 // Evita que el formulario se envíe automáticamente
                 e.preventDefault();
-    
+
                 // Redirige al controlador "universitario"
                 window.location.href = "/universitario?codigoUniversitario=" + encodeURIComponent(e.target.value);
             }
         }
     </script>
-    
- 
+
+
     <script src="../../assets/libs/jquery/jquery.min.js"></script>
     <script src="../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/libs/metismenu/metisMenu.min.js"></script>

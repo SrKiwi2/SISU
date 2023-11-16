@@ -18,3 +18,9 @@
         transform: scale(1);
     }
 }
+
+.input-group {
+    display: flex;
+    align-items: flex-end;
+}
+
