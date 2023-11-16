@@ -86,7 +86,7 @@ public class DipController {
 
         model.addAttribute("url", "/ListasDip");
 
-        return "listas/listaDip";
+        return "formularios/formModeloReceta";
     }
 
     // --------------------------------------------

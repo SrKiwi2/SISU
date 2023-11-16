@@ -26,6 +26,59 @@
   <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
   <!-- App Css-->
   <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+  <style>
+    
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 2px solid black; /* Cambiado el color a negro */
+            text-align: left;
+            padding: 8px;
+        }
+    
+       textarea{
+          width: 900px;
+        }
+    
+        th{
+          color: black;
+        }
+        input[name="medicamento"] {
+          width: 300px;
+        }
+        h2 {
+          font-size: 30px;
+          font-family: 'Times New Roman';
+          text-align: center;
+        }
+      
+        input[name="NOMBRE"] {
+          width: 300px;
+          min-height: 0px;
+        } 
+
+        input[name="CÓDIGO"] {
+          width: 115px;
+          min-height: 10px;
+        }
+
+        input[name="ASEG/AFIL"] {
+          width: 300px;
+          min-height: 12px;
+        }
+
+        label[for="CÓDIGO"] {
+          margin-left: 290px;
+        }
+
+        label[for="FECHA"] {
+          margin-left: 290px;
+        }  
+</style>
+
 </head>
 
  <body data-topbar="colored">
@@ -58,121 +111,16 @@
       </div> -->
       <!-- end page title end breadcrumb -->
 
-      <style>
-        
-        /* @media print {
-        body {
-        overflow: hidden;
-        } */
-
-          .container {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        }  
-        
-          header,
-        section,
-        footer {
-          margin:auto;
-          width: 1000px;
-          line-height: 40px;
-        } 
-
-        h1 {
-          font-size: 39px;
-          font-family: 'Times New Roman';
-        }
-
-        h2 {
-          font-size: 30px;
-          font-family: 'Times New Roman';
-        }
-
-        h3 {
-          font-size: 25px;
-          font-family: 'Times New Roman';
-        }
-
-          input[name="NOMBRE"] {
-          width: 300px;
-          min-height: 0px;
-        } 
-
-        input[name="CÓDIGO"] {
-          width: 115px;
-          min-height: 10px;
-        }
-
-        input[name="ASEG/AFIL"] {
-          width: 300px;
-          min-height: 12px;
-        }
-
-        label[for="CÓDIGO"] {
-          margin-left: 290px;
-        }
-
-        label[for="FECHA"] {
-          margin-left: 290px;
-        }
-
-        form {
-          line-height: 35px;
-        }
-
-        footer table {
-          margin: 0 auto;
-          width: 800px;
-          text-align: center;
-        }
-
-        /* footer table td,
-        th {
-          padding: 5px;
-          border: 1px solid black;
-          
-        }
-
-        footer table th {
-          background-color: rgb(243, 237, 237);
-        } */
-        /* table td input{
-          width: 100px;
-        } */
-
-        textarea{
-          width: 900px;
-        }
-
-        label{
-          color: rgb(196, 15, 15);
-          font-family: 'Times New Roman';
-        }
-        
-        th{
-          color: black;
-        }
-        input[name="medicamento"] {
-          width: 300px;
-        }
-      
-      </style>
-
   
 
-    <!-- <!DOCTYPE html>
-<html>
-    <head>       
-        <meta charset="utf-8">
-        <title>Ejemplo del uso de tablas- aprenderaprogramar.com</title>
-    </head>
-    <body> -->
-        <table width="98%" class='table table-bordered' align="center"> <!-- Lo cambiaremos por CSS -->
+<table width="98%" class='table table-bordered' align="center">
+  <tr>
+    <td colspan="3" align="right">
+        <table width="98%" class='table table-bordered' align="center"> 
             <tr>
                 <td rowspan="3" width="20%" align="center">
                   <center><img border="0" src="../../../../assets/images/LOGO HC.webp" alt="logo" class="img-rounded" width="70" height="80"></center></td>
-                  <td align="center"><font size="6"><b>Universidad Amazónica de Pando</b></font></td>
+                  <td align="center"><font size="6"><h2><b>Universidad Amazónica de Pando</b></h2></font></td>
                   <td rowspan="3" width="20%" align="center">
                   <center><img border="0" src="../../../../assets/images/LOGO HC.webp" alt="logo" class="img-rounded" width="70" height="80"></center>
                 </td>
@@ -235,77 +183,60 @@
         </tr>
       </thead>
     </table>
-        <table width="98%" class='table table-bordered' align="center">
-          <tr>
-            <td>
-              <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
-                <tr>
-                  <th style=font-family:TimesNewRoman;font-size:20px;>Cantidad</style></th>
-                  <th style=font-family:TimesNewRoman;font-size:20px;>Unidad</th>
-                  <th style=font-family:TimesNewRoman;font-size:20px;>Medicamento</th>
-                </tr>
-
-                <tr>
-                  <td><input type="number" name="cantidad"></td>
-                  <td><input type="text" name="unidad"></td>
-                  <td><input type="text" name="medicamento"></td>
-                </tr>
-                <tr>
-                  <td><input type="number" name="cantidad"></td>
-                  <td><input type="text" name="unidad"></td>
-                  <td><input type="text" name="medicamento"></td>
-                </tr>
-                <tr>
-                  <td><input type="number" name="cantidad"></td>
-                  <td><input type="text" name="unidad"></td>
-                  <td><input type="text" name="medicamento"></td>
-                </tr>
-                <tr>
-                  <td><input type="number" name="cantidad"></td>
-                  <td><input type="text" name="unidad"></td>
-                  <td><input type="text" name="medicamento"></td>
-                </tr>
-                <tr>
-                  <td><input type="number" name="cantidad"></td>
-                  <td><input type="text" name="unidad"></td>
-                  <td><input type="text" name="medicamento"></td>
-                </tr>
-                <tr>
-                  <td><input type="number" name="cantidad"></td>
-                  <td><input type="text" name="unidad"></td>
-                  <td><input type="text" name="medicamento"></td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-
-      
-        <table width="98%" class='table table-bordered' align="center">
-          <tr>
-            <td>
-              <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
         
-                <div class="indicaciones">
-                  <label style="font-size: 18px;"for="indicaciones">Indicaciones médicas:</label>
-                    <div>
-                    <textarea class="indicaciones" required="" rows="5" name="indicaciones" placeholder="Observaciones"></textarea>
-                    </div>
-                </div>
-              </table>
-            </td>
-          </tr>
-          <i
-          <i></i>
-        </table>
-      
-        
+      <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
+        <tr>
+          <th style=font-family:TimesNewRoman;font-size:20px;>Cantidad</style></th>
+          <th style=font-family:TimesNewRoman;font-size:20px;>Unidad</th>
+          <th style=font-family:TimesNewRoman;font-size:20px;>Medicamento</th>
+        </tr>
+
+        <tr>
+          <td><input type="number" name="cantidad"></td>
+          <td><input type="text" name="unidad"></td>
+          <td><input type="text" name="medicamento"></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="cantidad"></td>
+          <td><input type="text" name="unidad"></td>
+          <td><input type="text" name="medicamento"></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="cantidad"></td>
+          <td><input type="text" name="unidad"></td>
+          <td><input type="text" name="medicamento"></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="cantidad"></td>
+          <td><input type="text" name="unidad"></td>
+          <td><input type="text" name="medicamento"></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="cantidad"></td>
+          <td><input type="text" name="unidad"></td>
+          <td><input type="text" name="medicamento"></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="cantidad"></td>
+          <td><input type="text" name="unidad"></td>
+          <td><input type="text" name="medicamento"></td>
+        </tr>
+     </table>
+  
+     <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
+        <tr>
+          <th>Indicaciones médicas:<div>
+            <textarea class="indicaciones" required="" rows="5" name="indicaciones" placeholder="Observaciones"></textarea>
+        </tr>
+      </table>
+      <i class="mdi mdi-printer-check"><font size="3"></i><a href='javascript: window.print()'>IMPRIMIR RECETA</a>
+    </td>
+  </tr>
+</table>
 
 
 
-
-
-      <div class="container row g-12 needs-validation" style=" border: 3px solid blue; padding: 0; ">
+      <!-- <div class="container row g-12 needs-validation" style=" border: 3px solid blue; padding: 0; ">
 
       <div class="container col-md-2 needs-validation" style="padding: 0; ">
       <img style="  display: block;    margin: 0 auto;  max-width: 100%;  height: auto;"
@@ -372,9 +303,9 @@
                           <input type="text" id="FARMACIA" name="FARMACIA" placeholder="Total:Bs" />
                         </div>
                     </section>
-                  </div>
+                  </div> -->
 
-                  <div class="container row g-12 needs-validation" style=" border: 3px solid blue; padding: 0; ">
+                  <!-- <div class="container row g-12 needs-validation" style=" border: 3px solid blue; padding: 0; ">
                     <footer>
                       <table style=" margin: 200px; margin-left: 100px;"  >
                         <thead>
@@ -450,10 +381,10 @@
                         </tbody>
                       </table>
                   </div>
-
+ -->
 
                   
-                        <div class="container row g-12 needs-validation" style=" border: 3px solid blue; padding: 0; ">
+                        <!-- <div class="container row g-12 needs-validation" style=" border: 3px solid blue; padding: 0; ">
 
                           <section style="margin-top: 15px;">
                               <div class="">
@@ -468,18 +399,18 @@
                                     <label style="font-size: 18px;"for="indicaciones">Indicaciones médicas:</label>
                                     <textarea id="indicaciones" name="indicaciones" placeholder="Observaciones"></textarea>
                                   </div>
+                                  
+                                  <i class="mdi mdi-printer-check" style="display: inline-block;
+                                  font: normal normal normal 24px/1;font-size: inherit; text-rendering: auto;line-height: inherit;">                                                     
+                                  </i>
 
                                   <tr>
                                     <td width="20%" align="left"><font size="1"><a href='javascript: window.print()'>IMPRIMIR</a></font></td>
                                   </tr>
                                 </section>
-                    </form>
-                <!-- </div>
-                    <a href="/agregar">Agregar receta</a>
-                    <a href="/buscar">Buscar receta</a>
-                    <a href="/imprimir">Imprimir receta</a>
-                </div>       -->
-            <div th:insert="~{layout/footer :: footer}"></div>
+                    </form> -->
+                
+    <div th:insert="~{layout/footer :: footer}"></div>
   </div>
   <!-- end main content-->
 
