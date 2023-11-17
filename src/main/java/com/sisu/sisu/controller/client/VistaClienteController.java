@@ -22,7 +22,7 @@ public class VistaClienteController {
 		
 		System.out.println("11111111111111111111111111111111111111111111+33");
 
-		return "client/inicioCliente";
+		return "Client/inicioCliente";
 	}
 
 
