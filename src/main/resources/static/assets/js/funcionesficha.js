@@ -1,11 +1,6 @@
 function cargarInformacion() {
     // Obtener el valor del campo de entrada
-    var codigoUniversitario = $("#codigoUniversitarioInput").val();
-
-    if (!codigoUniversitario){
-        alert("Por favor, introduce un código universitario");
-        return;
-    }
+    var codigoUniversitario = $("#validationCustom01").val();
 
     // Hacer la solicitud AJAX
     $.ajax({
@@ -31,22 +26,18 @@ function cargarInformacion() {
                 $("#estadoMatriculacion").val("ACTIVO").css("color", "green");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
                 $("#generarFichaButton").text("Generar Ficha");
-                $("#generarFichaButton").attr("formaction", "Ficha");
+                $("#generarFichaButton").attr("formaction", "S");
             } else {
                 $("#estadoMatriculacion").val("INACTIVO").css("color", "red");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
                 $("#generarFichaButton").text("Generar Ficha Particular");
                 $("#generarFichaButton").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
             }
-
-            $('#myModal').modal('show');
+            $("#myModal").modal("show");
         },
-        error: function (error) {
-            console.log("Error al cargar la información del universitario:", error);
-        }
     });
-    
 }
+
 
 function cargarInformacion2() {
     // Obtener el valor del campo de entrada
@@ -64,7 +55,7 @@ function cargarInformacion2() {
             $("#apellidoMaterno").val(data.apellidoMaterno);
             $("#ciD").val(data.ci);
             $("#rd").val(data.rd);
-            $("#gradoacademicoD").val(data.gradoacademicoD);
+            $("#gradoAcademicoD").val(data.gradoAcademicoD);
             $("#titulo").val(data.titulo);
             $("#fechaNacimientoD").val(data.fechaNacimiento);
             $("#tipoSanguineoD").val(data.tipoSanguineoD);
@@ -80,13 +71,13 @@ function cargarInformacion2() {
             if (data.activo == 'true') {
                 $("#activo").val("ACTIVO").css("color", "green");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
-                $("#generarFichaButton").text("Generar Ficha");
-                $("#generarFichaButton").attr("formaction", "Ficha");
+                $("#generarFichaButton2").text("Generar Ficha");
+                $("#generarFichaButton2").attr("formaction", "Ficha");
             } else {
                 $("#activo").val("INACTIVO").css("color", "red");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
-                $("#generarFichaButton").text("Generar Ficha Particular");
-                $("#generarFichaButton").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
+                $("#generarFichaButton2").text("Generar Ficha Particular");
+                $("#generarFichaButton2").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
             }
             // Otros campos...
 
