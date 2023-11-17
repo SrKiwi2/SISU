@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class VistaClienteController {
     
-    // @RequestMapping(value = "/loginS", method = RequestMethod.GET)
-	// public String home(Model model, HttpServletRequest request) {
+    @RequestMapping(value = "/datosCliente", method = RequestMethod.GET)
+	public String home(Model model, HttpServletRequest request) {
 		
-	// 	System.out.println("11111111111111111111111111111111111111111111");
-	// 	return "index/loginS";
-	// }
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "Client/vistaDatosCliente";
+	}
 
 	@RequestMapping(value = "/inicioCliente", method = RequestMethod.GET)
 	public String homecliente(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111+33");
 
-		return "index/inicioCliente";
+		return "client/inicioCliente";
 	}
 
 
