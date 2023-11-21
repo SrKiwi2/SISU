@@ -21,6 +21,13 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class CajaFichaController {
 
+	@RequestMapping(value = "/Ficha", method = RequestMethod.GET)
+	public String ficha(Model model) {
+		
+		System.out.println("11111111111111111111111111111111111111111111");
+		return "busqueda/GenerarFicha"; 
+	}
+
     @RequestMapping(value = "universitarioC", method = RequestMethod.GET)
 	public ResponseEntity<Object> universitario(HttpServletRequest request, Model model,
 			@RequestParam("codigoUniversitario") String ru) {

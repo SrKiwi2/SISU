@@ -32,7 +32,7 @@ public class VistaClienteController {
 		return "client/inicioCaja";
 	}
 
-    @RequestMapping(value = "/ficha", method = RequestMethod.GET)
+    @RequestMapping(value = "/ticket", method = RequestMethod.GET)
 	public String vistaFicha(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111");

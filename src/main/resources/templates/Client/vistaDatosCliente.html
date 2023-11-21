@@ -37,9 +37,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- end row -->
-
                 <div class="row">
+
+                    <!-- INICIO INFORMACION ADMINISTRATIVO -->
+
                     <div class="col-lg-4 scale-down-center">
                         <div class="card">
                             <div class="card-body p-4 sombre">
@@ -51,7 +52,7 @@
                                 </div>
                                 <div class="text-center mb-3">
                                     <button type="button" style="font-size: 20px; background-color: #2E4053;" class="btn btn-dark btn-sm waves-effect waves-light" data-placement="top" 
-                                    data-toggle="modal" data-target=".bs-example-modal-center">Verificar Informacion <i class="ti-clipboard"></i></button>
+                                    data-toggle="modal" data-target=".bs-example-modal-center-admin">Verificar Informacion <i class="ti-clipboard"></i></button>
                                 </div>
                                 <div class="modal fade bs-example-modal-center" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -100,46 +101,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <label for="validationCustom01">Fecha Incluido</label>
-                                                                <div class="form-group form-group-custom mb-6">
-                                                                    <input type="date" name="listLiname" th:field="${listLiname.fechaIncluido}" placeholder="last name"
-                                                                        class="form-control" id="liname2" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <label for="validationCustom01">Fecha Excluido</label>
-                                                                <div class="form-group form-group-custom mb-6">
-                                                                    <input type="date" name="listLiname" th:field="${listaLiname.fechaExcluido}" placeholder="last name"
-                                                                        class="form-control" id="liname3" required>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                        <!-- <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <label for="validationCustom01">Medicamento en:</label>
-                                                                <div class="form-group form-group-custom mb-6">
-                                                                    <select class="selectize" name="farmaceutica" >
-                                                                      <option value="">Elegir..</option>
-                                                                      <th:block th:each="f: ${farmaceuticas}" th:if="${f.estadoFF != 'X'}">
-                                                                        <option th:value="${f.idFormaFarmaceutica}" th:text="${f.nombreFormaFarmaceutica}"></option>
-                                                                      </th:block>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <label for="validationCustom01">De uso:</label>
-                                                                <div class="form-group form-group-custom mb-6">
-                                                                <select class="selectize" name="tipoUso" >
-                                                                    <option value="">Elegir..</option>
-                                                                    <th:block th:each="tu: ${tipoUsos}" th:if="${tu.estado != 'X'}">
-                                                                        <option th:value="${tu.idTipoUso}" th:text="${tu.nombreTipoUso}"></option>
-                                                                    </th:block>
-                                                                </select>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
                                                         <div class="modal-footer justify-content-center">
                                                             <div class="col-6">
                                                                 <button type="submit" style="padding: 5%;" class="btn btn-success btn-lg btn-sm waves-effect waves-light btn-block">Generar Ficha</button>
@@ -150,12 +111,127 @@
                                                         </div>
                                                 </form> 
                                             </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- FIN INFORMACION ADMINISTRATIVO -->
+                    <!-- ------------------------------------------------------------------------------- -->
+                    <!-- INICIO INFORMACION UNIVERSITARIO -->
+
+                    <div class="col-lg-4 scale-down-center">
+                        <div class="card ">
+                            <div class="card-body p-4 sombre">
+                                <div class="icons-lg mb-4" style="text-align: center;">
+                                    <i class="uim uim-analysis"></i>
+                                </div>
+                                <div class="mb-3" style="text-align: center;">
+                                    <h5 class="font-size-15 text-uppercase font-weight-bold">Personal Universitario</h5>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button type="button" style="font-size: 20px; background-color: #2E4053;" class="btn btn-dark btn-sm waves-effect waves-light" data-placement="top" 
+                                    data-toggle="modal" data-target=".bs-example-modal-center">Verificar Informacion <i class="ti-clipboard"></i></button>
+                                </div>
+                                <div class="modal fade bs-example-modal-center" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Datos Universitario</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="needs-validation" action="../../../../saveUniveristario" method="post">
+                                                    <input type="hidden" th:field="${personaUniversitaria.idPersona}">
+                                                    <input type="hidden" id="codigoUniversitario" name="codigoUniversitario" value="${codigoUniversitario}" />
+
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Nombre</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="text" name="personaUniversitaria" th:field="${personaUniversitaria.nombres}" placeholder="medicamento"
+                                                                        class="form-control" id="personaUniversitaria" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Apellido Paterno</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="text" name="personaUniversitaria" th:field="${personaUniversitaria.apPaterno}" placeholder="0.00 gr"
+                                                                        class="form-control" id="personaUniversitaria1" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Apellido Materno</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="text" name="personaUniversitaria" th:field="${personaUniversitaria.apMaterno}" placeholder="code"
+                                                                        class="form-control" id="personaUniversitaria2" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">CI</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="number" name="personaUniversitaria" th:field="${personaUniversitaria.ci}" placeholder="ATQ"
+                                                                        class="form-control" id="personaUniversitaria3" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Direccion</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="text" name="personaUniversitaria" th:field="${personaUniversitaria.direccion}" placeholder="code"
+                                                                        class="form-control" id="personaUniversitaria4" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Celular</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="number" name="personaUniversitaria" th:field="${personaUniversitaria.celular}" placeholder="code"
+                                                                        class="form-control" id="personaUniversitaria5" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Sexo</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="text" name="personaUniversitaria" th:field="${personaUniversitaria.sexo}" placeholder="code"
+                                                                        class="form-control" id="personaUniversitaria2" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label for="validationCustom01">Fecha Nacimiento</label>
+                                                                <div class="form-group form-group-custom mb-6">
+                                                                    <input type="text" name="personaUniversitaria" th:field="${personaUniversitaria.apMaterno}" placeholder="code"
+                                                                        class="form-control" id="personaUniversitaria2" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-center">
+                                                            <div class="col-6">
+                                                                <button type="submit" style="padding: 5%;" class="btn btn-success btn-lg btn-sm waves-effect waves-light btn-block">Generar Ficha</button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <button type="button" style="padding: 5%;"  class="btn btn-danger btn-lg btn-sm waves-effect waves-light btn-block" data-dismiss="modal">Cancelar Proceso</button>
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+                                                </form> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
                     <div class="col-lg-4 scale-down-center">
                         <div class="card sombre">
                             <div class="card-body" >

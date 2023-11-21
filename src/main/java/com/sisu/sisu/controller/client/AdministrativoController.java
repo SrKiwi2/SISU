@@ -108,8 +108,8 @@ public class AdministrativoController {
     try {
         
 		persona.setEstado("R");
-       // personaService.save(persona);
-        return "redirect:/ficha";
+       	personaService.save(persona);
+        return "redirect:/ticket";
 
     } catch (Exception e) { 
         // Manejo de errores si ocurre alguna excepción al guardar la persona

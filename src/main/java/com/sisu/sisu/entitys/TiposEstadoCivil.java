@@ -109,6 +109,10 @@ public class TiposEstadoCivil implements Serializable {
 				+ ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion + "]";
 	}
 
+    public static TiposEstadoCivil parse(String string) {
+        return null;
+    }
+
 	
 	/* 
 	 * RELACION */
