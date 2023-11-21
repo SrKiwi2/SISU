@@ -91,84 +91,76 @@
                                                 </div>
                                                 <form action="universitarioC">
                                                     <div class="row mt-5">
+                                                        
                                                         <div class="col-lg-4">
-                                                            <div class="accordion custom-accordion"
-                                                                id="accordionExample">
+                                                            <div class="accordion custom-accordion" id="accordionExample1">
                                                                 <div class="card shadow-none mb-2">
-                                                                    <a class="collapsed faq" data-toggle="collapse"
-                                                                        href="#collapseOne" aria-expanded="false"
+                                                                    <a class="collapsed faq" data-toggle="collapse" href="#collapseOne" aria-expanded="false"
                                                                         aria-controls="collapseOne">
                                                                         <div class="card-header" id="headingOne">
                                                                             <h6 class="mb-0 faq-question">
-                                                                                <i
-                                                                                    class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR
-                                                                                FICHA UNIVERSITARIO
-                                                                                <i
-                                                                                    class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
+                                                                                <i class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR FICHA UNIVERSITARIO
+                                                                                <i class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
                                                                             </h6>
                                                                         </div>
                                                                     </a>
-                                                                    <form action="" class="needs-validation" novalidate>
-                                                                        <div id="collapseOne" class="collapse"
-                                                                        aria-labelledby="headingOne"
-                                                                        data-parent="#accordionExample">
-                                                                        <div class="card-body">
-                                                                            <div class="modal-body">
-                                                                                <div class="input-group mb-3">
-                                                                                    <input type="number"
-                                                                                        id="validationCustom01"
-                                                                                        class="form-control"
-                                                                                        placeholder="Introduce el código universitario" required>
+                                                                    <div class="col-xl-12">
+                                                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample1">
+                                                                            <div class="form-row align-items-center">
+                                                                                <div class="col-md-6 mb-3">
+                                                                                    <label for="validationCustom01">Código universitario:</label>
+                                                                                    <input type="number" id="validationCustom01" class="form-control" placeholder="Introduce el código universitario" required>
+                                                                                </div>
+                                                                                <div class="col-md-6 mb-3">
+                                                                                    <label>&nbsp;</label>
                                                                                     <div class="input-group-append">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-primary"
-                                                                                            data-toggle="modal"
-                                                                                            data-target="#myModal"
-                                                                                            onclick="cargarInformacion()">Cargar
-                                                                                            Información</button>
+                                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="cargarInformacion()">Cargar Información</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    </form>
                                                                     
+                                                                    <!-- <form action="" class="needs-validation" novalidate>
+                                                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample1">
+                                                                            <div class="card-body">
+                                                                                <div class="modal-body">
+                                                                                    <div class="input-group mb-3">
+                                                                                        <input type="number" id="validationCustom01" class="form-control"
+                                                                                            placeholder="Código universitario" required>
+                                                                                        <div class="input-group-append">
+                                                                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                                                                data-target="#myModal" onclick="cargarInformacion()">Cargar Información</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form> -->
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                    
                                                         <div class="col-lg-4">
-                                                            <div class="accordion custom-accordion"
-                                                                id="accordionExample">
+                                                            <div class="accordion custom-accordion" id="accordionExample2">
                                                                 <div class="card shadow-none mb-2">
-                                                                    <a class="collapsed faq" data-toggle="collapse"
-                                                                        href="#collapseTwo" aria-expanded="false"
+                                                                    <a class="collapsed faq" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
                                                                         aria-controls="collapseTwo">
                                                                         <div class="card-header" id="headingTwo">
                                                                             <h6 class="mb-0 faq-question">
-                                                                                <i
-                                                                                    class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR
-                                                                                FICHA DOCENTE
-                                                                                <i
-                                                                                    class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
+                                                                                <i class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR FICHA DOCENTE
+                                                                                <i class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
                                                                             </h6>
                                                                         </div>
                                                                     </a>
-                                                                    <div id="collapseTwo" class="collapse"
-                                                                        aria-labelledby="headingTwo"
-                                                                        data-parent="#accordionExample">
+                                                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample2">
                                                                         <div class="card-body">
                                                                             <div class="modal-body">
                                                                                 <div class="input-group mb-3">
-                                                                                    <input type="text"
-                                                                                        id="codigoDocenteInput"
-                                                                                        class="form-control"
-                                                                                        placeholder="Introduce el código universitario" required>
-                                                                                        <div class="invalid-feedback">Debes introducir una fecha</div><br>
+                                                                                    <input type="text" id="codigoDocenteInput" class="form-control"
+                                                                                        placeholder="Código docente" required>
                                                                                     <div class="input-group-append">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-primary"
-                                                                                            onclick="cargarInformacion2()">Cargar
+                                                                                        <button type="button" class="btn btn-primary" onclick="cargarInformacion2()">Cargar
                                                                                             Información</button>
                                                                                     </div>
                                                                                 </div>
@@ -178,39 +170,28 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                    
                                                         <div class="col-lg-4">
-                                                            <div class="accordion custom-accordion"
-                                                                id="accordionExample">
+                                                            <div class="accordion custom-accordion" id="accordionExample3">
                                                                 <div class="card shadow-none mb-2">
-                                                                    <a class="collapsed faq" data-toggle="collapse"
-                                                                        href="#collapseThree" aria-expanded="false"
+                                                                    <a class="collapsed faq" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
                                                                         aria-controls="collapseThree">
                                                                         <div class="card-header" id="headingThree">
                                                                             <h6 class="mb-0 faq-question">
-                                                                                <i
-                                                                                    class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR
-                                                                                FICHA PARTICULAR
-                                                                                <i
-                                                                                    class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
+                                                                                <i class="mdi mdi-help text-primary h5 mr-3"></i>GENERAR FICHA PARTICULAR
+                                                                                <i class="mdi mdi-chevron-down float-right accor-plus-icon"></i>
                                                                             </h6>
                                                                         </div>
                                                                     </a>
-
-                                                                    <div id="collapseThree" class="collapse"
-                                                                        aria-labelledby="headingThree"
-                                                                        data-parent="#accordionExample">
+                                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                                                        data-parent="#accordionExample3">
                                                                         <div class="card-body">
                                                                             <div class="modal-body">
                                                                                 <div class="input-group mb-3">
-                                                                                    <input type="text"
-                                                                                        id="codigoParticularInput"
-                                                                                        class="form-control"
-                                                                                        placeholder="Introduce el código universitario">
+                                                                                    <input type="text" id="codigoParticularInput" class="form-control"
+                                                                                        placeholder="Código particular">
                                                                                     <div class="input-group-append">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-primary"
-                                                                                            onclick="cargarInformacion3()">Cargar
+                                                                                        <button type="button" class="btn btn-primary" onclick="cargarInformacion3()">Cargar
                                                                                             Información</button>
                                                                                     </div>
                                                                                 </div>
@@ -221,6 +202,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    
                                                     <!-- MODAL CON INFORMACION UNIVERSITARIO-->
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -21,10 +21,13 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class CajaFichaController {
 
-    
     @RequestMapping(value = "universitarioC", method = RequestMethod.GET)
-	public Object universitario(HttpServletRequest request, Model model,
+	public ResponseEntity<Object> universitario(HttpServletRequest request, Model model,
 			@RequestParam("codigoUniversitario") String ru) {
+
+		if (ru == null || ru.isEmpty()) {
+			return ResponseEntity.badRequest().body("El código universitario no puede estar vacío.");
+		}
 
 		System.out.println("EL RU DEL UNIVERSITARIO ES :" + ru);
 		System.out.println("-----------------ESTUDIANTE------------------");
@@ -41,7 +44,6 @@ public class CajaFichaController {
 		String key = "key 70c8b6fc339aa5e6312dd42edf0636558948bb6008f1a0f867885d5e60e26c57";
 
 		HttpHeaders headers = new HttpHeaders();
-
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("x-api-key", key);
 
@@ -77,10 +79,10 @@ public class CajaFichaController {
 
 				return new ResponseEntity<>(responseData, HttpStatus.OK);
 			} else {
-				return "index/nombreUniversitarioView";
+				return ResponseEntity.ok("index/nombreUniversitarioView");
 			}
 		}
-		return "Error al procesar la solicitud";
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al procesar la solicitud");
 
 		// Manejo de errores u otras lógicas en caso de que la respuesta no sea 200
 	}

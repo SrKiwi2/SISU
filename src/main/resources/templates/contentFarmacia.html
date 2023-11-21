@@ -22,9 +22,9 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label>Liname</label>
-                <select class="custom-select" th:field="${remediosFarmacia.lista_liname.idLiname}" required>
+                <select class="custom-select" th:field="${remediosFarmacia.lista_liname}" required>
                     <option value="">Seleciones una opcion</option>
-                    <th:block th:each="ll: ${listLinames}" th:if="${ll.estadoLiname != 'X'}">
+                    <th:block th:each="ll: ${listaLiname}" th:if="${ll.estadoLiname != 'X'}">
                         <option th:value="${ll.idLiname}" th:text="${ll.codigoLiname}"></option>
                     </th:block>
                 </select>

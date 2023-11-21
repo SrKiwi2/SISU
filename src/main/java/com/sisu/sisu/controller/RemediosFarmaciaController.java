@@ -42,7 +42,7 @@ public class RemediosFarmaciaController {
         RemediosFarmacia remediosFarmacia = remediosFarmaciaService.findOne(idRemedios);
         remediosFarmacia.setEstado("X");
         remediosFarmaciaService.save(remediosFarmacia);
-        return "redirect:/ListaRemediosFarmacia";
+        return "redirect:/ListaRemediosFar";
     }
 
     /* Lista */
@@ -56,11 +56,11 @@ public class RemediosFarmaciaController {
 
     /* modificar con el modal */
 
-    @RequestMapping(value = "/remediosFarmacia/{idRemediosFarmacia}")
+    @RequestMapping(value = "/remediosFarmacia/{idRemedioFarmacia}")
     public String getContentRemediosF(@PathVariable(value = "idRemedioFarmacia") Integer idRemedioFarmacia, Model model,
         HttpServletRequest request){
             model.addAttribute("remediosFarmacia", remediosFarmaciaService.findOne(idRemedioFarmacia));
-            model.addAttribute("liname", new ListaLiname());
+            
             model.addAttribute("listaLiname", listaLinameService.findAll());
             return "contentFarmacia :: contentRemediosFarmacia";
         }
@@ -83,6 +83,6 @@ public class RemediosFarmaciaController {
     public String guardarCambiosRemediosFarmacia(@ModelAttribute RemediosFarmacia remediosFarmacia) {
         remediosFarmacia.setEstado("A");
         remediosFarmaciaService.save(remediosFarmacia);
-        return "redirect:/ListaRemediosFarmacia";
+        return "redirect:/ListaRemediosFar";
     }
 }

@@ -78,8 +78,8 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="header-title">Buttons example</h4>
-                                            <p class="card-title-desc">The Buttons extension for DataTables</p>
+                                            <h4 class="header-title">Remedios Farmacia</h4>
+                                            <p class="card-title-desc">Datos de Remedios Farmacia en el sistema SISU</p>
                                             <div class="text-right mb-3">
                                                 <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" 
                                                 onclick="NuevoRegistro()">Registrar</button>
@@ -95,7 +95,7 @@
                                                 <tbody>
                                                     <tr th:each ="rF : ${remediosFarmacias}" th:if="${rF.estado !='X'}">
                                                         <td th:text="${rF.ubicacion}"></td>
-                                                        <td th:text="${rF.lista_liname.codigo_liname}"></td>
+                                                        <td th:text="${rF.lista_liname.codigoLiname}"></td>
                                                         
                                                         <td>
                                                             <div class="row justify-content-center">
@@ -115,7 +115,6 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        
                                                     </tr>
                                                 </tbody>
                                             </table>

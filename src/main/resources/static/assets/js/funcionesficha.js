@@ -1,6 +1,12 @@
 function cargarInformacion() {
     // Obtener el valor del campo de entrada
     var codigoUniversitario = $("#validationCustom01").val();
+    var mostrarModal = true;
+
+    if (!codigoUniversitario) {
+        alert("por Favor, introduce un codigo universitario");
+        return;
+    }
 
     // Hacer la solicitud AJAX
     $.ajax({
@@ -8,19 +14,28 @@ function cargarInformacion() {
         url: "/universitarioC",
         data: { codigoUniversitario: codigoUniversitario },
         success: function (data) {
+            console.log("Respuesta exitosa", data);
             // Actualizar los campos del modal con los valores obtenidos
-            $("#nombreUniversitario").val(data.nombreUniversitario);
-            $('#apPaterno').val(data.apPaterno);
-            $('#apMaterno').val(data.apMaterno)
-            $("#ci").val(data.ci);
-            $("#ru").val(data.ru);
-            $("#fechaNacimiento").val(data.fechaNacimiento);
-            $("#direccion").val(data.direccion);
-            $("#correo").val(data.correo);
-            $("#celular").val(data.celular);
-            $("#carrera").val(data.carrera);
-            $("#tipoSanguineo").val(data.tipoSanguineo);
-            $("#sexo").val(data.sexo);
+            if (data && data.nombreUniversitario){
+
+                $("#nombreUniversitario").val(data.nombreUniversitario);
+                $('#apPaterno').val(data.apPaterno);
+                $('#apMaterno').val(data.apMaterno)
+                $("#ci").val(data.ci);
+                $("#ru").val(data.ru);
+                $("#fechaNacimiento").val(data.fechaNacimiento);
+                $("#direccion").val(data.direccion);
+                $("#correo").val(data.correo);
+                $("#celular").val(data.celular);
+                $("#carrera").val(data.carrera);
+                $("#tipoSanguineo").val(data.tipoSanguineo);
+                $("#sexo").val(data.sexo);
+                
+                $("#myModal").modal("show"); 
+            } else {
+                console.error("Error en la solicitud AJAX", error);
+                alert("No se encuentra datos válidos para el código univeritario proporcionado");
+            }
 
             if (data.estadoMatriculacion == 'true') {
                 $("#estadoMatriculacion").val("ACTIVO").css("color", "green");
@@ -33,8 +48,13 @@ function cargarInformacion() {
                 $("#generarFichaButton").text("Generar Ficha Particular");
                 $("#generarFichaButton").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
             }
-            $("#myModal").modal("show");
+            
         },
+        error: function(error) {
+            console.error("Error en la solicitud AJAX", error)
+            alert("Error en la solicitud AJAX. consulta la consola para más detalles");
+            console.log(error);
+        }
     });
 }
 

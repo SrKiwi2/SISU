@@ -25,7 +25,6 @@ public class VistaClienteController {
 		return "Client/inicioCliente";
 	}
 
-
 	@RequestMapping(value = "/inicioCaja", method = RequestMethod.GET)
 	public String homeCaja(Model model, HttpServletRequest request) {
 		
