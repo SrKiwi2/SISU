@@ -5,19 +5,19 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sisu.sisu.Service.IRolesService;
 import com.sisu.sisu.Service.UsrRolesService;
 import com.sisu.sisu.Service.UsuarioService;
-import com.sisu.sisu.entitys.Persona;
+import com.sisu.sisu.entitys.Dip;
 import com.sisu.sisu.entitys.Roles;
 import com.sisu.sisu.entitys.UsrRoles;
 import com.sisu.sisu.entitys.Usuario;
@@ -53,8 +53,8 @@ public class Usr_rolesController {
 
     }
 
-
-    // -------------------------asignacion de rol---------------------------------------
+    // -------------------------asignacion de
+    // rol---------------------------------------
 
     @GetMapping(value = "/asignacionrol/{idUsuario}")
     public String asignacion(Model model, @PathVariable("idUsuario") Integer idUsuario) {
@@ -64,8 +64,9 @@ public class Usr_rolesController {
         Usuario usuario = usuarioService.findOne(idUsuario);
 
         if (usuario != null) {
-            System.out.println(" no ES NULO " +"-"+ usuario.getPersona().getNombres() + usuario.getPersona().getApMaterno()
-                    + usuario.getPersona().getDireccion() + usuario.getPersona().getEstado());
+            System.out.println(
+                    " no ES NULO " + "-" + usuario.getPersona().getNombres() + usuario.getPersona().getApMaterno()
+                            + usuario.getPersona().getDireccion() + usuario.getPersona().getEstado());
         } else {
             System.out.println("es nulo");
         }
@@ -87,16 +88,17 @@ public class Usr_rolesController {
 
     @PostMapping("/obtenerrol")
     public String manejarFormulario(@RequestParam(name = "idUsuario") Integer idUsuario,
-                                    @RequestParam(name = "solicitudesSeleccionadas", required = false)Integer [] solicitudesSeleccionadas)  {
+            @RequestParam(name = "solicitudesSeleccionadas", required = false) Integer[] solicitudesSeleccionadas) {
 
         for (int i = 0; i < solicitudesSeleccionadas.length; i++) {
 
-            
             Roles roles = iRolesService.findOne(solicitudesSeleccionadas[i]);
 
             Usuario usuario = usuarioService.findOne(idUsuario);
 
-            System.out.println("el usuario:"+usuario.getPersona().getNombres()+" tiene el siguiente rol: "+ roles.getRol());
+            System.out.println(
+                    "el usuario:" + usuario.getPersona().getNombres() + 
+                    " tiene el siguiente rol: " + roles.getRol());
 
             UsrRoles usrRoles = new UsrRoles();
 
@@ -106,19 +108,41 @@ public class Usr_rolesController {
             usrRoles.setIdRol(iRolesService.findOne(roles.getIdRol()));
             usrRoles.setIdUsuario(usuarioService.findOne(usuario.getIdUsuario()));
             usrrolesservice.save(usrRoles);
-
-
         }
-
-
         return "listas/ListaUsr";
     }
 
+    // @GetMapping (value = "/eliminarUsr/{idUsrRol}")
+    // private String eliminarUsr(@PathVariable("idUsrRol") Integer idUsrRol){
+
+    //     UsrRoles usrRoles = usrrolesservice.findOne(idUsrRol);
+
+    //     usrRoles.setEstado("X");
+
+    //     usrrolesservice.save(usrRoles);
+
+    //     return "redirect:listas/ListaUsr";
+    // }
 
 
 
+    // @RequestMapping(value = "/eliminarDip/{id_dip}")
+    // public String eliminarDip(@PathVariable("id_dip") Integer id_dip) {
 
+    //     Dip dip = iDipService.findOne(id_dip);
+    //     dip.setEstado("X");
+    //     iDipService.save(dip);
+    //     return "redirect:/ListasDip";
 
+    // }
+
+    @RequestMapping(value = "eliminarUsr/{idUsrRol}")
+    private String eliminarUsr(@PathVariable("idUsrRol") Integer idUsrRol){
+        UsrRoles usrRoles = usrrolesservice.findOne(idUsrRol);
+        usrRoles.setEstado("X");
+        usrrolesservice.save(usrRoles);
+        return "redirect:listas/ListaUsr";
+    }
 
 
 

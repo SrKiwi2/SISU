@@ -23,19 +23,18 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 
 	@Override
 	public void registrarUsrRoles(UsrRoles usrRoles) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'registrarUsrRoles'");
 	}
 
 	@Override
 	public void save(UsrRoles usrRoles) {
-		// TODO Auto-generated method stub
-			 usrRolesDao.save(usrRoles);
+
+		usrRolesDao.save(usrRoles);
 	}
 
 	@Override
 	public List<UsrRoles> findAll() {
-		// TODO Auto-generated method stub
+
 		return (List<UsrRoles>) usrRolesDao.findAll();
 	}
 
@@ -49,6 +48,12 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 	public UsrRoles findByIdUsrRol(int idUsrRol) {
 		// TODO Auto-generated method stub
 		return usrRolesDao.findByIdUsrRol(idUsrRol);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'delete'");
 	}
 	
 
@@ -64,7 +69,4 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 	// 	usrRolesDao.save(usrRoles);		
 	// }
 	
-	
-	
-
 }

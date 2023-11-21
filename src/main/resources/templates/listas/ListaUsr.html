@@ -95,6 +95,7 @@
                                                     <tr>
                                                         <th>USUARIO</th>
                                                         <th>ROL</th> 
+                                                        <th>Funciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -105,10 +106,18 @@
                                                         <td th:text="${u.idUsuario.apodo}"></td>
                                                         <td th:text="${u.idRol.rol}"></td>
                                                         <td>
-                                                            
-                                                            <td>
-                                                            </td>
-                                                            
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-md-3 col-6 mb-2"> 
+                                                                    <a th:href="${'../../../../editarUsr/' + u.idUsrRol}" style="padding: 2px; display: inline-block; margin: 0px;" title="MODIFICAR">
+                                                                        <button type="button" class="btn btn-outline-primary alertEdit btn-sm"><i class="dripicons-document-edit"></i></button>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3 col-6 mb-2"> 
+                                                                    <a th:href="${'../../../../eliminarUsr/' + u.idUsrRol}" style="padding: 2px; display: inline-block; margin: 0px;" title="ELIMINAR">
+                                                                        <button type="button" class="btn btn-outline-danger alertElimin btn-sm"><i class="dripicons-trash"></i></button>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>

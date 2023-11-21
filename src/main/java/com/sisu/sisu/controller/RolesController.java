@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.IRolesService;
+import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.Roles;
 
 @Controller
@@ -63,5 +64,14 @@ public class RolesController {
         model.addAttribute("role", new Roles());
         model.addAttribute("roles", rolesService.findAll());
         return "content :: contentRol";
+        
     }
+
+    @RequestMapping(value = "/editarRol/{idRol}")
+    public String editaRol(@PathVariable("idRol") Integer idRol, Model model) {
+        Roles roles = rolesService.findOne(idRol);
+        model.addAttribute("roles", roles);
+        return "listas/listaRoles";
+    }
+
 }
