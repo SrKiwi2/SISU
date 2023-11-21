@@ -38,4 +38,9 @@ public class PersonaServiceImpl implements IPersonaService {
     public Persona findByCi(String ci) {
         return personaDao.findByCi(ci);
     }
+
+    @Override
+    public Persona validarCI(String ci) {
+        return personaDao.validarCI(ci);
+    }
 }

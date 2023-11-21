@@ -32,26 +32,11 @@ public class Asegurado implements Serializable {
   @Column(name = "id_asegurado")
   private Integer idAsegurado;
 
-  @Column(name = "titular")
-  private String titular;
-
-  @Column(name = "ru")
-  private String ru;
-
-  @Column(name = "fecha_alta")
-  private String fecha_alta;
-
-  @Column(name = "fecha_baja")
-  private String fecha_baja;
-
   @Column(name = "estado")
   private String estado;
 
-  @Column(name = "codigo_seguro")
-  private String codigoSeguro;
-
-  @Column(name = "codigo_seguro_principal")
-  private String codigoSeguroPrincipal;
+  @Column(name = "codigo_asegurado")
+  private String codigoAsegurado;
 
   @Column(name = "registro")
   @Temporal(TemporalType.TIMESTAMP)

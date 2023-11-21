@@ -1,6 +1,7 @@
 package com.sisu.sisu.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,30 +65,46 @@ public class PersonaUsuarioController {
 
     }
 
-    @PostMapping(value = "/savePerUsuario") // Enviar datos de Registro a Lista
-    public String guardarPersona(@Validated Persona persona1, RedirectAttributes flash, HttpServletRequest request,
+    @PostMapping(value = "/savePerUsuario")
+    @Transactional // Asegura que todas las operaciones dentro del método sean atómicas
+    public String guardarPersona(@Validated Persona persona1, Model model, RedirectAttributes flash,
+            HttpServletRequest request,
             @RequestParam(name = "apodo", required = false) String apodo,
             @RequestParam(name = "clave", required = false) String clave,
             @RequestParam(name = "grado", required = false) Integer idGradoAcademico,
             @RequestParam(name = "dip", required = false) Integer idDip,
             @RequestParam(name = "estadoCivil", required = false) Integer idTipoEstadoCivil) {
 
-        persona1.setEstado("A");
-        persona1.setGrado_academico(gradoService.findOne(idGradoAcademico));
-        persona1.setDip(dipService.findOne(idDip));
-        persona1.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
-        personaService.save(persona1); // guardas todos los datos de la persona (1)
+        try {
+            Persona existingPersona = personaService.validarCI(persona1.getCi());
+            if (existingPersona != null) {
+                // Establecer un mensaje de error y devolver a la página del formulario
+                model.addAttribute("error",
+                        "Ya existe una persona con el mismo número de carnet (CI): " + existingPersona.getNombres());
+                return "error";
+            }
 
-        Usuario usuario = new Usuario(); // creas un nuevo registro de usuario
-        usuario.setApodo(apodo);
-        usuario.setClave(clave);
-        usuario.setEstado_usuario("A");
+            persona1.setEstado("A");
+            persona1.setGrado_academico(gradoService.findOne(idGradoAcademico));
+            persona1.setDip(dipService.findOne(idDip));
+            persona1.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
 
-        usuario.setPersona(persona1);// aqui ya creas la relacion de la Persona con el Usuario (1)
-        usuarioService.save(usuario);
-        personaService.save(persona1);
+            // Solo guarda la persona al final, después de todas las modificaciones
+            personaService.save(persona1);
 
-        return "redirect:/listaPerUsuario";
+            Usuario usuario = new Usuario();
+            usuario.setApodo(apodo);
+            usuario.setClave(clave);
+            usuario.setEstado_usuario("A");
+
+            usuario.setPersona(persona1);
+            usuarioService.save(usuario);
+
+            return "redirect:/listaPerUsuario";
+        } catch (Exception e) {
+            flash.addFlashAttribute("error", "Error al intentar guardar la persona.");
+            return "error";
+        }
     }
 
     @PostMapping(value = "/SavePerUsuario") // Enviar datos de Registro a Lista
