@@ -18,5 +18,7 @@ public interface UsuarioService {
     public void delete(Integer id); // ELIMINAR REGISTRO
 
     Usuario buscarUsuarioPorId(Integer id);
+    
+    Usuario loguearse( String usario,String contrasenia);
 
 }

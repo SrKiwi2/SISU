@@ -1,4 +1,4 @@
-<!-- ========== Left Sidebar Start ========== -->
+
 <div th:fragment="sidebar">
     <div class="vertical-menu">
         <div data-simplebar class="h-100">
@@ -6,147 +6,37 @@
             <!--- Sidemenu -->
             <div id="sidebar-menu">
                 <!-- Left Menu Start -->
-                <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title">Menu del sistema</li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect1">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-solid fa-code" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Usic</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="/admin">Example</a></li>
-                        </ul>
-                        <!-- <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="/inicioCaja">Caja</a></li>
-                        </ul> -->
-                    </li>
     
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-friends" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Gestion de personas</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="../../../../ListaPersona">Lista Personas</a></li>
-                            <!-- <li><a href="../../../../listaUs">Lista Usuarios</a></li> -->
-                            <li><a href="../../../../ListaDeRoles">Lista Roles</a></li>
-                            <li><a href="../../../../formEnlace">Adicionar Enlace Padre</a></li>
-                            <li><a href="../../../../formEnlaceHijo">Adicionar Enlaces Hijos</a></li>
-                            <li><a href="../../../../ListaEnlace">Lista Enlaces Padres</a></li>
-                            <!-- <li><a href="../../../../formMenu1">Menu Enlaces </a></li> -->
-                            <li><a href="../../../../listaPerUsuario">Persona Externa</a></li>
-                            <li><a href="../../../../ListaUsr">Lista usruario_roles</a></li>
-                            <li><a href="../../../../formHistorialClinico">Formulario de Historia Clinica</a></li>
-
-
-                        </ul>
-                    </li>
+<ul class="metismenu list-unstyled" id="side-menu">
+     <li class="menu-title">Menu del sistema</li>
+     
+    <th:block th:each="p : ${session.sessionlPadres}">
+        <th:block th:if="${p.idEnlace.obs == '0'}">
+            <li class="treeview">
+                <a href="#">
                     
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-user-cog" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Informacion Personal</span>
-                        </a>
-                        <ul>
-                            <li><a href="../../../../ListasDip">Dip</a></li>
-                            <li><a href="../../../../ListaGrado">Grados Academicos</a></li>
-                            <li><a href="../../../../ListasEstadoC">Estado Civil</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-window-restore" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Informacion Receta</span>
-                        </a>
-                        <ul>
-                            <li><a th:href="@{/ListaReceta2}">Lista Receta</a></li>
-                            <li><a href="../../../../ListaReceta">Tipo de Receta</a></li>
-                            <li><a href="../../../../ListaRecetaRemedios">Lista Receta Remedio</a></li>
-                            <li><a href="../../../../ListaEstadoR">Lista Estado Receta</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-plus-circle" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Informacion Farmacia</span>
-                        </a>
-                        <ul>
-                            <li><a href="../../../../ListaRemedioLote">Lista Remedio Lote</a></li>
-                            <li><a href="../../../../ListaRemediosFar">Lista Remedio Farmacia</a></li>
-                            <li><a href="../../../../ListaRemedioFarLot">Lista Remedio Farmacia Lote</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-solid fa-pills" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Liname</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="../../../../l-Liname">Medicamentos</a></li>
-                            <li><a href="../../../../l-Farmaceutica">Tipo de Medicamentos</a></li>
-                            <li><a href="../../../../l-TipoUso">Uso</a></li>
-                            <li><a href="../../../../l-Historial">Historial Liname</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-dolly-flatbed" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Proveedor</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="../../../../ListaTipoProveedor">Lista Tipos Proveedor</a></li>
-                            <li><a href="../../../../ListaProveedor">Lista Proveedor</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="uim uim-layer-group"></i></div>
-                            <span>Gestion de Registros</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="../../../../formRegistro">Registro Personas</a></li>
-                            <li><a href="../../../../formRegistroDip">Registro DIP</a></li>
-                            <li><a href="../../../../formRegristroRoles">Registro Roles</a></li>
-                            <li><a href="../../../../formRegistroEstadoC">Registro Estado Civil</a></li>
-                            <li><a href="../../../../formRegristroRoles">Registro Estado Receta</a></li>
-                            <li><a href="../../../../VentanaFormReceta">Registro Receta</a></li>
-                            <li><a href="../../../../VentanaFormRecetaRemedios">Registro Receta Remedio</a></li>
-                            <li><a href="../../../../formHistorialClinico">Historial Clinico</a></li>
-
-                            <li><a href="email-read.html">Email Read</a></li>
-                            <li><a href="email-compose.html">Email Compose</a></li>
-                        </ul>
-                    </li> -->
-
-                    
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-solid fa-user-tie" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Administrativos
-                            </span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="../../../../inicioCliente">Administrativos</a></li>
-                        </ul>
-                    </li>
-    
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <div class="d-inline-block icons-sm mr-1"><i class="fas fa-receipt" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
-                            <span style="font-weight: bold;">Generar Ficha</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="../../../../Ficha">Generar Ficha</a></li>
-                            
-                        </ul>
-                    </li>
-                    
+           <div class="d-inline-block icons-sm mr-1"><i class="fas fa-plus-circle" style="font-size: 22px; color: rgba(223, 5, 5, 0.945)"></i></div>
+                    <span th:text="${p.idEnlace.nombre_enlace}"></span>
+                 
+                </a>
+              <ul class="sub-menu" aria-expanded="false">
+                    <th:block th:each="hijos : ${session.sessionlPadres}">
+						
+                        <th:block th:if="${p.idEnlace.idEnlace == hijos.idEnlace.tabla}">
+                            <th:block th:if="${hijos.idEnlace.obs == '1'}">
+                                <li>
+                                    <a th:href="${hijos.idEnlace.ruta}" th:text="${hijos.idEnlace.nombre_enlace}"></a>
+                                </li>
+                            </th:if>
+                        </th:if>
+                    </th:each>
                 </ul>
+            </li>
+        </th:if>
+    </th:each>
+</ul>
+
+    
             </div>
             <!-- Sidebar -->
         </div>

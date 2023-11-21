@@ -38,6 +38,18 @@ public class UsrRolesServiceImpl implements UsrRolesService {
 		// TODO Auto-generated method stub
 		return (List<UsrRoles>) usrRolesDao.findAll();
 	}
+
+	@Override
+	public List<UsrRoles> listRolesUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return usrRolesDao.listRolesUsuario(usuario);
+	}
+
+	@Override
+	public UsrRoles findByIdUsrRol(int idUsrRol) {
+		// TODO Auto-generated method stub
+		return usrRolesDao.findByIdUsrRol(idUsrRol);
+	}
 	
 
 	

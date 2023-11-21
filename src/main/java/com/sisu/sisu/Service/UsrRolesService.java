@@ -23,6 +23,10 @@ public interface UsrRolesService {
 	
 	 void registrarUsrRoles(UsrRoles usrRoles);
 	 public void save(UsrRoles usrRoles);
+	 
+	 List<UsrRoles>listRolesUsuario(Usuario usuario);
+	 
+	 UsrRoles findByIdUsrRol(int idUsrRol);
 
 
 }

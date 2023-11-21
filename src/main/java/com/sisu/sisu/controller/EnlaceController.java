@@ -34,6 +34,10 @@ public class EnlaceController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+        
+        
+        
+        System.out.print("ESTA SALIENDO DESDE ESTE CONTROLADOR");
 
         return "formularios/formEnlace";
     }
@@ -73,7 +77,7 @@ public class EnlaceController {
 
         return "formularios/formEnlaceHijo";
     }
-
+ 
     /* GUARDAR */
     @PostMapping(value = "/guardarEnlaceHijo")
     public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam(name = "idEnlace2") Integer idEnlace,
@@ -91,7 +95,7 @@ public class EnlaceController {
         enlace.setObs("1");
         // System.out.println(enlace.getIdEnlace());
 
-        System.out.println("EL NOMBRE DEL ENLACE ES: " + enlace.getEnlace());
+        System.out.println("EL NOMBRE DEL ENLACE ES: " + enlace.getNombre_enlace());
         enlaceService.save(enlace);
         return "redirect:formEnlace";
     }

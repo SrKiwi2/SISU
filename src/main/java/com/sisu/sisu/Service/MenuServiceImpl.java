@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.Dao.MenuDao;
 import com.sisu.sisu.entitys.Menu;
+import com.sisu.sisu.entitys.Roles;
 
 @Service
 public class MenuServiceImpl implements IMenuService {
@@ -32,6 +33,12 @@ public class MenuServiceImpl implements IMenuService {
     public void delete(Integer id) {
         menuDao.deleteById(id);
     }
+
+	@Override
+	public List<Menu> findByIdRol(Roles idRol) {
+		// TODO Auto-generated method stub
+		return menuDao.findByIdRol(idRol);
+	}
 
    
 

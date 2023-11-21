@@ -26,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "historial_medico")
 public class HistorialMedico implements Serializable {
-  private static final long serialVersionUID = 1L;
+  private static long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_historial_medico")
@@ -65,5 +65,129 @@ public class HistorialMedico implements Serializable {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "historial_medico", fetch = FetchType.LAZY)
   private List<HistorialMedicoServicio> historial_medico_servicio;
 
+public HistorialMedico() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+public HistorialMedico(Integer idHistorialMedico, String oberservacion, Date fecha, String estado, Date registro,
+		Date modificacion, Asegurado asegurado, ConceptosServicios concepto_servicio,
+		List<HistorialReceta> historial_receta, List<HistorialMedicoServicio> historial_medico_servicio) {
+	super();
+	this.idHistorialMedico = idHistorialMedico;
+	Oberservacion = oberservacion;
+	this.fecha = fecha;
+	this.estado = estado;
+	this.registro = registro;
+	this.modificacion = modificacion;
+	this.asegurado = asegurado;
+	this.concepto_servicio = concepto_servicio;
+	this.historial_receta = historial_receta;
+	this.historial_medico_servicio = historial_medico_servicio;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+public static void setSerialversionuid(long serialversionuid) {
+	serialVersionUID = serialversionuid;
+}
+
+public Integer getIdHistorialMedico() {
+	return idHistorialMedico;
+}
+
+public void setIdHistorialMedico(Integer idHistorialMedico) {
+	this.idHistorialMedico = idHistorialMedico;
+}
+
+public String getOberservacion() {
+	return Oberservacion;
+}
+
+public void setOberservacion(String oberservacion) {
+	Oberservacion = oberservacion;
+}
+
+public Date getFecha() {
+	return fecha;
+}
+
+public void setFecha(Date fecha) {
+	this.fecha = fecha;
+}
+
+public String getEstado() {
+	return estado;
+}
+
+public void setEstado(String estado) {
+	this.estado = estado;
+}
+
+public Date getRegistro() {
+	return registro;
+}
+
+public void setRegistro(Date registro) {
+	this.registro = registro;
+}
+
+public Date getModificacion() {
+	return modificacion;
+}
+
+public void setModificacion(Date modificacion) {
+	this.modificacion = modificacion;
+}
+
+public Asegurado getAsegurado() {
+	return asegurado;
+}
+
+public void setAsegurado(Asegurado asegurado) {
+	this.asegurado = asegurado;
+}
+
+public ConceptosServicios getConcepto_servicio() {
+	return concepto_servicio;
+}
+
+public void setConcepto_servicio(ConceptosServicios concepto_servicio) {
+	this.concepto_servicio = concepto_servicio;
+}
+
+public List<HistorialReceta> getHistorial_receta() {
+	return historial_receta;
+}
+
+public void setHistorial_receta(List<HistorialReceta> historial_receta) {
+	this.historial_receta = historial_receta;
+}
+
+public List<HistorialMedicoServicio> getHistorial_medico_servicio() {
+	return historial_medico_servicio;
+}
+
+public void setHistorial_medico_servicio(List<HistorialMedicoServicio> historial_medico_servicio) {
+	this.historial_medico_servicio = historial_medico_servicio;
+}
+
+@Override
+public String toString() {
+	return "HistorialMedico [idHistorialMedico=" + idHistorialMedico + ", Oberservacion=" + Oberservacion + ", fecha="
+			+ fecha + ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
+			+ ", asegurado=" + asegurado + ", concepto_servicio=" + concepto_servicio + ", historial_receta="
+			+ historial_receta + ", historial_medico_servicio=" + historial_medico_servicio + "]";
+}
+
+  
+  
+
+  
+  
+  
+  
 
 }

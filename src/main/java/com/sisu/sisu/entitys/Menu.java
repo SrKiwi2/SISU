@@ -89,4 +89,19 @@ public class Menu implements Serializable {
         this.id_usuario = id_usuario;
     }
 
+	@Override
+	public String toString() {
+		return "Menu [idMenu=" + idMenu + ", idEstado=" + idEstado + ", idEnlace=" + idEnlace + ", idRol=" + idRol
+				+ ", id_usuario=" + id_usuario + "]";
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 }

@@ -61,7 +61,7 @@ public class MenuController {
         model.addAttribute("roles", rolesService.findAll());
 
         model.addAttribute("idEnlacePadre", enlaceId);
-        System.out.println("el enlace padre: " + enlaceId);
+        System.out.println("el enlace padre: " + enlaceId+ "+++++++++++++++++++++++++++++++++LA COTORRISA");
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
@@ -92,16 +92,25 @@ public class MenuController {
     }
 
     @PostMapping(value = "/guardarEnlaceRolMenu")
-    public String manejarFormulario(@RequestParam(name = "idRol") Integer idRol,
+    public String manejarFormulario(@RequestParam(name = "idRol") Integer idRol,@RequestParam(name = "idEnlacePadre") Integer idEnlacePadre,
             @RequestParam(name = "solicitudesSeleccionadas", required = false)Integer [] solicitudesSeleccionadas) {
       
-                Roles roles = rolesService.findOne(idRol);
-
+    	System.out.println("EL ID ENLACE PADRE ES: " +idEnlacePadre+"SE ME SUBIO EL MUERTOOOOOOOOO");        
+    	Roles roles = rolesService.findOne(idRol);
+    	
+    	         Menu menuPadre = new Menu();
+    	         	
+    	            menuPadre.setIdEstado("A");
+    	            menuPadre.setIdEnlace(enlaceService.findOne(idEnlacePadre));
+    	            menuPadre.setIdRol(rolesService.findOne(roles.getIdRol()));
+    	            menuPadre.setId_usuario(usuarioService.findOne(1));
+    	            menuService.save(menuPadre);
+    	            
                 for (int i = 0; i < solicitudesSeleccionadas.length; i++) {
                     
                     Enlace enlace = enlaceService.findOne(solicitudesSeleccionadas[i]);
 
-                    System.out.println(roles.getRol()+" "+enlace.getEnlace());
+                    System.out.println(roles.getRol()+" "+enlace.getNombre_enlace());
                    
 
                    Menu menu = new Menu();

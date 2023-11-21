@@ -27,7 +27,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "medico_servicio")
 public class MedicoServicio implements Serializable{
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_medico_servicio")
@@ -62,5 +62,114 @@ public class MedicoServicio implements Serializable{
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico_servicio", fetch = FetchType.LAZY)
 	private List<HistorialMedicoServicio> historial_medico_servicio;
+
+	public MedicoServicio() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public MedicoServicio(Integer idMedicoServicio, Date fechaAsignaqcion, String estado, Date registro,
+			Date modificacion, ServicioMedico servicio_medico, PersonalMedico personal_medico,
+			List<HistorialMedicoServicio> historial_medico_servicio) {
+		super();
+		this.idMedicoServicio = idMedicoServicio;
+		this.fechaAsignaqcion = fechaAsignaqcion;
+		this.estado = estado;
+		this.registro = registro;
+		this.modificacion = modificacion;
+		this.servicio_medico = servicio_medico;
+		this.personal_medico = personal_medico;
+		this.historial_medico_servicio = historial_medico_servicio;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public static void setSerialversionuid(long serialversionuid) {
+		serialVersionUID = serialversionuid;
+	}
+
+	public Integer getIdMedicoServicio() {
+		return idMedicoServicio;
+	}
+
+	public void setIdMedicoServicio(Integer idMedicoServicio) {
+		this.idMedicoServicio = idMedicoServicio;
+	}
+
+	public Date getFechaAsignaqcion() {
+		return fechaAsignaqcion;
+	}
+
+	public void setFechaAsignaqcion(Date fechaAsignaqcion) {
+		this.fechaAsignaqcion = fechaAsignaqcion;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Date getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(Date registro) {
+		this.registro = registro;
+	}
+
+	public Date getModificacion() {
+		return modificacion;
+	}
+
+	public void setModificacion(Date modificacion) {
+		this.modificacion = modificacion;
+	}
+
+	public ServicioMedico getServicio_medico() {
+		return servicio_medico;
+	}
+
+	public void setServicio_medico(ServicioMedico servicio_medico) {
+		this.servicio_medico = servicio_medico;
+	}
+
+	public PersonalMedico getPersonal_medico() {
+		return personal_medico;
+	}
+
+	public void setPersonal_medico(PersonalMedico personal_medico) {
+		this.personal_medico = personal_medico;
+	}
+
+	public List<HistorialMedicoServicio> getHistorial_medico_servicio() {
+		return historial_medico_servicio;
+	}
+
+	public void setHistorial_medico_servicio(List<HistorialMedicoServicio> historial_medico_servicio) {
+		this.historial_medico_servicio = historial_medico_servicio;
+	}
+
+	@Override
+	public String toString() {
+		return "MedicoServicio [idMedicoServicio=" + idMedicoServicio + ", fechaAsignaqcion=" + fechaAsignaqcion
+				+ ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
+				+ ", servicio_medico=" + servicio_medico + ", personal_medico=" + personal_medico
+				+ ", historial_medico_servicio=" + historial_medico_servicio + "]";
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

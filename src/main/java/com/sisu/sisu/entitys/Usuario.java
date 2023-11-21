@@ -24,7 +24,7 @@ import lombok.Setter;
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+  private static long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_usuario")
@@ -57,8 +57,100 @@ public class Usuario implements Serializable {
   @JoinColumn(name = "idPersona")
   private Persona persona;
 
+public Usuario() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+public Usuario(Integer idUsuario, String apodo, String clave, String estado_usuario, Date registro, Date modificacion,
+		Persona persona) {
+	super();
+	this.idUsuario = idUsuario;
+	this.apodo = apodo;
+	this.clave = clave;
+	this.estado_usuario = estado_usuario;
+	this.registro = registro;
+	this.modificacion = modificacion;
+	this.persona = persona;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+public static void setSerialversionuid(long serialversionuid) {
+	serialVersionUID = serialversionuid;
+}
+
+public Integer getIdUsuario() {
+	return idUsuario;
+}
+
+public void setIdUsuario(Integer idUsuario) {
+	this.idUsuario = idUsuario;
+}
+
+public String getClave() {
+	return clave;
+}
+
+public void setClave(String clave) {
+	this.clave = clave;
+}
+
+public String getEstado_usuario() {
+	return estado_usuario;
+}
+
+public void setEstado_usuario(String estado_usuario) {
+	this.estado_usuario = estado_usuario;
+}
+
+public Date getRegistro() {
+	return registro;
+}
+
+public void setRegistro(Date registro) {
+	this.registro = registro;
+}
+
+public Date getModificacion() {
+	return modificacion;
+}
+
+public void setModificacion(Date modificacion) {
+	this.modificacion = modificacion;
+}
+
+public Persona getPersona() {
+	return persona;
+}
+
+public void setPersona(Persona persona) {
+	this.persona = persona;
+}
+
+public void setApodo(String apodo) {
+	this.apodo = apodo;
+}
+
+@Override
+public String toString() {
+	return "Usuario [idUsuario=" + idUsuario + ", apodo=" + apodo + ", clave=" + clave + ", estado_usuario="
+			+ estado_usuario + ", registro=" + registro + ", modificacion=" + modificacion + ", persona=" + persona
+			+ "]";
+}
+
   // @ManyToOne(fetch = FetchType.LAZY)
   // @JoinColumn(name = "idPersona")
   // private Persona persona;
+  
+  
+  
+  
+  
+  
+  
+  
 
 }

@@ -83,11 +83,11 @@ public class Enlace implements Serializable {
         this.estado = estado;
     }
 
-    public String getEnlace() {
+    public String getNombre_enlace() {
         return nombre_enlace;
     }
 
-    public void setEnlace(String nombre_enlace) {
+    public void setNombre_enlace(String nombre_enlace) {
         this.nombre_enlace = nombre_enlace;
     }
 
@@ -130,5 +130,6 @@ public class Enlace implements Serializable {
     public void setId_usuario(Usuario id_usuario) {
         this.id_usuario = id_usuario;
     }
+    
 
- }//
+ }

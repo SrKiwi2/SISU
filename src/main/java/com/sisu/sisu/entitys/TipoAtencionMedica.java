@@ -20,7 +20,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "tipo_atencion_medica")
 public class TipoAtencionMedica implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_atencion_medica")
@@ -39,4 +39,79 @@ public class TipoAtencionMedica implements Serializable {
     @Column(name = "modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
+
+	public TipoAtencionMedica() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TipoAtencionMedica(Integer idTipoAtencionMedica, String tipoAtencion, String estado, Date registro,
+			Date modificacion) {
+		super();
+		this.idTipoAtencionMedica = idTipoAtencionMedica;
+		this.tipoAtencion = tipoAtencion;
+		this.estado = estado;
+		this.registro = registro;
+		this.modificacion = modificacion;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public static void setSerialversionuid(long serialversionuid) {
+		serialVersionUID = serialversionuid;
+	}
+
+	public Integer getIdTipoAtencionMedica() {
+		return idTipoAtencionMedica;
+	}
+
+	public void setIdTipoAtencionMedica(Integer idTipoAtencionMedica) {
+		this.idTipoAtencionMedica = idTipoAtencionMedica;
+	}
+
+	public String getTipoAtencion() {
+		return tipoAtencion;
+	}
+
+	public void setTipoAtencion(String tipoAtencion) {
+		this.tipoAtencion = tipoAtencion;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Date getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(Date registro) {
+		this.registro = registro;
+	}
+
+	public Date getModificacion() {
+		return modificacion;
+	}
+
+	public void setModificacion(Date modificacion) {
+		this.modificacion = modificacion;
+	}
+
+	@Override
+	public String toString() {
+		return "TipoAtencionMedica [idTipoAtencionMedica=" + idTipoAtencionMedica + ", tipoAtencion=" + tipoAtencion
+				+ ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion + "]";
+	}
+    
+    
+    
+	
+    
+    
 }

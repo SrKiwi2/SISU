@@ -10,4 +10,7 @@ import com.sisu.sisu.entitys.Roles;
 public interface MenuDao extends JpaRepository<Menu, Integer> {
 
     List<Menu> findByIdRol(Roles idRol);
+    
+    
+    
 }

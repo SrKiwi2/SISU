@@ -43,4 +43,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioDao.buscarUsuarioPorId(id);
     }
 
+	@Override
+	public Usuario loguearse(String usario, String contrasenia) {
+		// TODO Auto-generated method stub
+		return usuarioDao.loguearse(usario, contrasenia);
+	}
+
 }

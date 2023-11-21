@@ -25,7 +25,7 @@ import lombok.Setter;
 @Getter
 @Table(name = "historial_seguro")
 public class HistorialSeguro implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_historial_seguro")
@@ -73,5 +73,146 @@ public class HistorialSeguro implements Serializable {
    @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_asegurado")
     private Asegurado asegurado;
+
+public HistorialSeguro() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+public HistorialSeguro(Integer idHistorialSeguro, Boolean titularHS, Date fechaAlta, Date fechaBaja,
+		String codigoSeguroPrincipal, String estado, Date registro, Date modificacion, TipoSeguro tipo_seguro,
+		EstadoSeguro estado_seguro, Institucion institucion, Asegurado asegurado) {
+	super();
+	this.idHistorialSeguro = idHistorialSeguro;
+	this.titularHS = titularHS;
+	this.fechaAlta = fechaAlta;
+	this.fechaBaja = fechaBaja;
+	this.codigoSeguroPrincipal = codigoSeguroPrincipal;
+	this.estado = estado;
+	this.registro = registro;
+	this.modificacion = modificacion;
+	this.tipo_seguro = tipo_seguro;
+	this.estado_seguro = estado_seguro;
+	this.institucion = institucion;
+	this.asegurado = asegurado;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+public static void setSerialversionuid(long serialversionuid) {
+	serialVersionUID = serialversionuid;
+}
+
+public Integer getIdHistorialSeguro() {
+	return idHistorialSeguro;
+}
+
+public void setIdHistorialSeguro(Integer idHistorialSeguro) {
+	this.idHistorialSeguro = idHistorialSeguro;
+}
+
+public Boolean getTitularHS() {
+	return titularHS;
+}
+
+public void setTitularHS(Boolean titularHS) {
+	this.titularHS = titularHS;
+}
+
+public Date getFechaAlta() {
+	return fechaAlta;
+}
+
+public void setFechaAlta(Date fechaAlta) {
+	this.fechaAlta = fechaAlta;
+}
+
+public Date getFechaBaja() {
+	return fechaBaja;
+}
+
+public void setFechaBaja(Date fechaBaja) {
+	this.fechaBaja = fechaBaja;
+}
+
+public String getCodigoSeguroPrincipal() {
+	return codigoSeguroPrincipal;
+}
+
+public void setCodigoSeguroPrincipal(String codigoSeguroPrincipal) {
+	this.codigoSeguroPrincipal = codigoSeguroPrincipal;
+}
+
+public String getEstado() {
+	return estado;
+}
+
+public void setEstado(String estado) {
+	this.estado = estado;
+}
+
+public Date getRegistro() {
+	return registro;
+}
+
+public void setRegistro(Date registro) {
+	this.registro = registro;
+}
+
+public Date getModificacion() {
+	return modificacion;
+}
+
+public void setModificacion(Date modificacion) {
+	this.modificacion = modificacion;
+}
+
+public TipoSeguro getTipo_seguro() {
+	return tipo_seguro;
+}
+
+public void setTipo_seguro(TipoSeguro tipo_seguro) {
+	this.tipo_seguro = tipo_seguro;
+}
+
+public EstadoSeguro getEstado_seguro() {
+	return estado_seguro;
+}
+
+public void setEstado_seguro(EstadoSeguro estado_seguro) {
+	this.estado_seguro = estado_seguro;
+}
+
+public Institucion getInstitucion() {
+	return institucion;
+}
+
+public void setInstitucion(Institucion institucion) {
+	this.institucion = institucion;
+}
+
+public Asegurado getAsegurado() {
+	return asegurado;
+}
+
+public void setAsegurado(Asegurado asegurado) {
+	this.asegurado = asegurado;
+}
+
+@Override
+public String toString() {
+	return "HistorialSeguro [idHistorialSeguro=" + idHistorialSeguro + ", titularHS=" + titularHS + ", fechaAlta="
+			+ fechaAlta + ", fechaBaja=" + fechaBaja + ", codigoSeguroPrincipal=" + codigoSeguroPrincipal + ", estado="
+			+ estado + ", registro=" + registro + ", modificacion=" + modificacion + ", tipo_seguro=" + tipo_seguro
+			+ ", estado_seguro=" + estado_seguro + ", institucion=" + institucion + ", asegurado=" + asegurado + "]";
+}
+   
+   
+   
+   
+   
+   
 
 }

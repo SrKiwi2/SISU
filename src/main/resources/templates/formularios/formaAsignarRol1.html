@@ -91,7 +91,7 @@
                                         <form class="needs-validation" action="/guardarEnlaceRolMenu" method="post"
                                             id="form1" novalidate>
                                             <input type="hidden" th:field="${enlace.idEnlace}">
-                                            <input type="hidden" th:field="${idEnlacePadre}">
+                                             <input type="hidden" name="idEnlacePadre" th:value="${idEnlacePadre}">
 
                                             <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                             <div class="row">

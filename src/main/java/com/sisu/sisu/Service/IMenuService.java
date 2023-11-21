@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sisu.sisu.entitys.Menu;
+import com.sisu.sisu.entitys.Roles;
 
 @Service
 public interface IMenuService {
@@ -17,6 +18,6 @@ public interface IMenuService {
     public void delete(Integer id); // Elimina registro
 
 
-
+    List<Menu> findByIdRol(Roles idRol);
 
 }

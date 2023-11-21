@@ -24,7 +24,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "concepto_servicio")
 public class ConceptosServicios implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
     @Id
     @Column(name = "id_concepto_servicio")
     private Integer idConceptoServicio;
@@ -57,5 +57,119 @@ public class ConceptosServicios implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "concepto_servicio", fetch = FetchType.LAZY)
 	private List<HistorialMedico> historial_medico;
+
+	public ConceptosServicios() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ConceptosServicios(Integer idConceptoServicio, Integer servicio, Integer descripcion, Integer costo,
+			String estado, Date registro, Date modificacion, Servicio servicios,
+			List<HistorialMedico> historial_medico) {
+		super();
+		this.idConceptoServicio = idConceptoServicio;
+		this.servicio = servicio;
+		this.descripcion = descripcion;
+		this.costo = costo;
+		this.estado = estado;
+		this.registro = registro;
+		this.modificacion = modificacion;
+		this.servicios = servicios;
+		this.historial_medico = historial_medico;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public static void setSerialversionuid(long serialversionuid) {
+		serialVersionUID = serialversionuid;
+	}
+
+	public Integer getIdConceptoServicio() {
+		return idConceptoServicio;
+	}
+
+	public void setIdConceptoServicio(Integer idConceptoServicio) {
+		this.idConceptoServicio = idConceptoServicio;
+	}
+
+	public Integer getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(Integer servicio) {
+		this.servicio = servicio;
+	}
+
+	public Integer getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(Integer descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Integer getCosto() {
+		return costo;
+	}
+
+	public void setCosto(Integer costo) {
+		this.costo = costo;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Date getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(Date registro) {
+		this.registro = registro;
+	}
+
+	public Date getModificacion() {
+		return modificacion;
+	}
+
+	public void setModificacion(Date modificacion) {
+		this.modificacion = modificacion;
+	}
+
+	public Servicio getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(Servicio servicios) {
+		this.servicios = servicios;
+	}
+
+	public List<HistorialMedico> getHistorial_medico() {
+		return historial_medico;
+	}
+
+	public void setHistorial_medico(List<HistorialMedico> historial_medico) {
+		this.historial_medico = historial_medico;
+	}
+
+	@Override
+	public String toString() {
+		return "ConceptosServicios [idConceptoServicio=" + idConceptoServicio + ", servicio=" + servicio
+				+ ", descripcion=" + descripcion + ", costo=" + costo + ", estado=" + estado + ", registro=" + registro
+				+ ", modificacion=" + modificacion + ", servicios=" + servicios + ", historial_medico="
+				+ historial_medico + "]";
+	}
+	
+	
+	
+	
+	
+	
 
 }
