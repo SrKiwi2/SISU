@@ -24,13 +24,10 @@ public class EnlaceController {
 
     @Autowired
     private IEnlaceService enlaceService;
-
     @Autowired
     private UsuarioService usuarioService;
-
     @Autowired
     private IRolesService rolesService;
-
     @RequestMapping(value = "formEnlace")
     public String registroEnlace(@Validated Enlace enlace, Model model) {
 
@@ -39,9 +36,7 @@ public class EnlaceController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
-        
-        
-        
+
         System.out.print("ESTA SALIENDO DESDE ESTE CONTROLADOR");
 
         return "formularios/formEnlace";
@@ -49,25 +44,27 @@ public class EnlaceController {
 
     /* GUARDAR */
     @PostMapping(value = "/guardarEnlace")
-    public String RegistrarEnlace(@Validated Enlace enlace, RedirectAttributes flash, HttpServletRequest request) {
-
+    public String RegistrarEnlace(@Validated Enlace enlace, RedirectAttributes flash, HttpServletRequest request, Model model) {
         Usuario usuario = usuarioService.buscarUsuarioPorId(1);
         // Usuario usuario = usuarioService.buscarUsuarioPorId(1l);
-
-        enlace.setId_usuario(usuario);
-        // enlaceService.listaEnlacePadre();
-        // System.out.println(enlaceService.listaEnlacePadre().size());
-        // System.out.println("+++++++++++++++++");
-
-        enlace.setEstado("A");
-        System.out.println(enlace.getNombre_enlace());
-        enlace.setTabla(1);
-        enlace.setObs("0");
-        enlaceService.save(enlace);
-        System.out.println("KEVINNNN");
-        return "redirect:formEnlace";
+        System.out.println("El nombre del enlace es: " + enlace.getNombre_enlace());
+        if (enlace.getNombre_enlace() == "") {
+            System.out.println("Está mandando un valor vacío");
+            String mensaje = "No se puede registrar enlaces vacíos";
+            flash.addFlashAttribute("mensaje", mensaje);
+            return "redirect:formEnlace";
+        } else {
+            enlace.setId_usuario(usuario);
+            System.out.println("++++++teste1++++++");
+            enlace.setEstado("A");
+            System.out.println(enlace.getNombre_enlace());
+            enlace.setTabla(1);
+            enlace.setObs("0");
+            enlaceService.save(enlace);
+            System.out.println("seGuardó1");
+            return "redirect:formEnlace";
+        }
     }
-
     @GetMapping(value = "formEnlaceHijo")
     public String registroEnlaceHijo(@Validated Enlace enlace, Model model) {
 
@@ -83,32 +80,36 @@ public class EnlaceController {
 
         return "formularios/formEnlaceHijo";
     }
- 
     /* GUARDAR */
-    @PostMapping(value = "/guardarEnlaceHijo2")
-    public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam(name = "idEnlace2") Integer idEnlace,
-            RedirectAttributes flash, HttpServletRequest request) {
-        System.out.println("+++++++++++++++++1  ");
-        Usuario usuario = usuarioService.buscarUsuarioPorId(1);
-System.out.println("+++++++++++++++++2  ");
-        enlace.setId_usuario(usuario);
-System.out.println("+++++++++++++++++3  ");
-        enlace.setEstado("A");
-        // enlace.setRuta(null);
-System.out.println("+++++++++++++++++4  ");
-        enlace.setTabla(idEnlace);
-        // System.out.println(idEnlace);
-        enlace.setObs("1");
-        System.out.println("+++++++++++++++++5  ");
-        // System.out.println(enlace.getIdEnlace());
 
-        System.out.println("EL NOMBRE DEL ENLACE ES: " + enlace.getNombre_enlace());
-        System.out.println("Guardado uwuuwuwuwuw" + idEnlace);
-        enlaceService.save(enlace);
-        System.out.println("+++++++++++++++++6  ");
-         System.out.println("+++++++++++++++++KEVIN  ");
-        return "redirect:formEnlace";
+    @PostMapping(value = "/guardarEnlaceHijo2")
+    public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam(name = "idEnlace2",required = false) Integer idEnlace, RedirectAttributes flash, HttpServletRequest request, Model model) {
+        Usuario usuario = usuarioService.buscarUsuarioPorId(1);
+        System.out.println("El nombre del enlace es: " + enlace.getNombre_enlace());
+        if (enlace.getNombre_enlace().isEmpty() || enlace.getRuta().isEmpty()) {
+            System.out.println("Está mandando un valor vacío");
+            String mensaje2 = "No se puede registrar enlaces vacíos";
+            flash.addFlashAttribute("mensaje2", mensaje2);
+            return "redirect:formEnlaceHijo";        
         
+        }else{
+            enlace.setId_usuario(usuario);
+            System.out.println("+++++++teste2+++++++");
+            enlace.setEstado("A");
+            System.out.println(enlace.getNombre_enlace());
+            // enlace.setRuta(null);
+            if (idEnlace != null) {
+                 enlace.setTabla(idEnlace);
+            }
+            // System.out.println(idEnlace);
+            enlace.setObs("1");
+            // System.out.println(enlace.getIdEnlace());
+            // System.out.println("Guardado uwuuwuwuwuw" + idEnlace);
+            enlaceService.save(enlace);
+            System.out.println("+++++++++seGuardó2+++++++");
+            return "redirect:formEnlaceHijo";
+ }
+ 
     }
 
     /* LISTAR */
@@ -130,8 +131,6 @@ System.out.println("+++++++++++++++++4  ");
         model.addAttribute("enlaces", rolesService.findAll());
 
         Roles roles = new Roles();
-
-       
 
         return "listas/listaEnlaceDisponibles";
     }

@@ -96,17 +96,28 @@
                                                     <label for="validationCustom03">Nombre del enlace Hijo</label>
                                                     <input type="text" class="form-control" name="enlace"
                                                         id="validationCustom03" th:field="${enlace.nombre_enlace}"
-                                                        pattern="[A-Za-záéíóúüñÑ\s]+" title="Solo se permiten letras y espacios, sin números"
+                                                        pattern="[A-Za-záéíóúüñÑ\s]+"
+                                                        title="Solo se permiten letras y espacios, sin números"
                                                         placeholder="nombre enlace hijo" required>
+                                                    <div class="" th:if="${mensaje2!=null}">
+                                                        <div class="alert alert-danger" role="alert">
+                                                            <p th:text="${mensaje2}"></p>
+                                                        </div>
+                                                    </div>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
-                                                </div>
+                                                </div> 
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom03">Ruta del enlace</label>
-                                                    <input type="text" class="form-control" name="ruta"
-                                                        id="validationCustom03" th:field="${enlace.ruta}"
+                                                    <input type="text" class="form-control" id="miInput" name="enlace"
+                                                        th:field="${enlace.ruta}"
                                                         placeholder="digite la ruta del enlace" required>
+                                                    <div class="" th:if="${mensaje2!=null}">
+                                                        <div class="alert alert-danger" role="alert">
+                                                            <p th:text="${mensaje2}"></p>
+                                                        </div>
+                                                    </div>
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
@@ -114,11 +125,8 @@
 
                                                 <div class="col-md-4 mb-3">
                                                     <label>Enlaces Padres</label>
-
                                                     <select class="custom-select" name="idEnlace2" required>
-
                                                         <option value="">Seleccione un enlace padre</option>
-
                                                         <th:block th:each="es : ${listaEnlace}">
                                                             <option th:value="${es.idEnlace}"
                                                                 th:text="${es.nombre_enlace}"></option>
@@ -126,12 +134,12 @@
                                                     </select>
                                                     <div class="invalid-feedback">Debes seleccionar un enlace</div>
                                                 </div>
-                                            </div>
+                                            </div>                                        
                                             <!-- <button class="btn btn-primary" type="submit">Registrar</button> -->
                                             <div class="p-3">
                                                 <p></p>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light"
-                                                    >Registrar</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary waves-effect waves-light">Registrar</button>
                                             </div>
                                         </form>
                                     </div>
@@ -159,8 +167,35 @@
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
+    <!-- 
+    <script>
+        // Método para validar un input y evitar valores nulos
+        function validarInput() {
+            // Obtiene el valor del campo de entrada
+            var inputValue = $("#enlace").val();
+
+            // Verifica si el valor está nulo o es una cadena vacía
+            if (inputValue === null || inputValue.trim() === "") {
+                // Muestra un mensaje de error
+                alert("Por favor, ingresa un valor en el campo.");
+                return false; // Indica que la validación ha fallado
+            }
+
+            // La validación es exitosa
+            return true;
+        }
+
+        $(document).ready(function() {
+            // Asigna un evento al formulario cuando se envía
+            $("form").submit(function() {
+                // Llama al método de validación al enviar el formulario
+                return validarInput();
+            });
+        });
+    </script> -->
 
     <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../../../../assets/libs/jquery/jquery.min.js"></script>
     <script src="../../../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../../../assets/libs/metismenu/metisMenu.min.js"></script>
