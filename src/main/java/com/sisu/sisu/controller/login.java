@@ -50,8 +50,7 @@ public class login {
 	
 	
 	
-	
-	
+
 
 	@RequestMapping(value = "/loginE", method = RequestMethod.POST)
 	public String loginE(Model model) {
