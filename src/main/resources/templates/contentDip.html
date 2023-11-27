@@ -26,9 +26,29 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
- 
+    <!-- --------- -->
+
+    <div th:fragment="contentHistorialRecetas">
+        <input type="hidden" name="dip" th:field="${historialReceta.idHistorialReceta}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4> 
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Prescripción Medica</label>
+                <select class="custom-select" th:field="${historialReceta.receta}" required>
+                    <option value="">Selecciona una prescripción Medica</option>
+                    <th:block th:each="r: ${recetas}" th:if="${r.estado != 'X'}">
+                    <option th:value="${r.idReceta}" th:text="${r.prescripcionMedica}"></option>
+                    </th:block>
+                </select>
+                <div class="invalid-feedback">Debes seleccionar una prescripción Medica</div>
+                <div class="valid-feedback">¡Se ve bien!</div>
+            </div>
+             
+        </div>
+    </div> 
+    
     <!-- --------- -->
 
 </body>

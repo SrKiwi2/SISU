@@ -51,8 +51,7 @@ public class HistorialReceta implements Serializable {
   private HistorialMedico historial_medico;
 
 public HistorialReceta() {
-	super();
-	// TODO Auto-generated constructor stub
+	super(); 
 }
 
 public HistorialReceta(Integer idHistorialReceta, String estado, Date registro, Date modificacion, Receta receta,

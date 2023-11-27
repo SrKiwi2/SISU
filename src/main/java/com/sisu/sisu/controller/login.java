@@ -84,60 +84,60 @@ public class login {
 	
 	//NUEVOS CONTROLADORES
 	
-	@RequestMapping(value = "usuarioContrasena", method = RequestMethod.POST)
-	public String selecionRoles(HttpServletRequest request, Model model,HttpServletResponse response, @RequestParam("usuario") String usuario,
-			@RequestParam("clave") String clave) {
-		System.out.println("--8888888888888888888888---------------------");
+	// @RequestMapping(value = "usuarioContrasena", method = RequestMethod.POST)
+	// public String selecionRoles(HttpServletRequest request, Model model,HttpServletResponse response, @RequestParam("usuario") String usuario,
+	// // 		@RequestParam("clave") String clave) {
+	// 	System.out.println("--8888888888888888888888---------------------");
 		
 		
 		
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	    response.setHeader("Pragma", "no-cache");
-	    response.setDateHeader("Expires", 0);
+	// 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	//     response.setHeader("Pragma", "no-cache");
+	//     response.setDateHeader("Expires", 0);
 		
 		
-		System.out.println("---" + usuario + "---" + clave + "---");
+	// 	System.out.println("---" + usuario + "---" + clave + "---");
 
-		Usuario user = usuarioService.loguearse(usuario, clave);
-		System.out.println("-------------------------------------------------");
+	// 	Usuario user = usuarioService.loguearse(usuario, clave);
+	// 	System.out.println("-------------------------------------------------");
 
-		if (user != null) {
-			System.out.println("-------------------------------------------------1");
-			// System.out.println(user.toString());
-			System.out.println("-------------------------------------------------2");
-			List<UsrRoles> lRolesUsr = usrRolesService.listRolesUsuario(user);
-			System.out.println("-------------------------------------------------3");
-			System.out.println("rolesList " + lRolesUsr.size());
-			System.out.println("-------------------------------------------------4");
+	// 	if (user != null) {
+	// 		System.out.println("-------------------------------------------------1");
+	// 		// System.out.println(user.toString());
+	// 		System.out.println("-------------------------------------------------2");
+	// 		List<UsrRoles> lRolesUsr = usrRolesService.listRolesUsuario(user);
+	// 		System.out.println("-------------------------------------------------3");
+	// 		System.out.println("rolesList " + lRolesUsr.size());
+	// 		System.out.println("-------------------------------------------------4");
 
-			if (lRolesUsr.size() == 0) {
-				String msn = "No tiene roles vigentes, comuniquese con el encargado de sistemas";
-				model.addAttribute("msn", msn);
-				return "index/login";
+	// 		if (lRolesUsr.size() == 0) {
+	// 			String msn = "No tiene roles vigentes, comuniquese con el encargado de sistemas";
+	// 			model.addAttribute("msn", msn);
+	// 			return "index/login";
 
-			}
+	// 		}
 
-			model.addAttribute("lRoles", lRolesUsr);
+	// 		model.addAttribute("lRoles", lRolesUsr);
 
-			HttpSession sesion = request.getSession();
+	// 		HttpSession sesion = request.getSession();
 
-			sesion.setAttribute("sessionlRoles", lRolesUsr);
-			sesion.setAttribute("usuarioSession", user);
+	// 		sesion.setAttribute("sessionlRoles", lRolesUsr);
+	// 		sesion.setAttribute("usuarioSession", user);
 
-			System.out.println("TIENE ROLES HABILITADOS-------------------------------------sss");
-			return "index/selecioneRoles";
-			// return "uap/da/sistemada/vistas/login/mostrarRoles";
+	// 		System.out.println("TIENE ROLES HABILITADOS-------------------------------------sss");
+	// 		return "index/selecioneRoles";
+	// 		// return "uap/da/sistemada/vistas/login/mostrarRoles";
 
-		} else {
+	// 	} else {
 
-			String msn = "Error: Revise Usuario y Clave ";
-			model.addAttribute("msn", msn);
-			System.out.println("hola-------------------------------------");
+	// 		String msn = "Error: Revise Usuario y Clave ";
+	// 		model.addAttribute("msn", msn);
+	// 		System.out.println("hola-------------------------------------");
 
-			return "index/login";
-		}
+	// 		return "index/login";
+	// 	}
 
-	}
+	// }
 	
 	
 	@RequestMapping(value = "seleccionarRoles", method = RequestMethod.POST)
