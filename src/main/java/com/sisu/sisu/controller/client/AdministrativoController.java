@@ -106,7 +106,13 @@ public class AdministrativoController {
     @PostMapping(value = "/saveAdministrativo")
     public String guardarAdmins(Model model, @ModelAttribute Persona persona) {
     try {
-        
+		Persona existingPersona = personaService.validarCI(persona.getCi());
+            if (existingPersona != null) {
+                // Establecer un mensaje de error y devolver a la página del formulario
+                model.addAttribute("error",
+                        "Ya existe una persona con el mismo número de carnet (CI): " + existingPersona.getNombres());
+                return "error";
+            }
 		persona.setEstado("R");
        	personaService.save(persona);
         return "redirect:/ticket";

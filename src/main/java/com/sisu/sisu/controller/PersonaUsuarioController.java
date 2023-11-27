@@ -152,7 +152,7 @@ public class PersonaUsuarioController {
         model.addAttribute("personas1", personaService.findAll());
 
         model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios1", usuarioService.findAll());
+        model.addAttribute("usuarios", usuarioService.findAll());
 
         model.addAttribute("dip", new Dip());
         model.addAttribute("dips", dipService.findAll());

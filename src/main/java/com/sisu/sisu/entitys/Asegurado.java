@@ -58,6 +58,9 @@ public class Asegurado implements Serializable {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
   private List<HistorialMedico> historial_medico;
 
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
+	private List<Ficha> ficha;
+
 
   
   
