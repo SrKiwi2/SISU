@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,17 +28,18 @@ import lombok.Setter;
 public class ConceptosServicios implements Serializable {
     private static long serialVersionUID = 1L;
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_concepto_servicio")
     private Integer idConceptoServicio;
 
     @Column(name = "servicio")
-    private Integer servicio;
+    private String servicio;
 
     @Column(name = "descripcion")
-    private Integer descripcion;
+    private String descripcion;
 
     @Column(name = "costo")
-    private Integer costo;
+    private float costo;
 
     @Column(name = "estado")
     private String estado;
@@ -63,7 +66,7 @@ public class ConceptosServicios implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ConceptosServicios(Integer idConceptoServicio, Integer servicio, Integer descripcion, Integer costo,
+	public ConceptosServicios(Integer idConceptoServicio, String servicio, String descripcion, float costo,
 			String estado, Date registro, Date modificacion, Servicio servicios,
 			List<HistorialMedico> historial_medico) {
 		super();
@@ -94,27 +97,27 @@ public class ConceptosServicios implements Serializable {
 		this.idConceptoServicio = idConceptoServicio;
 	}
 
-	public Integer getServicio() {
+	public String getServicio() {
 		return servicio;
 	}
 
-	public void setServicio(Integer servicio) {
+	public void setServicio(String servicio) {
 		this.servicio = servicio;
 	}
 
-	public Integer getDescripcion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public void setDescripcion(Integer descripcion) {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public Integer getCosto() {
+	public float getCosto() {
 		return costo;
 	}
 
-	public void setCosto(Integer costo) {
+	public void setCosto(float costo) {
 		this.costo = costo;
 	}
 

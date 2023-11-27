@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,10 +35,11 @@ public class HistorialMedico implements Serializable {
   private Integer idHistorialMedico;
 
   @Column(name = "observacion")
-  private String Oberservacion;
+  private String Observacion;
 
-  @Column(name = "fecha")
-  private Date fecha;
+  @Column(name = "fecha_Historial_medico")
+  @DateTimeFormat(pattern = "yyy-MM-dd")
+  private Date Fecha;
 
   @Column(name = "estado")
   private String estado;
@@ -70,13 +73,13 @@ public HistorialMedico() {
 	// TODO Auto-generated constructor stub
 }
 
-public HistorialMedico(Integer idHistorialMedico, String oberservacion, Date fecha, String estado, Date registro,
+public HistorialMedico(Integer idHistorialMedico, String Observacion, Date Fecha, String estado, Date registro,
 		Date modificacion, Asegurado asegurado, ConceptosServicios concepto_servicio,
 		List<HistorialReceta> historial_receta, List<HistorialMedicoServicio> historial_medico_servicio) {
 	super();
 	this.idHistorialMedico = idHistorialMedico;
-	Oberservacion = oberservacion;
-	this.fecha = fecha;
+	this.Observacion = Observacion;
+	this.Fecha = Fecha;
 	this.estado = estado;
 	this.registro = registro;
 	this.modificacion = modificacion;
@@ -103,19 +106,19 @@ public void setIdHistorialMedico(Integer idHistorialMedico) {
 }
 
 public String getOberservacion() {
-	return Oberservacion;
+	return Observacion;
 }
 
 public void setOberservacion(String oberservacion) {
-	Oberservacion = oberservacion;
+	Observacion = oberservacion;
 }
 
 public Date getFecha() {
-	return fecha;
+	return Fecha;
 }
 
-public void setFecha(Date fecha) {
-	this.fecha = fecha;
+public void setFecha(Date Fecha) {
+	this.Fecha = Fecha;
 }
 
 public String getEstado() {
@@ -176,8 +179,8 @@ public void setHistorial_medico_servicio(List<HistorialMedicoServicio> historial
 
 @Override
 public String toString() {
-	return "HistorialMedico [idHistorialMedico=" + idHistorialMedico + ", Oberservacion=" + Oberservacion + ", fecha="
-			+ fecha + ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
+	return "HistorialMedico [idHistorialMedico=" + idHistorialMedico + ", Oberservacion=" + Observacion + ", fecha="
+			+ Fecha + ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
 			+ ", asegurado=" + asegurado + ", concepto_servicio=" + concepto_servicio + ", historial_receta="
 			+ historial_receta + ", historial_medico_servicio=" + historial_medico_servicio + "]";
 }

@@ -51,6 +51,91 @@
     
     <!-- --------- -->
 
+    <div th:fragment="contentHistorialMedico">
+        <input type="hidden" name="historialMedico" th:field="${historialMedico.idHistorialMedico}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS DEL HISTORIAL MEDICO</h4>
+        <div class="row">
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">Fecha</label>
+                <input type="date" class="form-control" name="historialMedico" th:field="${historialMedico.Fecha}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom02">Oberservación</label>
+                <input type="text" class="form-control" name="historialMedico" id="validationCustom02"
+                    th:field="${historialMedico.Observacion}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+     <!-- --------- -->
+
+     <div th:fragment="contentHistorialMedicoServicio" style="width: 90%">
+        <input  type="hidden" name="historialMedicoServicio" th:field="${historialMedicoServicio.idHistorialMedicoServicio}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS DEL HISTORIAL MEDICO SERVICIO</h4>
+        <div class="row">
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">Hora</label>
+                <input  type="time" class="form-control" name="historialMedicoServicio" th:field="${historialMedicoServicio.hora}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">Fecha</label>
+                <input   type="date" class="form-control" name="historialMedicoServicio" th:field="${historialMedicoServicio.fecha}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+         <!-- --------- -->
+
+    <div th:fragment="contentConceptosServicios" >
+        <input  type="hidden" name="conceptosServicio" th:field="${conceptosServicio.idConceptoServicio}">
+        <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS DEL CONCEPTO SERVICIO</h4>
+        <div class="row">
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">servicio</label>
+                <input  type="text" class="form-control" name="conceptosServicio" th:field="${conceptosServicio.servicio}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">Descripcion</label>
+                <input   type="text" class="form-control" name="conceptosServicio" th:field="${conceptosServicio.descripcion}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-6">
+                <label for="validationCustom03">Costo</label>
+                <input   type="number" class="form-control" name="conceptosServicio" th:field="${conceptosServicio.costo}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 
 </html>

@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +34,7 @@ public class HistorialMedicoServicio implements Serializable {
 
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyy-MM-dd")
     private Date fecha;
 
     @Column(name = "hora")

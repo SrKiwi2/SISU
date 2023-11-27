@@ -57,49 +57,22 @@
             <div class="page-content">
 
                 <!-- Page-Title -->
-                <div class="page-title-box">
+                <div class="page-title-box"> 
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h4 class="page-title mb-1">ADMINISTRACION DE DIP REGISTRADOS</h4>
+                                <h4 class="page-title mb-1">ADMINISTRACION DE HISTORIALES MEDICO SERVICIO REGISTRADOS</h4>
                                 <!-- <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
                                     <li class="breadcrumb-item active">Data Tables</li>
                                 </ol> -->
                             </div>
-                            <div class="col-md-4">
-                                <div class="float-right d-none d-md-block">
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-settings-outline mr-1"></i> OPCIONES
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                           
-                                            <div class="dropdown-divider"></div>
-                                            
-                                            <form th:action="@{${url}}" method="get">
-                                               
-                                                <input type="submit" th:value="${nameButton1}"></input>
-                                              </form>
-
-                                            <div class="dropdown-divider"></div>
-
-                                            <!-- <a class="dropdown-item" href="#">Separated link</a> -->
-
-                                        </div>
-                                    </div>
-                                </div>
+                      
                             </div>
                         </div>
 
                     </div>
                 </div>
-
-
-
-
-                <!-- end page title end breadcrumb -->
 
                 <div class="page-content-wrapper">
                     <div class="container-fluid">
@@ -108,7 +81,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>Lista Dip</h4>
+                                        <h4 class="header-title"></i>Lista Historal Medico Servicio</h4>
 
                                         <!-- ------------- -->
 
@@ -126,28 +99,24 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Codigo</th>
-                                                    <th>Descripción</th>
+                                                   
+                                                    <th>Hora</th>
+                                                    <th>Fecha</th>
                                                     <th>OPCIONES</th>
-                                                    <!-- <th>Apellido Materno</th>
-                                                    <th>Usuario</th>
-                                                    <th>Clave</th> -->
-                                                    <!-- <th></th> -->
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr th:each="dip : ${dips}" th:if="${dip.estado != opcion1}">
-                                                    <td th:text="${dip.codDip}"></td>
-                                                    <td th:text="${dip.descripcion}"></td>
-                                                    <!-- <td th:text="${us.idPersona.apMaterno}"></td>
-                                                    <td th:text="${us.apodo}"></td> -->
+                                                <tr th:each="historialMedico : ${historialMedicos}" th:if="${historialMedico.estado != 'X'}">
+                                                  
+                                                    <td  th:text="${#dates.format(historialMedicoS.fecha, 'dd/MMMM/yyyy')}"></td>
+                                                    <td th:text="${historialMedicoS.hora}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarDip/' + dip.idDip}">
+                                                                    th:href="${'../../../../eliminarHistorialMedicoServicio/' + historialMedicoS.idHistorialMedicoServicio}">
                                                                     <button type="button"
                                                                         class="btn btn-outline-danger alertElimin btn-sm"
                                                                         style="margin: 5px; padding: 8px;">
@@ -161,7 +130,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-iddip="${dip.idDip}"
+                                                                        th:data-idhms="${historialMedicoS.idHistorialMedicoServicio}"
                                                                         onclick="buscar(this)"
                                                                         style="margin: 5px; padding: 8px;">
                                                                         <i class="dripicons-document-edit"></i>
@@ -182,31 +151,34 @@
                     </div>
                     <!-- end container-fluid -->
                 </div>
+
             </div>
             <!-- End Page-content -->
-            
-            <div class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog"
+
+            <div style="margin-left: 15%;" class="modal fade show" th:id="${'bs-example-modal-center'}" tabindex="-1" role="dialog" 
                 aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content" style="width: 50%">
                         <div class="modal-header">
-                            <h5 class="modal-title mt-0">Modificando registro de DIP</h5>
+                            <h5  class="modal-title mt-0">Modificando registro de Historial Medico Servicio</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-                        <div class="modal-body">
-                            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosDip}"
+                        <div class="modal-body" >
+                            <form  id="miFormulario" class="needs-validation" th:action="@{/guardarHistorialMedicoServicio}"
                                 method="post" novalidate>
 
-                                <div id="replace_dip"></div>
+                                <div  id="replace_historialMedico"></div>
 
-                                <div class="text-right mt-3">
+                                <div class="text-right mt-2">
+
                                     <button type="submit" onclick="validarFormulario()"
                                         class="btn btn-primary mr-2">Guardar</button>
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">Cancelar</button>
+
                                 </div>
                             </form>
                         </div>
@@ -230,15 +202,15 @@
 
     <script>
         function buscar(button) {
-            // Capture the value of th:data-idpersona from the clicked button
-            var idDip = $(button).data('iddip');
+            
+            var idHistorialMedicoServicio = $(button).data('idhms');
 
-            // Create the URL to request the fragment using the captured idPersona
-            var url = "../../../../dip/" + idDip;
+            
+            var url = "../../../../historialMedicoServicios/" +idHistorialMedicoServicio;
 
             // Load the fragment and replace content in #replace_div
-            $('#replace_dip').load(url, function () {
-                $('#modal-form').attr('action', '/guardarCambiosDip');
+            $('#replace_historialMedico').load(url, function () {
+                $('#modal-form').attr('action', '/guardarHistorialMedicoServicio');
                 $('#bs-example-modal-center').modal('show');
             });
         }
@@ -247,12 +219,12 @@
 
             // Modifica la URL para cargar el modal vacío para registrar una nueva persona.
 
-            var url = "../../../../registrarDip";
+            var url = "../../../../registrarHistorialMedicoServicio";
 
             // Load the fragment and replace content in #replace_div
-            $('#replace_dip').load(url, function () {
+            $('#replace_historialMedico').load(url, function () {
                 // Modifica cualquier configuración necesaria para un nuevo registro.
-                $('#modal-form').attr('action', '/guardarNuevaDip'); // Por ejemplo, cambiar la acción del formulario.
+                $('#modal-form').attr('action', '/guardarNuevaHistorialMedicoServicio'); // Por ejemplo, cambiar la acción del formulario.
                 $('#bs-example-modal-center').modal('show');
             });
         }
