@@ -24,37 +24,36 @@ import lombok.Setter;
 @Entity
 @Table(name = "servicio")
 public class Servicio implements Serializable {
-    private static long serialVersionUID = 1L;
+	private static long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_servicio")
-    private Integer idServicio;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_servicio")
+	private Integer idServicio;
 
-    @Column(name = "servicio")
-    private Integer serviacio;
+	@Column(name = "servicio")
+	private Integer servicio;
 
-    @Column(name = "descripcion")
-    private Integer descripcion;
+	@Column(name = "descripcion")
+	private Integer descripcion;
 
-    @Column(name = "estado")
-    private String estado;
+	@Column(name = "estado")
+	private String estado;
 
-    @Column(name = "registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+	@Column(name = "registro")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date registro;
 
-    @Column(name = "modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+	@Column(name = "modificacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modificacion;
 
-    // --------------------------RELACION--------------------------------------
+	// --------------------------RELACION--------------------------------------
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.LAZY)
 	private List<ServicioMedico> servicio_medico;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.LAZY)
 	private List<ConceptosServicios> concepto_servicio;
 
 	public Servicio() {
@@ -62,11 +61,11 @@ public class Servicio implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Servicio(Integer idServicio, Integer serviacio, Integer descripcion, String estado, Date registro,
+	public Servicio(Integer idServicio, Integer servicio, Integer descripcion, String estado, Date registro,
 			Date modificacion, List<ServicioMedico> servicio_medico, List<ConceptosServicios> concepto_servicio) {
 		super();
 		this.idServicio = idServicio;
-		this.serviacio = serviacio;
+		this.servicio = servicio;
 		this.descripcion = descripcion;
 		this.estado = estado;
 		this.registro = registro;
@@ -92,11 +91,11 @@ public class Servicio implements Serializable {
 	}
 
 	public Integer getServiacio() {
-		return serviacio;
+		return servicio;
 	}
 
 	public void setServiacio(Integer serviacio) {
-		this.serviacio = serviacio;
+		this.servicio = serviacio;
 	}
 
 	public Integer getDescripcion() {
@@ -149,15 +148,9 @@ public class Servicio implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Servicio [idServicio=" + idServicio + ", serviacio=" + serviacio + ", descripcion=" + descripcion
+		return "Servicio [idServicio=" + idServicio + ", servicio=" + servicio + ", descripcion=" + descripcion
 				+ ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
 				+ ", servicio_medico=" + servicio_medico + ", concepto_servicio=" + concepto_servicio + "]";
 	}
-    
-    
-    
-    
-    
 
- 
 }

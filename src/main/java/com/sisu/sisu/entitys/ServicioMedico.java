@@ -27,42 +27,42 @@ import lombok.Setter;
 @Table(name = "servicio_medico")
 public class ServicioMedico implements Serializable {
 
-    private static long serialVersionUID = 1L;
+	private static long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_servicio_medico")
-    private Integer idServicioMedico;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_servicio_medico")
+	private Integer idServicioMedico;
 
-    @Column(name = "cantidad_fichas")
-    private Integer cantidad_fichas;
+	@Column(name = "cantidad_fichas")
+	private Integer cantidad_fichas;
 
-    @Column(name = "estado")
-    private Integer estado;
+	@Column(name = "estado")
+	private String estado;
 
-    @Column(name = "registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+	@Column(name = "registro")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date registro;
 
-    @Column(name = "modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+	@Column(name = "modificacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modificacion;
 
-    // --------------------------RELACION--------------------------------------
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio_medico", fetch = FetchType.LAZY)
+	// --------------------------RELACION--------------------------------------
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio_medico", fetch = FetchType.LAZY)
 	private List<MedicoServicio> medico_servicio;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idServicio")
-    private Servicio servicio;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idServicio")
+	private Servicio servicio;
 
 	public ServicioMedico() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ServicioMedico(Integer idServicioMedico, Integer cantidad_fichas, Integer estado, Date registro,
+	public ServicioMedico(Integer idServicioMedico, Integer cantidad_fichas, String estado, Date registro,
 			Date modificacion, List<MedicoServicio> medico_servicio, Servicio servicio) {
 		super();
 		this.idServicioMedico = idServicioMedico;
@@ -98,11 +98,11 @@ public class ServicioMedico implements Serializable {
 		this.cantidad_fichas = cantidad_fichas;
 	}
 
-	public Integer getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Integer estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
@@ -144,12 +144,5 @@ public class ServicioMedico implements Serializable {
 				+ ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
 				+ ", medico_servicio=" + medico_servicio + ", servicio=" + servicio + "]";
 	}
-    
-    
-    
-    
-    
-    
-
 
 }
