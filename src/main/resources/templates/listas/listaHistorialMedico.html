@@ -139,7 +139,7 @@
 
                                                     <td th:text="${historialM.Observacion}"></td> 
 
-                                                    <td th:text="${historialM.historialMedico.conceptosServicio.idConceptoServicio}"></td>
+                                                    <td th:text="${historialM.concepto_servicio.servicio}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -159,7 +159,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-idhm="${historialM.idHistorialMedico}"
+                                                                        th:data-idHistorialMedico="${historialM.idHistorialMedico}"
                                                                         onclick="buscar(this)"
                                                                         style="margin: 5px; padding: 8px;">
                                                                         <i class="dripicons-document-edit"></i>
@@ -235,10 +235,10 @@
     <script>
         function buscar(button) {
             // Capture the value of th:data-idpersona from the clicked button
-            var idHistorialMedico = $(button).data('idhm');
+            var idHistorialMedico = $(button).data('idHistorialMedico');
 
             // Create the URL to request the fragment using the captured idPersona
-            var url = "../../../../historialMedico/" +idHistorialMedico;
+            var url = "../../../../historialMedico/"+idHistorialMedico;
 
             // Load the fragment and replace content in #replace_div
             $('#replace_historialMedico').load(url, function () {

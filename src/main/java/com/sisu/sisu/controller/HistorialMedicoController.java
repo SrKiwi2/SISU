@@ -31,10 +31,10 @@ public class HistorialMedicoController {
 
 
     /*--------------- eliminar -----------*/
-   @RequestMapping(value = "/eliminarHistorialMedico/{id_historial_medico}")
-    public String eliminarHistorialMedico(@PathVariable("id_historial_medico") Integer id_historial_medico) {
+   @RequestMapping(value = "/eliminarHistorialMedico/{idHistorialMedico}")
+    public String eliminarHistorialMedico(@PathVariable("idHistorialMedico") Integer idHistorialMedico) {
 
-        HistorialMedico historialMedico = historialMedicoService.findOne(id_historial_medico);
+        HistorialMedico historialMedico = historialMedicoService.findOne(idHistorialMedico);
         historialMedico.setEstado("X");
         historialMedicoService.save(historialMedico);
         return "redirect:/ListaHistorialMedico";
@@ -61,10 +61,13 @@ public class HistorialMedicoController {
 
        /* Modificación Modal */
     @RequestMapping(value = "/historialMedico/{idHistorialMedico}")
-    public String getContentHistorialMedico(@PathVariable(value = "idHistorialMedico") Integer idhistorialMedico, Model model,
+    public String getContentHistorialMedico(@PathVariable(value = "idHistorialMedico") Integer idHistorialMedico, Model model,
             HttpServletRequest request) {
 
-        model.addAttribute("historialMedico", historialMedicoService.findOne(idhistorialMedico));
+        model.addAttribute("historialMedico", historialMedicoService.findOne(idHistorialMedico));
+
+
+        model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
         return "contentDip :: contentHistorialMedico";
 
@@ -76,6 +79,10 @@ public class HistorialMedicoController {
 
         model.addAttribute("historialMedico", new HistorialMedico());
         model.addAttribute("historialMedicos", historialMedicoService.findAll());
+
+
+       model.addAttribute("conceptosServicio", new ConceptosServicios());
+        model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
 
         return "contentDip :: contentHistorialMedico";

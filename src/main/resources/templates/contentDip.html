@@ -65,12 +65,24 @@
             </div>
 
             <div class="col-md-6 mb-6">
-                <label for="validationCustom02">Oberservación</label>
+                <label for="validationCustom02">Observación</label>
                 <input type="text" class="form-control" name="historialMedico" id="validationCustom02"
                     th:field="${historialMedico.Observacion}" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Servicios</label>
+                <select class="custom-select" th:field="${historialMedico.concepto_servicio}" required>
+                    <option value="">Selecciona un Servicio</option>
+                    <th:block th:each="cs: ${conceptosServicios}" th:if="${cs.estado != 'X'}">
+                    <option th:value="${cs.idConceptoServicio}" th:text="${cs.servicio}"></option>
+                    </th:block>
+                </select>
+                <div class="invalid-feedback">Debes seleccionar una prescripción Medica</div>
+                <div class="valid-feedback">¡Se ve bien!</div>
             </div>
 
         </div>
