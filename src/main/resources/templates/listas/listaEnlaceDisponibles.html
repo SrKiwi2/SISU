@@ -85,30 +85,39 @@
                                         <div class="text-right mb-3">
                                             <form class="needs-validation" action="/guardarEnlaceHijo" method="post"
                                                 id="form1" novalidate>
-                                                <input type="hidden" th:field="${enlace.idEnlace}">
+                                                <input type="hidden" >
                                         </div>
                                         <table id="datatable-buttons"
                                             class="table table-striped table-bordered dt-responsive nowrap botonesH"
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Enlace</th>
-                                                    <th>Ruta</th>
-                                                    <th>Tabla</th>
-                                                    <th>Observaciones</th>
+                                                    <th>ROl</th>
+                                                    <th>ENLACES PADRES </th>
+                                                    <th>ENLACES HIJOS</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr th:each="en : ${listaEnlace}" th:if="${en.estado != 'X'}">
-                                                    <td th:text="${en.nombre_enlace}"></td>
-                                                    <td th:text="${en.ruta}"></td>
-                                                    <td th:text="${en.tabla}"></td>
-                                                    <td th:text="${en.obs}"></td>
-                                                    <td>
-                                                        <a th:href="@{'../../../../formMenu2/' + ${en.idEnlace}}">
+                                                <tr th:each="en : ${enlaces}" th:if="${en.estado != 'X'}">
+                                                    <td th:text="${en.rol}"></td>
+                                                    <td >
+                                                        <ul th:each="e : ${en.menus_roles}">
+                                                            <li th:text="${e.idEnlace.nombre_enlace}">
+
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td >
+                                                        <ul th:each="e : ${en.menus_roles}">
+                                                            <li th:text="${e.idEnlace.ruta}">
+
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                        <!-- <a th:href="@{'../../../../formMenu2/' + ${en.idEnlace}}">
                                                             <button class="btn btn-primary" type="button">Enviar</button>
-                                                        </a>
+                                                        </a> -->
                                                     </td>
                                                 </tr>
                                             </tbody>

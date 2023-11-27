@@ -235,7 +235,8 @@
         <div class="row">
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Descripción del Rol</label>
-                <input type="text" class="form-control" id="validationCustom01" th:field="${role.descripcion}"
+                <input type="text" class="form-control" id="validationCustom01" pattern="[A-Za-záéíóúüñÑ\s]+" title="Solo se permiten letras y espacios, sin números"
+                th:field="${role.descripcion}"
                     placeholder="Introduce la descripcion del rol" required>
                 <div class="valid-feedback">
                     Looks good!
@@ -251,7 +252,8 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Nombre del Rol</label>
-                <input type="text" class="form-control" id="validationCustom03" th:field="${role.rol}"
+                <input type="text" class="form-control" id="validationCustom03" pattern="[A-Za-záéíóúüñÑ\s]+" title="Solo se permiten letras y espacios, sin números"
+                th:field="${role.rol}"
                     placeholder="Introduce el nombre del rol" required>
                 <div class="valid-feedback">
                     Looks good!

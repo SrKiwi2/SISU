@@ -21,7 +21,6 @@
                 </a>
               <ul class="sub-menu" aria-expanded="false">
                     <th:block th:each="hijos : ${session.sessionlPadres}">
-						
                         <th:block th:if="${p.idEnlace.idEnlace == hijos.idEnlace.tabla}">
                             <th:block th:if="${hijos.idEnlace.obs == '1'}">
                                 <li>

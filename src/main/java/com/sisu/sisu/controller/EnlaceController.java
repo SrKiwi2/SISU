@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sisu.sisu.Service.IEnlaceService;
+import com.sisu.sisu.Service.IRolesService;
 import com.sisu.sisu.Service.UsuarioService;
 import com.sisu.sisu.entitys.Enlace;
+import com.sisu.sisu.entitys.Roles;
 import com.sisu.sisu.entitys.Usuario;
 
 @Controller
@@ -25,6 +27,9 @@ public class EnlaceController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private IRolesService rolesService;
 
     @RequestMapping(value = "formEnlace")
     public String registroEnlace(@Validated Enlace enlace, Model model) {
@@ -59,6 +64,7 @@ public class EnlaceController {
         enlace.setTabla(1);
         enlace.setObs("0");
         enlaceService.save(enlace);
+        System.out.println("KEVINNNN");
         return "redirect:formEnlace";
     }
 
@@ -73,50 +79,36 @@ public class EnlaceController {
 
         model.addAttribute("listaEnlace", enlaceService.listaEnlacePadre());
         System.out.println(enlaceService.listaEnlacePadre().size());
-        System.out.println("+++++++++++++++++");
+        System.out.println("++++++++K+++++++++");
 
         return "formularios/formEnlaceHijo";
     }
  
     /* GUARDAR */
-    @PostMapping(value = "/guardarEnlaceHijo")
+    @PostMapping(value = "/guardarEnlaceHijo2")
     public String registroEnlaceHijo(@Validated Enlace enlace, @RequestParam(name = "idEnlace2") Integer idEnlace,
             RedirectAttributes flash, HttpServletRequest request) {
         System.out.println("+++++++++++++++++1  ");
         Usuario usuario = usuarioService.buscarUsuarioPorId(1);
-
+System.out.println("+++++++++++++++++2  ");
         enlace.setId_usuario(usuario);
-
+System.out.println("+++++++++++++++++3  ");
         enlace.setEstado("A");
         // enlace.setRuta(null);
-
+System.out.println("+++++++++++++++++4  ");
         enlace.setTabla(idEnlace);
         // System.out.println(idEnlace);
         enlace.setObs("1");
+        System.out.println("+++++++++++++++++5  ");
         // System.out.println(enlace.getIdEnlace());
 
         System.out.println("EL NOMBRE DEL ENLACE ES: " + enlace.getNombre_enlace());
+        System.out.println("Guardado uwuuwuwuwuw" + idEnlace);
         enlaceService.save(enlace);
+        System.out.println("+++++++++++++++++6  ");
+         System.out.println("+++++++++++++++++KEVIN  ");
         return "redirect:formEnlace";
-    }
-
-    /* modificar un registro con el modal 
-
-    @RequestMapping(value = "enlace/{idEnlace}")
-    public String getContent1(@PathVariable(value = "idEnlace") Integer idEnlace, Model model,
-            HttpServletRequest request) {
-        model.addAttribute("enlace", enlaceService.findOne(idEnlace));
-
-        return "content :: content1";
-    }*/
-
-    /* EDITAR 
-    @RequestMapping(value = "/editarEnlace/{idEnlace}")
-    public String editarEnlaceR(@PathVariable("idEnlace") Integer idEnlace, Model model) {
-        Enlace enlace = enlaceService.findOne(idEnlace);
-        model.addAttribute("enlace", enlace);
-
-        return "formularios/formEnlace";
+        
     }
 
     /* LISTAR */
@@ -131,4 +123,17 @@ public class EnlaceController {
 
         return "listas/listaEnlace";
     }
+
+    @GetMapping(value = "/ListaEnlaceDisponibles")
+    public String listarEnlaceDisponibles(Model model) {
+
+        model.addAttribute("enlaces", rolesService.findAll());
+
+        Roles roles = new Roles();
+
+       
+
+        return "listas/listaEnlaceDisponibles";
+    }
+
 }

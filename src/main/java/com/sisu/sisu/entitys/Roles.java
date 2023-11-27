@@ -2,18 +2,27 @@ package com.sisu.sisu.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "roles")
+@Setter
+@Getter
 public class Roles implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -44,6 +53,9 @@ public class Roles implements Serializable {
     
     @Column(name = "observacion")
     private String observacion;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idRol", fetch = FetchType.LAZY)
+    private List<Menu> menus_roles;
 
 	public Roles() {
 		super();

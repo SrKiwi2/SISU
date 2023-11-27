@@ -44,7 +44,7 @@ File: Sweetalert Js File
                 if ($("#form1")[0].checkValidity()) {
                     // Enviar el formulario si la validación es exitosa
                     $.ajax({
-                        type: "POST",
+                        type: "post",
                         url: "/guardarEnlace",
                         data: $("#form1").serialize(),
                         success: function (response) {

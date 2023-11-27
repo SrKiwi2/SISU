@@ -56,16 +56,21 @@ public class MenuController {
         List<Enlace> listaEnlaceHijos = enlaceService.listaEnlaceHijo(enlaceId);
 
         model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(enlaceId));
+        System.out.println("El enlace es: " + enlaceService.listaEnlaceHijo(enlaceId).size() + "+++++++++++++++++++++++++++++++++1");
 
         model.addAttribute("role", new Roles());
         model.addAttribute("roles", rolesService.findAll());
 
-        model.addAttribute("idEnlacePadre", enlaceId);
-        System.out.println("el enlace padre: " + enlaceId+ "+++++++++++++++++++++++++++++++++LA COTORRISA");
+        model.addAttribute("idEnlacePadre", enlaceId); // agregado hoy 23/11
+        System.out.println("el enlace padre: " + enlaceId); // agregado hoy 23/11
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
 
+        model.addAttribute("idEnlacePadre", enlaceId);
+        System.out.println("el enlace padre: " + enlaceId+ "+++++++++++++++++++++++++++++++++LA COTORRISA");
+    
+ 
         System.out.println("El enlace es: " + enlaceId + "+++++++++++++++++++++++++++++++++1");
         System.out.println(listaEnlaceHijos.size());
         // model.addAttribute("listaEnlacesHijo",
@@ -95,7 +100,7 @@ public class MenuController {
     public String manejarFormulario(@RequestParam(name = "idRol") Integer idRol,@RequestParam(name = "idEnlacePadre") Integer idEnlacePadre,
             @RequestParam(name = "solicitudesSeleccionadas", required = false)Integer [] solicitudesSeleccionadas) {
       
-    	System.out.println("EL ID ENLACE PADRE ES: " +idEnlacePadre+"SE ME SUBIO EL MUERTOOOOOOOOO");        
+    	System.out.println("EL ID ENLACE PADRE ES: " +idEnlacePadre+"teste");        
     	Roles roles = rolesService.findOne(idRol);
     	
     	         Menu menuPadre = new Menu();
@@ -121,6 +126,7 @@ public class MenuController {
                    menuService.save(menu);
                 }
         return "redirect:/ListaEnlace";
+        
     }
 
     @GetMapping(value = "/listaMenu")
@@ -132,21 +138,10 @@ public class MenuController {
         model.addAttribute("role", new Roles());
         model.addAttribute("roles", rolesService.findAll());
 
-        model.addAttribute("enlace", new Enlace());
-        model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(idEnlacePadre));
+        // model.addAttribute("enlace", new Enlace());
+        // model.addAttribute("listaEnlaceHijo", enlaceService.listaEnlaceHijo(idEnlacePadre));
 
         return "listas/listaMenu";
     }
-
-    /* FORM MENU 2 */
-
-    // /* registrar con el modal */
-    // @RequestMapping(value = "/registrarMenu")
-    // public String getRegistroMenu(Model model) {
-    // model.addAttribute("menu", new Menu());
-    // model.addAttribute("menus", menuService.findAll());
-
-    // return "contentRE :: contentTipoReceta";
-    // }
 
 }
