@@ -134,6 +134,7 @@
                                             </thead>
 
                                             <tbody>
+                                                
                                                 <tr th:each="historialReceta : ${historialRecetas}" th:if="${historialReceta.estado != 'X'}">
                                                     <td th:text="${historialReceta.receta.prescripcionMedica}"></td>
                                                     <td th:text="${historialReceta.historial_medico.Oberservacion}"></td>

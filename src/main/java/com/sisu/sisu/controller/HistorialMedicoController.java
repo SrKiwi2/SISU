@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sisu.sisu.Service.AseguradoService;
 import com.sisu.sisu.Service.ConceptosServiciosService;
 import com.sisu.sisu.Service.HistorialMedicoService;
 import com.sisu.sisu.entitys.HistorialMedico;
+import com.sisu.sisu.entitys.Asegurado;
 import com.sisu.sisu.entitys.ConceptosServicios;
 
 @Controller
@@ -25,8 +27,8 @@ public class HistorialMedicoController {
     @Autowired
     private ConceptosServiciosService conceptosServiciosService;
 
-    // @Autowired
-    // private AseguradoService aseguradoService;
+    @Autowired
+    private AseguradoService aseguradoService;
 
 
 
@@ -43,34 +45,29 @@ public class HistorialMedicoController {
         // Listar HM -------------------------
      @GetMapping(value = "/ListaHistorialMedico")
      public String listarHistorialMedico(Model model) {
-
-       model.addAttribute("historialMedico", new HistorialMedico());
+ 
         model.addAttribute("historialMedicos", historialMedicoService.findAll());
 
        model.addAttribute("conceptosServicio", new ConceptosServicios());
         model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
-    //     model.addAttribute("grado", new GradoAcademico());
-    //     model.addAttribute("grados", gradoService.findAll());
-        
-
+             model.addAttribute("asegurado1", new Asegurado());
+        model.addAttribute("asegurados", aseguradoService.findAll());
+  
         return "listas/listaHistorialMedico";
-    }
-
- 
-
+    } 
+    
        /* Modificación Modal */
-    @RequestMapping(value = "/historialMedico/{idHistorialMedico}")
-    public String getContentHistorialMedico(@PathVariable(value = "idHistorialMedico") Integer idHistorialMedico, Model model,
-            HttpServletRequest request) {
+    @RequestMapping("/historialMedico/{idHistorialMedico}")
+    public String getContentHistorialMedico(@PathVariable("idHistorialMedico") Integer idHistorialMedico, Model model, HttpServletRequest request) {
 
-        model.addAttribute("historialMedico", historialMedicoService.findOne(idHistorialMedico));
-
+        model.addAttribute("historialMedico", historialMedicoService.findOne(idHistorialMedico)); 
 
         model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
-        return "contentDip :: contentHistorialMedico";
+          model.addAttribute("asegurados", aseguradoService.findAll());
 
+        return "contentDip :: contentHistorialMedico";
     }
     
 /* Registrar Model */
@@ -80,10 +77,12 @@ public class HistorialMedicoController {
         model.addAttribute("historialMedico", new HistorialMedico());
         model.addAttribute("historialMedicos", historialMedicoService.findAll());
 
-
        model.addAttribute("conceptosServicio", new ConceptosServicios());
         model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
+        model.addAttribute("asegurado1", new Asegurado());
+        model.addAttribute("asegurados", aseguradoService.findAll());
+  
 
         return "contentDip :: contentHistorialMedico";
     }
@@ -96,10 +95,9 @@ public class HistorialMedicoController {
         historialMedico.setEstado("A");
         historialMedicoService.save(historialMedico);
 
+
+
         return "redirect:/ListaHistorialMedico";
     }
-
-
-    
 
 }

@@ -70,23 +70,7 @@
                             <div class="col-md-4">
                                 <div class="float-right d-none d-md-block">
                                     <div class="dropdown">
-                                       <!--  <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-settings-outline mr-1"></i> OPCIONES
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                           
-                                            <div class="dropdown-divider"></div>
-                                            
-                                            <form th:action="@{${url}}" method="get">
-                                               
-                                                <input type="submit" th:value="${nameButton1}"></input>
-                                              </form>
-
-                                            <div class="dropdown-divider"></div>
-
-                                           
-                                        </div> -->
+                                
                                     </div>
                                 </div>
                             </div>
@@ -128,6 +112,7 @@
                                                     <th>Servicio</th>
                                                     <th>Descripcion</th>
                                                     <th>Costo</th>
+                                                    <th>Servicios</th>
                                                     <th>OPCIONES</th>
                                                 </tr>
                                             </thead>
@@ -140,12 +125,14 @@
                                                     <td th:text="${conceptosServicio.descripcion}"></td>
 
                                                     <td th:text="${conceptosServicio.costo}"></td>
-                                                  
-                                                  
+
+                                                   <td th:text="${conceptosServicio.servicios.servicios}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
+
                                                             <div class="mb-2">
+                                                                
                                                                 <a 
                                                                     th:href="${'../../../../eliminarConceptosServicios/' + conceptosServicio.idConceptoServicio}">
                                                                     <button type="button"

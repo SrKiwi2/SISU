@@ -32,8 +32,8 @@ public class ConceptosServicios implements Serializable {
     @Column(name = "id_concepto_servicio")
     private Integer idConceptoServicio;
 
-    @Column(name = "servicio")
-    private String servicio;
+    @Column(name = "serviciocs")
+    private String serviciocs;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -54,9 +54,9 @@ public class ConceptosServicios implements Serializable {
 
     // --------------------------RELACION--------------------------------------
 
-    @ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idServicio")
-    private Servicio servicios;
+	private Servicio servicio;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "concepto_servicio", fetch = FetchType.LAZY)
 	private List<HistorialMedico> historial_medico;
@@ -66,18 +66,18 @@ public class ConceptosServicios implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ConceptosServicios(Integer idConceptoServicio, String servicio, String descripcion, float costo,
-			String estado, Date registro, Date modificacion, Servicio servicios,
+	public ConceptosServicios(Integer idConceptoServicio, String serviciocs, String descripcion, float costo,
+			String estado, Date registro, Date modificacion, Servicio servicio,
 			List<HistorialMedico> historial_medico) {
 		super();
 		this.idConceptoServicio = idConceptoServicio;
-		this.servicio = servicio;
+		this.serviciocs = serviciocs;
 		this.descripcion = descripcion;
 		this.costo = costo;
 		this.estado = estado;
 		this.registro = registro;
 		this.modificacion = modificacion;
-		this.servicios = servicios;
+		this.servicio = servicio;
 		this.historial_medico = historial_medico;
 	}
 
@@ -98,11 +98,11 @@ public class ConceptosServicios implements Serializable {
 	}
 
 	public String getServicio() {
-		return servicio;
+		return serviciocs;
 	}
 
 	public void setServicio(String servicio) {
-		this.servicio = servicio;
+		this.serviciocs = servicio;
 	}
 
 	public String getDescripcion() {
@@ -146,11 +146,11 @@ public class ConceptosServicios implements Serializable {
 	}
 
 	public Servicio getServicios() {
-		return servicios;
+		return servicio;
 	}
 
-	public void setServicios(Servicio servicios) {
-		this.servicios = servicios;
+	public void setServicios(Servicio servicio) {
+		this.servicio = servicio;
 	}
 
 	public List<HistorialMedico> getHistorial_medico() {
@@ -163,16 +163,10 @@ public class ConceptosServicios implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ConceptosServicios [idConceptoServicio=" + idConceptoServicio + ", servicio=" + servicio
+		return "ConceptosServicios [idConceptoServicio=" + idConceptoServicio + ", servicio=" + serviciocs
 				+ ", descripcion=" + descripcion + ", costo=" + costo + ", estado=" + estado + ", registro=" + registro
-				+ ", modificacion=" + modificacion + ", servicios=" + servicios + ", historial_medico="
+				+ ", modificacion=" + modificacion + ", servicio=" + servicio + ", historial_medico="
 				+ historial_medico + "]";
 	}
 	
-	
-	
-	
-	
-	
-
 }

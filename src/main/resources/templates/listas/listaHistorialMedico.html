@@ -62,31 +62,12 @@
                         <div class="row align-items-center">
                             <div class="col-md-8">
                                 <h4 class="page-title mb-1">ADMINISTRACION DE HISTORIAL MEDICOS REGISTRADOS</h4>
-                                <!-- <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Data Tables</li>
-                                </ol> -->
+                               
                             </div>
                             <div class="col-md-4">
                                 <div class="float-right d-none d-md-block">
                                     <div class="dropdown">
-                                       <!--  <button class="btn btn-light btn-rounded dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-settings-outline mr-1"></i> OPCIONES
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated">
-                                           
-                                            <div class="dropdown-divider"></div>
-                                            
-                                            <form th:action="@{${url}}" method="get">
-                                               
-                                                <input type="submit" th:value="${nameButton1}"></input>
-                                              </form>
-
-                                            <div class="dropdown-divider"></div>
-
-                                           
-                                        </div> -->
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +80,6 @@
 
 
                 <!-- end page title end breadcrumb -->
-
                 <div class="page-content-wrapper">
                     <div class="container-fluid">
                         <div class="row">
@@ -128,24 +108,27 @@
                                                     <th>Fecha</th>
                                                     <th>Observación</th>
                                                     <th>Servicio</th>
+                                                    <th>Codigo de Seguro</th>
                                                     <th>OPCIONES</th>
                                                 </tr>
                                             </thead>
-
+                                            
                                             <tbody>
-                                                <tr th:each="historialM : ${historialMedicos}" th:if="${historialM.estado != 'X'}">
+                                                <tr th:each="historialMedico : ${historialMedicos}" th:if="${historialMedico.estado != 'X'}">
 
-                                                    <td  th:text="${#dates.format(historialM.Fecha, 'dd/MMMM/yyyy')}"></td>
+                                                    <td  th:text="${#dates.format(historialMedico.Fecha, 'dd/MMMM/yyyy')}"></td>
 
-                                                    <td th:text="${historialM.Observacion}"></td> 
+                                                    <td th:text="${historialMedico.Observacion}"></td> 
 
-                                                    <td th:text="${historialM.concepto_servicio.servicio}"></td>
+                                                    <td th:text="${historialMedico.concepto_servicio.servicio}"></td>
+
+                                                    <td th:text="${historialMedico.asegurado.codigoAsegurado}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarHistorialMedico/' + historialM.idHistorialMedico}">
+                                                                    th:href="${'../../../../eliminarHistorialMedico/' + historialMedico.idHistorialMedico}">
                                                                     <button type="button"
                                                                         class="btn btn-outline-danger alertElimin btn-sm"
                                                                         style="margin: 5px; padding: 8px;">
@@ -156,14 +139,14 @@
                                                             <div class="mb-2">
                                                                 <a>
                                                                     <button type="button"
-                                                                        class="btn btn-primary btn-sm waves-effect waves-light editarButton"
-                                                                        data-toggle="modal"
-                                                                        th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-idHistorialMedico="${historialM.idHistorialMedico}"
-                                                                        onclick="buscar(this)"
-                                                                        style="margin: 5px; padding: 8px;">
-                                                                        <i class="dripicons-document-edit"></i>
-                                                                    </button>
+                                                                    class="btn btn-primary btn-sm waves-effect waves-light editarButton"
+                                                                    data-toggle="modal"
+                                                                    th:data-target="${'#bs-example-modal-center'}"
+                                                                    th:data-idhms="${historialMedico.idHistorialMedico}"
+                                                                    onclick="buscar(this)"
+                                                                    style="margin: 5px; padding: 8px;">
+                                                                    <i class="dripicons-document-edit"></i>
+                                                                </button>
                                                                 </a>
                                                             </div>
 
@@ -203,7 +186,7 @@
                         <div class="modal-body">
                             <form id="miFormulario" class="needs-validation" th:action="@{/guardarHistorialMedico}"
                                 method="post" novalidate>
-
+                                
                                 <div id="replace_historialMedico"></div>
 
                                 <div class="text-right mt-3">
@@ -234,11 +217,12 @@
 
     <script>
         function buscar(button) {
-            // Capture the value of th:data-idpersona from the clicked button
-            var idHistorialMedico = $(button).data('idHistorialMedico');
 
-            // Create the URL to request the fragment using the captured idPersona
-            var url = "../../../../historialMedico/"+idHistorialMedico;
+            var idHistorialMedico = $(button).data('idhms');
+
+            var url="";
+
+             url = "../../../../historialMedico/" + idHistorialMedico;
 
             // Load the fragment and replace content in #replace_div
             $('#replace_historialMedico').load(url, function () {

@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sisu.sisu.Service.HistorialMedicoService;
 import com.sisu.sisu.Service.HistorialMedicoServiciosService;
+import com.sisu.sisu.Service.MedicoServicioService;
+import com.sisu.sisu.entitys.HistorialMedico;
+import com.sisu.sisu.entitys.MedicoServicio;
+
 import com.sisu.sisu.entitys.HistorialMedicoServicio;
 
 @Controller
@@ -20,11 +25,11 @@ public class HistorialMedicoServiciosController {
     @Autowired
     private HistorialMedicoServiciosService historialMedicoServicioService;
 
-    // @Autowired
-    // private ConceptoServiciosService conceptoServiciosService;
+    @Autowired
+    private HistorialMedicoService historialMedicoServiciosService;
 
-    // @Autowired
-    // private AseguradoService aseguradoService;
+    @Autowired
+    private MedicoServicioService medicoServicioService;
 
 
 
@@ -43,20 +48,17 @@ public class HistorialMedicoServiciosController {
      @GetMapping(value = "/ListaHistorialMedicoServicio")
      public String listarHistorialMedicoServicios(Model model) {
 
-       model.addAttribute("historialMedicoServicio", new HistorialMedicoServicio());
         model.addAttribute("historialMedicoServicios", historialMedicoServicioService.findAll());
 
-    //    model.addAttribute("dip", new Dip());
-    //     model.addAttribute("dips", dipService.findAll());
+            model.addAttribute("historialMedico", new HistorialMedico());
+        model.addAttribute("historialMedicos", historialMedicoServiciosService.findAll());
 
-    //     model.addAttribute("grado", new GradoAcademico());
-    //     model.addAttribute("grados", gradoService.findAll());
 
+          model.addAttribute("medicoServicio", new MedicoServicio());
+        model.addAttribute("medicoServicios", medicoServicioService.findAll());
 
         return "listas/ListaHistorialMedicoServicio";
     }
-
- 
 
        /* Modificación Modal */
     @RequestMapping(value = "/historialMedicoServicios/{idHistorialMedicoServicio}")
@@ -64,6 +66,10 @@ public class HistorialMedicoServiciosController {
             HttpServletRequest request) {
 
         model.addAttribute("historialMedicoServicio", historialMedicoServicioService.findOne(idhistorialMedicoServiciosServicios));
+
+       model.addAttribute("historialMedicos", historialMedicoServiciosService.findAll());
+
+      model.addAttribute("medicoServicios", medicoServicioService.findAll());
 
         return "contentDip :: contentHistorialMedicoServicio";
 
@@ -75,6 +81,12 @@ public class HistorialMedicoServiciosController {
         model.addAttribute("historialMedicoServicio", new HistorialMedicoServicio());
         model.addAttribute("historialMedicoServicios", historialMedicoServicioService.findAll());
 
+           model.addAttribute("historialMedico", new HistorialMedico());
+        model.addAttribute("historialMedicos", historialMedicoServiciosService.findAll());
+
+
+          model.addAttribute("medicoServicio", new MedicoServicio());
+        model.addAttribute("medicoServicios", medicoServicioService.findAll());
 
         return "contentDip :: contentHistorialMedicoServicio";
     }

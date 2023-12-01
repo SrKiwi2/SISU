@@ -49,7 +49,6 @@ public class ServicioController {
     }
 
     /* modificar con el modal */
-
     @RequestMapping(value = "/Servicio/{idServicio}")
     public String getContentEstadoServicio(@PathVariable(value = "idServicio") Integer idServicio, Model model,
             HttpServletRequest request) {
@@ -57,8 +56,8 @@ public class ServicioController {
 
         return "contentRE :: contentServicio";
     }
+    
     /* Registrar con el modal */
-
     @RequestMapping(value = "/registrarServicio")
     public String getRegistroServicio(Model model) {
         model.addAttribute("Servicio", new Servicio());

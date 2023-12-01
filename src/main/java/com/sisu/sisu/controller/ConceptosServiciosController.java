@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sisu.sisu.Service.ConceptosServiciosService;
 import com.sisu.sisu.entitys.ConceptosServicios;
+import com.sisu.sisu.Service.ServicioService;
+import com.sisu.sisu.entitys.Servicio;
 
 @Controller
 public class ConceptosServiciosController {
@@ -20,13 +22,8 @@ public class ConceptosServiciosController {
     @Autowired
     private ConceptosServiciosService conceptosServiciosService;
 
-    // @Autowired
-    // private ConceptoServiciosService conceptoServiciosService;
-
-    // @Autowired
-    // private AseguradoService aseguradoService;
-
-
+    @Autowired
+    private  ServicioService servicioService;
 
     /*--------------- eliminar -----------*/
    @RequestMapping(value = "/eliminarConceptosServicios/{id_concepto_servicio}")
@@ -38,27 +35,26 @@ public class ConceptosServiciosController {
         return "redirect:/ListaConceptosServicios";
     }
 
-        // Listar HM -------------------------
+        // Listar CS -------------------------
      @GetMapping(value = "/ListaConceptosServicios")
      public String listarconceptosServicios(Model model) {
 
        model.addAttribute("conceptosServicio", new ConceptosServicios());
         model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
-    //    model.addAttribute("dip", new Dip());
-    //     model.addAttribute("dips", dipService.findAll());
-
-    //     model.addAttribute("grado", new GradoAcademico());
-    //     model.addAttribute("grados", gradoService.findAll());
+       model.addAttribute("servicio1", new Servicio());
+        model.addAttribute("servicios", servicioService.findAll());
 
         return "listas/listaConceptosServicios";
-    } 
+    }
     
        /* Modificación Modal */
     @RequestMapping(value = "/conceptosServicios/{idConceptoServicio}")
     public String getContentConceptosServicios(@PathVariable(value = "idConceptoServicio") Integer idconceptoServicio, Model model, HttpServletRequest request) {
 
         model.addAttribute("conceptosServicio", conceptosServiciosService.findOne(idconceptoServicio));
+
+        model.addAttribute("servicios", servicioService.findAll());
 
         return "contentDip :: contentConceptosServicios";
     }
@@ -71,6 +67,9 @@ public class ConceptosServiciosController {
         model.addAttribute("ConceptosServicios", conceptosServiciosService.findAll());
 
 
+       model.addAttribute("servicio1", new Servicio());
+        model.addAttribute("servicios", servicioService.findAll());
+
         return "contentDip :: contentConceptosServicios";
     }
 
@@ -80,9 +79,10 @@ public class ConceptosServiciosController {
     public String guardarConceptosServicios(@ModelAttribute ConceptosServicios conceptosServicios) {
 
         conceptosServicios.setEstado("A");
+
         conceptosServiciosService.save(conceptosServicios);
 
-        return "redirect:/ListaConceptosServicios";
+              return "redirect:/ListaConceptosServicios";
     }
 
 }

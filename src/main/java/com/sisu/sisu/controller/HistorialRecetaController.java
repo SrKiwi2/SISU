@@ -48,9 +48,8 @@ public class HistorialRecetaController {
          model.addAttribute("receta", new Receta());
         model.addAttribute("recetas", recetaService.listarTodo());
 
-        model.addAttribute("historialMedico", new HistorialMedico());
+        model.addAttribute("historialMedico", new HistorialMedico()); 
         
-
         return "listas/listaHistorialReceta";
     } 
 

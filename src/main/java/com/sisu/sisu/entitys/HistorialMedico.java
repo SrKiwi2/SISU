@@ -73,6 +73,7 @@ public HistorialMedico() {
 	// TODO Auto-generated constructor stub
 }
 
+
 public HistorialMedico(Integer idHistorialMedico, String Observacion, Date Fecha, String estado, Date registro,
 		Date modificacion, Asegurado asegurado, ConceptosServicios concepto_servicio,
 		List<HistorialReceta> historial_receta, List<HistorialMedicoServicio> historial_medico_servicio) {
@@ -184,13 +185,5 @@ public String toString() {
 			+ ", asegurado=" + asegurado + ", concepto_servicio=" + concepto_servicio + ", historial_receta="
 			+ historial_receta + ", historial_medico_servicio=" + historial_medico_servicio + "]";
 }
-
-  
-  
-
-  
-  
-  
-  
 
 }

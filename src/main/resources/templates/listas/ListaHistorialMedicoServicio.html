@@ -99,18 +99,23 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                   
-                                                    <th>Hora</th>
                                                     <th>Fecha</th>
+                                                    <th>Hora</th>
+                                                    <th>Fecha Asignación</th>
+                                                    <th>Observación</th>
                                                     <th>OPCIONES</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr th:each="historialMedico : ${historialMedicos}" th:if="${historialMedico.estado != 'X'}">
+                                                <tr th:each="historialMedicoS : ${historialMedicoServicios}" th:if="${historialMedicoS.estado != 'X'}">
                                                   
                                                     <td  th:text="${#dates.format(historialMedicoS.fecha, 'dd/MMMM/yyyy')}"></td>
                                                     <td th:text="${historialMedicoS.hora}"></td>
+
+                                                    <td th:text="${historialMedicoS.medico_servicio.fechaAsignaqcion}"></td>
+
+                                                    <td th:text="${historialMedicoS.historial_medico.Observacion}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -204,9 +209,8 @@
         function buscar(button) {
             
             var idHistorialMedicoServicio = $(button).data('idhms');
-
             
-            var url = "../../../../historialMedicoServicios/" +idHistorialMedicoServicio;
+            var url = "../../../../historialMedicoServicios/" + idHistorialMedicoServicio;
 
             // Load the fragment and replace content in #replace_div
             $('#replace_historialMedico').load(url, function () {
