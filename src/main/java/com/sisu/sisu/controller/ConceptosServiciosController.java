@@ -42,7 +42,7 @@ public class ConceptosServiciosController {
        model.addAttribute("conceptosServicio", new ConceptosServicios());
         model.addAttribute("conceptosServicios", conceptosServiciosService.findAll());
 
-       model.addAttribute("servicio1", new Servicio());
+       model.addAttribute("servicio", new Servicio());
         model.addAttribute("servicios", servicioService.findAll());
 
         return "listas/listaConceptosServicios";
@@ -67,7 +67,7 @@ public class ConceptosServiciosController {
         model.addAttribute("ConceptosServicios", conceptosServiciosService.findAll());
 
 
-       model.addAttribute("servicio1", new Servicio());
+       model.addAttribute("servicio", new Servicio());
         model.addAttribute("servicios", servicioService.findAll());
 
         return "contentDip :: contentConceptosServicios";

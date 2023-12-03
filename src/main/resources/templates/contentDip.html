@@ -34,20 +34,71 @@
         <input type="hidden" name="dip" th:field="${historialReceta.idHistorialReceta}">
         <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
         <div class="row">
+            <!-- --------------------------------- Receta--------------------------- -->
+
             <div class="col-md-4 mb-3">
-                <label for="validationCustom03">Prescripción Medica</label>
+                <label for="validationCustom03">Prescripcion</label>
                 <select class="custom-select" name="receta" required>
-                    <option value="">Selecciona una prescripción Medica</option>
-                    <th:block th:each="r: ${recetas}" th:if="${r.estado != 'X'}">
-                        <option th:value="${r.idReceta}" th:text="${r.prescripcionMedica}"></option>
+                    <option value="">Selecciona un prescripcion medica</option>
+        
+                    <th:block th:each="rs: ${recetas}" th:if="${rs.estado != 'X'}">
+        
+                        <th:block th:if="${historialReceta.receta != null}"> 
+                            <option
+                                th:if="${rs.idReceta == historialReceta.receta.idReceta}"
+                                th:value="${rs.idReceta}" th:text="${rs.prescripcionMedica}" selected></option>
+                            <option
+                                th:if="${rs.idReceta != historialReceta.receta.idReceta}"
+                                th:value="${rs.idReceta}" th:text="${rs.prescripcionMedica}"></option>
+
+                        </th:block>
+        
+                        <th:block th:if="${historialReceta.receta == null}"> 
+                            <option th:value="${rs.idReceta}" th:text="${rs.prescripcionMedica}"></option>
+                        </th:block>
+        
                     </th:block>
+        
                 </select>
-                <div class="invalid-feedback">Debes seleccionar una prescripción Medica</div>
+                <div class="invalid-feedback">Debes seleccionar un Servicio</div>
                 <div class="valid-feedback">¡Se ve bien!</div>
             </div>
+   <!-- --------------------------------- --------------------------- -->
+   <!-- --------------------------------- historial_medico--------------------------- -->
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Prescripcion</label>
+                <select class="custom-select" name="historial_medico" required>
+                    <option value="">Selecciona un prescripcion medica</option>
+        
+                    <th:block th:each="hr: ${historialMedicos}" th:if="${hr.estado != 'X'}">
+        
+                        <th:block th:if="${historialReceta.historial_medico != null}"> 
+                            <option
+                                th:if="${hr.idHistorialMedico == historialReceta.historial_medico.idHistorialMedico}"
+                                th:value="${hr.idHistorialMedico}" th:text="${hr.Observacion}" selected></option>
+                            <option
+                                th:if="${hr.idHistorialMedico != historialReceta.historial_medico.idHistorialMedico}"
+                                th:value="${hr.idHistorialMedico}" th:text="${hr.Observacion}"></option>
+                        </th:block>
+        
+                        <th:block th:if="${historialReceta.historial_medico == null}"> 
+                            <option th:value="${hr.idHistorialMedico}" th:text="${hr.Observacion}"></option>
+                        </th:block>
+        
+                    </th:block>
+        
+                </select>
+                <div class="invalid-feedback">Debes seleccionar un Servicio</div>
+                <div class="valid-feedback">¡Se ve bien!</div>
+            </div>
+ <!-- --------------------------------- --------------------------- -->
 
         </div>
     </div>
+
+<!--   -->
+
+    <!-- ----------------------------------------------------------- -->
 
     <!-- ----contentHistorialMedico----- -->
     <div th:fragment="contentHistorialMedico">

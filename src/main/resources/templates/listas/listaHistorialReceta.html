@@ -235,11 +235,11 @@
             var idDip = $(button).data('iddip');
 
             // Create the URL to request the fragment using the captured idPersona
-            var url = "../../../../dip/" + idDip;
+            var url = "../../../../historialReceta/" + idDip;
 
             // Load the fragment and replace content in #replace_div
             $('#replace_dip').load(url, function () {
-                $('#modal-form').attr('action', '/guardarCambiosDip');
+                $('#modal-form').attr('action', '/guardarCambiosHistorialReceta');
                 $('#bs-example-modal-center').modal('show');
             });
         }

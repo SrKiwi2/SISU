@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sisu.sisu.Service.HistorialMedicoService;
 import com.sisu.sisu.Service.HistorialRecetaService;
 import com.sisu.sisu.Service.RecetaService;
 import com.sisu.sisu.entitys.Receta;
@@ -25,6 +26,9 @@ public class HistorialRecetaController {
 
      @Autowired
     private RecetaService  recetaService; 
+
+         @Autowired
+    private HistorialMedicoService  historialMedicoService; 
 
      /*--------------- eliminar -----------*/
 
@@ -59,13 +63,18 @@ public class HistorialRecetaController {
             HttpServletRequest request) {
 
         model.addAttribute("historialReceta", historialRecetapService.findOne(idHistorialReceta));
+      
+          model.addAttribute("receta", new Receta());
         model.addAttribute("recetas", recetaService.listarTodo());
+
+                model.addAttribute("historial_medico", new Receta());
+        model.addAttribute("historialMedicos", historialMedicoService.findAll());
         
         return "contentDip :: contentHistorialRecetas";
 
     }
 
-    /* Registrar DIP model */
+    /* Registrar  model */
     @RequestMapping(value = "/registrarHistorialRecetas")
     public String getRegistroHistorialRecetas(Model model) {
 
@@ -74,6 +83,9 @@ public class HistorialRecetaController {
 
           model.addAttribute("receta", new Receta());
         model.addAttribute("recetas", recetaService.listarTodo());
+
+         model.addAttribute("historialMedico", new HistorialMedico());
+        model.addAttribute("historialMedicos", historialMedicoService.findAll());
 
         return "contentDip :: contentHistorialRecetas";
     } 

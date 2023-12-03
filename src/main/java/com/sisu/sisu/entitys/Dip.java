@@ -25,7 +25,6 @@ import lombok.Setter;
 @Table(name = "dip")
 public class Dip implements Serializable {
 
-
 	private static long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
