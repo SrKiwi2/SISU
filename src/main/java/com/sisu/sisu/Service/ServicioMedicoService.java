@@ -11,7 +11,7 @@ public interface ServicioMedicoService {
 
     public List<ServicioMedico> findAll(); // Muestra todos los registros
 
-    public void save(ServicioMedico ServicioMedico); // Guarda registro
+    public void save(ServicioMedico servicioMedico); // Guarda registro
 
     public ServicioMedico findOne(Integer id); // Muestra un registro
 

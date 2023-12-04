@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.sisu.sisu.Service.MedicoServicioService;
 import com.sisu.sisu.entitys.MedicoServicio;
 
@@ -41,8 +42,7 @@ public class MedicoServicioController {
     /* lista */
     @GetMapping(value = "/ListaMedicoServicioR")
     public String listarMedicoServicioR(Model model) {
-
-        model.addAttribute("medicoServicioR", medicoServicioService.findAll());
+        model.addAttribute("medicosServicio", medicoServicioService.findAll());
 
         return "listas/listaMedicoServicio";
     }
@@ -53,7 +53,7 @@ public class MedicoServicioController {
     public String getContentMedicoServicio(@PathVariable(value = "idMedicoServicio") Integer idMedicoServicio,
             Model model,
             HttpServletRequest request) {
-        model.addAttribute("medicoServicioR", medicoServicioService.findOne(idMedicoServicio));
+        model.addAttribute("medicoServicio", medicoServicioService.findAll());
 
         return "contentRE :: contentMedicoServicio";
     }
@@ -63,7 +63,7 @@ public class MedicoServicioController {
     @RequestMapping(value = "/registrarMedicoServicio")
     public String getRegistroMedicoServicio(Model model) {
         model.addAttribute("medicoServicio", new MedicoServicio());
-        model.addAttribute("medicoServicio", medicoServicioService.findAll());
+        model.addAttribute("medicosServicio", medicoServicioService.findAll());
 
         return "contentRE :: contentMedicoServicio";
     }

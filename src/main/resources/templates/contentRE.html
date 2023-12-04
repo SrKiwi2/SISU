@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <!-- ------------------------------------------------------------------------------------------ -->
+    <!-- -------------------------------------Estado Receta----------------------------------------------------- -->
 
     <div th:fragment="contentEstadoReceta">
         <input type="hidden" th:field="${estadoReceta.idEstadoReceta}">
@@ -197,6 +197,64 @@
 
         </div>
     </div>
+
+     <!-- --------------------------------  Servicio  ------------------------------------- -->
+     <div th:fragment="contentServicio">
+        <input type="hidden" th:field="${servicio.idServicio}">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Servicio</label>
+                <input type="text" class="form-control" id="validationCustom01" th:field="${servicio.servicios}" placeholder="Introduce Servicio" required >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Descripcion</label>
+                <input type="text" class="form-control" id="validationCustom01" th:field="${servicio.descripcion}" placeholder="Introduce una descripcion" required >
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+                    
+        </div>
+    </div>
+         <!-- --------------------------------  Servicio Medico  ------------------------------------- -->
+
+   
+         <div th:fragment="contentServicioMedico">
+            <input type="hidden" th:field="${servicioMedico.idServicioMedico}">
+            <div class="row">
+              
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Cantidad de Fichas</label>
+                    <input type="number" class="form-control" id="validationCustom01" th:field="${servicioMedico.cantidad_fichas}" placeholder="Cantidad de fichas" required >
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+
+    <!-- -------------------------------------Medico Servicio----------------------------------------------------- -->
+
+    <div th:fragment="contentMedicoServicio">
+        <input type="hidden" th:field="${medicoServicio.idMedicoServicio}">     
+        <div class="row">
+               <div class="col-md-4 mb-3">
+                   <label for="validationCustom01">MEDICO SERVICIO</label>
+                   <input type="date" class="form-control" id="validationCustom01" th:field="${medicoServicio.fechaAsignacion}" placeholder="fecha Asignacion" required >
+                   <div class="valid-feedback">
+                       Looks good!
+                   </div>
+               </div>
+           </div>
+       </div>
+ 
+
+
 </body>
 
 </html>

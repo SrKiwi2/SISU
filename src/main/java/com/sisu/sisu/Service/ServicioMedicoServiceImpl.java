@@ -19,8 +19,8 @@ public class ServicioMedicoServiceImpl implements ServicioMedicoService {
     }
 
     @Override
-    public void save(ServicioMedico servicio_medico) {
-        servicioMedicoDao.save(servicio_medico);
+    public void save(ServicioMedico serviciomedico) {
+        servicioMedicoDao.save(serviciomedico);
 
     }
 

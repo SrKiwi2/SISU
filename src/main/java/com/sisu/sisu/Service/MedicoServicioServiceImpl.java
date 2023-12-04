@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.sisu.sisu.Dao.MedicoServicioDao;
 import com.sisu.sisu.entitys.MedicoServicio;
 
@@ -19,8 +20,8 @@ public class MedicoServicioServiceImpl implements MedicoServicioService {
     }
 
     @Override
-    public void save(MedicoServicio medico_servicio) {
-        medicoServicioDao.save(medico_servicio);
+    public void save(MedicoServicio medicoServicio) {
+        medicoServicioDao.save(medicoServicio);
 
     }
 

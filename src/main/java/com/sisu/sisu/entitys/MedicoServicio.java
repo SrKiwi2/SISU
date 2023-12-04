@@ -18,49 +18,49 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Entity
 @Setter
 @Getter
 @Table(name = "medico_servicio")
-public class MedicoServicio implements Serializable{
-    private static long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_medico_servicio")
-    private Integer idMedicoServicio;
+public class MedicoServicio implements Serializable {
+	private static long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_medico_servicio")
+	private Integer idMedicoServicio;
 
-    @Column(name = "fecha_asignacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAsignaqcion;
+	@Column(name = "fecha_asignacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaAsignacion;
 
-    @Column(name = "estado")
-    private String estado;
+	@Column(name = "estado")
+	private String estado;
 
-    @Column(name = "registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+	@Column(name = "registro")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date registro;
 
-    @Column(name = "modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+	@Column(name = "modificacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modificacion;
 
+	// ----------------------------------------------------------------
 
-    //----------------------------------------------------------------
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idServicioMedico")
-    private ServicioMedico servicio_medico;
+	private ServicioMedico servicio_medico;
 
-     @ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersonalMedico")
-    private PersonalMedico personal_medico;
+	private PersonalMedico personal_medico;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medico_servicio", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "medico_servicio", fetch = FetchType.LAZY)
 	private List<HistorialMedicoServicio> historial_medico_servicio;
 
 	public MedicoServicio() {
@@ -68,12 +68,12 @@ public class MedicoServicio implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public MedicoServicio(Integer idMedicoServicio, Date fechaAsignaqcion, String estado, Date registro,
+	public MedicoServicio(Integer idMedicoServicio, Date fechaAsignacion, String estado, Date registro,
 			Date modificacion, ServicioMedico servicio_medico, PersonalMedico personal_medico,
 			List<HistorialMedicoServicio> historial_medico_servicio) {
 		super();
 		this.idMedicoServicio = idMedicoServicio;
-		this.fechaAsignaqcion = fechaAsignaqcion;
+		this.fechaAsignacion = fechaAsignacion;
 		this.estado = estado;
 		this.registro = registro;
 		this.modificacion = modificacion;
@@ -99,11 +99,11 @@ public class MedicoServicio implements Serializable{
 	}
 
 	public Date getFechaAsignaqcion() {
-		return fechaAsignaqcion;
+		return fechaAsignacion;
 	}
 
 	public void setFechaAsignaqcion(Date fechaAsignaqcion) {
-		this.fechaAsignaqcion = fechaAsignaqcion;
+		this.fechaAsignacion = fechaAsignaqcion;
 	}
 
 	public String getEstado() {
@@ -156,20 +156,10 @@ public class MedicoServicio implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MedicoServicio [idMedicoServicio=" + idMedicoServicio + ", fechaAsignaqcion=" + fechaAsignaqcion
+		return "MedicoServicio [idMedicoServicio=" + idMedicoServicio + ", fechaAsignacion=" + fechaAsignacion
 				+ ", estado=" + estado + ", registro=" + registro + ", modificacion=" + modificacion
 				+ ", servicio_medico=" + servicio_medico + ", personal_medico=" + personal_medico
 				+ ", historial_medico_servicio=" + historial_medico_servicio + "]";
 	}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }

@@ -10,7 +10,7 @@ import com.sisu.sisu.entitys.Servicio;
 public interface ServicioService {
     public List<Servicio> findAll(); // Muestra todos los registros
 
-    public void save(Servicio Servicio); // Guarda registro
+    public void save(Servicio servicio); // Guarda registro
 
     public Servicio findOne(Integer id); // Muestra un registro
 

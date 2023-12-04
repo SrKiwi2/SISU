@@ -25,7 +25,8 @@ public class ServicioController {
     public String RegistrarServicioR(@Validated Servicio servicio) {
         servicio.setEstado("A");
         servicioService.save(servicio);
-        return "redirect:/ListaEstadoR";
+         return "redirect:/ListaServicioR";
+        
     }
 
     /* Eliminar */
@@ -35,33 +36,35 @@ public class ServicioController {
         Servicio servicio = servicioService.findOne(idServicio);
         servicio.setEstado("X");
         servicioService.save(servicio);
-        return "redirect:/ListaServicio";
+        return "redirect:/ListaServicioR";
 
     }
 
     /* lista */
     @GetMapping(value = "/ListaServicioR")
-    public String listarEstadoR(Model model) {
+    public String listarServicioR(Model model) {
+        model.addAttribute("servicios", servicioService.findAll());
+        return "listas/listaServicioPrueba";
 
-        model.addAttribute("servicio", servicioService.findAll());
-
-        return "listas/ListaServicio";
     }
 
     /* modificar con el modal */
-    @RequestMapping(value = "/Servicio/{idServicio}")
-    public String getContentEstadoServicio(@PathVariable(value = "idServicio") Integer idServicio, Model model,
-            HttpServletRequest request) {
-        model.addAttribute("Servicio", servicioService.findOne(idServicio));
 
+    @RequestMapping(value = "/servicio/{idServicio}")
+    public String getContentServicio(@PathVariable(value = "idServicio") Integer idServicio, Model model,
+            HttpServletRequest request) {
+
+                System.out.println("ESTA LLEGNADO HASTA AQUI+++++++++++++++++++++++++++");
+        model.addAttribute("servicio", servicioService.findOne(idServicio));
+System.out.println("ESTA LLEGNADO HASTA AQUI+++++++++++++++++++++++++++");
         return "contentRE :: contentServicio";
     }
     
     /* Registrar con el modal */
     @RequestMapping(value = "/registrarServicio")
     public String getRegistroServicio(Model model) {
-        model.addAttribute("Servicio", new Servicio());
-        model.addAttribute("Servicio", servicioService.findAll());
+        model.addAttribute("servicio", new Servicio());
+        model.addAttribute("servicios", servicioService.findAll());
 
         return "contentRE :: contentServicio";
     }
