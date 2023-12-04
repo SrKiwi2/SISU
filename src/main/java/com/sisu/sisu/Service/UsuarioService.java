@@ -19,6 +19,6 @@ public interface UsuarioService {
 
     Usuario buscarUsuarioPorId(Integer id);
     
-    Usuario loguearse( String usario,String contrasenia);
+    Usuario loguearse( String usuario, String clave);
 
 }

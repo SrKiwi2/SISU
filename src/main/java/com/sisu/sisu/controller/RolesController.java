@@ -54,7 +54,6 @@ public class RolesController {
         model.addAttribute("roles", rolesService.findAll());
                 return "redirect:/ListaDeRoles";
 
-
             }
 
         } else {

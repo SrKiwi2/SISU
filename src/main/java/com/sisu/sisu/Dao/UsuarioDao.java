@@ -11,6 +11,6 @@ public interface UsuarioDao extends CrudRepository<Usuario, Integer> {
     Usuario buscarUsuarioPorId(Integer id);
 
     @Query("select d from Usuario d where d.apodo=?1 and d.clave=?2 and d.estado_usuario='A'")
-	Usuario loguearse( String usario,String contrasenia);
+	Usuario loguearse( String usuario,String clave);
 
 }

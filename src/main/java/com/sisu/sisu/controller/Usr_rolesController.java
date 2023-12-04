@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sisu.sisu.Service.IRolesService;
 import com.sisu.sisu.Service.UsrRolesService;
 import com.sisu.sisu.Service.UsuarioService;
-import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.Roles;
 import com.sisu.sisu.entitys.UsrRoles;
 import com.sisu.sisu.entitys.Usuario;

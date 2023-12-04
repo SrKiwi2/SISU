@@ -44,10 +44,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario loguearse(String usario, String contrasenia) {
+    public Usuario loguearse(String usuario, String clave) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loguearse'");
+        return usuarioDao.loguearse(usuario, clave);
     }
 
-
+    
+    
 }

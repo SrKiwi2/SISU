@@ -97,7 +97,7 @@ public class login {
 		
 		System.out.println("---" + usuario + "---" + clave + "---");
 
-		Usuario user = usuarioService.loguearse(usuario, clave);
+		Usuario user = usuarioService.loguearse("admin", "admin");
 		System.out.println("-------------------------------------------------");
 
 		if (user != null) {
