@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sisu.sisu.Service.AseguradoService;
+import com.sisu.sisu.Service.IAseguradoService;
 import com.sisu.sisu.Service.ConceptosServiciosService;
 import com.sisu.sisu.Service.HistorialMedicoService;
 import com.sisu.sisu.entitys.HistorialMedico;
@@ -28,7 +28,7 @@ public class HistorialMedicoController {
     private ConceptosServiciosService conceptosServiciosService;
 
     @Autowired
-    private AseguradoService aseguradoService;
+    private IAseguradoService aseguradoService;
 
 
 

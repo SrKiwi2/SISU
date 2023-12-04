@@ -25,5 +25,7 @@ public interface IAseguradoService {
 
     Asegurado findByPersonaCi(String personaCod);
 
+    Asegurado obtenerIdAsegurado(@Param("id") Integer id);
+
     Asegurado findAseguradoByPersonaId(Integer personaId);
 }

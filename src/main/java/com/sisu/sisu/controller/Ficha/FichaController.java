@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sisu.sisu.Service.AseguradoService;
 import com.sisu.sisu.Service.FichaService;
 import com.sisu.sisu.Service.HistorialSeguroService;
+import com.sisu.sisu.Service.IAseguradoService;
 import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.entitys.Asegurado;
 import com.sisu.sisu.entitys.Ficha;
@@ -26,7 +26,7 @@ public class FichaController {
     private IPersonaService personaService;
 
     @Autowired
-    private AseguradoService aseguradoService;
+    private IAseguradoService aseguradoService;
 
     @RequestMapping(value = "/vistaF", method = RequestMethod.GET)
 	public String vistaFicha(Model model ) { 

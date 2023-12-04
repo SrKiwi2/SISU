@@ -49,6 +49,7 @@ public class FichaSisuController {
 		System.out.println("EL RU DEL UNIVERSITARIO ES :" + ru);
 
 		Map<String, Object> requests = new HashMap<String, Object>();
+		
 		try{
 
 			requests.put("ru", ru);

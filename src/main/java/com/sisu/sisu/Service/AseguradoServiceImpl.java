@@ -46,5 +46,11 @@ public class AseguradoServiceImpl implements IAseguradoService {
         return aseguradoDao.findAseguradoByPersonaId(personaId);
     }
 
+    @Override
+    public Asegurado obtenerIdAsegurado(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerIdAsegurado'");
+    }
+
     
 }

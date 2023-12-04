@@ -97,7 +97,7 @@ public class login {
 		
 		System.out.println("---" + usuario + "---" + clave + "---");
 
-		Usuario user = usuarioService.loguearse("admin", "admin");
+		Usuario user = usuarioService.loguearse(usuario, clave);
 		System.out.println("-------------------------------------------------");
 
 		if (user != null) {
@@ -194,8 +194,10 @@ public class login {
 		sesion.setAttribute("sessionlPadres", lHijos);
 		sesion.setAttribute("usrRolSession", usrRol);
 
-		System.err.append("Buen Dia Estrellitas la Tierra les Dice Hola6");
 
+		System.out.println("/--------------------------------------------------------------/");
+		System.err.append("Buen Dia Estrellitas la Tierra les Dice Hola6");
+		System.out.println("/--------------------------------------------------------------/");
 		//return "formularios/Contenido";
 		return "index/inicio";
 	}
@@ -212,12 +214,10 @@ public String Cerrar(HttpServletRequest request, HttpServletResponse response) {
 				
 				
 				System.out.print(request.getSession().getAttribute("estado_user"));
-				
-						
+				System.out.println("/--------------------------------------------------------------/");
+				System.out.println("HOLA ESTRELLITAS EL MUNDO LES DICE HOLA");
+				System.out.println("/--------------------------------------------------------------/");		
 			}
-			
-			System.out.println("HOLA ESTRELLITAS EL MUNDO LES DICE HOLA");
- 
     return "index/login";
 
 }
