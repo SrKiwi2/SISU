@@ -87,32 +87,31 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form class="needs-validation" action="/guardarEnlaceHijo2" method="post"
-                                            novalidate>
+                                        <form id="form2" class="needs-validation" action="/guardarEnlaceHijo2" method="post" novalidate>
                                             <input type="hidden" th:field="${enlace.idEnlace}">
                                             <h4 class="header-title">INTRODUZCA LOS SIGUIENTES DATOS</h4>
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom03">Nombre del enlace Hijo</label>
-                                                    <input type="text" class="form-control" name="enlace"
-                                                        id="validationCustom03" th:field="${enlace.nombre_enlace}"
+                                                    <label for="validationCustom04">Nombre del enlace Hijo</label>
+                                                    <input type="text" class="form-control" name="enlace" id="validationCustom04" th:field="${enlace.nombre_enlace}"
                                                         pattern="[A-Za-záéíóúüñÑ\s]+"
                                                         title="Solo se permiten letras y espacios, sin números"
                                                         placeholder="nombre enlace hijo" required>
-                                                    <div class="" th:if="${mensaje2!=null}">
+                                                    <!-- <div class="" th:if="${mensaje2!=null}">
                                                         <div class="alert alert-danger" role="alert">
                                                             <p th:text="${mensaje2}"></p>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="valid-feedback">
                                                         Looks good!
                                                     </div>
                                                 </div> 
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom03">Ruta del enlace</label>
-                                                    <input type="text" class="form-control" id="miInput" name="enlace"
-                                                        th:field="${enlace.ruta}"
-                                                        placeholder="digite la ruta del enlace" required>
+                                                    <label for="validationCustom04">Ruta del enlace</label>
+                                                    <input type="text" class="form-control" name="enlace"  id="validationCustom04" th:field="${enlace.ruta}"
+                                                    pattern="[A-Za-záéíóúüñÑ\s]+"
+                                                    title="Solo se permiten letras y espacios, sin números" 
+                                                    placeholder="digite la ruta del enlace" required>
                                                     <div class="" th:if="${mensaje2!=null}">
                                                         <div class="alert alert-danger" role="alert">
                                                             <p th:text="${mensaje2}"></p>
@@ -125,7 +124,7 @@
 
                                                 <div class="col-md-4 mb-3">
                                                     <label>Enlaces Padres</label>
-                                                    <select class="custom-select" name="idEnlace2" required>
+                                                    <select class="custom-select" name="idEnlace2" id="validationCustom04" required>
                                                         <option value="">Seleccione un enlace padre</option>
                                                         <th:block th:each="es : ${listaEnlace}">
                                                             <option th:value="${es.idEnlace}"
@@ -136,7 +135,7 @@
                                                 </div>
                                             </div>                                        
                                             <!-- <button class="btn btn-primary" type="submit">Registrar</button> -->
-                                            <div class="p-3">
+                                            <div class="col-xl-3 col-lg-4 col-sm-6 mb-2">
                                                 <p></p>
                                                 <button type="submit"
                                                     class="btn btn-primary waves-effect waves-light">Registrar</button>

@@ -37,45 +37,260 @@ File: Sweetalert Js File
             )
         });
 
-        //Success Message
+        // Escucha el evento de envío del formulario
+        // $('#myForm').submit(function (event) {
+        //     // Previene el envío predeterminado del formulario
+        //     event.preventDefault();
+
+        //     // Muestra el mensaje de éxito
+        //     Swal.fire(
+        //         {
+        //             title: 'Good job!',
+        //             text: 'You clicked the button!',
+        //             icon: 'success',
+        //             showCancelButton: true,
+        //             confirmButtonColor: '#3051d3',
+        //             cancelButtonColor: "#f46a6a"
+        //         }
+        //     );
+        // });
+
+
+        // Success Message
+        // $(document).ready(function () {
+        //     $("#sa-success2").click(function (event) {
+        //         // Prevenir el comportamiento predeterminado del botón
+        //         event.preventDefault();
+        
+        //         // Mostrar cuadro de confirmación
+        //         Swal.fire({
+        //             title: '¿Estás seguro de registrar?',
+        //             text: 'Esta acción no se puede deshacer.',
+        //             icon: 'warning',
+        //             showCancelButton: true,
+        //             confirmButtonColor: '#3085d6',
+        //             cancelButtonColor: '#d33',
+        //             confirmButtonText: 'Sí, registrar'
+        //         }).then((result) => {
+        //             if (result.isConfirmed) {
+        //                 // Enviar el formulario si la confirmación es exitosa
+        //                 $("#form1").submit();
+        //             } else {
+        //                 console.log("Usuario hizo clic en 'Cancelar'");
+        //             }
+        //         });
+        //     });
+        // });
+        //----------------------------- este es de Abraham---------------------------------------------------------------------
+
+        // $(document).ready(function () {
+        //     $('#form1').submit(function (event) {
+        //         event.preventDefault(); // Evita el envío del formulario por defecto
+
+        //         var form = $(this);
+        //         var submitBtn = form.find('button[type="submit"]'); // Encuentra el botón de envío del formulario
+        //         submitBtn.prop('disabled', true); // Desactiva el botón
+
+        //         var url = form.attr('action');
+        //         var formData = form.serialize(); // Serializa los datos del formulario
+
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: url,
+        //             data: formData,
+        //             success: function (data) {
+        //                 console.log(data);
+        //                 if (data != 0) {
+        //                     Swal.fire({
+        //                         title: "Información Registrada",
+        //                         text: "Registro Guardado Exitosamente",
+        //                         type: "success",
+        //                         confirmButtonClass: 'btn btn-success',
+        //                         buttonsStyling: false,
+        //                     });
+        //                 } else {
+        //                     if (data == 0) {
+        //                         Swal.fire({
+        //                             title: "Información ya Registrada",
+        //                             text: "Ya se Encuentra un Registro con el mismo NOMBRE",
+        //                             type: "error",
+        //                             confirmButtonClass: 'btn btn-warning',
+        //                             buttonsStyling: false,
+        //                         });
+        //                     }
+        //                 }
+        //                 submitBtn.prop('disabled', false); // Reactiva el botón después de recibir la respuesta
+        //                 form[0].reset(); // Limpia los datos del formulario                        
+                       
+        //             },
+        //             error: function () {
+        //                 submitBtn.prop('disabled', false); // Reactiva el botón en caso de error
+        //             }
+        //         });
+                
+        //     });
+        // });
+        //-----------------------------------ALERTA REGISTRAR FORMULARIO PADRE---------------------------------------------------------------
+
         $(document).ready(function () {
-            $("#sa-success2" ).click(function () {
-                // Realizar validación del formulario
-                if ($("#form1")[0].checkValidity()) {
-                    // Enviar el formulario si la validación es exitosa
-                    $.ajax({
-                        type: "post",
-                        url: "/guardarEnlace",
-                        data: $("#form1").serialize(),
-                        success: function (response) {
-                            // Mostrar mensaje de éxito con SweetAlert
+            $('#form1').submit(function (event) {
+                event.preventDefault(); // Evita el envío del formulario por defecto
+        
+                var form = $(this);
+                var submitBtn = form.find('button[type="submit"]'); // Encuentra el botón de envío del formulario
+                var enlaceInput = form.find('#validationCustom03'); // Encuentra el campo de entrada por ID
+                var enlaceValue = enlaceInput.val().trim(); // Obtiene el valor del campo de entrada y elimina espacios en blanco
+        
+                if (enlaceValue === '') {
+                    // Si el campo está vacío, muestra un mensaje de error
+                    Swal.fire({
+                        title: "Error",
+                        text: "Por favor, complete todos los campos correctamente",
+                        type: "error",
+                        confirmButtonClass: 'btn btn-danger',
+                        buttonsStyling: false,
+                    });
+                    return; // Detiene la ejecución del script si el campo está vacío
+                }
+        
+                submitBtn.prop('disabled', true); // Desactiva el botón
+        
+                var url = form.attr('action');
+                var formData = form.serialize(); // Serializa los datos del formulario
+        
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: formData,
+                    success: function (data) {
+                        console.log(data);
+                        if (data != 0) {
                             Swal.fire({
-                                title: 'Guardado!',
-                                text: 'El registro se ha guardado correctamente.',
-                                icon: 'success',
+                                title: "Información Registrada",
+                                text: "Registro Guardado Exitosamente",
+                                type: "success",
+                                confirmButtonClass: 'btn btn-success',
+                                buttonsStyling: false,
                             });
-                        },
-                        error: function (error) {
-                            // Mostrar mensaje de error con SweetAlert
+                        } else {
+                            if (data == 0) {
+                                Swal.fire({
+                                    title: "Información ya Registrada",
+                                    text: "Ya se Encuentra un Registro con el mismo NOMBRE",
+                                    type: "error",
+                                    confirmButtonClass: 'btn btn-warning',
+                                    buttonsStyling: false,
+                                });
+                            }
+                        }
+                        submitBtn.prop('disabled', false); // Reactiva el botón después de recibir la respuesta
+                        form[0].reset(); // Limpia los datos del formulario
+                    },
+                    error: function () {
+                        submitBtn.prop('disabled', false); // Reactiva el botón en caso de error
+                    }
+                });
+            });
+        });
+        
+               
+    //-----------------------------------ALERTA REGISTRAR FORMULARIO HIJO---------------------------------------------------------------
+
+    $(document).ready(function () {
+        $('#form2').submit(function (event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+    
+            var form = $(this);
+            var submitBtn = form.find('button[type="submit"]'); // Encuentra el botón de envío del formulario
+            var enlaceInput = form.find('#validationCustom04'); // Encuentra el campo de entrada por ID
+            var enlaceValue = enlaceInput.val().trim(); // Obtiene el valor del campo de entrada y elimina espacios en blanco
+            var selectInput = form.find('select[name="idEnlace2"]');
+            var selectValue = selectInput.val();
+    
+            if (enlaceValue === '' || selectValue === '') {
+                // Si algún campo está vacío, muestra un mensaje de error
+                Swal.fire({
+                    title: "Error",
+                    text: "Por favor, complete todos los campos correctamente",
+                    type: "error",
+                    confirmButtonClass: 'btn btn-danger',
+                    buttonsStyling: false,
+                });
+                return; // Detiene la ejecución del script si algún campo está vacío
+            }
+    
+            submitBtn.prop('disabled', true); // Desactiva el botón
+    
+            var url = form.attr('action');
+            var formData = form.serialize(); // Serializa los datos del formulario
+    
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                success: function (data) {
+                    console.log(data);
+                    if (data != 0) {
+                        Swal.fire({
+                            title: "Información Registrada",
+                            text: "Registro Guardado Exitosamente",
+                            type: "success",
+                            confirmButtonClass: 'btn btn-success',
+                            buttonsStyling: false,
+                        });
+                    } else {
+                        if (data == 0) {
                             Swal.fire({
-                                title: 'Error!',
-                                text: 'Hubo un error al intentar guardar el registro.',
-                                icon: 'error',
+                                title: "Información ya Registrada",
+                                text: "Ya se Encuentra un Registro con el mismo NOMBRE",
+                                type: "error",
+                                confirmButtonClass: 'btn btn-warning',
+                                buttonsStyling: false,
                             });
                         }
-                    });
-                } else { 
-                    // Mostrar mensaje de error si la validación falla
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Por favor, complete todos los campos correctamente.',
-                        icon: 'error',
-                    });
+                    }
+                    submitBtn.prop('disabled', false); // Reactiva el botón después de recibir la respuesta
+                    form[0].reset(); // Limpia los datos del formulario
+                },
+                error: function () {
+                    submitBtn.prop('disabled', false); // Reactiva el botón en caso de error
+                }
+            });
+        });
+    });
+    
+
+        $('#sa-success2').click(function () {
+            Swal.fire({
+                title: '¿Estás seguro de registrar?',
+                text: 'Esta acción no se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3051d3',
+                cancelButtonColor: '#f46a6a',
+                confirmButtonText: 'Sí, registrar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Envía el formulario si el usuario hizo clic en "Sí, registrar"
+                    $("#form1").submit();
+                }
+            });
+        });
+
+        $('#Enviar').click(function () {
+            Swal.fire({
+                title: 'Registrado con éxito. Por favor, confirme el registro',
+                type: 'success',
+                confirmButtonText: 'Sí, registrar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Envía el formulario si el usuario hizo clic en "Sí, registrar"
+                    $("#form1").submit();
                 }
             });
         });
         
-
+        
         //Warning Message
         $('#sa-warning').click(function () {
             Swal.fire({
