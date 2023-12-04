@@ -53,8 +53,6 @@ public class ServicioController {
     @RequestMapping(value = "/servicio/{idServicio}")
     public String getContentServicio(@PathVariable(value = "idServicio") Integer idServicio, Model model,
             HttpServletRequest request) {
-
-                System.out.println("ESTA LLEGNADO HASTA AQUI+++++++++++++++++++++++++++");
         model.addAttribute("servicio", servicioService.findOne(idServicio));
 System.out.println("ESTA LLEGNADO HASTA AQUI+++++++++++++++++++++++++++");
         return "contentRE :: contentServicio";
