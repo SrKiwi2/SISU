@@ -55,7 +55,7 @@ public class UsuarioController {
         return "listas/listaUs";
 
     }
-
+// 
     // -------------------------EDITAR---------------------------------------
 
     @GetMapping(value = "/editarUs/{idUsuario}")

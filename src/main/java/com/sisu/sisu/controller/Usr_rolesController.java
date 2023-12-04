@@ -2,7 +2,8 @@ package com.sisu.sisu.controller;
 
 
 import java.util.Date;
-import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sisu.sisu.Service.IRolesService;
 import com.sisu.sisu.Service.UsrRolesService;
 import com.sisu.sisu.Service.UsuarioService;
-import com.sisu.sisu.entitys.Dip;
+import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.Roles;
 import com.sisu.sisu.entitys.UsrRoles;
 import com.sisu.sisu.entitys.Usuario;
@@ -40,13 +41,10 @@ public class Usr_rolesController {
     @GetMapping(value = "/ListaUsr")
     public String listaUs(Model model, @Validated UsrRoles usrRoles) {
 
-        model.addAttribute("usrRoles", new UsrRoles());
         model.addAttribute("usrroles1", usrrolesservice.findAll());
 
-        model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
 
-        model.addAttribute("rol", new Roles());
         model.addAttribute("roles", iRolesService.findAll());
 
         return "listas/ListaUsr";
@@ -60,26 +58,21 @@ public class Usr_rolesController {
     public String asignacion(Model model, @PathVariable("idUsuario") Integer idUsuario) {
 
         System.out.println("+++++++++++++++++++++++++1");
-
         Usuario usuario = usuarioService.findOne(idUsuario);
 
         if (usuario != null) {
             System.out.println(
-                    " no ES NULO " + "-" + usuario.getPersona().getNombres() + usuario.getPersona().getApMaterno()
-                            + usuario.getPersona().getDireccion() + usuario.getPersona().getEstado());
+                    "NO ES NULO, Y SE YAMA " + "-" + usuario.getPersona().getNombres() + "-" + usuario.getPersona().getApMaterno()
+                            + "-" + usuario.getPersona().getDireccion()+  "-" + usuario.getPersona().getEstado());
         } else {
             System.out.println("es nulo");
         }
-
-        // System.out.println("+++++++++++++++++++++++++2"+usuario.getPersona().getNombres()+usuario.getPersona().getApMaterno()+usuario.getPersona().getDireccion()+usuario.getPersona().getEstado());
-
         usuario.setEstado_usuario("A");
         System.out.println("+++++++++++++++++++++++++3");
         model.addAttribute("usuario", new Usuario());
         System.out.println("+++++++++++++++++++++++++4");
         model.addAttribute("usuarios", usuario);
         System.out.println("+++++++++++++++++++++++++5");
-
         model.addAttribute("roles", iRolesService.findAll());
         System.out.println("el tamaño de la lista es" + iRolesService.findAll().size());
 
@@ -112,29 +105,6 @@ public class Usr_rolesController {
         return "listas/ListaUsr";
     }
 
-    // @GetMapping (value = "/eliminarUsr/{idUsrRol}")
-    // private String eliminarUsr(@PathVariable("idUsrRol") Integer idUsrRol){
-
-    //     UsrRoles usrRoles = usrrolesservice.findOne(idUsrRol);
-
-    //     usrRoles.setEstado("X");
-
-    //     usrrolesservice.save(usrRoles);
-
-    //     return "redirect:listas/ListaUsr";
-    // }
-
-
-
-    // @RequestMapping(value = "/eliminarDip/{id_dip}")
-    // public String eliminarDip(@PathVariable("id_dip") Integer id_dip) {
-
-    //     Dip dip = iDipService.findOne(id_dip);
-    //     dip.setEstado("X");
-    //     iDipService.save(dip);
-    //     return "redirect:/ListasDip";
-
-    // }
 
     @RequestMapping(value = "eliminarUsr/{idUsrRol}")
     private String eliminarUsr(@PathVariable("idUsrRol") Integer idUsrRol){
@@ -145,5 +115,26 @@ public class Usr_rolesController {
     }
 
 
+    @GetMapping(value = "/cont")
+    public String Content(Model model){
+
+        System.out.println("Holas:");
+        model.addAttribute("roles", iRolesService.findAll());
+
+        return "content/contentInfo :: content1";
+    }
+
+
+    //metodo que muuesta datos del usuario, los roles que tiene y los lista los que se les puede asignar mas
+
+    @GetMapping(value = "/VerificarRol")
+    public String verificarUsr(Model model, HttpServletRequest request , @RequestParam("idUsuario") Integer idUsuario, 
+            @RequestParam(name = "solicitudesSeleccionadas", required = false) Integer[] solicitudesSeleccionadas){
+        System.out.println("Se esta obteniendo al usuario:" + idUsuario);
+
+        model.addAttribute("usuarios", usuarioService.findOne(idUsuario));
+
+        return "listas/UsrEdit";
+    }
 
 }

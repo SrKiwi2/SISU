@@ -15,6 +15,9 @@
         type="text/css" />
     <link href="../../../../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
         type="text/css" />
+<!-- AZKJBEFLSHGSBGV -->
+        <link href="../../../../assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
 
     <!-- Responsive datatable examples -->
     <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
@@ -48,9 +51,9 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h4 class="page-title mb-1">Datos de prueva de Personadhdchdfhs</h4>
+                                <h4 class="page-title mb-1">Datos de prueva de usuario</h4>
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tabla</a></li>
+                                    <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">Tabla</a></li> -->
                                     <li class="breadcrumb-item active">Datos de Personas</li>
                                 </ol>
                             </div>
@@ -82,17 +85,14 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Buttons example</h4>
+                                        <h4 class="header-title">Tabla informativa</h4>
 
-                                        <p class="card-title-desc">The Buttons extension for DataTables</p>
+                                        <p class="card-title-desc">Informacion del usuario</p>
                                         <div class="text-right mb-3">
-                                            <button type="button"
-                                                class="btn btn-primary btn-sm waves-effect waves-light"
-                                                onclick="NuevoRegistro()">Registrar
-                                            </button>
                                         </div>
                                         <form method="post" th:action="@{../../../../obtenerrol}">
-                                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap botonesH"
+                                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th>Nombre</th>
@@ -110,7 +110,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr th:each ="u : ${usuarios}">
+                                                    <tr th:each="u : ${usuarios}">
                                                         <td th:text="${u.Persona.nombres}"></td>
                                                         <td th:text="${u.persona.apPaterno}"></td>
                                                         <td th:text="${u.persona.apMaterno}"></td>
@@ -123,31 +123,20 @@
                                                         <td th:text="${u.persona.direccion}"></td>
                                                         <td th:text="${u.persona.celular}"></td>
                                                         <td>
-                                                            <div class="row justify-content-center">
-                                                                
-                                                                
-        
-                                                                
-                                                            </div>
-                                                            <button type="submit">elegir rol</button>
-
+                                                            <!-- logica y funcuion para elegir rol -->
+                                                            <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">elegir rol</button>
+                                            
                                                             <div th:each="solicitud : ${roles}" th:if="${solicitud.estado eq     'A'}">
-                                                                <input type="checkbox" th:id="${solicitud.idRol}"  th:name="solicitudesSeleccionadas" th:value="${solicitud.idRol}" />
+                                                                <input type="checkbox" th:id="${solicitud.idRol}" th:name="solicitudesSeleccionadas"
+                                                                    th:value="${solicitud.idRol}" />
                                                                 <label th:for="${solicitud.idRol}" th:text="${solicitud.rol}"></label><br />
                                                             </div>
                                                             <input type="hidden" th:field="${usuarios.idUsuario}">
-                                                            <!-- <input type="hidden" th:field="${roles.idRol}"> -->
-
                                                         </td>
-
-    
-    
-                                                       
-                                                        <tr>
-                                                        </tr>
+                                                    <tr>
+                                                    </tr>
                                                     </tr>
                                                 </tbody>
-
                                             </table>
                                             </form>
                                         </div>

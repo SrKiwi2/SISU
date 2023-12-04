@@ -27,28 +27,28 @@ import lombok.Setter;
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
 
-  private static long serialVersionUID = 1L;
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id_usuario")
-  private Integer idUsuario;
+	private static long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_usuario")
+	private Integer idUsuario;
 
-  @Column(name = "apodo")
-  private String apodo;
+	@Column(name = "apodo")
+	private String apodo;
 
-  @Column(name = "clave")
-  private String clave;
+	@Column(name = "clave")
+	private String clave;
 
-  @Column(name = "estado")
-  private String estado_usuario;
+	@Column(name = "estado")
+	private String estado_usuario;
 
-  @Column(name = "registro")
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date registro;
+	@Column(name = "registro")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date registro;
 
-  @Column(name = "modificacion")
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date modificacion;
+	@Column(name = "modificacion")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modificacion;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_usuario", fetch = FetchType.LAZY)
     private List<Menu> menus;
@@ -57,106 +57,99 @@ public class Usuario implements Serializable {
     return apodo;
   }
 
-  // --------------------------RELACION--------------------------------------
+	// --------------------------RELACION--------------------------------------
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "idPersona")
-  private Persona persona;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idPersona")
+	private Persona persona;
 
-public Usuario() {
-	super();
-	// TODO Auto-generated constructor stub
-}
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.LAZY)
+    private List<UsrRoles> usr_Roles;
 
-public Usuario(Integer idUsuario, String apodo, String clave, String estado_usuario, Date registro, Date modificacion,
-		Persona persona) {
-	super();
-	this.idUsuario = idUsuario;
-	this.apodo = apodo;
-	this.clave = clave;
-	this.estado_usuario = estado_usuario;
-	this.registro = registro;
-	this.modificacion = modificacion;
-	this.persona = persona;
-}
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-public static long getSerialversionuid() {
-	return serialVersionUID;
-}
+	public Usuario(Integer idUsuario, String apodo, String clave, String estado_usuario, Date registro,
+			Date modificacion,
+			Persona persona) {
+		super();
+		this.idUsuario = idUsuario;
+		this.apodo = apodo;
+		this.clave = clave;
+		this.estado_usuario = estado_usuario;
+		this.registro = registro;
+		this.modificacion = modificacion;
+		this.persona = persona;
 
-public static void setSerialversionuid(long serialversionuid) {
-	serialVersionUID = serialversionuid;
-}
+	}
 
-public Integer getIdUsuario() {
-	return idUsuario;
-}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
-public void setIdUsuario(Integer idUsuario) {
-	this.idUsuario = idUsuario;
-}
+	public static void setSerialversionuid(long serialversionuid) {
+		serialVersionUID = serialversionuid;
+	}
 
-public String getClave() {
-	return clave;
-}
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
 
-public void setClave(String clave) {
-	this.clave = clave;
-}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-public String getEstado_usuario() {
-	return estado_usuario;
-}
+	public String getClave() {
+		return clave;
+	}
 
-public void setEstado_usuario(String estado_usuario) {
-	this.estado_usuario = estado_usuario;
-}
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
 
-public Date getRegistro() {
-	return registro;
-}
+	public String getEstado_usuario() {
+		return estado_usuario;
+	}
 
-public void setRegistro(Date registro) {
-	this.registro = registro;
-}
+	public void setEstado_usuario(String estado_usuario) {
+		this.estado_usuario = estado_usuario;
+	}
 
-public Date getModificacion() {
-	return modificacion;
-}
+	public Date getRegistro() {
+		return registro;
+	}
 
-public void setModificacion(Date modificacion) {
-	this.modificacion = modificacion;
-}
+	public void setRegistro(Date registro) {
+		this.registro = registro;
+	}
 
-public Persona getPersona() {
-	return persona;
-}
+	public Date getModificacion() {
+		return modificacion;
+	}
 
-public void setPersona(Persona persona) {
-	this.persona = persona;
-}
+	public void setModificacion(Date modificacion) {
+		this.modificacion = modificacion;
+	}
 
-public void setApodo(String apodo) {
-	this.apodo = apodo;
-}
+	public Persona getPersona() {
+		return persona;
+	}
 
-@Override
-public String toString() {
-	return "Usuario [idUsuario=" + idUsuario + ", apodo=" + apodo + ", clave=" + clave + ", estado_usuario="
-			+ estado_usuario + ", registro=" + registro + ", modificacion=" + modificacion + ", persona=" + persona
-			+ "]";
-}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
 
-  // @ManyToOne(fetch = FetchType.LAZY)
-  // @JoinColumn(name = "idPersona")
-  // private Persona persona;
-  
-  
-  
-  
-  
-  
-  
-  
+	public void setApodo(String apodo) {
+		this.apodo = apodo;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", apodo=" + apodo + ", clave=" + clave + ", estado_usuario="
+				+ estado_usuario + ", registro=" + registro + ", modificacion=" + modificacion + ", persona=" + persona
+				+ "]";
+	}
 
 }

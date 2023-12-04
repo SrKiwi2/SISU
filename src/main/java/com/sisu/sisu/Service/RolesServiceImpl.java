@@ -33,5 +33,16 @@ public class RolesServiceImpl implements IRolesService {
     public void delete(Integer id) {
         rolesDao.deleteById(id);
     }
-    
+
+    @Override
+    public Roles validarRoles(String rol) {
+        return rolesDao.validarRoles(rol);
+    }
+
+
 }
+
+   
+
+    
+
