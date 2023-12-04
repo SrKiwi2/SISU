@@ -25,7 +25,9 @@
             <div class="col-xl-8 col-sm-8 d-flex align-items-center justify-content-center">
                 <div class="card bg-light">
                     <div class="card-body p-4">   
-                        <form action="universitario" method="POST">
+                        <form action="../../../../saveUniveristario" method="POST">
+                            <input type="hidden" th:field="${personaUniversitaria.idPersona}">
+                            <input type="hidden" id="codigoUniversitario" name="codigoUniversitario" value="${codigoUniversitario}" />
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="nombreUniversitario">Nombre del Universitario:</label>

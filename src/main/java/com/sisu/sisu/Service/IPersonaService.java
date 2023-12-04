@@ -17,7 +17,13 @@ public interface IPersonaService {
     
     public void delete(Integer id); // Elimina registro
 
-    public Persona findByCi(String ci);
+    List<Persona> findByCii(String ci);
+
+    Persona findByCi(String ci);
+
+    Persona findByCiA(String ci);
+
+    // Persona findByCiD(String ci);
 
     Persona validarCI(@Param("ci") String ci);
 }

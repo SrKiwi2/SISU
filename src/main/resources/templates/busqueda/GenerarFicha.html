@@ -183,13 +183,11 @@
                                                                             </h6>
                                                                         </div>
                                                                     </a>
-                                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                                                        data-parent="#accordionExample3">
+                                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample3">
                                                                         <div class="card-body">
                                                                             <div class="modal-body">
                                                                                 <div class="input-group mb-3">
-                                                                                    <input type="text" id="codigoParticularInput" class="form-control"
-                                                                                        placeholder="Código particular">
+                                                                                    <input type="text" id="codigoParticularInput" class="form-control" placeholder="Código particular">
                                                                                     <div class="input-group-append">
                                                                                         <button type="button" class="btn btn-primary" onclick="cargarInformacion3()">Cargar
                                                                                             Información</button>
@@ -220,131 +218,89 @@
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="nombreUniversitario">Nombre
                                                                                     del Universitario:</label>
-                                                                                <input type="text"
-                                                                                    id="nombreUniversitario"
-                                                                                    name="nombreUniversitario"
-                                                                                    class="form-control"
-                                                                                    th:value="${nombreUniversitario}"
-                                                                                    readonly>
+                                                                                <input type="text" id="nombreUniversitario" name="nombreUniversitario" class="form-control"
+                                                                                    th:value="${nombreUniversitario}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
-
+                                                                    
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="urlImagen">Foto
                                                                                     Univeristario</label>
                                                                                 <!-- <img src="${urlImagen}" alt="Foto del Univeristario" class="ing-fluid"> -->
-                                                                                <img src="assets/images/person-placeholder.webp"
-                                                                                    style="width: 25%; height: auto;"
-                                                                                    alt="">
+                                                                                <img src="assets/images/person-placeholder.webp" style="width: 25%; height: auto;" alt="">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="apPaterno">Apellido
                                                                                     Paterno</label>
-                                                                                <input type="text" id="apPaterno"
-                                                                                    name="apPaterno"
-                                                                                    class="form-control"
-                                                                                    th:value="${apPaterno}" readonly>
+                                                                                <input type="text" id="apPaterno" name="apPaterno" class="form-control" th:value="${apPaterno}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="apMaterno">Apellido
                                                                                     Materno</label>
-                                                                                <input type="text" id="apMaterno"
-                                                                                    name="apMaterno"
-                                                                                    class="form-control"
-                                                                                    th:value="${apMaterno}" readonly>
+                                                                                <input type="text" id="apMaterno" name="apMaterno" class="form-control" th:value="${apMaterno}" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="ci">CI:</label>
-                                                                                <input type="text" id="ci" name="ci"
-                                                                                    class="form-control"
-                                                                                    th:value="${ci}" readonly>
+                                                                                <input type="text" id="ci" name="ci" class="form-control" th:value="${ci}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="ru">RU:</label>
-                                                                                <input type="text" id="ru" name="ru"
-                                                                                    class="form-control"
-                                                                                    th:value="${ru}" readonly>
+                                                                                <input type="text" id="ru" name="ru" class="form-control" th:value="${ru}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="fechaNacimiento">Fecha de
                                                                                     Nacimiento:</label>
-                                                                                <input type="text" id="fechaNacimiento"
-                                                                                    name="fechaNacimiento"
-                                                                                    class="form-control"
-                                                                                    th:value="${fechaNacimiento}"
-                                                                                    readonly>
+                                                                                <input type="text" id="fechaNacimiento" name="fechaNacimiento" class="form-control"
+                                                                                    th:value="${fechaNacimiento}" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
-                                                                                <label
-                                                                                    for="direccion">Dirección:</label>
-                                                                                <input type="text" id="direccion"
-                                                                                    name="direccion"
-                                                                                    class="form-control"
-                                                                                    th:value="${direccion}" readonly>
+                                                                                <label for="direccion">Dirección:</label>
+                                                                                <input type="text" id="direccion" name="direccion" class="form-control" th:value="${direccion}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="correo">Correo:</label>
-                                                                                <input type="text" id="correo"
-                                                                                    name="correo" class="form-control"
-                                                                                    th:value="${correo}" readonly>
+                                                                                <input type="text" id="correo" name="correo" class="form-control" th:value="${correo}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="celular">Celular:</label>
-                                                                                <input type="text" id="celular"
-                                                                                    name="celular" class="form-control"
-                                                                                    th:value="${celular}" readonly>
+                                                                                <input type="text" id="celular" name="celular" class="form-control" th:value="${celular}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="carrera">Carrera:</label>
-                                                                                <input type="text" id="carrera"
-                                                                                    name="carrera" class="form-control"
-                                                                                    th:value="${carrera}" readonly>
+                                                                                <input type="text" id="carrera" name="carrera" class="form-control" th:value="${carrera}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="tipoSanguineo">Tipo
                                                                                     Sanguíneooo:</label>
-                                                                                <input type="text" id="tipoSanguineo"
-                                                                                    name="tipoSanguineo"
-                                                                                    class="form-control"
-                                                                                    th:value="${tipoSanguineo}"
+                                                                                <input type="text" id="tipoSanguineo" name="tipoSanguineo" class="form-control" th:value="${tipoSanguineo}"
                                                                                     readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="sexo">Sexo:</label>
-                                                                                <input type="text" id="sexo" name="sexo"
-                                                                                    class="form-control"
-                                                                                    th:value="${sexo}" readonly>
+                                                                                <input type="text" id="sexo" name="sexo" class="form-control" th:value="${sexo}" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
-                                                                                <label for="estadoMatriculacion">Estado
-                                                                                    Matricula</label>
-                                                                                <input type="text"
-                                                                                    id="estadoMatriculacion"
-                                                                                    name="estadoMatriculacion"
-                                                                                    class="form-control"
-                                                                                    th:value="${estadoMatriculacion}"
-                                                                                    readonly>
+                                                                                <label for="estadoMatriculacion">Estado Matricula</label>
+                                                                                <input type="text" id="estadoMatriculacion" name="estadoMatriculacion" class="form-control"
+                                                                                    th:value="${estadoMatriculacion}" readonly>
                                                                             </div>
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button"
-                                                                            id="generarFichaButton"
-                                                                            class="btn btn-success mr-2"
-                                                                            formaction="Ficha"
-                                                                            th:text="${estadoMatriculacion != null && estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
-                                                                        </button>
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                    <button type="button" id="generarFichaButton" class="btn btn-success mr-2" formaction="Ficha"
+                                                                        th:text="${estadoMatriculacion != null && estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -367,117 +323,82 @@
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="DatosDocente">Nombre del
                                                                                     docente:</label>
-                                                                                <input type="text" id="DatosDocente"
-                                                                                    name="DatosDocente"
-                                                                                    class="form-control"
-                                                                                    th:value="${DatosDocente}" readonly>
+                                                                                <input type="text" id="DatosDocente" name="DatosDocente" class="form-control" th:value="${DatosDocente}"
+                                                                                    readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
-
+                                                                        
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="urlImagen">Foto
                                                                                     Docente</label>
                                                                                 <!-- <img src="${urlImagen}" alt="Foto del Univeristario" class="ing-fluid"> -->
-                                                                                <img src="assets/images/person-placeholder.webp"
-                                                                                    style="width: 25%; height: auto;"
-                                                                                    alt="">
+                                                                                <img src="assets/images/person-placeholder.webp" style="width: 25%; height: auto;" alt="">
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="apellidoPaterno">Apellido
                                                                                     Paterno</label>
-                                                                                <input type="text" id="apellidoPaterno"
-                                                                                    name="apellidoPaterno"
-                                                                                    class="form-control"
-                                                                                    th:value="${apellidoPaterno}"
-                                                                                    readonly>
+                                                                                <input type="text" id="apellidoPaterno" name="apellidoPaterno" class="form-control"
+                                                                                    th:value="${apellidoPaterno}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="apellidoMaterno">Apellido
                                                                                     Materno</label>
-                                                                                <input type="text" id="apellidoMaterno"
-                                                                                    name="apellidoMaterno"
-                                                                                    class="form-control"
-                                                                                    th:value="${apellidoMaterno}"
-                                                                                    readonly>
+                                                                                <input type="text" id="apellidoMaterno" name="apellidoMaterno" class="form-control"
+                                                                                    th:value="${apellidoMaterno}" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="ci">CI:</label>
-                                                                                <input type="text" id="ciD" name="ci"
-                                                                                    class="form-control"
-                                                                                    th:value="${ci}" readonly>
+                                                                                <input type="text" id="ciD" name="ci" class="form-control" th:value="${ci}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="rd">RD:</label>
-                                                                                <input type="text" id="rd" name="rd"
-                                                                                    class="form-control"
-                                                                                    th:value="${rd}" readonly>
+                                                                                <input type="text" id="rd" name="rd" class="form-control" th:value="${rd}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="gradoAcademicoD">Grado
                                                                                     Academico:</label>
-                                                                                <input type="text" id="gradoAcademicoD"
-                                                                                    name="gradoAcademicoD"
-                                                                                    class="form-control"
-                                                                                    th:value="${gradoAcademicoD}"
-                                                                                    readonly>
+                                                                                <input type="text" id="gradoAcademicoD" name="gradoAcademicoD" class="form-control"
+                                                                                    th:value="${gradoAcademicoD}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="titulo">Titulo</label>
-                                                                                <input type="text" id="titulo"
-                                                                                    name="titulo" class="form-control"
-                                                                                    th:value="${titulo}" readonly>
+                                                                                <input type="text" id="titulo" name="titulo" class="form-control" th:value="${titulo}" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="fechaNacimientoD">Fecha
                                                                                     Nacimiento</label>
-                                                                                <input type="text" id="fechaNacimientoD"
-                                                                                    name="fechaNacimientoD"
-                                                                                    class="form-control"
-                                                                                    th:value="${fechaNacimiento}"
-                                                                                    readonly>
+                                                                                <input type="text" id="fechaNacimientoD" name="fechaNacimientoD" class="form-control"
+                                                                                    th:value="${fechaNacimiento}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="tipoSanguineoD">Tipo
                                                                                     Sanguineo:</label>
-                                                                                <input type="text" id="tipoSanguineoD"
-                                                                                    name="tipoSanguineoD"
-                                                                                    class="form-control"
-                                                                                    th:value="${tipoSanguineoD}"
+                                                                                <input type="text" id="tipoSanguineoD" name="tipoSanguineoD" class="form-control" th:value="${tipoSanguineoD}"
                                                                                     readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="sexoD">Sexo:</label>
-                                                                                <input type="text" id="sexoD"
-                                                                                    name="sexoD" class="form-control"
-                                                                                    th:value="${sexo}" readonly>
+                                                                                <input type="text" id="sexoD" name="sexoD" class="form-control" th:value="${sexo}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="correoD">Correo:</label>
-                                                                                <input type="text" id="correoD"
-                                                                                    name="correoD" class="form-control"
-                                                                                    th:value="${correo}" readonly>
+                                                                                <input type="text" id="correoD" name="correoD" class="form-control" th:value="${correo}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
-                                                                                <label
-                                                                                    for="direccionD">Dirección:</label>
-                                                                                <input type="text" id="direccionD"
-                                                                                    name="direccionD"
-                                                                                    class="form-control"
-                                                                                    th:value="${direccion}" readonly>
+                                                                                <label for="direccionD">Dirección:</label>
+                                                                                <input type="text" id="direccionD" name="direccionD" class="form-control" th:value="${direccion}" readonly>
                                                                             </div>
-
+                                                                        
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="celularD">Celular:</label>
-                                                                                <input type="text" id="celularD"
-                                                                                    name="celularD" class="form-control"
-                                                                                    th:value="${celular}" readonly>
+                                                                                <input type="text" id="celularD" name="celularD" class="form-control" th:value="${celular}" readonly>
                                                                             </div>
                                                                         </div>
                                                                         <!-- <div class="row">

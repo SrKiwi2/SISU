@@ -34,13 +34,44 @@ public class PersonaServiceImpl implements IPersonaService {
         personaDao.deleteById(id);
     }
 
-    @Override
-    public Persona findByCi(String ci) {
-        return personaDao.findByCi(ci);
-    }
-
+    
     @Override
     public Persona validarCI(String ci) {
         return personaDao.validarCI(ci);
     }
+
+    
+
+    // @Override
+    // public Persona findByCi(String ci) {
+    //     // TODO Auto-generated method stub
+    //     return personaDao.findByCi(ci);
+    // }
+
+    @Override
+    public Persona findByCiA(String ci) {
+        // TODO Auto-generated method stub
+        return personaDao.findByCiA(ci);
+    }
+
+    @Override
+    public List<Persona> findByCii(String ci) {
+        // TODO Auto-generated method stub
+        return personaDao.findByCii(ci);
+    }
+
+    @Override
+    public Persona findByCi(String ci) {
+        // TODO Auto-generated method stub
+        return personaDao.findByCi(ci);
+    }
+
+    
+
+    // @Override
+    // public Persona findByCiD(String ci) {
+    //     // TODO Auto-generated method stub
+    //     return personaDao.findByCiD(ci);
+    // }
+
 }

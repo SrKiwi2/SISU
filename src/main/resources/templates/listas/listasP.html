@@ -116,11 +116,11 @@
                                                     <td th:text="${p.apPaterno}"></td>
                                                     <td th:text="${p.apMaterno}"></td>
                                                     <td th:text="${p.ci}"></td>
-                                                    <td th:text="${p.dip.codDip}"></td>
+                                                    <td th:text="${p.dip != null ? p.dip.codDip : ''}"></td>
                                                     <td th:text="${p.fecha_nac}"></td>
                                                     <td th:text="${p.sexo}"></td>
-                                                    <td th:text="${p.tipos_estado_civil.NomEstadoCivil}"></td>
-                                                    <td th:text="${p.grado_academico.nombre_gradoAcademico}"></td>
+                                                    <td th:text="${p.tipos_estado_civil != null ? p.tipos_estado_civil.NomEstadoCivil : ''}"></td>
+                                                    <td th:text="${p.grado_academico != null ? p.grado_academico.nombre_gradoAcademico : ''}"></td>
                                                     <td th:text="${p.direccion}"></td>
                                                     <td th:text="${p.celular}"></td>
                                                     <td>

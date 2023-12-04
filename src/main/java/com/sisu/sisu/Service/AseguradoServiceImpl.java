@@ -5,22 +5,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sisu.sisu.Dao.AseguradoDao;
+import com.sisu.sisu.Dao.IAseguradoDao;
 import com.sisu.sisu.entitys.Asegurado;
+import com.sisu.sisu.entitys.Persona;
 
 @Service
-public class AseguradoServiceImpl implements AseguradoService{
+public class AseguradoServiceImpl implements IAseguradoService {
 
     @Autowired
-    private AseguradoDao aseguradoDao;
+    private IAseguradoDao aseguradoDao;
 
     @Override
     public List<Asegurado> findAll() {
-       return (List<Asegurado>) aseguradoDao.findAll();
+        return (List<Asegurado>) aseguradoDao.findAll();
     }
 
     @Override
-    public void save(Asegurado asegurado) {  
+    public void save(Asegurado asegurado) {
         aseguradoDao.save(asegurado);
     }
 
@@ -35,10 +36,15 @@ public class AseguradoServiceImpl implements AseguradoService{
     }
 
     @Override
-    public Asegurado obtenerIdAsegurado(Integer id) {
-        return aseguradoDao.obtenerIdAsegurado(id);
+    public Asegurado findByPersonaCi(String personaCod) {
+        return aseguradoDao.findByPersonaCi(personaCod);
+    }
+
+    @Override
+    public Asegurado findAseguradoByPersonaId(Integer personaId) {
+        // TODO Auto-generated method stub
+        return aseguradoDao.findAseguradoByPersonaId(personaId);
     }
 
     
-
 }

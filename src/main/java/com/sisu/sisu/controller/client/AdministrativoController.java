@@ -29,28 +29,21 @@ public class AdministrativoController {
     @Autowired
     private IPersonaService personaService;
 
-
-    @RequestMapping(value = "/administrativo", method = RequestMethod.POST)
+    @RequestMapping(value = "/administrativo333", method = RequestMethod.POST)
 	public String administrativo(HttpServletRequest request,Model model,@RequestParam("codigoAdministrativo") String codigoAdministrativo) {
-			
+		Map<String,Object> request1=new HashMap<String,Object>();
 		try {
 			
-			Map<String,Object> request1=new HashMap<String,Object>();
 			
 			request1.put("usuario", codigoAdministrativo);
 			
 			String url="https://digital.uap.edu.bo/api/londra/api/londraPost/v1/personaLondra/obtenerDatos";
 			
-			
-			 HttpHeaders headers=new HttpHeaders();
-			  headers.setContentType(MediaType.APPLICATION_JSON);
-			  
-			  
-			  HttpEntity<HashMap> req = new HttpEntity(request1, headers);
-			  
-			  RestTemplate restTemplate = new RestTemplate();
-
-		   ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
+			HttpHeaders headers=new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			HttpEntity<HashMap> req = new HttpEntity(request1, headers);
+			RestTemplate restTemplate = new RestTemplate();
+		   	ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
 			   
 			System.out.println("7777777777777777777777777777777777777+2");
 			
@@ -64,16 +57,17 @@ public class AdministrativoController {
                 String ap_materno=data.get("per_ap_materno").toString();
                 String fecha_naci=data.get("fecha_nac").toString();
                 String celular=data.get("perd_celular").toString();
+				String descripcion=data.get("p_descripcion").toString();
 
-                Persona persona = new Persona();
-                persona.setNombres(data.get("per_nombres").toString());
-                persona.setCi(data.get("per_num_doc").toString());
-                persona.setApPaterno(data.get("per_ap_paterno").toString());
-                persona.setApMaterno(data.get("per_ap_materno").toString());
+                // Persona persona = new Persona();
+                // persona.setNombres(data.get("per_nombres").toString());
+                // persona.setCi(data.get("per_num_doc").toString());
+                // persona.setApPaterno(data.get("per_ap_paterno").toString());
+                // persona.setApMaterno(data.get("per_ap_materno").toString());
 
-                model.addAttribute("personaAdministrativo", persona);
-                model.addAttribute("personasAdministrativos", personaService.findAll());
-
+                // model.addAttribute("personaAdministrativo", persona);
+				// model.addAttribute("personaUniversitaria", persona);
+                // model.addAttribute("personasAdministrativos", personaService.findAll());
 
 				System.out.println("-----------------ADMINISTRATIVO------------------");
 				System.out.println("-----------------------CA: "+codigoAdministrativo+"-----------------");
@@ -84,47 +78,30 @@ public class AdministrativoController {
 				System.out.println("---------------------------"+ap_materno+"---------------");
 				System.out.println("---------------------------"+celular+"---------------");
 			}
-
-
-			
-			return "Client/vistaDatosCliente";
+			return "Client/vistaDatosAdministrativo";
 		} catch (Exception e) {
-			
-			
-			
+
 			String msn = "Error: Revise su usuario y contraseña ";
 			model.addAttribute("msn", msn);
 			System.out.println("hola-------------------------------------");
 			return "index/index";
 		}
-		
-		
 	}
 
+//     @PostMapping(value = "/saveAdministrativo")
+//     public String guardarAdmins(Model model, @ModelAttribute Persona persona) {
+//     try {
+        
+// 		persona.setEstado("R");
+//        	personaService.save(persona);
+//         return "redirect:/ticket";
 
+//     } catch (Exception e) { 
+//         // Manejo de errores si ocurre alguna excepción al guardar la persona
+//         String mensajeError = "Error al guardar la persona: " + e.getMessage();
+//         model.addAttribute("mensajeError", mensajeError);
 
-    @PostMapping(value = "/saveAdministrativo")
-    public String guardarAdmins(Model model, @ModelAttribute Persona persona) {
-    try {
-		Persona existingPersona = personaService.validarCI(persona.getCi());
-            if (existingPersona != null) {
-                // Establecer un mensaje de error y devolver a la página del formulario
-                model.addAttribute("error",
-                        "Ya existe una persona con el mismo número de carnet (CI): " + existingPersona.getNombres());
-                return "error";
-            }
-		persona.setEstado("R");
-       	personaService.save(persona);
-        return "redirect:/ticket";
-
-    } catch (Exception e) { 
-        // Manejo de errores si ocurre alguna excepción al guardar la persona
-        String mensajeError = "Error al guardar la persona: " + e.getMessage();
-        model.addAttribute("mensajeError", mensajeError);
-
-        return "Errores/error"; // Puedes redirigir a una página de error
-    }
-   }
-
-    
+//         return "error"; // Puedes redirigir a una página de error
+//     }
+//    }
 }

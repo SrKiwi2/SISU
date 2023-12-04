@@ -54,7 +54,7 @@
                 <!-- ADMINISTRATIVO INICIO -->
                 <div class="col-lg-4 scale-down-center">
                     <div class="card sombre">
-                        <form class="form-horizontal" action="administrativo" method="Post">
+                        <form class="form-horizontal" action="administrativo" method="GET">
                             <div class="card-body">
                                 <div class="icons-lg mb-4" style="text-align: center;">
                                     <i class="fa-solid fa-people-robbery" style="font-size: 3em; color: rgba(27, 27, 184, 0.945);"></i>
@@ -162,45 +162,54 @@
 
                 <div class="col-lg-4 scale-down-center">
                     <div class="card sombre">
-                        <div class="card-body">
-                            <div class="icons-lg mb-4" style="text-align: center;">
-                                <i class="fa-solid fa-person-chalkboard"
-                                    style="font-size: 3em; color: rgba(27, 27, 184, 0.945);"></i>
+                        <form class="form-horizontal" action="docente" method="Get">
+                            <div class="card-body">
+                                <div class="icons-lg mb-4" style="text-align: center;">
+                                    <i class="fa-solid fa-user-graduate" style="font-size: 3em; color: rgba(27, 27, 184, 0.945);"></i>
+                                </div>
+                                <div>
+                                    <div class="mb-3" style="text-align: center;">
+                                        <h5 class="font-size-15 text-uppercase font-weight-bold">PERSONAL DOCENTE
+                                        </h5>
+                                    </div>
+                                    <h5 class="font-size-15 text-uppercase font-weight-bold">
+                                        <div class="text-center mb-3 sombre      ">
+                                            <button type="button" class="btn btn-danger btn-block waves-effect waves-light" data-toggle="modal"
+                                                data-target="#modalDocente">DOCENTE</button>
+                                        </div>
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="mb-3" style="text-align: center;">
-                                <h5 class="font-size-15 text-uppercase font-weight-bold">PERSONAL DOCENTE</h5>
+                            <!-- MODAL INICIO docente-->
+                            <div class="modal fade" id="modalDocente" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">INGRESE RD
+                                                DOCENTE</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p></p>
+                        
+                                            <input type="text" class="form-control" name="codigoDocente"
+                                                placeholder="Introduzca solo números" pattern="^[0-9]+$">
+                                        </div>
+                                        <div class="modal-footer">
+                        
+                                            <button class="btn btn-danger btn-block waves-effect waves-light" type="submit"
+                                                formaction="docente">ACEPTAR</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="text-center mb-3 sombre">
-                                <button type="button" class="btn btn-danger btn-block waves-effect waves-light"
-                                    data-toggle="modal" data-target="#modalDocente">DOCENTE</button>
-                            </div>
-                        </div>
+                            <!-- MODAL FINAL docente-->
+                        </form>
                     </div>
                 </div>
-                <div class="modal fade" id="modalDocente" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">INGRESE CODIGO DOCENTE
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p></p>
-
-                                <input type="text" class="form-control" name="codigoAdministrativo"
-                                    placeholder="Introduzca solo números" pattern="^[0-9]+$">
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-danger btn-block waves-effect waves-light sombre" type="submit"
-                                    formaction="administrativo">ACEPTAR</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
                 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
                 <div class="col-lg-4 scale-down-center">
                     <div class="card sombre">

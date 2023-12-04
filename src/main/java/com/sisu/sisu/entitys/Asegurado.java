@@ -46,6 +46,15 @@ public class Asegurado implements Serializable {
   @Temporal(TemporalType.TIMESTAMP)
   private Date modificacion;
 
+  public String getCodigo_asegurado() {
+      return codigoAsegurado;
+  }
+  
+  public void setCodigo_asegurado(String codigoAsegurado) {
+      this.codigoAsegurado = codigoAsegurado;
+  }
+
+
   // ----------------------RELACIONES------------------------------------------
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
