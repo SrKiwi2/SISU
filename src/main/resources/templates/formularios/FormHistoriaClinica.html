@@ -129,10 +129,8 @@
                                     <div class="card-body">
 
                                         <form class="needs-validation" action="/guardarHistorialClinico" method="post">
-
-
-
-                                            <input type="hidden" th:field="${historiaClinica.idHistoriaClinica}">
+                                            
+                                            <input type="hidden" th:field="${historialSeguro.idHistorialSeguro}">
 
                                             <div class="row">
 
@@ -186,7 +184,7 @@
                                                         style="border: 3px solid blue; ">
                                                         <label for="validationCustom01" class="form-label">NOMBRE:
                                                         </label>
-                                                        <input style=" border: none;" type="text" class="form-control"
+                                                        <input style=" border: none;" th:value="${historialSeguro.asegurado.persona.nombres +' '+ historialSeguro.asegurado.persona.apPaterno + ' '+ historialSeguro.asegurado.persona.apMaterno}" type="text" class="form-control"
                                                             id="validationCustom03" required>
                                                         <!-- th:field="${dip.codDip}" -->
                                                        
@@ -196,7 +194,9 @@
                                                         <label for="validationCustom02" style="margin-top: 1px;" class="form-label">EDAD:</label>
 
                                                         <input style=" border: none;  width: 100%; margin: 7px;" type="text" class="form-number"   id="validationCustom03" required>
-                                                        <!-- th:field="${dip.codDip}" --> 
+                                                        <!-- th:field="${dip.codDip}" -->
+
+                                                      
                                                     </div>
 
                                                     <div class="col-md-3" style="border: 3px solid blue;">
@@ -244,8 +244,8 @@
                                                             style=" display: flex; justify-content: space-around;">
                                                             <label for="validationCustom02" class="form-label"
                                                                 style="margin-top: 10PX;">DOMICILIO:</label>
-                                                            <input style=" border: none; " type="text"
-                                                                class="form-control" id="validationCustom03" required>
+                                                                <input style="border: none;" type="text" th:value="${historialSeguro.asegurado.persona.direccion}"
+                                                                class="form-control" id="validationCustom03" required>                                                         
                                                          
                                                           
                                                         </div>
@@ -268,7 +268,7 @@
                                                             <label for="validationCustom02" class="form-label"
                                                                 style="margin-top: 10PX; white-space: nowrap;">ESTADO
                                                                 CIVIL:</label>
-                                                            <input style=" border: none; " type="text"
+                                                            <input style=" border: none; " type="text" th:value="${historialSeguro.asegurado.persona.tipos_estado_civil.NomEstadoCivil}"
                                                                 class="form-control" id="validationCustom03" required>
                                                           
                                                         </div>
@@ -278,7 +278,7 @@
                                                         <div class="col-md-4" style=" display: flex; ">
                                                             <label for="validationCustom02" class="form-label"
                                                                 style="margin-top: 10PX;">FECHA:</label>
-                                                            <input style=" border: none; width: 60%;" type="date"
+                                                            <input style=" border: none; width: 60%;" type="date" th:value="${historialSeguro.asegurado.persona.fecha_nac}"
                                                                 class="form-control" id="validationCustom03" required>
                                                          
                                                         </div>
@@ -304,7 +304,7 @@
                                                                 <label for="validationCustom02" class="form-label"
                                                                     style="margin-top: 10PX;">DATOS DEL INFORMANTE:</label>
                                                                 <br>
-                                                                <input class="OTROS1"
+                                                                <input class="OTROS1" 
                                                                     th:field="${historiaClinica.relacionInformante}"
                                                                     type="radio" value="PADRE"> PADRE
 
@@ -335,7 +335,7 @@
                                                                     style="margin-top: 10PX;">NOMBRE:</label>
                                                                 <input style=" border: none; " type="text"
                                                                     class="form-control" id="validationCustom03"
-                                                                    th:field="${historiaClinica.nombreInformante}"
+                                                                    th:value="${historialSeguro.asegurado.persona.nombres +' '+ historialSeguro.asegurado.persona.apPaterno + ' '+ historialSeguro.asegurado.persona.apMaterno}" 
                                                                     required>
                                                                
                                                             </div>
@@ -345,9 +345,9 @@
                                                                 style=" display: flex; justify-content: space-around;">
                                                                 <label for="validationCustom02" class="form-label"
                                                                     style="margin-top: 10PX;">DOMICILIO:</label>
-                                                                <input style=" border: none; " type="text"
+                                                                <input style=" border: none; " type="text" 
                                                                     class="form-control" id="validationCustom03"
-                                                                    th:field="${historiaClinica.domicilioInformante}"
+                                                                    th:value="${historialSeguro.asegurado.persona.direccion}"
                                                                     required>
                                                               
                                                             </div>
@@ -992,11 +992,8 @@
                                                     </div>
 
                                                     <div class="col-md-4">
-
-                                                        <button class="btn btn-primary" type="submit">Registrar</button>
+                                                        <button class="btn btn-primary" type="submit">Registrar</button>  </a>
                                                     </div>
-
-
 
                                                 </div>
 
@@ -1031,6 +1028,29 @@
     <!-- /Right-bar -->
 
     <!-- Right bar overlay-->
+
+    <script>
+        document.getElementById('registrarButton').addEventListener('click', function() {
+            // Realizar una solicitud AJAX a /fichaEstado
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/fichaEstado', true);
+    
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // Redireccionar o manejar la respuesta según sea necesario
+                        window.location.href = '/formHistorialClinico';
+                    } else {
+                        // Manejar errores si es necesario
+                        console.error('Error al realizar la solicitud AJAX');
+                    }
+                }
+            };
+    
+            xhr.send();
+        });
+    </script>
+    
 
 
     <!-- JAVASCRIPT -->

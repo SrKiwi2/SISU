@@ -68,7 +68,7 @@ public class UsuarioController {
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
 
-        return "usuarios";
+        return "redirect:/listaUs";
     }
 
     // -------------------------ELIMINAR---------------------------------------

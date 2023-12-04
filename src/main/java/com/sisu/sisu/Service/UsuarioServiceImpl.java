@@ -46,19 +46,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario loguearse(String usario, String contrasenia) {
         // TODO Auto-generated method stub
-        return usuarioDao.loguearse("admin", "admin");
+        throw new UnsupportedOperationException("Unimplemented method 'loguearse'");
     }
 
-    // @Override
-    // public Usuario loguearse(String usario, String contrasenia) {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'loguearse'");
-    // }
-
-	// @Override
-	// public Usuario loguearse(String usario, String contrasenia) {
-	// 	// TODO Auto-generated method stub
-	// 	return usuarioDao.loguearse(usario, contrasenia);
-	// }
 
 }

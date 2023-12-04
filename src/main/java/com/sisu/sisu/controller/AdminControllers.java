@@ -10,19 +10,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminControllers {
 
 
-    @GetMapping("/admin")
-    public String vista(Model model,HttpServletRequest request) {
-
-    	System.out.println("GOLLLLLLLLLLLL++++1");
-		if (request.getSession().getAttribute("usuario") == null) {
-			
-			System.out.println("GOLLLLLLLLLLLL++++2");	
-		    return "index/login";
-		    
+	@GetMapping("/admin")
+	public String vista(Model model, HttpServletRequest request) {
+		System.out.println("GOLLLLLLLLLLLL++++1");
+	
+		if (!request.getRequestURI().contains("/admin")) {
+			// Si la URL no contiene "/admin", redirige a la página de error
+			return "redirect:/pageError";
 		}
-		System.out.println("GOLLLLLLLLLLLL++++3");
-        return "index/inicio";
-        
-    }
+	
+		if (request.getSession().getAttribute("usuario") == null) {
+			System.out.println("GOLLLLLLLLLLLL++++2");    
+			return "index/login";
+		} else {
+			return "redirect:/pageError";
+		}
+	}
+	@GetMapping("/inicioSapo")
+	public String inicio(Model model, HttpServletRequest request) {
+		
+			return "index/inicio";
+		
+	}
+	
+
     
 }

@@ -15,4 +15,5 @@ public interface HistorialSeguroService {
     public void delete(Integer id); //Elimina registro
 
     public HistorialSeguro getHistorial_por_id_seguro(Integer id_asegurado);
+
 }

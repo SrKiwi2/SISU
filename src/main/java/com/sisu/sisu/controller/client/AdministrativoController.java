@@ -122,7 +122,7 @@ public class AdministrativoController {
         String mensajeError = "Error al guardar la persona: " + e.getMessage();
         model.addAttribute("mensajeError", mensajeError);
 
-        return "error"; // Puedes redirigir a una página de error
+        return "Errores/error"; // Puedes redirigir a una página de error
     }
    }
 

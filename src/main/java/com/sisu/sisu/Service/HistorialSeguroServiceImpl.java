@@ -39,5 +39,6 @@ public class HistorialSeguroServiceImpl implements HistorialSeguroService{
         
         return historialSeguroDao.getHistorial_por_id_seguro(id_asegurado);
     }
+
     
 }

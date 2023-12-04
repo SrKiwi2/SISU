@@ -84,7 +84,7 @@ public class PersonaUsuarioController {
                 return "error";
             }
 
-            persona1.setEstado("A");
+            persona1.setEstado("PP");
             persona1.setGrado_academico(gradoService.findOne(idGradoAcademico));
             persona1.setDip(dipService.findOne(idDip));
             persona1.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
@@ -95,7 +95,7 @@ public class PersonaUsuarioController {
             Usuario usuario = new Usuario();
             usuario.setApodo(apodo);
             usuario.setClave(clave);
-            usuario.setEstado_usuario("A");
+            usuario.setEstado_usuario("PP");
 
             usuario.setPersona(persona1);
             usuarioService.save(usuario);
@@ -129,7 +129,7 @@ public class PersonaUsuarioController {
         persona.setApPaterno(apPaterno);
         persona.setApMaterno(apMaterno);
         persona.setCi(ci);
-        persona.setEstado("A");
+        persona.setEstado("PP");
         persona.setGrado_academico(gradoService.findOne(idGradoAcademico));
         persona.setDip(dipService.findOne(idDip));
         persona.setTipos_estado_civil(estadoCivilService.findOne(idTipoEstadoCivil));
@@ -180,8 +180,8 @@ public class PersonaUsuarioController {
         // Asegurarse de que la persona y el usuario existen
         if (persona != null && usuario != null) {
             // Configurar el estado de la persona y el usuario si es necesario
-            persona.setEstado("A");
-            usuario.setEstado_usuario("A");
+            persona.setEstado("PP");
+            usuario.setEstado_usuario("PP");
 
             // Agregar la persona y el usuario al modelo
             model.addAttribute("persona1", persona);

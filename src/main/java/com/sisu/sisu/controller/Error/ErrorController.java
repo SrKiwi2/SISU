@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ErrorController {
 
-     @RequestMapping(value = "/alert", method = RequestMethod.GET)
+     @RequestMapping(value = "/pageError", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111");
-		return "Error/paginaError";
+
+		return "Errores/error";
 	}
     
 }

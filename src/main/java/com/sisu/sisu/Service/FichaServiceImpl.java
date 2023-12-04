@@ -35,5 +35,11 @@ public class FichaServiceImpl implements FichaService{
         
         fichaDao.deleteById(id);
     }
+
+    @Override
+    public void cambiarEstadoById(Integer idFicha) {
+        
+        fichaDao.cambiarEstadoById(idFicha);
+    }
     
 }
