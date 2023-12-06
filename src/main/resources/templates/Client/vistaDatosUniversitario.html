@@ -117,8 +117,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-right mt-3">
-                                                <button type="submit" class="btn btn-success mr-2" th:text="${estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}" name="submitGenerar"></button>
-                                                <button type="submit" class="btn btn-secondary" name="submitCancelar" >Cancelar</button>
+                                                <button type="submit" class="btn btn-success mr-2" th:text="${estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}" name="submitGenerar" formaction="/generarFicha"></button>
+                                                <button type="submit" class="btn btn-secondary" name="submitCancelar" formaction="/inicioCliente">Cancelar</button>
                                             </div>
                                         </form>
                                     </div>

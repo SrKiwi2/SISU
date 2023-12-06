@@ -23,11 +23,12 @@ public class HistorialSeguroController {
     @PostMapping(value = "/vistaHistorialSeguro")
     public String vistaHistorial(@RequestParam("idFicha") Integer idFicha, Model model) {
 
-        HistorialSeguro historialSeguro = historialSeguroService.getHistorial_por_id_seguro(idFicha);
+        
         Ficha ficha = fichaService.findOne(idFicha);
         ficha.setEstado("R");
         fichaService.save(ficha);
-       
+        
+       HistorialSeguro historialSeguro = historialSeguroService.getHistorial_por_id_seguro(idFicha);
         historialSeguro = historialSeguroService.getHistorial_por_id_seguro(idFicha);
     
         model.addAttribute("historial_seguro", historialSeguro);
@@ -38,7 +39,4 @@ public class HistorialSeguroController {
         // Devolver la vista correspondiente
         return "Fichas/historialSeguro";
     }
-    
-
-
 }

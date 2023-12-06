@@ -40,22 +40,20 @@ public class FichaController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", personaService.findAll());
 
-		return "Fichas";
+		return "Fichas/listaFichaP";
 	}
 
      //-------------------------------to list---------------------------------
 
-     @GetMapping(value="/fichasAsegurado")
-     public String lisataAsegurado(Model model, @Validated Ficha ficha) {
+     @GetMapping (value = "fichasAsegurado")
+    public String generarFicha(Model model, @Validated Ficha ficha) {
 
- 
-          model.addAttribute("ficha", new Ficha());
-          model.addAttribute("fichas", fichaService.findAll());
- 
-          System.out.println("+++++++++++++++++++23222" );
+        model.addAttribute("ficha", new Ficha());
+        model.addAttribute("fichas", fichaService.findAll());
+
         
-         return "Fichas/listaFichaP";
-     
-     }
+        System.out.println("+++++++++++++++++++23222");
 
+        return "Fichas/listaFichaP";
+    }
 }

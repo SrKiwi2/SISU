@@ -17,13 +17,21 @@ public class VistaClienteController {
 		return "Client/vistaDatosCliente";
 	}
 
-	@RequestMapping(value = "/inicioCliente", method = RequestMethod.GET)
+	@RequestMapping(value = "/inicioCliente", method = {RequestMethod.GET, RequestMethod.POST})
 	public String homecliente(Model model, HttpServletRequest request) {
 		
 		System.out.println("11111111111111111111111111111111111111111111+33");
 
 		return "Client/inicioCliente";
 	}
+
+	// @RequestMapping(value = "/inicioClienteCancel", method = RequestMethod.POST)
+	// public String homeCancelCliente(Model model, HttpServletRequest request) {
+		
+	// 	System.out.println("11111111111111111111111111111111111111111111+33");
+
+	// 	return "Client/inicioCliente";
+	// }
 
 	@RequestMapping(value = "/inicioCaja", method = RequestMethod.GET)
 	public String homeCaja(Model model, HttpServletRequest request) {

@@ -52,5 +52,15 @@ public class AseguradoServiceImpl implements IAseguradoService {
         throw new UnsupportedOperationException("Unimplemented method 'obtenerIdAsegurado'");
     }
 
-    
+    @Override
+    public Asegurado findByCodigoAsegurado(String codigoAsegurado) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByCodigoAsegurado'");
+    }
+
+    @Override
+    public Asegurado findAseguradoByCodigoAsegurado(Integer id_persona, Integer id_asegurado) {
+        // TODO Auto-generated method stub
+        return aseguradoDao.findAseguradoByCodigoAsegurado(id_persona, id_asegurado);
+    }    
 }

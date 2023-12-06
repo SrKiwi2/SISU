@@ -51,4 +51,9 @@ public class Ficha implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idAsegurado")
     private Asegurado asegurado;
+
+    public String getCodigoAsegurado() {
+        // Lógica para obtener el código del Asegurado desde la Ficha
+        return this.asegurado.getCodigoAsegurado();
+    }
 }

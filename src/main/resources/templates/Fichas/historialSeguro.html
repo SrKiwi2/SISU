@@ -153,7 +153,7 @@
                                                 class="form-control" id="personaAdministrativo1" required>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <!-- <div class="col-sm-4">
                                         <label for="validationCustom01" style="font-weight: bold;">Tipo
                                             Asegurado:</label>
                                         <div class="form-group form-group-custom mb-6 ">
@@ -162,8 +162,17 @@
                                                 placeholder="text.." class="form-control" id="historial_seguro"
                                                 required>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-4">
+                                        <label for="validationCustom01" style="font-weight: bold;">Tipo Asegurado:</label>
+                                        <div class="form-group form-group-custom mb-6 ">
+                                            <input type="text" name="historial_seguro"
+                                                th:value="${historial_seguro != null and historial_seguro.tipo_seguro != null ? historial_seguro.tipo_seguro.tipoSeguro : ''}"
+                                                placeholder="text.." class="form-control" id="historial_seguro" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- <div class="col-sm-4">
                                         <label for="validationCustom01" style="font-weight: bold;">Institucion:</label>
                                         <div class="form-group form-group-custom mb-6 ">
                                             <input type="text" name="historial_seguro"
@@ -171,7 +180,16 @@
                                                 placeholder="text.." class="form-control" id="historial_seguro"
                                                 required>
                                         </div>
+                                    </div> -->
+                                    <div class="col-sm-4">
+                                        <label for="validationCustom01" style="font-weight: bold;">Institucion:</label>
+                                        <div class="form-group form-group-custom mb-6 ">
+                                            <input type="text" name="historial_seguro"
+                                                th:value="${historial_seguro != null and historial_seguro.institucion != null ? historial_seguro.institucion.nombreInstitucion : ''}"
+                                                placeholder="text.." class="form-control" id="historial_seguro" required>
+                                        </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -190,7 +208,7 @@
                                                 class="form-control" id="historial_seguro" required>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 text-center" style="border-radius: 5%;">
+                                    <!-- <div class="col-sm-4 text-center" style="border-radius: 5%;">
                                         <label for="validationCustom01" style="font-weight: bold;">Status:</label>
                                         <div class="form-group form-group-custom mb-6">
                                             <span
@@ -200,7 +218,18 @@
                                                     th:text="${historial_seguro.estado_seguro.tipoEstado}"></th:block>
                                             </span>
                                         </div>
+                                    </div> -->
+                                    <div class="col-sm-4 text-center" style="border-radius: 5%;">
+                                        <label for="validationCustom01" style="font-weight: bold;">Status:</label>
+                                        <div class="form-group form-group-custom mb-6">
+                                            <span th:if="${historial_seguro != null and historial_seguro.estado_seguro != null}"
+                                                th:class="${historial_seguro.estado_seguro.tipoEstado == 'ACTIVO' ? 'badge badge-success' : 'badge badge-danger'}"
+                                                style="font-size: 160%;">
+                                                <th:block class="sombre" th:text="${historial_seguro.estado_seguro.tipoEstado}"></th:block>
+                                            </span>
+                                        </div>
                                     </div>
+                                    
                                 </div>
                                 <hr style="padding: 1%;">
                                 <div class="text-center">

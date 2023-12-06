@@ -174,21 +174,12 @@ public class Proveedor implements Serializable{
 		this.tipo_proveedor = tipo_proveedor;
 	}
 
-	@Override
-	public String toString() {
-		return "Proveedor [idProveedor=" + idProveedor + ", nombreProveedor=" + nombreProveedor + ", descripcion="
-				+ descripcion + ", NIT=" + NIT + ", direccion=" + direccion + ", estado=" + estado + ", registro="
-				+ registro + ", modificacion=" + modificacion + ", remedio_lote=" + remedio_lote + ", tipo_proveedor="
-				+ tipo_proveedor + "]";
-	}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	// @Override
+	// public String toString() {
+	// 	return "Proveedor [idProveedor=" + idProveedor + ", nombreProveedor=" + nombreProveedor + ", descripcion="
+	// 			+ descripcion + ", NIT=" + NIT + ", direccion=" + direccion + ", estado=" + estado + ", registro="
+	// 			+ registro + ", modificacion=" + modificacion + ", remedio_lote=" + remedio_lote + ", tipo_proveedor="
+	// 			+ tipo_proveedor + "]";
+	// }
+
 }

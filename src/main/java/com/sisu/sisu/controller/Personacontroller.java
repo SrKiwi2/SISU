@@ -128,8 +128,7 @@ public class Personacontroller {
 
         model.addAttribute("estadoCivil", new TiposEstadoCivil());
         model.addAttribute("estadosCiviles", estadoCivilService.findAll());
-
-        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
+        
         return "content :: content1";
     }
 

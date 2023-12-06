@@ -29,12 +29,12 @@ public class TipoRecetaController {
         tipoReceta.setEstado("X");
         tipoRecetaService.save(tipoReceta);
 
-        return "redirect:/ListaReceta";
+        return "redirect:/ListaTipoReceta";
     }
 
     /* Listar */
 
-    @GetMapping(value = "/ListaReceta")
+    @GetMapping(value = "/ListaTipoReceta")
     public String listarReceta(@Validated TipoReceta tipoReceta, Model model) {
 
         model.addAttribute("tipoReceta", new TipoReceta());
@@ -68,7 +68,7 @@ public class TipoRecetaController {
         tipoReceta.setEstado("A");
         tipoRecetaService.save(tipoReceta);
 
-        return "redirect:/ListaReceta";
+        return "redirect:/ListaTipoReceta";
     }
 
 }

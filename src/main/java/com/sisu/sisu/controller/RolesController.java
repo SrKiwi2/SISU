@@ -51,7 +51,7 @@ public class RolesController {
                 mensaje = "Se registro correctamente";
                 System.out.println("-----------1");
 
-        model.addAttribute("roles", rolesService.findAll());
+                model.addAttribute("roles", rolesService.findAll());
                 return "redirect:/ListaDeRoles";
 
             }

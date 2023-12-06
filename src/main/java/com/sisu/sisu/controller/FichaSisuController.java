@@ -24,9 +24,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.sisu.sisu.Dao.IAseguradoDao;
+import com.sisu.sisu.Service.FichaService;
+import com.sisu.sisu.Service.HistorialSeguroService;
 import com.sisu.sisu.Service.IAseguradoService;
 import com.sisu.sisu.Service.IPersonaService;
 import com.sisu.sisu.entitys.Asegurado;
+import com.sisu.sisu.entitys.Dip;
+import com.sisu.sisu.entitys.Ficha;
+import com.sisu.sisu.entitys.GradoAcademico;
+import com.sisu.sisu.entitys.HistorialSeguro;
 import com.sisu.sisu.entitys.Persona;
 import com.sisu.sisu.entitys.TiposEstadoCivil;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +40,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class FichaSisuController {
+
+	@Autowired
+	private FichaService fichaService;
+
+	@Autowired
+	private HistorialSeguroService historialSeguroService;
 
 	@Autowired
 	private IPersonaService personaService;
@@ -93,6 +105,14 @@ public class FichaSisuController {
 				if (newpersona == null) {
 					
 					newpersona = new Persona();
+					Dip dip = new Dip();
+					GradoAcademico gradoAcademico = new GradoAcademico();
+					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
+
+					dip.setIdDip(10);
+					gradoAcademico.setIdGradoAcademico(1);
+					tiposEstadoCivil.setIdTipoEstadoCivil(1);
+	
 					newpersona.setEstado("RU");
 	    			newpersona.setNombres(data.get("nombres").toString());
 	    			newpersona.setApPaterno(data.get("apellido_paterno").toString());
@@ -101,7 +121,11 @@ public class FichaSisuController {
 	    			newpersona.setDireccion(data.get("direccion").toString());
 	    			newpersona.setCelular(Integer.parseInt(data.get("celular").toString()));
 	    			newpersona.setSexo(data.get("sexo").toString());
-	    			newpersona.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));	 
+					newpersona.setDip(dip);
+					newpersona.setGrado_academico(gradoAcademico);
+					newpersona.setTipos_estado_civil(tiposEstadoCivil);
+	    			newpersona.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));	
+					
 					personaService.save(newpersona);
 
 					System.out.println("/--------------------------------------------------------/");
@@ -128,20 +152,19 @@ public class FichaSisuController {
 					System.out.println("/------------------------------------------------/");
 					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+newpersona.getNombres());
 					System.out.println("/------------------------------------------------/");
-					
-					return "Client/vistaDatosUniversitario";
+
+					HistorialSeguro historialSeguro = new HistorialSeguro();
+					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
+            		historialSeguro.setEstado("A"); // (o el estado que desees)
+            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setFechaBaja(new Date());
+            		historialSeguro.setTitularHS(true);
+            		historialSeguro.setAsegurado(asegurado);
+					historialSeguroService.save(historialSeguro);
 				}
-
-				// else{
-				// 	System.out.println("/------------------------------------------------/");
-				// 	System.out.println("EL pibe ya tiene CODIGOASEGURADO!!!!11");
-				// 	System.out.println("/------------------------------------------------/");
-				// 	return "Client/inicioCliente";
-				// }
-
-				return "Client/inicioCliente";
+				
 			}
-			return "Client/inicioCliente";
+			return "Client/vistaDatosUniversitario";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -152,6 +175,50 @@ public class FichaSisuController {
 			return "index/index";
 		}
 	}
+
+	// @RequestMapping(value = "crearFicha", method = RequestMethod.POST)
+	// public String crearFicha(@ModelAttribute("personaUniversitaria") Persona persona, Model model) {
+	//     try {
+	//         // Aquí colocas el código relacionado con la creación de la ficha y otros procesos
+	//         Ficha ficha = new Ficha();
+	//         ficha.setEstado("A");
+	//         ficha.setFechaRegistroFichaa(new Date());
+	//         ficha.setAsegurado(persona.getAsegurado());  // Ajusta según tu estructura
+
+	//         fichaService.save(ficha);
+
+	//         // ... (Otros procesos relacionados)
+
+	//         return "redirect:/rutaDondeQuieresRedirigir"; // Redirige a la vista deseada
+	//     } catch (Exception e) {
+	//         e.printStackTrace();
+	//         // Maneja las excepciones según tus necesidades
+	//         return "redirect:/error";
+	//     }
+	// }
+
+	@RequestMapping(value = "/generarFicha", method = RequestMethod.POST)
+	public String generarFicha(@RequestParam("codigoAsegurado")Integer idPersona, Integer idAsegurado) {
+	    Asegurado asegurado = aseguradoService.findAseguradoByCodigoAsegurado(idPersona, idAsegurado);
+
+	    if (asegurado != null) {
+	        Ficha ficha = new Ficha();
+	        ficha.setEstado("A");
+	        ficha.setFechaRegistroFichaa(new Date());
+	        ficha.setAsegurado(asegurado);
+	        fichaService.save(ficha);
+
+			System.out.println("FICHA GENERADA PARA: "+asegurado);
+	        // Otros procesamientos si es necesario
+
+	        return "redirect:/inicioCliente";
+	    } else {
+	        // Manejo de error si no se encuentra el asegurado
+	        return "redirect:/index";
+	    }
+	}
+
+
 
 	private String generateCodigoAsegurado(Persona persona) {
 		String nombre = persona.getNombres();
@@ -234,6 +301,15 @@ public class FichaSisuController {
 					System.out.println("--------------------------------------------------------");				
 				
 					existePersonaD = new Persona();
+
+					Dip dip = new Dip();
+					GradoAcademico gradoAcademico = new GradoAcademico();
+					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
+
+					dip.setIdDip(10);
+					gradoAcademico.setIdGradoAcademico(1);
+					tiposEstadoCivil.setIdTipoEstadoCivil(1);
+
 					existePersonaD.setEstado("RD");
 					existePersonaD.setNombres(data.get("nombres").toString());
 					existePersonaD.setApPaterno(data.get("apellido_paterno").toString());
@@ -248,6 +324,8 @@ public class FichaSisuController {
 					System.out.println("/--------------------------------------------------------/");
 					System.out.println("¡guardo! DOCENTE registrado en la tabla persona ¡guardo!");
 					System.out.println("/--------------------------------------------------------/");
+
+					
 
 				}else{
 					return "Client/vistaDatosDocente";
@@ -268,6 +346,21 @@ public class FichaSisuController {
 					System.out.println("/------------------------------------------------/");
 					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+existePersonaD.getNombres());
 					System.out.println("/------------------------------------------------/");
+
+					Ficha ficha = new Ficha();
+					ficha.setEstado("A");
+					ficha.setFechaRegistroFichaa(new Date());
+					ficha.setAsegurado(aseguradoD);
+					fichaService.save(ficha);
+
+					HistorialSeguro historialSeguro = new HistorialSeguro();
+					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
+            		historialSeguro.setEstado("A"); // (o el estado que desees)
+            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setFechaBaja(new Date());
+            		historialSeguro.setTitularHS(true);
+            		historialSeguro.setAsegurado(aseguradoD);
+					historialSeguroService.save(historialSeguro);
 					
 					return "Client/vistaDatosDocente";
 				}
@@ -331,6 +424,15 @@ public class FichaSisuController {
 					System.out.println("--------------------------------------------------------");
 
 					existPersonaA = new Persona();
+
+					Dip dip = new Dip();
+					GradoAcademico gradoAcademico = new GradoAcademico();
+					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
+
+					dip.setIdDip(10);
+					gradoAcademico.setIdGradoAcademico(1);
+					tiposEstadoCivil.setIdTipoEstadoCivil(1);
+
 					existPersonaA.setEstado("RA");
 					existPersonaA.setNombres(data.get("per_nombres").toString());
 					existPersonaA.setApPaterno(data.get("per_ap_paterno").toString());
@@ -364,6 +466,21 @@ public class FichaSisuController {
 					System.out.println("/------------------------------------------------/");
 					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+existPersonaA.getNombres());
 					System.out.println("/------------------------------------------------/");
+
+					Ficha ficha = new Ficha();
+					ficha.setEstado("A");
+					ficha.setFechaRegistroFichaa(new Date());
+					ficha.setAsegurado(aseguradoA);
+					fichaService.save(ficha);
+
+					HistorialSeguro historialSeguro = new HistorialSeguro();
+					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
+            		historialSeguro.setEstado("A"); // (o el estado que desees)
+            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setFechaBaja(new Date());
+            		historialSeguro.setTitularHS(true);
+            		historialSeguro.setAsegurado(aseguradoA);
+					historialSeguroService.save(historialSeguro);
 					
 					return "Client/vistaDatosAdministrativo";
 				}

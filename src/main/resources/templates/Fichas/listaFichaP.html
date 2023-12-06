@@ -105,22 +105,41 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="f : ${fichas}" th:if="${f.estado =='A'}">
-                                                <td th:text="${f.asegurado.persona.nombres}"></td>
-                                                <td th:text="${f.asegurado.persona.apPaterno + '  ' + f.asegurado.persona.apMaterno}"></td>
-                                                <td th:text="${f.asegurado.persona.ci}"></td>
-                                                <td th:text="${f.asegurado.persona.dip.codDip}"></td>
+                                            <tr th:each="f : ${fichas}" th:if="${f.estado =='A' or f.estado =='RU' or f.estado =='RA' or f.estado =='RD'}">
+                                                <!-- <td th:text="${f.asegurado.persona.nombres}"></td> -->
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null}" th:text="${f.asegurado.persona.nombres}"></td>
+                                                <!-- <td th:text="${f.asegurado.persona.apPaterno + '  ' + f.asegurado.persona.apMaterno}"></td> -->
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null}" th:text="${f.asegurado.persona.apPaterno + '  ' + f.asegurado.persona.apMaterno}"></td>
+                                                <!-- <td th:text="${f.asegurado.persona.ci}"></td> -->
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null}" th:text="${f.asegurado.persona.ci}"></td>
+                                                <!-- <td th:text="${f.asegurado.persona.dip.codDip}"></td>
                                                 <td th:text="${f.asegurado.codigoAsegurado}"></td>
-                                                <td th:text="${f.asegurado.persona.sexo}"></td>
-                                                <td th:if="${f.asegurado.persona.tipos_estado_civil != null}" th:text="${f.asegurado.persona.tipos_estado_civil.NomEstadoCivil}"></td>
-                                                <td th:if="${f.asegurado.persona.grado_academico != null}" th:text="${f.asegurado.persona.grado_academico.nombre_gradoAcademico}"></td>
-                                                <td> 
+                                                <td th:text="${f.asegurado.persona.sexo}"></td> -->
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null and f.asegurado.persona.dip != null}" th:text="${f.asegurado.persona.dip.codDip}"></td>
+                                                <td th:if="${f.asegurado != null}" th:text="${f.asegurado.codigoAsegurado}"></td>
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null}" th:text="${f.asegurado.persona.sexo}"></td>
+
+                                                <!-- <td th:if="${f.asegurado.persona.tipos_estado_civil != null}" th:text="${f.asegurado.persona.tipos_estado_civil.NomEstadoCivil}"></td>
+                                                <td th:if="${f.asegurado.persona.grado_academico != null}" th:text="${f.asegurado.persona.grado_academico.nombre_gradoAcademico}"></td> -->
+
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null and f.asegurado.persona.tipos_estado_civil != null}" th:text="${f.asegurado.persona.tipos_estado_civil.NomEstadoCivil}"></td>
+                                                <td th:if="${f.asegurado != null and f.asegurado.persona != null and f.asegurado.persona.grado_academico != null}" th:text="${f.asegurado.persona.grado_academico.nombre_gradoAcademico}"></td>
+
+                                                <!-- <td>
                                                     <input type="hidden" th:hidden="${f.idFicha}">
                                                     <form th:action="@{'../../../../vistaHistorialSeguro'}" method="POST">
-                                                         <input type="hidden" th:name="idFicha" th:value="${f.asegurado.idAsegurado}">
-                                                            <button class="btn btn-primary sombre" type="submit">Historial</button>
-                                                </form>
+                                                        <input type="hidden" th:name="idFicha" th:value="${f.asegurado.idAsegurado}">
+                                                        <button class="btn btn-primary sombre" type="submit">Historial</button>
+                                                    </form>
+                                                </td> -->
+                                                <td>
+                                                    <input type="hidden" th:hidden="${f != null and f.asegurado != null}" />
+                                                    <form th:action="@{'../../../../vistaHistorialSeguro'}" method="POST">
+                                                        <input type="hidden" th:if="${f != null and f.asegurado != null}" th:name="idFicha" th:value="${f.asegurado.idAsegurado}" />
+                                                        <button class="btn btn-primary sombre" type="submit">Historial</button>
+                                                    </form>
                                                 </td>
+                                                
                                             </tr>
                                         </tbody>
                                     </table>

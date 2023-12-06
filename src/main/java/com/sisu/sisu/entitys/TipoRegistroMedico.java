@@ -31,7 +31,7 @@ public class TipoRegistroMedico implements Serializable {
     private Integer idTipoRegistroMedico;
     
     @Column(name = "tipo_registro_medico")
-    private String tipoRegistroMedico;
+    private String nombTipoRegistroMedico;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -50,7 +50,7 @@ public class TipoRegistroMedico implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_registro_medico", fetch = FetchType.LAZY)
 	private List<PersonalMedico> personal_medico;
 
-	public TipoRegistroMedico() {
+	/*public TipoRegistroMedico() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -139,6 +139,6 @@ public class TipoRegistroMedico implements Serializable {
 	}
     
     
-    
+    */
     
 }

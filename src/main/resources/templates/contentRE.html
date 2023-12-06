@@ -173,10 +173,7 @@
                     placeholder="Introduce una cantidad" required>
                 <div class="invalid-feedback">Debes introducir una cantidad</div>
             </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-12 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Numero Lote</label>
                 <input type="number" class="form-control" name="remedioLote" id="validationCustom02"
                     th:field="${remedioLote.numeroLote}" placeholder="Introduce un numero lote" required>
@@ -184,7 +181,10 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
                 <label>Tipo Proveedor</label>
                 <select class="custom-select" th:field="${remedioLote.proveedor}" required>
                     <option value="">Seleciones una opcion</option>
@@ -194,7 +194,6 @@
                 </select>
                 <div class="invalid-feedback">Debes Seleccionar un Estado Civil</div>
             </div>
-
         </div>
     </div>
 
