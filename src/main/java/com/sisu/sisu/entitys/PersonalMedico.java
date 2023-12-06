@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,9 +35,11 @@ public class PersonalMedico implements Serializable{
     private Integer idPersonalMedico;
 
     @Column(name = "fecha_inico")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date fechaInicio;
 
     @Column(name = "fecha_final")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date fechaFinal;
 
     @Column(name = "estado")
@@ -69,7 +73,7 @@ public class PersonalMedico implements Serializable{
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personal_medico", fetch = FetchType.LAZY)
 	  private List<PersonalMedicoTurno> personalMedicoTurno;
-
+/* 
 	public PersonalMedico() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -201,5 +205,5 @@ public class PersonalMedico implements Serializable{
     
     
     
-
+*/
 }

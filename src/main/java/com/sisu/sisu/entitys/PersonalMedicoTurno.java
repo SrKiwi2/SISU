@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,11 +33,11 @@ public class PersonalMedicoTurno implements Serializable{
     private Integer idPersonalMedicoTurno;
 
     @Column(name = "fecha_turno")
-    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date fechaTurno;
 
     @Column(name = "fecha_registro")
-    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date fechaRegistro;
 
     @Column(name = "estado")
