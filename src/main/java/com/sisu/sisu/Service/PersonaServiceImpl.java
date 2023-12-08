@@ -40,14 +40,6 @@ public class PersonaServiceImpl implements IPersonaService {
         return personaDao.validarCI(ci);
     }
 
-    
-
-    // @Override
-    // public Persona findByCi(String ci) {
-    //     // TODO Auto-generated method stub
-    //     return personaDao.findByCi(ci);
-    // }
-
     @Override
     public Persona findByCiA(String ci) {
         // TODO Auto-generated method stub
@@ -65,13 +57,4 @@ public class PersonaServiceImpl implements IPersonaService {
         // TODO Auto-generated method stub
         return personaDao.findByCi(ci);
     }
-
-    
-
-    // @Override
-    // public Persona findByCiD(String ci) {
-    //     // TODO Auto-generated method stub
-    //     return personaDao.findByCiD(ci);
-    // }
-
 }

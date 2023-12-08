@@ -26,7 +26,7 @@
             <a href="index.html"><i class="mdi mdi-home-variant h2"></i></a>
         </div>
 
-        <div class="account-pages my-5 pt-sm-5">
+        <div class="account-pages my-3 pt-sm-3">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
@@ -38,11 +38,11 @@
                         
                     </div>
                     <div class="container">     
-                        <div class="row justify-content-center" style="height: 100vh;">
-                            <div class="col-xl-8 col-sm-8 d-flex align-items-center justify-content-center" style="height: 650px;">
+                        <div class="row justify-content-center" style="height: 65vh;">
+                            <div class="col-xl-8 col-sm-8 d-flex align-items-center justify-content-center" style="height: 600px;">
                                 <div class="card bg-light">
                                     <div class="card-body p-4">   
-                                        <form action="../../../../saveDocente" method="POST">
+                                        <form action="/generarFichaD" method="post">
                                             <input type="hidden" id="codigoDocente" name="codigoDocente" value="${codigoDocente}" />
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
@@ -106,16 +106,16 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-md-4">
                                                     <label for="activo">Estado Matricula</label>
                                                     <input type="text" id="activo" name="activo" class="form-control" th:value="${activo}" readonly>
                                                     <p th:if="${activo}" class="text-success">Matrícula activa</p>
                                                     <p th:if="${!activo}" class="text-danger">Matrícula inactiva</p>
                                                 </div>
                                             </div>
-                                            <div class="text-right mt-3">
-                                                <button type="submit" class="btn btn-success mr-2" th:text="${activo ? 'Generar Ficha' : 'Generar Ficha Particular'}" name="submitGenerar" formaction="fichasAsegurado"></button>
-                                                <button type="submit" class="btn btn-secondary" name="submitCancelar" >Cancelar</button>
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-success mr-2" th:text="${activo ? 'Generar Ficha' : 'Generar Ficha Particular'}" name="submitGenerar"></button>
+                                                <button type="submit" class="btn btn-secondary" name="submitCancelar" formaction="/inicioCliente">Cancelar</button>
                                             </div>
                                         </form>
                                     </div>

@@ -41,5 +41,10 @@ public class FichaServiceImpl implements FichaService{
         
         fichaDao.cambiarEstadoById(idFicha);
     }
-    
+
+    @Override
+    public Ficha findFichaByAseguradoId(Integer aseguradoId) {
+        // TODO Auto-generated method stub
+        return fichaDao.findFichaByAseguradoId(aseguradoId);
+    }
 }

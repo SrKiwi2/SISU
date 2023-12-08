@@ -36,11 +36,6 @@ public class AseguradoServiceImpl implements IAseguradoService {
     }
 
     @Override
-    public Asegurado findByPersonaCi(String personaCod) {
-        return aseguradoDao.findByPersonaCi(personaCod);
-    }
-
-    @Override
     public Asegurado findAseguradoByPersonaId(Integer personaId) {
         // TODO Auto-generated method stub
         return aseguradoDao.findAseguradoByPersonaId(personaId);
@@ -53,14 +48,9 @@ public class AseguradoServiceImpl implements IAseguradoService {
     }
 
     @Override
-    public Asegurado findByCodigoAsegurado(String codigoAsegurado) {
+    public Asegurado findAseguradoByIdPersona(Integer idAsegurado) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByCodigoAsegurado'");
+        return aseguradoDao.findAseguradoByIdPersona(idAsegurado);
     }
-
-    @Override
-    public Asegurado findAseguradoByCodigoAsegurado(Integer id_persona, Integer id_asegurado) {
-        // TODO Auto-generated method stub
-        return aseguradoDao.findAseguradoByCodigoAsegurado(id_persona, id_asegurado);
-    }    
+ 
 }

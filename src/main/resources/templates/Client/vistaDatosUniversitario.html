@@ -26,7 +26,7 @@
             <a href="index.html"><i class="mdi mdi-home-variant h2"></i></a>
         </div>
 
-        <div class="account-pages my-5 pt-sm-5">
+        <div class="account-pages my-3 pt-sm-3">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-7">
@@ -39,11 +39,11 @@
                 </div>
                 <div class="row">
                     <div class="container">     
-                        <div class="row justify-content-center" style="height: 65vh;">
+                        <div class="row justify-content-center" style="height: 20vh;">
                             <div class="col-xl-8 col-sm-8 d-flex align-items-center justify-content-center" style="height: 600px;">
                                 <div class="card bg-light">
                                     <div class="card-body p-4">   
-                                        <form action="../../../../SavePersonaUniversitario" method="POST">
+                                        <form action="/generarFicha" method="post">
                                             <input type="hidden" id="codigoUniversitario" name="codigoUniversitario" value="${codigoUniversitario}" />
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
@@ -109,7 +109,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-md-4">
                                                     <label for="estadoMatriculacion">Estado Matricula</label>
                                                     <input type="text" id="estadoMatriculacion" name="estadoMatriculacion" class="form-control" th:value="${estadoMatriculacion}" readonly>
                                                     <p th:if="${estadoMatriculacion}" class="text-success">Matrícula activa</p>
@@ -117,7 +117,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-right mt-3">
-                                                <button type="submit" class="btn btn-success mr-2" th:text="${estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}" name="submitGenerar" formaction="/generarFicha"></button>
+                                                
+                                                <button type="submit" class="btn btn-success mr-2" th:text="${estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}" name="submitGenerarFicha"></button>
                                                 <button type="submit" class="btn btn-secondary" name="submitCancelar" formaction="/inicioCliente">Cancelar</button>
                                             </div>
                                         </form>
@@ -132,6 +133,7 @@
         </div>
         <!-- end Account pages -->
 
+    
         <!-- JAVASCRIPT -->
         <script src="assets/libs/jquery/jquery.min.js"></script>
         <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

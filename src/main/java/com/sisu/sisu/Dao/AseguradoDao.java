@@ -10,6 +10,4 @@ public interface AseguradoDao extends CrudRepository<Asegurado, Integer>{
     
     @Query("SELECT a FROM Asegurado a WHERE a.id = ?1")
     Asegurado obtenerIdAsegurado(@Param("id") Integer id);
-
-    Asegurado findByCodigoAsegurado(String codigoAsegurado);
 }

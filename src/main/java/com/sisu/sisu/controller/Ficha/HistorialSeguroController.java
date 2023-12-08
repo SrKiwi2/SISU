@@ -25,8 +25,10 @@ public class HistorialSeguroController {
 
         
         Ficha ficha = fichaService.findOne(idFicha);
-        ficha.setEstado("R");
+        if (ficha != null) {
+            ficha.setEstado("R");
         fichaService.save(ficha);
+        }
         
        HistorialSeguro historialSeguro = historialSeguroService.getHistorial_por_id_seguro(idFicha);
         historialSeguro = historialSeguroService.getHistorial_por_id_seguro(idFicha);

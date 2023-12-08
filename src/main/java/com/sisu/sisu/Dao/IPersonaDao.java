@@ -25,6 +25,7 @@ public interface IPersonaDao extends CrudRepository<Persona, Integer> {
     @Query("SELECT p FROM Persona p WHERE p.ci = :ci")
     Persona validarCI(@Param("ci") String ci);
 
+
 }
 
 

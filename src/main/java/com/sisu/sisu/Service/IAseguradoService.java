@@ -23,13 +23,9 @@ public interface IAseguradoService {
 
     public void delete(Integer id);
 
-    Asegurado findByPersonaCi(String personaCod);
-
     Asegurado obtenerIdAsegurado(@Param("id") Integer id);
 
     Asegurado findAseguradoByPersonaId(Integer personaId);
 
-    Asegurado findByCodigoAsegurado(String codigoAsegurado);
-
-    Asegurado findAseguradoByCodigoAsegurado(Integer id_persona, Integer id_asegurado);
+    Asegurado findAseguradoByIdPersona(Integer idAsegurado);
 }

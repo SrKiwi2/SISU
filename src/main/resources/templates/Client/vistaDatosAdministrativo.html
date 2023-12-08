@@ -46,7 +46,7 @@
                             <div class="col-xl-8 col-sm-8 d-flex align-items-center justify-content-center" style="height: 500px;">
                                 <div class="card bg-light">
                                     <div class="card-body p-4">   
-                                        <form action="../../../../saveAdministrativo" method="POST">
+                                        <form action="/generarFichaA" method="post">
                                         <input type="hidden" id="codigoAdministrativo" name="codigoAdministrativo" value="${codigoAdministrativo}" />
                                             <div class="row">
                                                 <div class="col-md-4 mb-3">
@@ -105,8 +105,8 @@
                                                 </div>
                                             </div>
                                             <div class="text-right mt-3">
-                                                <button type="submit" class="btn btn-success mr-2" name="submitGenerar" formaction="fichasAsegurado">Generar Ficha</button>
-                                                <button type="submit" class="btn btn-secondary" name="submitCancelar" >Cancelar</button>
+                                                <button type="submit" class="btn btn-success mr-2" name="submitGenerar">Generar Ficha</button>
+                                                <button type="submit" class="btn btn-secondary" name="submitCancelar" formaction="/inicioCliente">Cancelar</button>
                                             </div>
                                         </form>
                                     </div>

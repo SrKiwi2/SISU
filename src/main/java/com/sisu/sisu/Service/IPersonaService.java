@@ -26,4 +26,5 @@ public interface IPersonaService {
     // Persona findByCiD(String ci);
 
     Persona validarCI(@Param("ci") String ci);
+
 }

@@ -20,7 +20,7 @@ public class VistaClienteController {
 	@RequestMapping(value = "/inicioCliente", method = {RequestMethod.GET, RequestMethod.POST})
 	public String homecliente(Model model, HttpServletRequest request) {
 		
-		System.out.println("11111111111111111111111111111111111111111111+33");
+		System.out.println("SE INGRESA FICHA CONTROLLER!!!!!");
 
 		return "Client/inicioCliente";
 	}

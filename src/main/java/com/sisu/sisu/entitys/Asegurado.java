@@ -29,6 +29,7 @@ public class Asegurado implements Serializable {
   private static long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
   @Column(name = "id_asegurado")
   private Integer idAsegurado;
 
@@ -54,7 +55,6 @@ public class Asegurado implements Serializable {
       this.codigoAsegurado = codigoAsegurado;
   }
 
-
   // ----------------------RELACIONES------------------------------------------
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
@@ -69,13 +69,4 @@ public class Asegurado implements Serializable {
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "asegurado", fetch = FetchType.LAZY)
 	private List<Ficha> ficha;
-
-
-  
-  
-  
-  
-  
-  
-
 }

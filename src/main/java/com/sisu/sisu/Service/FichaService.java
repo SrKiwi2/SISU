@@ -18,4 +18,5 @@ public interface FichaService {
 
     void cambiarEstadoById(@Param("idFicha") Integer idFicha);  //Modificar Estado de registro
 
+    Ficha findFichaByAseguradoId(Integer aseguradoId);
 }
