@@ -110,7 +110,7 @@ public class FichaSisuController {
 				if (newpersona != null) {
 					
 					personaCreada = newpersona;
-
+					System.out.println("este univeristario ya está registrado");
 					return "Client/vistaDatosUniversitario";
 
 				}else{
@@ -224,7 +224,6 @@ public class FichaSisuController {
 			ficha.setAsegurado(asegurado);
 			fichaService.save(ficha);
 		}
-
 	    return "redirect:/inicioCliente";
 	}
 

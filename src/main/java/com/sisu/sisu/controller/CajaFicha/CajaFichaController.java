@@ -1,10 +1,13 @@
 package com.sisu.sisu.controller.CajaFicha;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,8 +21,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import com.sisu.sisu.Service.FichaService;
+import com.sisu.sisu.Service.HistorialSeguroService;
+import com.sisu.sisu.Service.IAseguradoService;
+import com.sisu.sisu.Service.IPersonaService;
+import com.sisu.sisu.entitys.Asegurado;
+import com.sisu.sisu.entitys.Dip;
+import com.sisu.sisu.entitys.EstadoSeguro;
+import com.sisu.sisu.entitys.Ficha;
+import com.sisu.sisu.entitys.GradoAcademico;
+import com.sisu.sisu.entitys.HistorialSeguro;
+import com.sisu.sisu.entitys.Institucion;
+import com.sisu.sisu.entitys.Persona;
+import com.sisu.sisu.entitys.TipoSeguro;
+import com.sisu.sisu.entitys.TiposEstadoCivil;
+
+import net.bytebuddy.asm.Advice.Return;
+
 @Controller
 public class CajaFichaController {
+
+	@Autowired
+	private IPersonaService personaService;
+
+	@Autowired
+	private IAseguradoService aseguradoService;
+
+	@Autowired
+	private HistorialSeguroService historialSeguroService;
+
+	@Autowired
+	private FichaService fichaService;
 
 	@RequestMapping(value = "/Ficha", method = RequestMethod.GET)
 	public String ficha(Model model) {
@@ -84,6 +116,85 @@ public class CajaFichaController {
 				responseData.put("sexo", data.get("sexo").toString());
 				responseData.put("estadoMatriculacion", data.get("estado_matriculacion").toString());
 
+				Persona univPersona = personaService.findByCi(data.get("ci").toString());
+
+				if (univPersona != null) {
+					personaUniCreada = univPersona;
+
+				}else{
+
+					univPersona = new Persona();
+					Dip dip = new Dip();
+					GradoAcademico gradoAcademico = new GradoAcademico();
+					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
+
+					dip.setIdDip(10);
+					gradoAcademico.setIdGradoAcademico(1);
+					tiposEstadoCivil.setIdTipoEstadoCivil(1);
+
+					univPersona.setEstado("RU");
+					univPersona.setNombres(data.get("nombres").toString());
+	    			univPersona.setApPaterno(data.get("apellido_paterno").toString());
+	    			univPersona.setApMaterno(data.get("apellido_materno").toString());
+	    			univPersona.setCi(data.get("ci").toString());
+	    			univPersona.setDireccion(data.get("direccion").toString());
+	    			univPersona.setCelular(Integer.parseInt(data.get("celular").toString()));
+	    			univPersona.setSexo(data.get("sexo").toString());
+					univPersona.setDip(dip);
+					univPersona.setGrado_academico(gradoAcademico);
+					univPersona.setTipos_estado_civil(tiposEstadoCivil);
+	    			univPersona.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));
+					
+					personaService.save(univPersona);
+
+					personaUniCreada = univPersona;
+				}
+
+				Asegurado codUniAseguradoExiste =  aseguradoService.findAseguradoByPersonaId(univPersona.getIdPersona());
+				
+				if (codUniAseguradoExiste != null) {
+					
+					codUniAseguradoCreado = codUniAseguradoExiste;
+
+				}else{
+					String codigoAsegurado = generateCodigoAsegurado(univPersona);
+
+					Asegurado asegurado = new Asegurado();
+
+					// Después de guardar el asegurado
+
+					asegurado.setCodigoAsegurado(codigoAsegurado);
+					asegurado.setPersona(univPersona);
+					asegurado.setEstado("A");
+					aseguradoService.save(asegurado);
+
+					codUniAseguradoCreado = asegurado;
+
+					System.out.println("/------------------------------------------------/");
+					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: " + univPersona.getNombres());
+					System.out.println("/------------------------------------------------/");
+
+					EstadoSeguro estadoSeguro = new EstadoSeguro();
+					Institucion institucion = new Institucion();
+					TipoSeguro tipoSeguro = new TipoSeguro();
+
+					estadoSeguro.setIdEstadoSeguro(1);
+					institucion.setIdInstitucion(1);
+					tipoSeguro.setIdTipoSeguro(1);
+
+					HistorialSeguro historialSeguro = new HistorialSeguro();
+					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
+					historialSeguro.setEstado("A"); // (o el estado que desees)
+					historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setFechaBaja(new Date());
+					historialSeguro.setTitularHS(true);
+					historialSeguro.setAsegurado(asegurado);
+					historialSeguro.setEstado_seguro(estadoSeguro);
+					historialSeguro.setInstitucion(institucion);
+					historialSeguro.setTipo_seguro(tipoSeguro);
+					historialSeguroService.save(historialSeguro);
+				}
+
 				return new ResponseEntity<>(responseData, HttpStatus.OK);
 			} else {
 				return ResponseEntity.ok("index/nombreUniversitarioView");
@@ -94,6 +205,43 @@ public class CajaFichaController {
 		// Manejo de errores u otras lógicas en caso de que la respuesta no sea 200
 	}
 
+
+	private String generateCodigoAsegurado(Persona persona) {
+		String nombre = persona.getNombres();
+		String apPaterno = persona.getApPaterno();
+		String apMaterno = persona.getApMaterno();
+		String ci = persona.getCi();
+	
+		// Obtener la primera letra de cada palabra y el CI
+		String codigoAsegurado = String.valueOf(nombre.charAt(0)) +
+								String.valueOf(apPaterno.charAt(0)) +
+								String.valueOf(apMaterno.charAt(0)) +
+								ci;
+	
+		return codigoAsegurado;
+	}
+
+	private Persona personaUniCreada;
+	private Asegurado codUniAseguradoCreado;
+
+	@RequestMapping(value = "/generarFichaCaja", method = RequestMethod.POST)
+	public String generarFicha(Model model) {
+	
+		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaUniCreada.getIdPersona());
+
+		Ficha existeFicha = fichaService.findFichaByAseguradoId(codUniAseguradoCreado.getIdAsegurado());
+
+		if (existeFicha != null) {
+			System.out.println("YA TIENES UNA FICHA PARIENTE");
+		}else{
+			Ficha ficha = new Ficha();
+			ficha.setEstado("A");
+			ficha.setFechaRegistroFichaa(new Date());
+			ficha.setAsegurado(asegurado);
+			fichaService.save(ficha);
+		}
+	    return "redirect:/inicioCliente";
+	}
 
 	
 	@RequestMapping(value = "docenteC", method = RequestMethod.GET)

@@ -213,12 +213,11 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form action="Ficha" method="post">
+                                                                    <form action="/generarFichaCaja" method="post">
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
-                                                                                <label for="nombreUniversitario">Nombre
-                                                                                    del Universitario:</label>
-                                                                                <input type="text" id="nombreUniversitario" name="nombreUniversitario" class="form-control"
+                                                                                <label for="nombreUniversitario">Nombre del Universitario:</label>
+                                                                                <input type="text" id="codigoUniversitario" name="nombreUniversitario" class="form-control"
                                                                                     th:value="${nombreUniversitario}" readonly>
                                                                             </div>
                                                                             <div class="col-md-4 mb-3">
@@ -297,7 +296,7 @@
                                                                     </form>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" id="generarFichaButton" class="btn btn-success mr-2" formaction="Ficha"
+                                                                    <button type="button" id="generarFichaButton" class="btn btn-success mr-2"
                                                                         th:text="${estadoMatriculacion != null && estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
                                                                     </button>
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -318,7 +317,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form action="" method="">
+                                                                    <form action="/generarFichaCaja" method="post">
                                                                         <div class="row">
                                                                             <div class="col-md-4 mb-3">
                                                                                 <label for="DatosDocente">Nombre del
@@ -446,8 +445,7 @@
                                                                 <div class="modal-footer">
                                                                     <button type="submit"
                                                                         id="generarFichaButton2"
-                                                                        class="btn btn-success mr-2"
-                                                                        formaction=""
+                                                                        class="btn btn-success mr-2"                                                                        
                                                                         th:text="${activo != null && activo ? 'Generar Ficha' : 'Generar Ficha Particular'}">
                                                                     </button>
                                                                     <button type="button"

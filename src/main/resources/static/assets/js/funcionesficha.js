@@ -1,12 +1,6 @@
 function cargarInformacion() {
     // Obtener el valor del campo de entrada
     var codigoUniversitario = $("#validationCustom01").val();
-    var mostrarModal = true;
-
-    if (!codigoUniversitario) {
-        alert("por Favor, introduce un codigo universitario");
-        return;
-    }
 
     // Hacer la solicitud AJAX
     $.ajax({
@@ -41,12 +35,26 @@ function cargarInformacion() {
                 $("#estadoMatriculacion").val("ACTIVO").css("color", "green");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
                 $("#generarFichaButton").text("Generar Ficha");
-                $("#generarFichaButton").attr("formaction", "S");
+                $("#generarFichaButton").on("click", function(){
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/generarFichaCaja",
+                        success: function (data){
+                            console.log("FICHA GENERADA EXITOSAMENTE", data);
+                        },
+                        error: function (error) {
+                            console.error("Error en Generar la Ficha", error);
+                            alert("Error en Generar la Ficha. Consulta la consola para mas detalles")
+                        }
+                    })
+
+                })
             } else {
                 $("#estadoMatriculacion").val("INACTIVO").css("color", "red");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
                 $("#generarFichaButton").text("Generar Ficha Particular");
-                $("#generarFichaButton").attr("formaction", "OtraAccion");  // Cambia "OtraAccion" por la acción deseada
+                $("#generarFichaButton").attr("formaction", "/A");  // Cambia "OtraAccion" por la acción deseada
             }
             
         },
@@ -92,7 +100,21 @@ function cargarInformacion2() {
                 $("#activo").val("ACTIVO").css("color", "green");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
                 $("#generarFichaButton2").text("Generar Ficha");
-                $("#generarFichaButton2").attr("formaction", "Ficha");
+                $("#generarFichaButton2").on("click", function(){
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/generarFichaCaja",
+                        success: function (data){
+                            console.log("FICHA DOCENTE GENERADA EXITOSAMENTE", data);
+                        },
+                        error: function (error) {
+                            console.error("Error en Generar la Ficha", error);
+                            alert("Error en Generar la Ficha. Consulta la consola para mas detalles")
+                        }
+                    })
+
+                })
             } else {
                 $("#activo").val("INACTIVO").css("color", "red");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
