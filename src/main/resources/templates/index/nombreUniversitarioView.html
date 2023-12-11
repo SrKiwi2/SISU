@@ -25,13 +25,13 @@
             <div class="col-xl-8 col-sm-8 d-flex align-items-center justify-content-center">
                 <div class="card bg-light">
                     <div class="card-body p-4">   
-                        <form action="../../../../saveUniveristario" method="POST">
+                        <form action="/generarFichaCaja" method="POST">
                             <input type="hidden" th:field="${personaUniversitaria.idPersona}">
-                            <input type="hidden" id="codigoUniversitario" name="codigoUniversitario" value="${codigoUniversitario}" />
+                            
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="nombreUniversitario">Nombre del Universitario:</label>
-                                    <input type="text" id="nombreUniversitario" name="nombreUniversitario" class="form-control" th:value="${nombreUniversitario}" readonly>
+                                    <label for="nombre">Nombre del Universitario:</label>
+                                    <input type="text" id="nombre" name="nombreUniversitario" class="form-control" th:value="${nombreUniversitario}" readonly>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
@@ -98,8 +98,7 @@
                             </div>
                             
                             <div class="text-right mt-3">
-                                <button type="submit" class="btn btn-success mr-2" formaction="loginE"
-                                    th:text="${estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
+                                <button type="submit" class="btn btn-success mr-2" th:text="${estadoMatriculacion ? 'Generar Ficha' : 'Generar Ficha Particular'}">
                                 </button>
                                 <button type="button" class="btn btn-secondary" id="cancelarButton">Cancelar</button>
                             </div>
@@ -111,11 +110,7 @@
     </div>
     
     <!-- Tus scripts y otros elementos de la página -->
-    <script>
-        document.getElementById("cancelarButton").addEventListener("click", function() {
-            window.location.href = "/loginK";
-        });
-    </script>
+    
     <script src="../../assets/libs/jquery/jquery.min.js"></script>
     <script src="../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/libs/metismenu/metisMenu.min.js"></script>

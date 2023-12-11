@@ -64,10 +64,6 @@ public class CajaFichaController {
 	public ResponseEntity<Object> universitario(HttpServletRequest request, Model model,
 			@RequestParam("codigoUniversitario") String ru) {
 
-		if (ru == null || ru.isEmpty()) {
-			return ResponseEntity.badRequest().body("El código universitario no puede estar vacío.");
-		}
-
 		System.out.println("EL RU DEL UNIVERSITARIO ES :" + ru);
 		System.out.println("-----------------ESTUDIANTE------------------");
 		System.out.println("EL RU DEL UNIVERSITARIO ES :" + ru);
@@ -233,14 +229,16 @@ public class CajaFichaController {
 
 		if (existeFicha != null) {
 			System.out.println("YA TIENES UNA FICHA PARIENTE");
+			 
 		}else{
 			Ficha ficha = new Ficha();
 			ficha.setEstado("A");
 			ficha.setFechaRegistroFichaa(new Date());
 			ficha.setAsegurado(asegurado);
 			fichaService.save(ficha);
+			
 		}
-	    return "redirect:/inicioCliente";
+	   return "Cient/inicioCliente";
 	}
 
 	
