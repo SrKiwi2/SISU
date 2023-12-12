@@ -169,14 +169,6 @@ public class FichaSisuController {
 					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: " + newpersona.getNombres());
 					System.out.println("/------------------------------------------------/");
 
-					EstadoSeguro estadoSeguro = new EstadoSeguro();
-					Institucion institucion = new Institucion();
-					TipoSeguro tipoSeguro = new TipoSeguro();
-
-					estadoSeguro.setIdEstadoSeguro(1);
-					institucion.setIdInstitucion(1);
-					tipoSeguro.setIdTipoSeguro(1);
-
 					HistorialSeguro historialSeguro = new HistorialSeguro();
 					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
 					historialSeguro.setEstado("A"); // (o el estado que desees)
@@ -205,27 +197,49 @@ public class FichaSisuController {
 		}
 	}
 
-	private Persona personaCreada;
-	private Asegurado codigoAseguradoCreado;
+	// @RequestMapping(value = "crearFicha", method = RequestMethod.POST)
+	// public String crearFicha(@ModelAttribute("personaUniversitaria") Persona persona, Model model) {
+	//     try {
+	//         // Aquí colocas el código relacionado con la creación de la ficha y otros procesos
+	//         Ficha ficha = new Ficha();
+	//         ficha.setEstado("A");
+	//         ficha.setFechaRegistroFichaa(new Date());
+	//         ficha.setAsegurado(persona.getAsegurado());  // Ajusta según tu estructura
+
+	//         fichaService.save(ficha);
+
+	//         // ... (Otros procesos relacionados)
+
+	//         return "redirect:/rutaDondeQuieresRedirigir"; // Redirige a la vista deseada
+	//     } catch (Exception e) {
+	//         e.printStackTrace();
+	//         // Maneja las excepciones según tus necesidades
+	//         return "redirect:/error";
+	//     }
+	// }
 
 	@RequestMapping(value = "/generarFicha", method = RequestMethod.POST)
-	public String generarFicha(Model model) {
-	
-		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaCreada.getIdPersona());
+	public String generarFicha(@RequestParam("codigoAsegurado")Integer idPersona, Integer idAsegurado) {
+	    Asegurado asegurado = aseguradoService.findAseguradoByCodigoAsegurado(idPersona, idAsegurado);
 
-		Ficha existeFicha = fichaService.findFichaByAseguradoId(codigoAseguradoCreado.getIdAsegurado());
+	    if (asegurado != null) {
+	        Ficha ficha = new Ficha();
+	        ficha.setEstado("A");
+	        ficha.setFechaRegistroFichaa(new Date());
+	        ficha.setAsegurado(asegurado);
+	        fichaService.save(ficha);
 
-		if (existeFicha != null) {
-			System.out.println("YA TIENES UNA FICHA PARIENTE");
-		}else{
-			Ficha ficha = new Ficha();
-			ficha.setEstado("A");
-			ficha.setFechaRegistroFichaa(new Date());
-			ficha.setAsegurado(asegurado);
-			fichaService.save(ficha);
-		}
-	    return "redirect:/inicioCliente";
+			System.out.println("FICHA GENERADA PARA: "+asegurado);
+	        // Otros procesamientos si es necesario
+
+	        return "redirect:/inicioCliente";
+	    } else {
+	        // Manejo de error si no se encuentra el asegurado
+	        return "redirect:/index";
+	    }
 	}
+
+
 
 	private String generateCodigoAsegurado(Persona persona) {
 		String nombre = persona.getNombres();

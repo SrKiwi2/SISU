@@ -32,6 +32,13 @@
 
     <link rel="stylesheet" href="assets/css/btnficha.css">
 
+    <link rel="stylesheet" href="../../../../icono_fontawesome6.4.0/css/all.css">
+    <link rel="stylesheet" href="../../../../icono_fontawesome6.4.0/css/fontawesome.pro.min.css">
+    <link rel="stylesheet" href="../../../../assets/css/select2 4.1.css">
+    <link rel="stylesheet" href="../../../../assets/css/sweetaler2.css">
+    
+    <link rel="stylesheet" href="../../../../assets/css/css-dateTimePicker-bs4/bootstrap-datetimepicker.min.css">
+
 </head>
 
 <body data-topbar="colored">
@@ -105,7 +112,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="f : ${fichas}" th:if="${f.estado =='A' or f.estado =='RU' or f.estado =='RA' or f.estado =='RD'}">
+                                            <tr th:each="f : ${fichas}">
                                                 <!-- <td th:text="${f.asegurado.persona.nombres}"></td> -->
                                                 <td th:if="${f.asegurado != null and f.asegurado.persona != null}" th:text="${f.asegurado.persona.nombres}"></td>
                                                 <!-- <td th:text="${f.asegurado.persona.apPaterno + '  ' + f.asegurado.persona.apMaterno}"></td> -->
@@ -134,10 +141,11 @@
                                                 </td> -->
                                                 <td>
                                                     <input type="hidden" th:hidden="${f != null and f.asegurado != null}" />
-                                                    <form th:action="@{'../../../../vistaHistorialSeguro'}" method="POST">
+                                                    <a class="btn btn-primary sombre" th:href="@{'../../../../vistaHistorialSeguro/'+${f.asegurado.idAsegurado}+'/'+${f.idFicha}}">Historial</a>
+                                                    <!--<form th:action="@{'../../../../vistaHistorialSeguro'}" method="POST">
                                                         <input type="hidden" th:if="${f != null and f.asegurado != null}" th:name="idFicha" th:value="${f.asegurado.idAsegurado}" />
                                                         <button class="btn btn-primary sombre" type="submit">Historial</button>
-                                                    </form>
+                                                    </form>-->
                                                 </td>
                                                 
                                             </tr>
@@ -196,6 +204,15 @@
 
 
     <script src="../../../../assets/js/app.js"></script>
+    <script src="../../../../assets/libs/icono_fontawesome6.4.0/js/all.js"></script>
+    <script src="../../../../assets/libs/icono_fontawesome6.4.0/js/all.min.js"></script>
+    <script src="../../../../assets/js/pages/dayjs.min.js"></script>
+    <script src="../../../../assets/js/pages/swallAlert2.js"></script>
+
+    <script src="../../../../assets/js/js-dateTimePicker-bs4/bootstrap-datetimepicker.js"></script>
+    <script src="../../../../assets/js/js-dateTimePicker-bs4/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../../../assets/js/app.js"></script>
+
 </body>
 
 </html>
