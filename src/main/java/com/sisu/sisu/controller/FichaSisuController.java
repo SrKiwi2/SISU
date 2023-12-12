@@ -169,6 +169,14 @@ public class FichaSisuController {
 					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: " + newUnipersona.getNombres());
 					System.out.println("/------------------------------------------------/");
 
+					EstadoSeguro estadoSeguro = new EstadoSeguro();
+					Institucion institucion = new Institucion();
+					TipoSeguro tipoSeguro = new TipoSeguro();
+
+					estadoSeguro.setIdEstadoSeguro(1);
+					institucion.setIdInstitucion(1);
+					tipoSeguro.setIdTipoSeguro(1);
+
 					HistorialSeguro historialSeguro = new HistorialSeguro();
 					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
 					historialSeguro.setEstado("A"); // (o el estado que desees)
