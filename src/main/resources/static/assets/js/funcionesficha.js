@@ -42,6 +42,8 @@ function cargarInformacion() {
                         url: "/generarFichaCaja",
                         success: function (data){
                             console.log("FICHA GENERADA EXITOSAMENTE", data);
+                            // window.location.href = "/Ficha"
+                            $("#myModal").modal("hide");
                         },
                         error: function (error) {
                             console.error("Error en Generar la Ficha", error);
@@ -96,6 +98,8 @@ function cargarInformacion2() {
             $("#carrera").val(data.carrera);
             $("#facultad").val(data.facultad);
 
+            $("#myModal2").modal("show");
+
             if (data.activo == 'true') {
                 $("#activo").val("ACTIVO").css("color", "green");
                 // Cambiar el texto y la acción del botón en función del estado de matriculación
@@ -104,9 +108,10 @@ function cargarInformacion2() {
 
                     $.ajax({
                         type: "POST",
-                        url: "/generarFichaCaja",
+                        url: "/generarFichaDocCaja",
                         success: function (data){
-                            console.log("FICHA DOCENTE GENERADA EXITOSAMENTE", data);
+                            // console.log("FICHA DOCENTE GENERADA EXITOSAMENTE", data);
+                            $("#myModal2").modal("hide");
                         },
                         error: function (error) {
                             console.error("Error en Generar la Ficha", error);
@@ -124,7 +129,62 @@ function cargarInformacion2() {
             // Otros campos...
 
             // Mostrar el modal
-            $("#myModal2").modal("show");
+            
+        },
+        error: function (error) {
+            console.log("Error al cargar la información del universitario:", error);
+        }
+    });
+}
+
+
+function cargarInformacion4() {
+    // Obtener el valor del campo de entrada
+    var codigoAdministrativo = $("#codigoAdministrativoInput").val();
+
+    // Hacer la solicitud AJAX
+    $.ajax({
+        type: "GET",
+        url: "/administrativoC",
+        data: { codigoAdministrativo: codigoAdministrativo },
+        success: function (data) {
+            // Actualizar los campos del modal con los valores obtenidos
+
+            $("#nombreA").val(data.nombresA);
+                $("#apPaternoA").val(data.apPaternoA);
+                $("#apMaternoA").val(data.apMaternoA);
+                $("#CA").val(data.CA);
+                $("#ciA").val(data.ciA);
+                $("#fechaNacimientoA").val(data.fechaNacimientoA);
+                $("#sexoA").val(data.sexoA);
+                $("#gmailA").val(data.gmailA);
+                $("#descripcionA").val(data.descripcionA);
+                $("#descripcionA2").val(data.descripcionA2);
+                $("#nivel").val(data.nivel);
+                
+                $("#myModal4").modal("show");
+
+            
+            $("#generarFichaButton4").on("click", function(){
+
+                $.ajax({
+                    type: "POST",
+                    url: "/generarFichaAdmCaja",
+                    success: function (data){
+                        // console.log("FICHA DOCENTE GENERADA EXITOSAMENTE", data);
+                        $("#myModal4").modal("hide");
+                    },
+                    error: function (error) {
+                        console.error("Error en Generar la Ficha", error);
+                        alert("Error en Generar la Ficha. Consulta la consola para mas detalles")
+                    }
+                })
+
+            })
+            
+
+            
+            
         },
         error: function (error) {
             console.log("Error al cargar la información del universitario:", error);

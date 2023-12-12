@@ -1,6 +1,7 @@
 package com.sisu.sisu.controller.CajaFicha;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -189,6 +190,10 @@ public class CajaFichaController {
 					historialSeguro.setInstitucion(institucion);
 					historialSeguro.setTipo_seguro(tipoSeguro);
 					historialSeguroService.save(historialSeguro);
+
+					System.out.println("/------------------------------------------------/");
+					System.out.println("SE GENERO EL HISTORIAL SEGURO PARA: " + univPersona.getNombres());
+					System.out.println("/------------------------------------------------/");
 				}
 
 				return new ResponseEntity<>(responseData, HttpStatus.OK);
@@ -229,6 +234,9 @@ public class CajaFichaController {
 
 		if (existeFicha != null) {
 			System.out.println("YA TIENES UNA FICHA PARIENTE");
+			model.addAttribute("alertMessage", "Ya tienes una ficha pariente.");
+			return "busqueda/GenerarFicha";
+			
 			 
 		}else{
 			Ficha ficha = new Ficha();
@@ -236,11 +244,16 @@ public class CajaFichaController {
 			ficha.setFechaRegistroFichaa(new Date());
 			ficha.setAsegurado(asegurado);
 			fichaService.save(ficha);
+
+			System.out.println("/------------------------------------------------/");
+					System.out.println("SE GENERO FICHA ASEGURADO");
+					System.out.println("/------------------------------------------------/");
 			
 		}
-	   return "Cient/inicioCliente";
+	   return "Client/inicioCliente";
 	}
 
+	//------------------------------------DOCENTE CONTROLLER ----------------------------------------------------
 	
 	@RequestMapping(value = "docenteC", method = RequestMethod.GET)
 	public Object docenteC(HttpServletRequest request,Model model,
@@ -297,11 +310,251 @@ public class CajaFichaController {
 				// responseDataD.put("facultad", data.get("facultad").toString());
 				responseDataD.put("activo", data.get("activo").toString());
 
+				Persona docPersona = personaService.findByCi(data.get("ci").toString());
+
+				if (docPersona != null) {
+					personaDocCreada = docPersona;
+				}else{
+					docPersona = new Persona();
+
+					Dip dip = new Dip();
+					GradoAcademico gradoAcademico = new GradoAcademico();
+					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
+
+					dip.setIdDip(10);
+					gradoAcademico.setIdGradoAcademico(1);
+					tiposEstadoCivil.setIdTipoEstadoCivil(1);
+
+					docPersona.setEstado("RD");
+					docPersona.setNombres(data.get("nombres").toString());
+					docPersona.setApPaterno(data.get("apellido_paterno").toString());
+	    			docPersona.setApMaterno(data.get("apellido_materno").toString());
+	    			docPersona.setCi(data.get("ci").toString());
+	    			docPersona.setDireccion(data.get("direccion").toString());
+	    			docPersona.setCelular(Integer.parseInt(data.get("celular").toString()));
+	    			docPersona.setSexo(data.get("sexo").toString());
+	    			docPersona.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));		
+					personaService.save(docPersona);
+
+					personaDocCreada = docPersona;
+					System.out.println("/------------------------------------------------/");
+					System.out.println("SE REGISTRO AL DOCENTE");
+					System.out.println("/------------------------------------------------/");
+				}
+
+				Asegurado codigoAseguradoDExiste = aseguradoService.findAseguradoByPersonaId(personaDocCreada.getIdPersona());
+
+				if (codigoAseguradoDExiste != null) {
+					
+					codDocAsegurado = codigoAseguradoDExiste;
+					
+				}else{
+					String codigoAsegurado = generateCodigoAsegurado(personaDocCreada);
+
+					Asegurado aseguradoD = new Asegurado();
+					aseguradoD.setCodigoAsegurado(codigoAsegurado);
+					aseguradoD.setPersona(personaDocCreada);
+					aseguradoD.setEstado("A");
+					aseguradoService.save(aseguradoD);
+
+					codDocAsegurado = aseguradoD;
+
+					System.out.println("/------------------------------------------------/");
+					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+personaDocCreada.getNombres());
+					System.out.println("/------------------------------------------------/");
+
+					HistorialSeguro historialSeguro = new HistorialSeguro();
+					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
+            		historialSeguro.setEstado("A"); // (o el estado que desees)
+            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setFechaBaja(new Date());
+            		historialSeguro.setTitularHS(true);
+            		historialSeguro.setAsegurado(aseguradoD);
+					historialSeguroService.save(historialSeguro);
+				}
+
 				return new ResponseEntity<>(responseDataD, HttpStatus.OK);
 			}else{
 				return "busqueda/GenerarFicha";
 			}
 		}
 		return "Error al procesar la solicitud";
+	}
+
+	private Persona personaDocCreada;
+	private Asegurado codDocAsegurado;
+
+	@RequestMapping(value = "/generarFichaDocCaja", method = RequestMethod.POST)
+	public String generarFichaDocente(Model model) {
+	
+		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaDocCreada.getIdPersona());
+
+		Ficha existeFicha = fichaService.findFichaByAseguradoId(codDocAsegurado.getIdAsegurado());
+
+		if (existeFicha != null) {
+			System.out.println("YA TIENES UNA FICHA PARIENTE");
+			model.addAttribute("alertMessage", "Ya tienes una ficha pariente.");
+			return "busqueda/GenerarFicha";
+			
+			 
+		}else{
+			Ficha ficha = new Ficha();
+			ficha.setEstado("A");
+			ficha.setFechaRegistroFichaa(new Date());
+			ficha.setAsegurado(asegurado);
+			fichaService.save(ficha);
+
+			System.out.println("/------------------------------------------------/");
+					System.out.println("SE CREO FICHA ASEGURADO");
+					System.out.println("/------------------------------------------------/");
+			
+		}
+	   return "busqueda/GenerarFicha";
+	}
+
+	@RequestMapping(value = "/administrativoC", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> administrativo(HttpServletRequest request, Model model,
+			@RequestParam("codigoAdministrativo") String codigoAdministrativo) {
+		Map<String, Object> response = new HashMap<>();
+		try {
+			response.put("usuario", codigoAdministrativo);
+
+			String url = "https://digital.uap.edu.bo/api/londra/api/londraPost/v1/personaLondra/obtenerDatos";
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			HttpEntity<Map<String, Object>> req = new HttpEntity<>(response, headers);
+
+			RestTemplate restTemplate = new RestTemplate();
+			ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
+
+			System.out.println("7777777777777777777777777777777777777+2");
+
+			if (resp.getBody().get("status").toString().equals("200")) {
+				System.out.println("hola-------------------------------------kiwi1");
+				Map<String, Object> data = (Map) resp.getBody();
+				System.out.println("hola-------------------------------------kiwi2");
+
+				response.put("nombresA", data.get("per_nombres").toString());
+				response.put("apPaternoA", data.get("per_ap_paterno").toString());
+				response.put("apMaternoA", data.get("per_ap_materno").toString());
+				response.put("CA", data.get("per_id").toString());
+				response.put("ciA", data.get("per_num_doc").toString());
+				response.put("fechaNacimientoA", data.get("fecha_nac").toString());
+				response.put("sexoA", data.get("per_sexo").toString());
+				response.put("gmailA", data.get("perd_email_personal").toString());
+				response.put("descripcionA", data.get("p_descripcion").toString());
+				response.put("descripcionA2", data.get("cp_descripcion").toString());
+				response.put("nivel", data.get("nivelInstruccion").toString());
+
+				Persona existPersonaA = personaService.findByCi(data.get("per_num_doc").toString());
+
+				if (existPersonaA != null) {
+					personaAdCreada = existPersonaA;
+					
+
+				}else{
+					System.out.println("--------------------------------------------------------");
+					System.out.println("PREGUNTO PREGUNTO ADMINISTRATIVO");
+					System.out.println("--------------------------------------------------------");
+
+					existPersonaA = new Persona();
+
+					Dip dip = new Dip();
+					GradoAcademico gradoAcademico = new GradoAcademico();
+					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
+
+					dip.setIdDip(10);
+					gradoAcademico.setIdGradoAcademico(1);
+					tiposEstadoCivil.setIdTipoEstadoCivil(1);
+
+					existPersonaA.setEstado("RA");
+					existPersonaA.setNombres(data.get("per_nombres").toString());
+					existPersonaA.setApPaterno(data.get("per_ap_paterno").toString());
+					existPersonaA.setApMaterno(data.get("per_ap_materno").toString());
+					existPersonaA.setCi(data.get("per_num_doc").toString());
+					existPersonaA.setSexo(data.get("per_sexo").toString());
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate fechaNacimiento = LocalDate.parse(data.get("fecha_nac").toString(), formatter);
+					existPersonaA.setFecha_nac(fechaNacimiento);
+					personaService.save(existPersonaA);
+
+					personaAdCreada = existPersonaA;
+
+					System.out.println("/--------------------------------------------------------/");
+					System.out.println("PERSONA ADMINISTRATIVA GUARDADA");
+					System.out.println("/--------------------------------------------------------/");
+				}
+
+				Asegurado codigoAseguradoAdExiste = aseguradoService.findAseguradoByPersonaId(existPersonaA.getIdPersona());
+				
+				if (codigoAseguradoAdExiste != null) {
+
+					codigoAseguradoAdCreado = codigoAseguradoAdExiste;
+					
+				}else{
+
+					String codigoAsegurado = generateCodigoAsegurado(existPersonaA);
+				
+					Asegurado aseguradoA = new Asegurado();
+					aseguradoA.setCodigoAsegurado(codigoAsegurado);
+					aseguradoA.setPersona(existPersonaA);
+					aseguradoA.setEstado("A");
+					aseguradoService.save(aseguradoA);
+
+					codigoAseguradoAdCreado = aseguradoA;
+
+					System.out.println("/------------------------------------------------/");
+					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+existPersonaA.getNombres());
+					System.out.println("/------------------------------------------------/");
+
+					HistorialSeguro historialSeguro = new HistorialSeguro();
+					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
+            		historialSeguro.setEstado("A"); // (o el estado que desees)
+            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setFechaBaja(new Date());
+            		historialSeguro.setTitularHS(true);
+            		historialSeguro.setAsegurado(aseguradoA);
+					historialSeguroService.save(historialSeguro);
+				}
+
+			}
+			System.out.println("hola-------------------------------------kiwi3");
+			return ResponseEntity.ok(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msn = "Error: Revise su usuario y contraseña ";
+			model.addAttribute("msn", msn);
+			System.out.println("hola-------------------------------------");
+
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+		}
+	}
+
+	private Persona personaAdCreada;
+	private Asegurado codigoAseguradoAdCreado;
+
+	@RequestMapping(value = "/generarFichaAdmCaja", method = RequestMethod.POST)
+	public String generarFichaAdministrativo(Model model) {
+	
+		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaAdCreada.getIdPersona());
+
+		Ficha existeFicha = fichaService.findFichaByAseguradoId(codigoAseguradoAdCreado.getIdAsegurado());
+
+		if (existeFicha != null) {
+			System.out.println("YA TIENES UNA FICHA PARIENTE");
+			model.addAttribute("alertMessage", "Ya tienes una ficha pariente.");
+			return "busqueda/GenerarFicha";
+			
+			 
+		}else{
+			Ficha ficha = new Ficha();
+			ficha.setEstado("A");
+			ficha.setFechaRegistroFichaa(new Date());
+			ficha.setAsegurado(asegurado);
+			fichaService.save(ficha);
+			
+		}
+	   return "busqueda/GenerarFicha";
 	}
 }

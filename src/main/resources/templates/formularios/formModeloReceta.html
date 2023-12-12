@@ -92,8 +92,126 @@
       <!-- Start right Content here -->
       <!-- ============================================================== -->
     <div class="main-content">
+      <div class="page-content">
+        <table width="98%" class='table table-bordered' align="center">
+          <tr>
+            <td colspan="3" align="right">
+              <table width="98%" class='table table-bordered' align="center">
+                <tr>
+                  <td rowspan="3" width="20%" align="center">
+                    <center><img border="0" src="../../../../assets/images/logoS.png" 
+                        width="180" height="180"></center>
+                  </td>
+                  <td align="center">
+                    <font size="6">
+                      <h2><b>Universidad Amazónica de Pando</b></h2>
+                    </font>
+                  </td>
+                  <td rowspan="3" width="20%" align="center">
+                    <center><img border="0" src="../../../../assets/images/logoS.png" 
+                        width="180" height="180"></center>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <h2><b> Sistema Integral Social Universitario<b></h2>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <h2><b> Seguro de Salud<b></h2>
+                  </td>
+                </tr>
+              </table>
+    
+              <table class="tabla" width="100%">
+                <thead>
+                  <tr>
+                    <td align="center">
+                      <table class='table table-bordered' align="center">
+                        <tr>
+                          <th>NOMBRE</th>
+                          <th>::</th>
+                          <td><input type="text" id="NOMBRE" name="NOMBRE"></td>
+                          <th>CÓDIGO</th>
+                          <th>::</th>
+                          <td><input type="int" id="CÓDIGO" name="CÓDIGO"> </td>
+                        </tr>
+    
+                        <tr>
+                          <th>ASEG/AFIL</th>
+                          <th width="1%">::</th>
+                          <td width="39%"><input type="text" id="ASEG/AFIL" name="ASEG/AFIL"></td>
+                          <th>FECHA</th>
+                          <th width="1%">::</th>
+                          <td width="39%"><input type="date" id="FECHA" name="FECHA"></td>
+                        </tr>
+    
+                      </table>
+                      <table class='table table-bordered' align="center">
+                        <tr>
+                          <th rowspan="2" width="15%">TIPO DE SERVICIO</th>
+                          <th width="1%">::</th>
+                          <th>MEDICINA GENERAL <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio"
+                              value="MEDICINA GENERAL" style="width: 130px"></th>
+                          <th>FISIOTERAPIA <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio"
+                              value="FISIOTERAPIA" style="width: 150px"></th>
+                        </tr>
+    
+                        <tr>
+                          <th width="1%">::</th>
+                          <th>CIRUGÍA <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio"
+                              value="CIRUGÍA" style="width: 295px;"></th>
+                          <th>ODONTOLOGÍA <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio"
+                              value="ODONTOLOGÍA" style="width: 130px"></th>
+    
+                        </tr>
+                      </table>
+    
+                      <table class='table table-bordered' align="center">
+                        <tr>
+                          <th width="15%">FARMACIA</th>
+                          <th width="1%">::</th>
+                          <td><input type="text" id="FARMACIA" name="FARMACIA" placeholder="Total:Bs"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </thead>
+              </table>
+    
+              <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
+                <tr>
+                  <th style=font-family:TimesNewRoman;font-size:20px;>Cantidad</style></th>
+                  <th style=font-family:TimesNewRoman;font-size:20px;>Unidad</th>
+                  <th style=font-family:TimesNewRoman;font-size:20px;>Medicamento</th>
+                </tr>
+    
+                <tr>
+                  <td><input type="number" name="cantidad"></td>
+                  <td><input type="text" name="unidad"></td>
+                  <td><input type="text" name="medicamento"></td>
+                </tr>
 
-    <div class="page-content">
+              </table>
+    
+              <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
+                <tr>
+                  <th>Indicaciones médicas:<div>
+                      <textarea class="indicaciones" required="" rows="5" name="indicaciones"
+                        placeholder="Observaciones"></textarea>
+                </tr>
+              </table>
+              <i class="mdi mdi-printer-check">
+                <font size="3">
+              </i><a href='javascript: window.print()'>IMPRIMIR RECETA</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    
 
         <!-- Page-Title -->
       <!-- <div class="page-title-box">
@@ -113,132 +231,12 @@
 
   
 
-<table width="98%" class='table table-bordered' align="center">
-  <tr>
-    <td colspan="3" align="right">
-        <table width="98%" class='table table-bordered' align="center"> 
-            <tr>
-                <td rowspan="3" width="20%" align="center">
-                  <center><img border="0" src="../../../../assets/images/LOGO HC.webp" alt="logo" class="img-rounded" width="70" height="80"></center></td>
-                  <td align="center"><font size="6"><h2><b>Universidad Amazónica de Pando</b></h2></font></td>
-                  <td rowspan="3" width="20%" align="center">
-                  <center><img border="0" src="../../../../assets/images/LOGO HC.webp" alt="logo" class="img-rounded" width="70" height="80"></center>
-                </td>
-            </tr>
-            <tr>
-              <td align="center"><h2><b> Sistema Integral Social Universitario<b></h2></td>            
-            </tr>
-            <tr>
-              <td align="center"><h2><b> Seguro de Salud<b></h2></td>      
-            </tr>
-        </table>
 
-    <table class="tabla" width="100%">
-      <thead>
-         <tr><td align="center">    
-                <table class='table table-bordered' align="center">
-                    <tr>
-                      <th >NOMBRE</th>
-                      <th >::</th>
-                      <td ><input type="text" id="NOMBRE" name="NOMBRE"></td> 
-                      <th >CÓDIGO</th> 
-                      <th >::</th>
-                      <td><input type="int" id="CÓDIGO" name="CÓDIGO"> </td>
-                    </tr>
-                
-                    <tr>
-                      <th >ASEG/AFIL</th>
-                      <th width="1%">::</th>
-                      <td width="39%"><input type="text" id="ASEG/AFIL" name="ASEG/AFIL"></td>
-                      <th >FECHA</th>
-                      <th width="1%">::</th>
-                      <td width="39%"><input type="date" id="FECHA" name="FECHA"></td>                      
-                    </tr>    
-                  
-                </table>
-                <table class='table table-bordered' align="center">
-                    <tr>
-                      <th rowspan="2" width="15%">TIPO DE SERVICIO</th>
-                      <th width="1%">::</th>
-                      <th>MEDICINA GENERAL  <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio" value="MEDICINA GENERAL" style="width: 130px"></th>                            
-                      <th>FISIOTERAPIA      <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio" value="FISIOTERAPIA" style="width: 150px"></th>                       
-                    </tr>
-                    
-                    <tr>
-                    <th width="1%">::</th>
-                      <th>CIRUGÍA    <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio" value="CIRUGÍA" style="width: 295px;"></th>                       
-                      <th>ODONTOLOGÍA <input type="checkbox" checked="" id="medicina_general" name="tipo_servicio" value="ODONTOLOGÍA" style="width: 130px" ></th>
-                      
-                    </tr>                
-                </table> 
-
-                <table class='table table-bordered' align="center">
-                  <tr>
-                    <th width="15%">FARMACIA</th>
-                    <th width="1%">::</th>
-                    <td ><input type="text" id="FARMACIA" name="FARMACIA" placeholder="Total:Bs"></td>                   
-                  </tr>
-                </table>
-          </td> 
-        </tr>
-      </thead>
-    </table>
-        
-      <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
-        <tr>
-          <th style=font-family:TimesNewRoman;font-size:20px;>Cantidad</style></th>
-          <th style=font-family:TimesNewRoman;font-size:20px;>Unidad</th>
-          <th style=font-family:TimesNewRoman;font-size:20px;>Medicamento</th>
-        </tr>
-
-        <tr>
-          <td><input type="number" name="cantidad"></td>
-          <td><input type="text" name="unidad"></td>
-          <td><input type="text" name="medicamento"></td>
-        </tr>
-        <tr>
-          <td><input type="number" name="cantidad"></td>
-          <td><input type="text" name="unidad"></td>
-          <td><input type="text" name="medicamento"></td>
-        </tr>
-        <tr>
-          <td><input type="number" name="cantidad"></td>
-          <td><input type="text" name="unidad"></td>
-          <td><input type="text" name="medicamento"></td>
-        </tr>
-        <tr>
-          <td><input type="number" name="cantidad"></td>
-          <td><input type="text" name="unidad"></td>
-          <td><input type="text" name="medicamento"></td>
-        </tr>
-        <tr>
-          <td><input type="number" name="cantidad"></td>
-          <td><input type="text" name="unidad"></td>
-          <td><input type="text" name="medicamento"></td>
-        </tr>
-        <tr>
-          <td><input type="number" name="cantidad"></td>
-          <td><input type="text" name="unidad"></td>
-          <td><input type="text" name="medicamento"></td>
-        </tr>
-     </table>
-  
-     <table width="100%" class='table table-bordered' align="center" style="text-align: center;">
-        <tr>
-          <th>Indicaciones médicas:<div>
-            <textarea class="indicaciones" required="" rows="5" name="indicaciones" placeholder="Observaciones"></textarea>
-        </tr>
-      </table>
-      <i class="mdi mdi-printer-check"><font size="3"></i><a href='javascript: window.print()'>IMPRIMIR RECETA</a>
-    </td>
-  </tr>
-</table>
              
     <!-- <div th:insert="~{layout/footer :: footer}"></div>
   </div> -->
   <!-- end main content-->
 
-  </div>
   <!-- END layout-wrapper -->
 
   <!-- Right Sidebar -->
