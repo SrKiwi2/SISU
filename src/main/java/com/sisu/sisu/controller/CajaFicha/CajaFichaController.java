@@ -117,7 +117,7 @@ public class CajaFichaController {
 
 				if (univPersona != null) {
 					personaUniCreada = univPersona;
-
+					System.out.println("-------------------- ESTE UNIVERSITARIO YA ESTÁ REGISTRADO EN LA BASE DE DATOS -------------------");
 				}else{
 
 					univPersona = new Persona();
@@ -152,6 +152,8 @@ public class CajaFichaController {
 				if (codUniAseguradoExiste != null) {
 					
 					codUniAseguradoCreado = codUniAseguradoExiste;
+
+					System.out.println(" --------------------------------- ESTE UNIVERSITARIO YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS --------------------------------");
 
 				}else{
 					String codigoAsegurado = generateCodigoAsegurado(univPersona);
@@ -253,7 +255,7 @@ public class CajaFichaController {
 	   return "Client/inicioCliente";
 	}
 
-	//------------------------------------DOCENTE CONTROLLER ----------------------------------------------------
+	//------------------------------------ DOCENTE CONTROLLER ----------------------------------------------------
 	
 	@RequestMapping(value = "docenteC", method = RequestMethod.GET)
 	public Object docenteC(HttpServletRequest request,Model model,
@@ -314,6 +316,7 @@ public class CajaFichaController {
 
 				if (docPersona != null) {
 					personaDocCreada = docPersona;
+					System.out.println(" ----------------------------- ESTE DOCENTE YA ESTÁ REGISTRADO EN LA BD --------------------------------");
 				}else{
 					docPersona = new Persona();
 
@@ -347,6 +350,8 @@ public class CajaFichaController {
 				if (codigoAseguradoDExiste != null) {
 					
 					codDocAsegurado = codigoAseguradoDExiste;
+
+					System.out.println("------------------------------ ESTE DOCENTE YA TIENE CODIGO ASEGURADO EN LA BD ----------------------------------");
 					
 				}else{
 					String codigoAsegurado = generateCodigoAsegurado(personaDocCreada);
@@ -392,11 +397,9 @@ public class CajaFichaController {
 		Ficha existeFicha = fichaService.findFichaByAseguradoId(codDocAsegurado.getIdAsegurado());
 
 		if (existeFicha != null) {
-			System.out.println("YA TIENES UNA FICHA PARIENTE");
-			model.addAttribute("alertMessage", "Ya tienes una ficha pariente.");
-			return "busqueda/GenerarFicha";
-			
-			 
+
+			System.out.println("-------------------------- YA TIENES UNA FICHA PARIENTE ---------------------------");
+		 
 		}else{
 			Ficha ficha = new Ficha();
 			ficha.setEstado("A");
@@ -411,6 +414,8 @@ public class CajaFichaController {
 		}
 	   return "busqueda/GenerarFicha";
 	}
+
+	//----------------------------------- ADMINISTRATIVO ----------------------------------------------------------------
 
 	@RequestMapping(value = "/administrativoC", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> administrativo(HttpServletRequest request, Model model,
@@ -451,7 +456,7 @@ public class CajaFichaController {
 
 				if (existPersonaA != null) {
 					personaAdCreada = existPersonaA;
-					
+					System.out.println("-------------------------- ESTE ADMINISTARTIVO YA ESTÁ REGISTRADO EN LA BASE DE DATOS -------------------------");
 
 				}else{
 					System.out.println("--------------------------------------------------------");

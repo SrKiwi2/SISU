@@ -110,7 +110,7 @@ public class FichaSisuController {
 				if (newUnipersona != null) {
 					
 					personaCreada = newUnipersona;
-					System.out.println("este univeristario ya está registrado");
+					System.out.println("------------ ESTE UNIVERSITARIO YA ESTÁ REGISTRADO EN LA BD -----------------");
 					return "Client/vistaDatosUniversitario";
 
 				}else{
@@ -151,6 +151,8 @@ public class FichaSisuController {
 				if (codigoAseguradoUniExistente != null) {
 
 					codigoAseguradoUniCreado = codigoAseguradoUniExistente;
+
+					System.out.println("------------- ESTE UNIVERSITARIO YA TIENE UN CODIGO ASEGURADO EN LA BD --------------------------");
 					
 				}else{
 					String codigoAsegurado = generateCodigoAsegurado(newUnipersona);
@@ -249,7 +251,7 @@ public class FichaSisuController {
 		return codigoAsegurado;
 	}
 
-	/* ----------------------------------------------------------------------------------------- */
+	/* -------------------------------- DOCENTE --------------------------------------------------------- */
 
 	@RequestMapping(value = "docente", method = RequestMethod.GET)
 	public String docente(HttpServletRequest request, Model model, 
@@ -311,8 +313,7 @@ public class FichaSisuController {
 				if (existePersonaD != null) {
 
 					personaDocenteCreado = existePersonaD;
-
-					return "Client/vistaDatosDocente";
+					System.out.println(" ------------------ ESTE DOCENTE YA ESTÁ REGISTRADO EN LA BASE DE DATOS -----------------");
 				}else{
 
 					System.out.println("--------------------------------------------------------");
@@ -353,7 +354,7 @@ public class FichaSisuController {
 					
 					codigoAseguradoDocenteCreado = codigoAseguradoDocExiste;
 
-					return "Client/vistaDatosDocente";
+					System.out.println(" -------------- ESTE DOCENTE YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS -----------------");
 				}else{
 					String codigoAsegurado = generateCodigoAsegurado(existePersonaD);
 
@@ -378,10 +379,7 @@ public class FichaSisuController {
             		historialSeguro.setAsegurado(aseguradoD);
 					historialSeguroService.save(historialSeguro);
 				}
-
-
 			}
-
 			return "Client/vistaDatosDocente";
 		} catch (Exception e){
 			e.printStackTrace();
@@ -460,6 +458,7 @@ public class FichaSisuController {
 
 				if (existPersonaA != null) {
 					personaACreada = existPersonaA;	
+					System.out.println("----------------- ESTE ADMINISTRATIVO YA ESTÁ REGISTRADO EN LA BASE DE DATOS ----------------------");
 
 				}else{
 					System.out.println("--------------------------------------------------------");
@@ -499,6 +498,7 @@ public class FichaSisuController {
 				if (codigoAseguradoAExiste != null) {
 
 					codigoAseguradoAdCreado = codigoAseguradoAExiste;
+					System.out.println(" ----------------------- ESTE ADMINISTRATIVO YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS ---------------------------");
 					
 				}else{
 					String codigoAsegurado = generateCodigoAsegurado(existPersonaA);
