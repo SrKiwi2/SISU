@@ -1,6 +1,7 @@
 package com.sisu.sisu.controller;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
@@ -42,7 +43,6 @@ import com.sisu.sisu.entitys.TipoSeguro;
 import com.sisu.sisu.entitys.TiposEstadoCivil;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @Controller
 public class FichaSisuController {
 
@@ -60,35 +60,35 @@ public class FichaSisuController {
 
 	@RequestMapping(value = "universitario", method = RequestMethod.GET)
 	public String obtenerDatosUniversitario(HttpServletRequest request, Model model,
-			@RequestParam("codigoUniversitario") String ru){
-		
+			@RequestParam("codigoUniversitario") String ru) {
+
 		System.out.println("--------------------MOSTRANDO DATOS UNIVERSITARIO------------------");
 		System.out.println("EL RU DEL UNIVERSITARIO ES :" + ru);
-				
+
 		Map<String, Object> requests = new HashMap<String, Object>();
-		
-		try{
+
+		try {
 
 			requests.put("ru", ru);
 
 			String url = "http://181.115.188.250:9993/v1/service/api/cee024514f4e4b1f970bfb2b6486b421";
 			String key = "key 70c8b6fc339aa5e6312dd42edf0636558948bb6008f1a0f867885d5e60e26c57";
-			
+
 			HttpHeaders headers = new HttpHeaders();
-			
+
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			headers.set("x-api-key", key);
-			
+
 			HttpEntity<HashMap> req = new HttpEntity(requests, headers);
 			RestTemplate restTemplate = new RestTemplate();
-			
+
 			ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
 
 			model.addAttribute("activarCreacionFicha", false);
-			
+
 			if (resp.getBody().get("status").toString().equals("200")) {
 				Map<String, Object> data = (Map) resp.getBody().get("data");
-			
+
 				model.addAttribute("nombreUniversitario", data.get("nombres").toString());
 				model.addAttribute("ci", data.get("ci").toString());
 				model.addAttribute("ru", data.get("ru").toString());
@@ -104,16 +104,16 @@ public class FichaSisuController {
 				model.addAttribute("estadoMatriculacion", data.get("estado_matriculacion").toString());
 				System.out.println("EL NOMBRE DEL UNIVERSITARIO ES " + data.get("nombres").toString());
 				// Otros atributos...
-			
+
 				Persona newUnipersona = personaService.findByCi(data.get("ci").toString());
 
 				if (newUnipersona != null) {
-					
+
 					personaCreada = newUnipersona;
 					System.out.println("------------ ESTE UNIVERSITARIO YA ESTÁ REGISTRADO EN LA BD -----------------");
 					return "Client/vistaDatosUniversitario";
 
-				}else{
+				} else {
 					newUnipersona = new Persona();
 					Dip dip = new Dip();
 					GradoAcademico gradoAcademico = new GradoAcademico();
@@ -122,20 +122,20 @@ public class FichaSisuController {
 					dip.setIdDip(8);
 					gradoAcademico.setIdGradoAcademico(1);
 					tiposEstadoCivil.setIdTipoEstadoCivil(1);
-	
+
 					newUnipersona.setEstado("RU");
-	    			newUnipersona.setNombres(data.get("nombres").toString());
-	    			newUnipersona.setApPaterno(data.get("apellido_paterno").toString());
-	    			newUnipersona.setApMaterno(data.get("apellido_materno").toString());
-	    			newUnipersona.setCi(data.get("ci").toString());
-	    			newUnipersona.setDireccion(data.get("direccion").toString());
-	    			newUnipersona.setCelular(Integer.parseInt(data.get("celular").toString()));
-	    			newUnipersona.setSexo(data.get("sexo").toString());
+					newUnipersona.setNombres(data.get("nombres").toString());
+					newUnipersona.setApPaterno(data.get("apellido_paterno").toString());
+					newUnipersona.setApMaterno(data.get("apellido_materno").toString());
+					newUnipersona.setCi(data.get("ci").toString());
+					newUnipersona.setDireccion(data.get("direccion").toString());
+					newUnipersona.setCelular(Integer.parseInt(data.get("celular").toString()));
+					newUnipersona.setSexo(data.get("sexo").toString());
 					newUnipersona.setDip(dip);
 					newUnipersona.setGrado_academico(gradoAcademico);
 					newUnipersona.setTipos_estado_civil(tiposEstadoCivil);
-	    			newUnipersona.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));	
-					
+					newUnipersona.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));
+
 					personaService.save(newUnipersona);
 
 					personaCreada = newUnipersona;
@@ -143,18 +143,20 @@ public class FichaSisuController {
 					System.out.println("/--------------------------------------------------------/");
 					System.out.println("¡guardo! UNIVERISTARIO registrado en la tabla persona  ¡guardo!");
 					System.out.println("/--------------------------------------------------------/");
-					
+
 				}
 
-				Asegurado codigoAseguradoUniExistente = aseguradoService.findAseguradoByPersonaId(personaCreada.getIdPersona());
-				
+				Asegurado codigoAseguradoUniExistente = aseguradoService
+						.findAseguradoByPersonaId(personaCreada.getIdPersona());
+
 				if (codigoAseguradoUniExistente != null) {
 
 					codigoAseguradoUniCreado = codigoAseguradoUniExistente;
 
-					System.out.println("------------- ESTE UNIVERSITARIO YA TIENE UN CODIGO ASEGURADO EN LA BD --------------------------");
-					
-				}else{
+					System.out.println(
+							"------------- ESTE UNIVERSITARIO YA TIENE UN CODIGO ASEGURADO EN LA BD --------------------------");
+
+				} else {
 					String codigoAsegurado = generateCodigoAsegurado(newUnipersona);
 					Asegurado asegurado = new Asegurado();
 
@@ -193,10 +195,10 @@ public class FichaSisuController {
 
 					return "Client/vistaDatosUniversitario";
 				}
-				
+
 			}
 			return "Client/inicioCliente";
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			String msn = "Error: Revise su usuario y contraseña ";
@@ -212,7 +214,7 @@ public class FichaSisuController {
 
 	@RequestMapping(value = "/generarFicha", method = RequestMethod.POST)
 	public String generarFicha(Model model) {
-	
+
 		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaCreada.getIdPersona());
 
 		if (codigoAseguradoUniCreado != null) {
@@ -220,20 +222,19 @@ public class FichaSisuController {
 
 			if (existeFicha != null) {
 				System.out.println("YA TIENES UNA FICHA PARIENTE");
-			}else{
+			} else {
 				Ficha ficha = new Ficha();
 				ficha.setEstado("A");
 				ficha.setFechaRegistroFichaa(new Date());
 				ficha.setAsegurado(asegurado);
 				fichaService.save(ficha);
 			}
-	    	return "redirect:/inicioCliente";
-		}else{
+			return "redirect:/inicioCliente";
+		} else {
 			System.out.println("NO EN CUNATRA CODIGO UNIVERSITARIO ASEGURADO");
 			return "redirect:/inicioCliente";
 		}
 
-		
 	}
 
 	private String generateCodigoAsegurado(Persona persona) {
@@ -241,25 +242,28 @@ public class FichaSisuController {
 		String apPaterno = persona.getApPaterno();
 		String apMaterno = persona.getApMaterno();
 		String ci = persona.getCi();
-	
+
 		// Obtener la primera letra de cada palabra y el CI
 		String codigoAsegurado = String.valueOf(nombre.charAt(0)) +
-								String.valueOf(apPaterno.charAt(0)) +
-								String.valueOf(apMaterno.charAt(0)) +
-								ci;
-	
+				String.valueOf(apPaterno.charAt(0)) +
+				String.valueOf(apMaterno.charAt(0)) +
+				ci;
+
 		return codigoAsegurado;
 	}
 
-	/* -------------------------------- DOCENTE --------------------------------------------------------- */
+	/*
+	 * -------------------------------- DOCENTE
+	 * ---------------------------------------------------------
+	 */
 
 	@RequestMapping(value = "docente", method = RequestMethod.GET)
-	public String docente(HttpServletRequest request, Model model, 
-				@RequestParam("codigoDocente") String rd) {
+	public String docente(HttpServletRequest request, Model model,
+			@RequestParam("codigoDocente") String rd) {
 
 		Map<String, Object> request1 = new HashMap<>();
 
-		try{
+		try {
 			System.out.println("el codigo docente es" + rd);
 
 			request1.put("rd", rd);
@@ -273,10 +277,11 @@ public class FichaSisuController {
 			headers.set("x-api-key", key);
 
 			HttpEntity<Map<String, Object>> req = new HttpEntity<>(request1, headers);
-			RestTemplate restTemplate= new RestTemplate();
+			RestTemplate restTemplate = new RestTemplate();
 
 			ResponseEntity<Map> resp = restTemplate.exchange(url, HttpMethod.POST, req, Map.class);
-			System.out.println("---------------" + resp.getBody().get("status").toString() + "--------------------------");
+			System.out.println(
+					"---------------" + resp.getBody().get("status").toString() + "--------------------------");
 
 			if (resp.getBody().get("status").toString().equals("200")) {
 				System.out.println("----------------------------------SS--------");
@@ -305,7 +310,7 @@ public class FichaSisuController {
 				model.addAttribute("direccionD", data.get("direccion").toString());
 				model.addAttribute("activo", data.get("activo").toString());
 				System.out.println("---------------------------------------------------------------------------");
-				System.out.println("EL NOMBRE DEL DOCENTE ES: "+data.get("nombres").toString());
+				System.out.println("EL NOMBRE DEL DOCENTE ES: " + data.get("nombres").toString());
 				System.out.println("---------------------------------------------------------------------------");
 
 				Persona existePersonaD = personaService.findByCi(data.get("ci").toString());
@@ -313,13 +318,14 @@ public class FichaSisuController {
 				if (existePersonaD != null) {
 
 					personaDocenteCreado = existePersonaD;
-					System.out.println(" ------------------ ESTE DOCENTE YA ESTÁ REGISTRADO EN LA BASE DE DATOS -----------------");
-				}else{
+					System.out.println(
+							" ------------------ ESTE DOCENTE YA ESTÁ REGISTRADO EN LA BASE DE DATOS -----------------");
+				} else {
 
 					System.out.println("--------------------------------------------------------");
 					System.out.println("PREGUNTO PREGUNTO DOCENTE");
-					System.out.println("--------------------------------------------------------");				
-				
+					System.out.println("--------------------------------------------------------");
+
 					existePersonaD = new Persona();
 
 					Dip dip = new Dip();
@@ -333,12 +339,12 @@ public class FichaSisuController {
 					existePersonaD.setEstado("RD");
 					existePersonaD.setNombres(data.get("nombres").toString());
 					existePersonaD.setApPaterno(data.get("apellido_paterno").toString());
-	    			existePersonaD.setApMaterno(data.get("apellido_materno").toString());
-	    			existePersonaD.setCi(data.get("ci").toString());
-	    			existePersonaD.setDireccion(data.get("direccion").toString());
-	    			existePersonaD.setCelular(Integer.parseInt(data.get("celular").toString()));
-	    			existePersonaD.setSexo(data.get("sexo").toString());
-	    			existePersonaD.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));		
+					existePersonaD.setApMaterno(data.get("apellido_materno").toString());
+					existePersonaD.setCi(data.get("ci").toString());
+					existePersonaD.setDireccion(data.get("direccion").toString());
+					existePersonaD.setCelular(Integer.parseInt(data.get("celular").toString()));
+					existePersonaD.setSexo(data.get("sexo").toString());
+					existePersonaD.setFecha_nac(LocalDate.parse(data.get("fecha_nacimiento").toString()));
 					personaService.save(existePersonaD);
 
 					personaDocenteCreado = existePersonaD;
@@ -348,14 +354,16 @@ public class FichaSisuController {
 					System.out.println("/--------------------------------------------------------/");
 				}
 
-				Asegurado codigoAseguradoDocExiste = aseguradoService.findAseguradoByPersonaId(existePersonaD.getIdPersona());
+				Asegurado codigoAseguradoDocExiste = aseguradoService
+						.findAseguradoByPersonaId(existePersonaD.getIdPersona());
 
 				if (codigoAseguradoDocExiste != null) {
-					
+
 					codigoAseguradoDocenteCreado = codigoAseguradoDocExiste;
 
-					System.out.println(" -------------- ESTE DOCENTE YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS -----------------");
-				}else{
+					System.out.println(
+							" -------------- ESTE DOCENTE YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS -----------------");
+				} else {
 					String codigoAsegurado = generateCodigoAsegurado(existePersonaD);
 
 					Asegurado aseguradoD = new Asegurado();
@@ -367,21 +375,21 @@ public class FichaSisuController {
 					codigoAseguradoDocenteCreado = aseguradoD;
 
 					System.out.println("/------------------------------------------------/");
-					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+existePersonaD.getNombres());
+					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: " + existePersonaD.getNombres());
 					System.out.println("/------------------------------------------------/");
 
 					HistorialSeguro historialSeguro = new HistorialSeguro();
 					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
-            		historialSeguro.setEstado("A"); // (o el estado que desees)
-            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setEstado("A"); // (o el estado que desees)
+					historialSeguro.setFechaAlta(new Date());
 					historialSeguro.setFechaBaja(new Date());
-            		historialSeguro.setTitularHS(true);
-            		historialSeguro.setAsegurado(aseguradoD);
+					historialSeguro.setTitularHS(true);
+					historialSeguro.setAsegurado(aseguradoD);
 					historialSeguroService.save(historialSeguro);
 				}
 			}
 			return "Client/vistaDatosDocente";
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			String msn = "Error: Revise su usuario y contraseña ";
 			model.addAttribute("msn", msn);
@@ -393,18 +401,17 @@ public class FichaSisuController {
 
 	private Persona personaDocenteCreado;
 	private Asegurado codigoAseguradoDocenteCreado;
-	
 
 	@RequestMapping(value = "/generarFichaD", method = RequestMethod.POST)
 	public String generarFichaD(Model model) {
-	
+
 		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaDocenteCreado.getIdPersona());
 
 		Ficha existeFicha = fichaService.findFichaByAseguradoId(codigoAseguradoDocenteCreado.getIdAsegurado());
 
 		if (existeFicha != null) {
 			System.out.println("ESTE DOCENTE YA TIENES UNA FICHA PARIENTE");
-		}else{
+		} else {
 			Ficha ficha = new Ficha();
 			ficha.setEstado("A");
 			ficha.setFechaRegistroFichaa(new Date());
@@ -413,11 +420,13 @@ public class FichaSisuController {
 			System.out.println("LA FICHA PARA ESTE DOCENTE SE HA CREADO");
 		}
 
-	    return "redirect:/inicioCliente";
+		return "redirect:/inicioCliente";
 	}
 
-
-/* -------------------------------------------------------------------------------------------- */
+	/*
+	 * -----------------------------------------------------------------------------
+	 * ---------------
+	 */
 
 	@RequestMapping(value = "/administrativo", method = RequestMethod.GET)
 	public String administrativo(HttpServletRequest request, Model model,
@@ -457,10 +466,11 @@ public class FichaSisuController {
 				Persona existPersonaA = personaService.findByCi(data.get("per_num_doc").toString());
 
 				if (existPersonaA != null) {
-					personaACreada = existPersonaA;	
-					System.out.println("----------------- ESTE ADMINISTRATIVO YA ESTÁ REGISTRADO EN LA BASE DE DATOS ----------------------");
+					personaACreada = existPersonaA;
+					System.out.println(
+							"----------------- ESTE ADMINISTRATIVO YA ESTÁ REGISTRADO EN LA BASE DE DATOS ----------------------");
 
-				}else{
+				} else {
 					System.out.println("--------------------------------------------------------");
 					System.out.println("PREGUNTO PREGUNTO ADMINISTRATIVO");
 					System.out.println("--------------------------------------------------------");
@@ -493,16 +503,18 @@ public class FichaSisuController {
 					System.out.println("/--------------------------------------------------------/");
 				}
 
-				Asegurado codigoAseguradoAExiste = aseguradoService.findAseguradoByPersonaId(existPersonaA.getIdPersona());
-				
+				Asegurado codigoAseguradoAExiste = aseguradoService
+						.findAseguradoByPersonaId(existPersonaA.getIdPersona());
+
 				if (codigoAseguradoAExiste != null) {
 
 					codigoAseguradoAdCreado = codigoAseguradoAExiste;
-					System.out.println(" ----------------------- ESTE ADMINISTRATIVO YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS ---------------------------");
-					
-				}else{
+					System.out.println(
+							" ----------------------- ESTE ADMINISTRATIVO YA TIENE UN CODIGO ASEGURADO EN LA BASE DE DATOS ---------------------------");
+
+				} else {
 					String codigoAsegurado = generateCodigoAsegurado(existPersonaA);
-				
+
 					Asegurado aseguradoA = new Asegurado();
 					aseguradoA.setCodigoAsegurado(codigoAsegurado);
 					aseguradoA.setPersona(existPersonaA);
@@ -512,16 +524,16 @@ public class FichaSisuController {
 					codigoAseguradoAdCreado = aseguradoA;
 
 					System.out.println("/------------------------------------------------/");
-					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: "+existPersonaA.getNombres());
+					System.out.println("SE GENERO EL CODIGO ASEGURADO PARA: " + existPersonaA.getNombres());
 					System.out.println("/------------------------------------------------/");
 
 					HistorialSeguro historialSeguro = new HistorialSeguro();
 					historialSeguro.setCodigoSeguroPrincipal(codigoAsegurado);
-            		historialSeguro.setEstado("A"); // (o el estado que desees)
-            		historialSeguro.setFechaAlta(new Date());
+					historialSeguro.setEstado("A"); // (o el estado que desees)
+					historialSeguro.setFechaAlta(new Date());
 					historialSeguro.setFechaBaja(new Date());
-            		historialSeguro.setTitularHS(true);
-            		historialSeguro.setAsegurado(aseguradoA);
+					historialSeguro.setTitularHS(true);
+					historialSeguro.setAsegurado(aseguradoA);
 					historialSeguroService.save(historialSeguro);
 				}
 
@@ -543,23 +555,38 @@ public class FichaSisuController {
 
 	@RequestMapping(value = "/generarFichaA", method = RequestMethod.POST)
 	public String generarFichaA(Model model) {
-	
+
 		Asegurado asegurado = aseguradoService.findAseguradoByPersonaId(personaACreada.getIdPersona());
 
 		Ficha existeFicha = fichaService.findFichaByAseguradoId(codigoAseguradoAdCreado.getIdAsegurado());
-
+		LocalDate fechaRegistroFicha = null;
 		if (existeFicha != null) {
-			System.out.println("ESTE ADMINISTRATIVO YA TIENE UNA FICHA PARIENTE");
-		}else{
+			fechaRegistroFicha = existeFicha.getFechaRegistroFichaa().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			System.out.println("ESTE ADMINISTRATIVO YA TIENE UNA FICHA");
+			// Aquí puedes agregar cualquier acción adicional si la ficha ya existe
+		} else {
 			Ficha ficha = new Ficha();
 			ficha.setEstado("A");
 			ficha.setFechaRegistroFichaa(new Date());
 			ficha.setAsegurado(asegurado);
-			fichaService.save(ficha);
-			System.out.println("LA FICHA PARA ESTE ADMINISTRATIVO SE HA CREADO");
+
+			// Verificar si la fecha de registro de la ficha es igual a la fecha actual
+			LocalDate fechaActual = LocalDate.now();
+			fechaRegistroFicha = ficha.getFechaRegistroFichaa().toInstant().atZone(ZoneId.systemDefault())
+					.toLocalDate();
+
+			if (fechaRegistroFicha.equals(fechaActual)) {
+				System.out.println(
+						"La fecha de registro de la ficha es igual a la fecha actual. No se guarda la ficha.");
+				
+			} else {
+				fichaService.save(ficha);
+				System.out.println("LA FICHA PARA ESTE ADMINISTRATIVO SE HA CREADO");
+				
+			}
 		}
 
-	    return "redirect:/inicioCliente";
+		return "redirect:/inicioCliente";
 	}
 
 	@RequestMapping(value = "particular", method = RequestMethod.GET)
