@@ -86,9 +86,6 @@ public class login {
 	@RequestMapping(value = "usuarioContrasena", method = RequestMethod.POST)
 	public String selecionRoles(HttpServletRequest request, Model model,HttpServletResponse response, @RequestParam("usuario") String usuario,
 			@RequestParam("clave") String clave) {
-		System.out.println("--8888888888888888888888---------------------");
-		
-		
 		
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	    response.setHeader("Pragma", "no-cache");
@@ -98,12 +95,8 @@ public class login {
 		System.out.println("---" + usuario + "---" + clave + "---");
 
 		Usuario user = usuarioService.loguearse(usuario, clave);
-		System.out.println("-------------------------------------------------");
 
 		if (user != null) {
-			System.out.println("-------------------------------------------------1");
-			// System.out.println(user.toString());
-			System.out.println("-------------------------------------------------2");
 			List<UsrRoles> lRolesUsr = usrRolesService.listRolesUsuario(user);
 			System.out.println("-------------------------------------------------3");
 			System.out.println("rolesList " + lRolesUsr.size());
@@ -123,7 +116,7 @@ public class login {
 			sesion.setAttribute("sessionlRoles", lRolesUsr);
 			sesion.setAttribute("usuarioSession", user);
 
-			System.out.println("TIENE ROLES HABILITADOS-------------------------------------sss");
+			System.out.println("TIENE ROLES HABILITADOS-------------------------------------");
 			return "index/selecioneRoles";
 			// return "uap/da/sistemada/vistas/login/mostrarRoles";
 
@@ -152,13 +145,13 @@ public class login {
 			
 		}
 
-		if (usuario != null) {
-			System.err.append("El objeto Usuario se ha obtenido correctamente de la sesión.");
+		// if (usuario != null) {
+		// 	System.err.append("El objeto Usuario se ha obtenido correctamente de la sesión.");
 
-		} else {
-			// logger.warn("No se ha encontrado el objeto Usuario en la sesión.");
-			System.err.append("No se ha encontrado el objeto Usuario en la sesión.");
-		}
+		// } else {
+		// 	// logger.warn("No se ha encontrado el objeto Usuario en la sesión.");
+		// 	System.err.append("No se ha encontrado el objeto Usuario en la sesión.");
+		// }
 
 		System.out.println("Buen Dia Estrellitas la Tierra les Dice Hola");
 
