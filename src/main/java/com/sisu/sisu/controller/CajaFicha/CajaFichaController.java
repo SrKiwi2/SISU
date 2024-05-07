@@ -125,7 +125,7 @@ public class CajaFichaController {
 					GradoAcademico gradoAcademico = new GradoAcademico();
 					TiposEstadoCivil tiposEstadoCivil = new TiposEstadoCivil();
 
-					dip.setIdDip(10);
+					dip.setIdDip(3);
 					gradoAcademico.setIdGradoAcademico(1);
 					tiposEstadoCivil.setIdTipoEstadoCivil(1);
 

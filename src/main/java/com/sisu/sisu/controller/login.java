@@ -160,26 +160,16 @@ public class login {
 			System.err.append("No se ha encontrado el objeto Usuario en la sesión.");
 		}
 
-
 		System.out.println("Buen Dia Estrellitas la Tierra les Dice Hola");
 
 		System.out.println("Rol-- " + idUsrRol);
 
-		System.out.println("Buen Dia Estrellitas la Tierra les Dice Hola2");
 		UsrRoles usrRol = new UsrRoles();
 
-		System.out.println("Buen Dia Estrellitas la Tierra les Dice Hola3");
 		usrRol = usrRolesService.findByIdUsrRol(idUsrRol);
 		System.out.println("USUARIO ROL" + usrRol.getIdUsrRol());
 
-		System.out.println("Buen Dia Estrellitas la Tierra les Dice Hola4");
-		// System.out.println("++ " + usrRol);
 
-		System.out.println("Buen Dia Estrellitas la Tierra les Dice Hola5");
-
-		
-		
-	
 		List<Menu> lEnlaces = menuService.findByIdRol(usrRol.getIdRol());
 		System.out.println("tama " + lEnlaces.size());
 
@@ -188,16 +178,11 @@ public class login {
 		model.addAttribute("Padres", lEnlaces);
 		model.addAttribute("Hijos", lHijos);
 
-		
 
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("sessionlPadres", lHijos);
 		sesion.setAttribute("usrRolSession", usrRol);
 
-
-		System.out.println("/--------------------------------------------------------------/");
-		System.err.append("Buen Dia Estrellitas la Tierra les Dice Hola6");
-		System.out.println("/--------------------------------------------------------------/");
 		//return "formularios/Contenido";
 		return "index/inicio";
 	}
